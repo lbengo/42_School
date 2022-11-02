@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 10:44:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 12:09:34 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/02 23:36:14 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/02 23:36:35 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DEFINICIÓN:
-%s - Imprime una string.
------------------------------------------------------------------------------ */
-
 #include "ft_printf.h"
 
-void	ft_putstr(char *s)
+int main (void)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-	{
-		write(1, &s[i], 1);
-		i++;
-	}
+	ft_printf("hola chanchito feliz %c %s %d %i %u  oi", 'a', "hola",2368496, 1234, -144);
+	//printf("%i", ft_printf("hola chanchito feliz %s oi", 12));
 }

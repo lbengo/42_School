@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 21:04:44 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:58:58 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int ft_printf(char const *format, ...)
 {
@@ -30,11 +30,11 @@ int ft_printf(char const *format, ...)
 			else if (format[i+1] == 'p')
 				printf("p");
 			else if (format[i+1] == 'd')
-				printf("d");
+				ft_putnbr_10_decimal(va_arg(arg, long int));
 			else if (format[i+1] == 'i')
 				ft_putnbr_10_integer(va_arg(arg, int));
 			else if (format[i+1] == 'u')
-				printf("u");
+				ft_putnbr_10_positive(va_arg(arg, unsigned int));
 			else if (format[i+1] == 'x')
 				printf("x");
 			else if (format[i+1] == 'X')
@@ -51,12 +51,5 @@ int ft_printf(char const *format, ...)
 	}
 
 	va_end(arg); //	Finaliza
-	return(0);
-}
-
-int main (void)
-{
-
-	ft_printf("hola chanchito feliz %c %s %i oi", 'a', "hola", 1234);
-	//printf("%i", ft_printf("hola chanchito feliz %s oi", 12));
+	return(1);
 }

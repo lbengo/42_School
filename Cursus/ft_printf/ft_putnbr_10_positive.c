@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_10_integer.c                             :+:      :+:    :+:   */
+/*   ft_putnbr_10_positive.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:33:12 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 23:39:05 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/02 22:29:24 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/03 00:08:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-%i - Imprime un entero en base 10. Similar al %d, sin embargo %i es un int
-y %d es long int.
+%u - Imprime un número decimal (base 10) sin signo.
 ----------------------------------------------------------------------------- */
 
 #include "ft_printf.h"
 
-static int	ft_intlen(int n)
+static int	ft_intlen(unsigned int n)
 {
 	unsigned int	len;
 
 	len = 0;
-	if (n < 0)
-		n = n * (-1);
 	while (n > 9)
 	{
 		len++;
@@ -34,7 +31,7 @@ static int	ft_intlen(int n)
 	return (len);
 }
 
-static char	*ft_number(int n, unsigned int len, unsigned int sign)
+static char	*ft_number(unsigned int n, unsigned int len)
 {
 	char	*str;
 
@@ -49,31 +46,16 @@ static char	*ft_number(int n, unsigned int len, unsigned int sign)
 	}
 	if (n > 0 && n <= 9)
 		str[len] = n + '0';
-	if (sign == 1)
-		str[--len] = '-';
 	return (str);
 }
 
-int	ft_putnbr_10_integer(int n)
+int	ft_putnbr_10_positive(unsigned int n)
 {
 	unsigned int	len;
-	unsigned int	sign;
 	char			*temp;
 
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return (0);
-	}
-	sign = 0;
 	len = ft_intlen(n);
-	if (n < 0)
-	{
-		len++;
-		n = n * (-1);
-		sign = 1;
-	}
-	temp = ft_number(n, len, sign);
+	temp = ft_number(n, len);
 	ft_putstr(temp);
 	free(temp);
 	return (0);
@@ -83,7 +65,8 @@ int	ft_putnbr_10_integer(int n)
 {
 	int n;
 
-	n = 144;
-	ft_putnbr_10_integer(n);
+	n = -144;
+	ft_putnbr_10_positive(n);
+	printf("\n%u", -144);
 	return (0);
 } */

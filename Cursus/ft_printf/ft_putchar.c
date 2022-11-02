@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:41:29 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 12:09:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/02 23:56:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 %c - Imprime un solo carácter.
 ----------------------------------------------------------------------------- */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	ft_putchar(int c)
+int	ft_putchar(int c)
 {
 	write(1, &c, 1);
+	return (1);
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_10_integer.c                             :+:      :+:    :+:   */
+/*   ft_putnbr_10_decimal.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:33:12 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 23:39:05 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/02 22:46:29 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/02 23:38:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-%i - Imprime un entero en base 10. Similar al %d, sin embargo %i es un int
+%d - Imprime un número decimal (base 10). Similar al %d, sin embargo %i es un int
 y %d es long int.
 ----------------------------------------------------------------------------- */
 
 #include "ft_printf.h"
 
-static int	ft_intlen(int n)
+static int	ft_intlen(long int n)
 {
 	unsigned int	len;
 
@@ -34,7 +34,7 @@ static int	ft_intlen(int n)
 	return (len);
 }
 
-static char	*ft_number(int n, unsigned int len, unsigned int sign)
+static char	*ft_number(long int n, unsigned int len, unsigned int sign)
 {
 	char	*str;
 
@@ -54,7 +54,7 @@ static char	*ft_number(int n, unsigned int len, unsigned int sign)
 	return (str);
 }
 
-int	ft_putnbr_10_integer(int n)
+int ft_putnbr_10_decimal(long int n)
 {
 	unsigned int	len;
 	unsigned int	sign;
@@ -78,12 +78,3 @@ int	ft_putnbr_10_integer(int n)
 	free(temp);
 	return (0);
 }
-
-/* int main(void)
-{
-	int n;
-
-	n = 144;
-	ft_putnbr_10_integer(n);
-	return (0);
-} */
