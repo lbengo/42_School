@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 12:09:24 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/02 21:04:44 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int ft_printf(char const *format, ...)
 {
 	unsigned int i;
-	unsigned int a;
 	va_list arg;	// Declara la variable arg
 	va_start (arg, format);	// Introduce dentro de la variable arg lo que haya en format y ...
 
@@ -33,7 +32,7 @@ int ft_printf(char const *format, ...)
 			else if (format[i+1] == 'd')
 				printf("d");
 			else if (format[i+1] == 'i')
-				printf("i");
+				ft_putnbr_10_integer(va_arg(arg, int));
 			else if (format[i+1] == 'u')
 				printf("u");
 			else if (format[i+1] == 'x')
@@ -57,6 +56,7 @@ int ft_printf(char const *format, ...)
 
 int main (void)
 {
-	ft_printf("hola chanchito feliz %c %s oi", 'a', "hola");
+
+	ft_printf("hola chanchito feliz %c %s %i oi", 'a', "hola", 1234);
 	//printf("%i", ft_printf("hola chanchito feliz %s oi", 12));
 }

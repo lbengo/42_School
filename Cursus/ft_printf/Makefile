@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 18:52:02 by lbengoec          #+#    #+#              #
-#    Updated: 2022/11/02 12:07:42 by lbengoec         ###   ########.fr        #
+#    Updated: 2022/11/02 12:48:57 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,9 @@
 NAME = libftprintf.a
 
 MANDATORY_SRC = ft_printf.c \
-				ft_putchar \
-				ft_putstr \
+				ft_putchar.c \
+				ft_putstr.c \
+				ft_putnbr_10_integer.c \
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
