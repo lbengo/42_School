@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 18:10:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 10:40:18 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/02 10:44:06 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/02 12:09:34 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-La función putchar_fd escribe c dentro de fd.
+%s - Imprime una string.
 ----------------------------------------------------------------------------- */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putstr(char *s)
 {
-	write(fd, &c, 1);
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 }

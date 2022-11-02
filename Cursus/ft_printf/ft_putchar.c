@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 18:10:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 10:40:18 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/02 10:41:29 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/02 12:09:47 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-La función putchar_fd escribe c dentro de fd.
+%c - Imprime un solo carácter.
 ----------------------------------------------------------------------------- */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar(int c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
 }

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/15 18:10:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/02 10:40:18 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/10/28 18:55:11 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/02 12:07:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DEFINICIÓN:
-La función putchar_fd escribe c dentro de fd.
------------------------------------------------------------------------------ */
+#ifndef LIBFT_H
+# define LIBFT_H
 
-#include "libft.h"
+/* ***************************** LIBRERIAS ********************************** */
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
+# include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>	// Librería que gestiona las variádicas
+
+/* ***************************** FUNCIONES ********************************** */
+
+int		ft_printf(char const *format, ...);
+void	ft_putchar(int c);
+void	ft_putstr(char *s);
+
+#endif
