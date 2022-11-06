@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/03 12:03:57 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/04 21:51:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int ft_printf(char const *format, ...)
 {
-	unsigned int i;
-	unsigned int a;
-	unsigned int len;
-
+	unsigned int	i;
+	unsigned int	a;
+	unsigned int	len;
+	char			*base;
+	
 	va_list arg;	// Declara la variable arg
 	va_start (arg, format);	// Introduce dentro de la variable arg lo que haya en format y ...
 
 	i = 0;
 	a = 0;
 	len = 0;
+	base = "0123456789abcdef";
 	while (format[i])
 	{
 		if (format[i] == '%')
@@ -41,7 +43,7 @@ int ft_printf(char const *format, ...)
 			else if (format[i+1] == 'u')
 				a = ft_putnbr_10_u(va_arg(arg, unsigned int));
 			else if (format[i+1] == 'x')
-				printf("x");
+				a = ft_putnbr_16(va_arg(arg, int), base);
 			else if (format[i+1] == 'X')
 				printf("X");
 			else if (format[i+1] == '%')

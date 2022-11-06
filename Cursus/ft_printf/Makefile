@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 18:52:02 by lbengoec          #+#    #+#              #
-#    Updated: 2022/11/03 12:03:51 by lbengoec         ###   ########.fr        #
+#    Updated: 2022/11/06 19:52:32 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ MANDATORY_SRC = ft_printf.c \
 				ft_putnbr_10_d.c \
 				ft_putnbr_10_i.c \
 				ft_putnbr_10_u.c \
+				ft_putnbr_16.c \
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
