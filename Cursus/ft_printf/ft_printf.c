@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 14:26:56 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:21:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,31 +44,25 @@ int	ft_printf(char const *format, ...)
 
 int	ft_format(va_list arg, char n)
 {
-	char			*basedecimal;
-	char			*baselower;
-	char			*baseupper;
 	unsigned int	a;
 
-	basedecimal = "0123456789";
-	baselower = "0123456789abcdef";
-	baseupper = "0123456789ABCDEF";
 	a = 0;
 	if (n == 'c')
 		a = ft_putchar(va_arg(arg, int));
 	else if (n == 's')
 		a = ft_putstr(va_arg(arg, char *));
 	else if (n == 'p')
-		a = ft_putpointer(va_arg(arg, long int), baselower);
+		a = ft_putpointer(va_arg(arg, long int), BASELOWER);
 	else if (n == 'd')
-		a = ft_putnbr_10(va_arg(arg, int), basedecimal);
+		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
 	else if (n == 'i')
-		a = ft_putnbr_10(va_arg(arg, int), basedecimal);
+		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
 	else if (n == 'u')
-		a = ft_putnbr_10_u(va_arg(arg, unsigned int), basedecimal);
+		a = ft_putnbr_10_u(va_arg(arg, unsigned int), BASEDECIMAL);
 	else if (n == 'x')
-		a = ft_putnbr_16(va_arg(arg, int), baselower);
+		a = ft_putnbr_16(va_arg(arg, int), BASELOWER);
 	else if (n == 'X')
-		a = ft_putnbr_16(va_arg(arg, int), baseupper);
+		a = ft_putnbr_16(va_arg(arg, int), BASEUPPER);
 	else if (n == '%')
 		a = ft_putchar('%');
 	return (a);
