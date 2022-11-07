@@ -6,11 +6,9 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 19:21:55 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/07 19:24:41 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//gestionar errores !s
 
 #include "ft_printf.h"
 
