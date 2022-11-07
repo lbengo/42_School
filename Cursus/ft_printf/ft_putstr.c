@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 10:44:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/03 08:05:30 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/07 12:31:19 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,18 @@ int	ft_putstr(char *s)
 	unsigned int	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	if (!s)
 	{
-		write(1, &s[i], 1);
-		i++;
+		ft_putstr("(null)");
+		return (6);
+	}
+	else
+	{
+		while (s[i] != '\0')
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
 	}
 	return (i);
 }

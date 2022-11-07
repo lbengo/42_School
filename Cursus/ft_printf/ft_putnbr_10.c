@@ -1,49 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_16.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_10.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 12:05:05 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/04 21:51:25 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/06 20:03:28 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/07 13:01:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-%x - Imprime un número hexadecimal (base 16) en minúsculas.
+%d & %i - Imprimme un número decimal (base 10).
 ----------------------------------------------------------------------------- */
-
-/* NOTA:
-Para realizar los números negativos se pone unsigned int en lugar de int.
------------------------------------------------------------------------------ */
-
-//if n = "", return (0); En control de errores.
 
 #include "ft_printf.h"
+#include "libft.h"
 
-int	ft_putnbr_16(unsigned int n, char *base)
+int	ft_putnbr_10(int n, char *base)
 {
 	int	len;
-	
+	int	i;
+
 	len = 1;
-	if (n > 15)
-	{	
-		len += ft_putnbr_16(n/16, base);
-		ft_putchar(base[n % 16]);
+	i = strlen(base);
+	if (n == -2147483648)
+	{
+		ft_putstr("-2147483648");
+		return (11);
+	}
+	if (n < 0)
+	{
+		n = n * -1;
+		ft_putchar('-');
+		len++;
+	}
+	if (n > (i - 1))
+	{
+		len += ft_putnbr_10(n/i, base);
+		ft_putchar(base[n % i]);
 	}
 	else
 		ft_putchar(base[n]);
-	printf("\n%d", len);
 	return (len);
 }
 
 /* int main(void)
 {
-    int n;
+	int n;
 
-    n = -9846;
-    ft_putnbr_16_x(n);
-	printf("\n%x", -9846);
-    return (0);
+	n = -9;
+	ft_putnbr_10(n, "0123456789");
+	printf("\n%i", -9);
+	return (0);
 } */

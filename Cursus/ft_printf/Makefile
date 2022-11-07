@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 18:52:02 by lbengoec          #+#    #+#              #
-#    Updated: 2022/11/06 19:52:32 by lbengoec         ###   ########.fr        #
+#    Updated: 2022/11/07 13:16:28 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ NAME = libftprintf.a
 MANDATORY_SRC = ft_printf.c \
 				ft_putchar.c \
 				ft_putstr.c \
-				ft_putnbr_10_d.c \
-				ft_putnbr_10_i.c \
-				ft_putnbr_10_u.c \
-				ft_putnbr_16.c \
+				ft_putnbr_10.c \
+				ft_putnbr_16_10u.c \
+				ft_putpointer.c \
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-INCLUDE = ft_printf.h
+INCLUDE = ft_printf.h \
+			libft.h \
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
@@ -40,6 +40,7 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
+	cp libft.a $(NAME)
 	ar rcs $(NAME) $^
 
 clean:
