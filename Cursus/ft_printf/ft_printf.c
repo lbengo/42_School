@@ -6,9 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 13:16:14 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:45:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+//gestionar errores !s
 
 #include "ft_printf.h"
 
@@ -45,11 +47,11 @@ int ft_printf(char const *format, ...)
 			else if (format[i+1] == 'i')
 				a = ft_putnbr_10(va_arg(arg, int), basei);
 			else if (format[i+1] == 'u')
-				a = ft_putnbr_16_10u(va_arg(arg, unsigned int), basei);
+				a = ft_putnbr_10_u(va_arg(arg, unsigned int), basei);
 			else if (format[i+1] == 'x')
-				a = ft_putnbr_16_10u(va_arg(arg, int), basex);
+				a = ft_putnbr_16(va_arg(arg, int), basex);
 			else if (format[i+1] == 'X')
-				a = ft_putnbr_16_10u(va_arg(arg, int), baseX);
+				a = ft_putnbr_16(va_arg(arg, int), baseX);
 			else if (format[i+1] == '%')
 				a = ft_putchar('%');
 			else

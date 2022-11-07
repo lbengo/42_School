@@ -10,10 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* DEFINICIÓN:
+%p - El puntero void * dado como arumento se imprime en formato hexadecimal.
+----------------------------------------------------------------------------- */
+
 #include "ft_printf.h"
 #include "libft.h"
 
-int ft_putpointer (unsigned long long int n, char *base)
+int	ft_putpointer(unsigned long long int n, char *base)
 {
 	unsigned int	len;
 	int				i;
@@ -22,7 +26,7 @@ int ft_putpointer (unsigned long long int n, char *base)
 	i = strlen(base);
 	if (n > 15)
 	{
-		len += ft_putpointer(n/i, base);
+		len += ft_putpointer(n / i, base);
 		ft_putchar(base[n % i]);
 	}
 	else
@@ -31,8 +35,7 @@ int ft_putpointer (unsigned long long int n, char *base)
 		len = len + 2;
 		ft_putchar(base[n]);
 	}
-
-	return(len);
+	return (len);
 }
 
 /* int main (void)

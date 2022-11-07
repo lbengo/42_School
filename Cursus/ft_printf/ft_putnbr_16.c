@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_10.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_16.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 20:03:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 13:37:24 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/07 08:26:05 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/07 13:44:41 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-%d & %i - Imprimme un número decimal (base 10).
+%x & %X - Imprimme un número hexadecimal (base 16) en minúsculas y mayúsculas.
 ----------------------------------------------------------------------------- */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
-int	ft_putnbr_10(int n, char *base)
+int	ft_putnbr_16(unsigned int n, char *base)
 {
 	int	len;
 	int	i;
 
 	len = 1;
 	i = strlen(base);
-	if (n == -2147483648)
+	if (n > 15)
 	{
-		ft_putstr("-2147483648");
-		return (11);
-	}
-	if (n < 0)
-	{
-		n = n * -1;
-		ft_putchar('-');
-		len++;
-	}
-	if (n > (i - 1))
-	{
-		len += ft_putnbr_10(n / i, base);
+		len += ft_putnbr_16(n / i, base);
 		ft_putchar(base[n % i]);
 	}
 	else
@@ -49,8 +38,8 @@ int	ft_putnbr_10(int n, char *base)
 {
 	int n;
 
-	n = -9;
-	ft_putnbr_10(n, "0123456789");
-	printf("\n%i", -9);
+	n = -9846;
+	ft_putnbr_16(n);
+	printf("\n%x", -9846);
 	return (0);
 } */
