@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:55:11 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 19:22:43 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 08:43:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include <stdio.h>
 # include <unistd.h>
-# include <stdarg.h>	// Librería que gestiona las variádicas
-# include <stdlib.h>
+# include <stdarg.h> // Librería que gestiona las variádicas
 
 /* ***************************** FUNCIONES ********************************** */
 
-int	ft_printf(char const *format, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *s);
-int	ft_putnbr_10(int n, char *base);
-int	ft_putnbr_10_u(unsigned int n, char *base);
-int	ft_putnbr_16(unsigned int n, char *base);
-int	ft_putpointer(unsigned long long int n, char *base);
+int		ft_printf(char const *format, ...);
+int		ft_putchar(int c);
+int		ft_putstr(char *s);
+int		ft_putnbr_10(int n, char *base);
+int		ft_putnbr_10_u(unsigned int n, char *base);
+int		ft_putnbr_16(unsigned int n, char *base);
+int		ft_putpointer(unsigned long long int n, char *base);
+size_t	ft_strlen(const char *s);
 
 /* ***************************** CONSTANTES ********************************* */
 
