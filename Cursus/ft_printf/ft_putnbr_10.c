@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 20:03:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 13:37:24 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:00:50 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 ----------------------------------------------------------------------------- */
 
 #include "ft_printf.h"
-#include "libft.h"
 
 int	ft_putnbr_10(int n, char *base)
 {
@@ -23,7 +22,7 @@ int	ft_putnbr_10(int n, char *base)
 	int	i;
 
 	len = 1;
-	i = strlen(base);
+	i = ft_strlen(base);
 	if (n == -2147483648)
 	{
 		ft_putstr("-2147483648");
