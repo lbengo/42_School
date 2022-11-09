@@ -6,17 +6,15 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 10:53:38 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/15 17:49:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:03:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La función memchr localiza la primera ocurrencia de c (convertida a un
+/* DEFINICIÓN:
+La función memchr localiza la primera ocurrencia de c (convertida a un
 unsigned char) en la cadena de s. La función memchr devuelve un puntero al
-byte localizado, o NULL si no existe tal byte dentro de n bytes.*/
-
-/* ************************************************************************** */
+byte localizado, o NULL si no existe tal byte dentro de n bytes.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

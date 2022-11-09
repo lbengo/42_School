@@ -6,24 +6,23 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 18:07:26 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/16 08:26:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:13:35 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
+/* DEFINICIÓN:
+La siguiente función busca en un string el último caracter que sea similar al
+caracter buscado, es decir si la frase es "hola que tal" y lo que pretendo
+buscar es "a", el resultado sería "al". En el caso de que busque "i", el
+resulado sería null ya que ese caracter no existe en mi frase.
+----------------------------------------------------------------------------- */
 
-/* La siguiente función busca en un string el último caracter que sea similar
- al caracter buscado, es decir si la frase es "hola que tal" y lo que pretendo
- buscar es "a", el resultado sería "al". En el caso de que busque "i", el
- resulado sería null ya que ese caracter no existe en mi frase */
+/* EJEMPLO:
+- S1 = "hola que tal"
+- set = "a"
 
-/* ********************************* EJEMPLO ********************************* */
-/*
-	- S1 = "hola que tal"
-	- set = "a"
-
-	resultado = al.
- */
+Resultado = al
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

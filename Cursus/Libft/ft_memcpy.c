@@ -6,16 +6,14 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 19:21:29 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/22 11:14:17 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:04:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La función memcpy() copia n bytes del área de memoria src al área de
-memoria dst. */
-
-/* ************************************************************************** */
+/* DEFINICIÓN:
+La función memcpy() copia n bytes del área de memoria src al área de
+memoria dst.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

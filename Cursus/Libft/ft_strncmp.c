@@ -6,20 +6,18 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:32:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/15 17:56:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:12:20 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La siguiente función busca la diferencia que existe entre los dos string
-hasta un determinado número, dando como resultado el primer valor diferente.
+/* DEFINICIÓN:
+La siguiente función busca la diferencia que existe entre los dos string hasta
+un determinado número, dando como resultado el primer valor diferente.
 Por ejemplo, si la primera frase es "Hola que tal" y la segunda "Hola Que al",
 el resultado sería "-32". Por otro lado, si le digo que busque 3 carácteres,
 nunca encontrará la diferencia, devolviendome el resultado de null. Asimismo,
-obtendremos este resultado si no existiese ninguna diferencia entre ambas */
-
-/* ************************************************************************** */
+obtendremos este resultado si no existiese ninguna diferencia entre ambas.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

@@ -6,18 +6,16 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 13:13:17 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/04 13:33:11 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:10:47 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La siguiente función añade n carácteres (dstsize - ft_strlen(dst)) de src
-en dst y además, retorna el tamaño de src. Asimismo, añade un '\0' al terminar
-de copiar dst. Sin embargo, en el caso de que el tamaño que le doi(dstsize) sea
-0 o menor que ft_strlen(dst), no se añadirá el '\0' */
-
-/* ************************************************************************** */
+/* DEFINICIÓN:
+La siguiente función añade n carácteres (dstsize - ft_strlen(dst)) de src en
+dst y además, retorna el tamaño de src. Asimismo, añade un '\0' al terminar de
+copiar dst. Sin embargo, en el caso de que el tamaño que le doi(dstsize) sea 0
+o menor que ft_strlen(dst), no se añadirá el '\0'.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

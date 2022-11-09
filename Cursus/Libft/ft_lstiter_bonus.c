@@ -6,9 +6,18 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 13:54:58 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/23 10:55:46 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:50:46 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* DEFINICIÓN:
+Itera la lista ’lst’ y aplica la función ’f’ en el contenido de cada nodo.
+----------------------------------------------------------------------------- */
+
+/* PARÁMETROS:
+- lst: un puntero al primer nodo.
+- f: un puntero a la función que utilizará cada nodo.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

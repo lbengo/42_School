@@ -6,18 +6,16 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 18:59:40 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/13 10:10:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:11:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La siguiente función copia n carácteres (dstsize) de lo que haya en src en
-dst y además, retorna el tamaño de src. Asimismo, añade un '\0' al terminar de
+/* DEFINICIÓN:
+La siguiente función copia n carácteres (dstsize) de lo que haya en src en dst
+y además, retorna el tamaño de src. Asimismo, añade un '\0' al terminar de
 copiar dst. Sin embargo, en el caso de que el tamaño que le doi(dstsize) es 0,
-no se añadirá el '\0' */
-
-/* ************************************************************************** */
+no se añadirá el '\0'.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

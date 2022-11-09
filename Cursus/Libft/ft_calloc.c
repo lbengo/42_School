@@ -6,16 +6,17 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 08:17:17 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/16 08:25:14 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:56:57 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
+/* DEFINICIÓN:
 
-/* La función calloc guarda un espacio en la memoria (como malloc) y retorna
+La función calloc guarda un espacio en la memoria (como malloc) y retorna
 el string/array guardado en ese espacio, sin embargo, si no se realiza bien,
 devuelve null. Asimismo, a diferencia de malloc, todo el espacio que se haya
-asignado se pondrá 0. */
+asignado se pondrá 0.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

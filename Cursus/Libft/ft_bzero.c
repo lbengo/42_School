@@ -6,14 +6,15 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 21:23:36 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/16 08:24:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:56:08 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
+/* DEFINICIÓN:
 
-/* La función bzero escribe n bytes a cero en la cadena s. Si n es cero, bzero
- no hace nada. */
+La función bzero escribe n bytes a cero en la cadena s. Si n es cero, bzero
+ no hace nada.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

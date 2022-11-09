@@ -6,16 +6,14 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:07:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/15 17:59:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:15:38 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICIÓN ******************************* */
-
-/* Reserva (con malloc(3)) y devuelve una substring de la string ’s’. La
-substring empieza desde el índice ’start’ y tiene una longitud máxima ’len’. */
-
-/* ************************************************************************** */
+/* DEFINICIÓN:
+Reserva (con malloc(3)) y devuelve una substring de la string ’s’. La
+substring empieza desde el índice ’start’ y tiene una longitud máxima ’len’.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

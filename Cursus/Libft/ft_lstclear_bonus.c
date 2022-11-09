@@ -6,9 +6,20 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 11:38:50 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/23 10:56:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:50:11 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/* DEFINICIÓN:
+Elimina y libera el nodo ’lst’ dado y todos los consecutivos de ese nodo,
+utilizando la función ’del’ y free(3). Al final, el puntero a la lista debe
+ser NULL.
+----------------------------------------------------------------------------- */
+
+/* PARÁMETROS:
+- lst: la dirección de un puntero a un nodo.
+- del: un puntero a función utilizado para eliminar el contenido de un nodo.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

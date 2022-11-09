@@ -6,18 +6,16 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 21:11:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/15 17:51:06 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:04:50 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
-
-/* La función memmove copia len bytes de la cadena src a la cadena dst. Las
+/* DEFINICIÓN:
+La función memmove copia len bytes de la cadena src a la cadena dst. Las
 funciones no se pueden solapar, por ello si dst es mayor que src hay que
 copiarlo de alante hacia atrás. Y, por el contrario, si src es mayor que dst
-hay que copiarlo de atrás hacia alante. */
-
-/* ************************************************************************** */
+hay que copiarlo de atrás hacia alante.
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 

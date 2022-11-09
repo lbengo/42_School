@@ -6,31 +6,32 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 08:54:10 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/23 10:44:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:15:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ******************************* DEFINICION ******************************* */
+/* DEFINICIÓN:
+La función strtrim elimina los primeros y últimos carácteres de la string s1
+si contiene los mismos caracteres de set.
+----------------------------------------------------------------------------- */
 
-/* La función strtrim elimina los primeros y últimos carácteres de la string
-s1 si contiene los mismos caracteres de set. */
+/* COMO SE HACE:
+Se usa strchr para seleccionar el primer y último valor igual en la s1.
+Asimismo, se incluye (i < j) para que si hay un s1 = "   " y set = " ", no
+produzca error.
 
-/* ******************************* COMO SE HACE ****************************** */
+Por último, se retorna substr para que retorne s1 desde los puntos que me han
+dado strchr. Se incluye en el último valor de esta función (j - i + 1) para
+que te de el valor total del string final, y el más uno ya que hay que añadir
+un caracter más.
+----------------------------------------------------------------------------- */
 
-/* Se usa strchr para seleccionar el primer y último valor igual en la s1. Asimismo,
-se incluye (i < j) para que si hay un s1 = "   " y set = " ", no produzca error.
-Por último, se retorna substr para que retorne s1 desde los puntos que me han dado
-strchr. Se incluye en el último valor de esta función (j - i + 1) para que te de
-el valor total del string final, y el más uno ya que hay que añadir un caracter
-más. */
+/* EJEMPLO:
+- S1 = "hola que tal"
+- set = "hel"
 
-/* ********************************* EJEMPLO ********************************* */
-/*
-	- S1 = "hola que tal"
-	- set = "hel"
-
-	resultado = ola que ta
- */
+Resultado = ola que ta
+----------------------------------------------------------------------------- */
 
 #include "libft.h"
 
