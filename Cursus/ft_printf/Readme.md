@@ -1,9 +1,8 @@
-# Printf
-
-
 <p align="center">
   <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/ft_printfe.png" alt="ft_printf 42 project badge"/>
 </p>
+
+# Printf
 
 ***El objetivo del proyecto ft_printf es recrear la función printf de la biblioteca C.***
 
