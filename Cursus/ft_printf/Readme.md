@@ -27,11 +27,11 @@ $ ./a.out
 
 ## Cómo empezar
 
-### 01. Makefile
+### 01. Crea un Makefile.
 Realiza un makefile para que las pruebas durante el ejercicio se realicen más rapidamente.
 
-### 02. Función ft_printf
-Comienza la función principal del ft_printf comprendiendo como emplear las funciones variádicas.
+### 02. Desarrolla la función principal ft_printf.
+Comienza la función ft_printf comprendiendo como emplear las funciones variádicas.
 
 **¿Qué es una función variádica?**
 
@@ -80,3 +80,6 @@ Salida:
 ```shell
 Variadic1234%
 ```
+
+### 03. Añade los especificadores de la función.
+Comienza la función principal del ft_printf comprendiendo como emplear las funciones variádicas.
