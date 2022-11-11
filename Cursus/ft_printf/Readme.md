@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/mcombeau/mcombeau/blob/main/42_badges/ft_printfe.png" alt="ft_printf 42 project badge"/>
+  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/ft_printfe.png" alt="ft_printf 42 project badge"/>
 </p>
 
 # Printf
@@ -81,5 +81,66 @@ Salida:
 Variadic1234%
 ```
 
-### 03. Añade los especificadores de la función.
-Comienza la función principal del ft_printf comprendiendo como emplear las funciones variádicas.
+### 03. Añade los especificadores a la función.
+Tras haber realizado la función principal, se implementan las siguientes conversiones a la misma.
+
+<table>
+<thead>
+  <tr>
+    <th>Especificador</th>
+    <th>Función empleada</th>
+    <th>Salida</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>%c</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putchar.c>ft_putchar</a></td>
+    <td>Imprime un solo carácter</td>
+  </tr>
+  <tr>
+    <td>%s</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putstr.c>ft_putstr</a></td>
+    <td>Imprime un string</td>
+  </tr>
+  <tr>
+    <td>%p</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putpointer.c>ft_putpointer</a></td>
+    <td>La dirección del puntero (void *) dado como argumento se imprime en formato hexadecimal</td>
+  </tr>
+  <tr>
+    <td>%d</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putnbr_10.c>ft_putnbr_10</a></td>
+    <td>Imprime un número decimal (base 10)</td>
+  </tr>
+  <tr>
+    <td>%i</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putnbr_10.c>ft_putnbr_10</a></td>
+    <td>Imprime un entero en base 10</td>
+  </tr>
+  <tr>
+    <td>%u</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putnbr_10_u.c>ft_putnbr_10_u</a></td>
+    <td>Imprime un número decimal sin signo</td>
+  </tr>
+  <tr>
+    <td>%x</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putnbr_16.c>ft_putnbr_16</a></td>
+    <td>Imprime un número hexadecimal en minúsculas</td>
+  </tr>
+  <tr>
+    <td>%X</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putnbr_16.c>ft_putnbr_16</a></td>
+    <td>Imprime un número hexadecimal en mayúsculas</td>
+  </tr>
+  <tr>
+    <td>%%</td>
+    <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_putchar.c>ft_putchar</td>
+    <td>Para imprimir el símbolo del porcentaje</td>
+  </tr>
+</tbody>
+</table>
+
+---
+Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
+
