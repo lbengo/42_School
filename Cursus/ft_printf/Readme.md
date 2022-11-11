@@ -28,10 +28,10 @@ $ ./a.out
 ## Cómo empezar
 
 ### 01. Crea un Makefile.
-Realiza un makefile para que las pruebas durante el ejercicio se realicen más rapidamente.
+Realiza un [makefile](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/Makefile) para que las pruebas durante el ejercicio se realicen más rapidamente.
 
 ### 02. Desarrolla la función principal ft_printf.
-Comienza la función ft_printf comprendiendo como emplear las funciones variádicas.
+Comienza la función [ft_printf](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/ft_printf.c) comprendiendo como emplear las funciones variádicas.
 
 **¿Qué es una función variádica?**
 
