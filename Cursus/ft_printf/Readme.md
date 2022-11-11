@@ -33,7 +33,7 @@ Realiza un makefile para que las pruebas durante el ejercicio se realicen más r
 ### 02. Función ft_printf
 Comienza la función principal del ft_printf comprendiendo como emplear las funciones variádicas.
 
-**02.a. ¿Qué es una función variádica?**
+02.a. ¿Qué es una función variádica?
 
 Una función varíadica son funciones que pueden recibir un <ins>número indefinido de argumentos</ins>. Estas poseen al menos una variable fija, utilizada para especificar los argumentos, y el resto de parámetros se definen mediante una elipsis ("...").
 
