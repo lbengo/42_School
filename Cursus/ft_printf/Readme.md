@@ -22,8 +22,8 @@ $ cd ft_printf/
 $ make
 $ gcc test.c libft.a
 $ ./a.out
-````
->  Puedes sustituir el `test.c` por tu propio archivo de prueba.
+```
+> Puedes sustituir el `test.c` por tu propio archivo de prueba.
 
 ## Cómo empezar
 
@@ -44,6 +44,7 @@ int funcion_variadica(int <variable fija>, ...);
 
 
 **02.b. ¿Cómo acceder a los argumentos de la función?**
+
 Con el objetivo de acceder a estos argumentos se emplean una serie de macros:
 
 - `va_list` Se emplea con el objetivo de declarar la variable donde se almacenarán los argumentos de la función variática.
@@ -74,4 +75,8 @@ int main(void)
   variadic_test("<variable fija>", 'V', "ariadic", 1234);
   return (0);
 }
+```
+Salida:
+```shell
+Variadic1234%
 ```
