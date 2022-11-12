@@ -28,6 +28,8 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
 
 ## Funciones incluidas
 
+### Funciones obligatorias
+
 <table>
     <thead>
         <tr>
