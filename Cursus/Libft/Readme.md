@@ -28,7 +28,7 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
 
 ## Funciones obligatorias
 
-<table>
+<table align="left">
     <thead>
         <tr>
             <th colspan=2><h4>Funciones para verificar y manipular caracteres</h4></th>
@@ -68,8 +68,6 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
             <td>Convierte las letras minúsculas a mayúsculas.</td>
         </tr>
     </tbody>
-</table>
-<table>
     <thead>
         <tr>
             <th colspan=2><h4>Funciones para manipular strings</h4></th>
@@ -133,8 +131,6 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
             <td>Devuelve una subcadena de la cadena <i>s</i>. La subcadena comienza en el índice <i>start</i> y tiene el tamaño máximo <i>len</i>.</td>
         </tr>
     </tbody>
-</table>
-<table>
 	<thead>
         <tr>
             <th colspan=2><h4>Funciones para manipular memoria</h4></th>
@@ -178,8 +174,6 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
             <td>Devuelve un puntero a una cadena de bytes terminada en nulo, que es un duplicado de la cadena.</td>
         </tr>
     </tbody>
-</table>
-<table>
 	<thead>
         <tr>
             <th colspan=2><h4>Funciones para números</h4></th>
@@ -199,8 +193,6 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
             <td>Convierte el int a una cadena (tipo char *).</td>
         </tr>
     </tbody>
-</table>
-<table>
 		<thead>
         <tr>
             <th colspan=2><h4>Funciones para escribir en un descriptor de archivo</h4></th>
@@ -229,7 +221,10 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
         </tr>
     </tbody>
 </table>
-<table>
+
+## Bonus
+
+<table align="left">
     <thead>
         <tr>
             <th colspan=3><h3>Funciones bonus</h3></a></th>
