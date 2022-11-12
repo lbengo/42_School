@@ -6,13 +6,37 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/07 19:24:41 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:32:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_format(va_list arg, char n);
+static int	ft_format(va_list arg, char n)
+{
+	unsigned int	a;
+
+	a = 0;
+	if (n == 'c')
+		a = ft_putchar(va_arg(arg, int));
+	else if (n == 's')
+		a = ft_putstr(va_arg(arg, char *));
+	else if (n == 'p')
+		a = ft_putpointer(va_arg(arg, long int), BASELOWER);
+	else if (n == 'd')
+		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
+	else if (n == 'i')
+		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
+	else if (n == 'u')
+		a = ft_putnbr_10_u(va_arg(arg, unsigned int), BASEDECIMAL);
+	else if (n == 'x')
+		a = ft_putnbr_16(va_arg(arg, int), BASELOWER);
+	else if (n == 'X')
+		a = ft_putnbr_16(va_arg(arg, int), BASEUPPER);
+	else if (n == '%')
+		a = ft_putchar('%');
+	return (a);
+}
 
 int	ft_printf(char const *format, ...)
 {
@@ -40,28 +64,4 @@ int	ft_printf(char const *format, ...)
 	return (len);
 }
 
-int	ft_format(va_list arg, char n)
-{
-	unsigned int	a;
 
-	a = 0;
-	if (n == 'c')
-		a = ft_putchar(va_arg(arg, int));
-	else if (n == 's')
-		a = ft_putstr(va_arg(arg, char *));
-	else if (n == 'p')
-		a = ft_putpointer(va_arg(arg, long int), BASELOWER);
-	else if (n == 'd')
-		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
-	else if (n == 'i')
-		a = ft_putnbr_10(va_arg(arg, int), BASEDECIMAL);
-	else if (n == 'u')
-		a = ft_putnbr_10_u(va_arg(arg, unsigned int), BASEDECIMAL);
-	else if (n == 'x')
-		a = ft_putnbr_16(va_arg(arg, int), BASELOWER);
-	else if (n == 'X')
-		a = ft_putnbr_16(va_arg(arg, int), BASEUPPER);
-	else if (n == '%')
-		a = ft_putchar('%');
-	return (a);
-}

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:37:41 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 10:00:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:34:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ no se debe gestionar dichos números.
 
 int	ft_putnbr_10_u(unsigned int n, char *base)
 {
-	int	len;
-	int	i;
+	int				len;
+	unsigned int	i;
 
 	len = 1;
 	i = ft_strlen(base);
-	if (n > 9)
+	if (n > (i - 1))
 	{
 		len += ft_putnbr_10_u(n / i, base);
 		ft_putchar(base[n % i]);

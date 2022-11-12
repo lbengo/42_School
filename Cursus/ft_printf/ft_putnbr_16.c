@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:26:05 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 10:00:54 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:34:39 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 int	ft_putnbr_16(unsigned int n, char *base)
 {
-	int	len;
-	int	i;
+	int				len;
+	unsigned int	i;
 
 	len = 1;
 	i = ft_strlen(base);
-	if (n > 15)
+	if (n > (i - 1))
 	{
 		len += ft_putnbr_16(n / i, base);
 		ft_putchar(base[n % i]);
