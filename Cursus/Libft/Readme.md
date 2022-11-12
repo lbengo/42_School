@@ -28,14 +28,14 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
 
 ## Funciones obligatorias
 
-<table align="left">
+<table>
     <thead>
         <tr>
-            <th colspan=2><h4>Funciones para verificar y manipular caracteres</h4></th>
+            <th colspan=2><h4 align="left">Funciones para verificar y manipular caracteres</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
@@ -226,9 +226,6 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
 
 <table align="left">
     <thead>
-        <tr>
-            <th colspan=3><h3>Funciones bonus</h3></a></th>
-        </tr>
         <tr>
             <th colspan=2><h4>Funciones para la manipulación de listas</h4></th>
         </tr>
