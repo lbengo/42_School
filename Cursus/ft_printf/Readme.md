@@ -20,7 +20,7 @@ Ejecuta los siguientes comandos.
 $ git clone https://github.com/lbengo/42_School/tree/main/Cursus/ft_printf
 $ cd ft_printf/
 $ make
-$ gcc test.c libft.a
+$ gcc test.c libftprintf.a
 $ ./a.out
 ```
 > Puedes sustituir el `test.c` por tu propio archivo de prueba.
