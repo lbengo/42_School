@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/12 17:32:17 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:14:30 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,7 @@ int	ft_printf(char const *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-		{
 			a = ft_format(arg, format[i + 1]);
-			i++;
-		}
 		else
 			a = ft_putchar(format[i]);
 		len = a + len;
