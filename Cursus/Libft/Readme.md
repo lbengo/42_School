@@ -70,11 +70,11 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
     </tbody>
     <thead>
         <tr>
-            <th colspan=2><h4>Funciones para manipular strings</h4></th>
+            <th colspan=2><h4 align="left">Funciones para manipular strings</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
@@ -133,11 +133,11 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
     </tbody>
 	<thead>
         <tr>
-            <th colspan=2><h4>Funciones para manipular memoria</h4></th>
+            <th colspan=2><h4 align="left">Funciones para manipular memoria</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
@@ -176,11 +176,11 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
     </tbody>
 	<thead>
         <tr>
-            <th colspan=2><h4>Funciones para números</h4></th>
+            <th colspan=2><h4 align="left">Funciones para números</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
@@ -195,11 +195,11 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
     </tbody>
 		<thead>
         <tr>
-            <th colspan=2><h4>Funciones para escribir en un descriptor de archivo</h4></th>
+            <th colspan=2><h4 align="left">Funciones para escribir en un descriptor de archivo</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
@@ -224,14 +224,14 @@ Para testear los bonus hay que cambiar `make` por `make bonus`
 
 ## Bonus
 
-<table align="left">
+<table>
     <thead>
         <tr>
-            <th colspan=2><h4>Funciones para la manipulación de listas</h4></th>
+            <th colspan=2><h4 align="left">Funciones para la manipulación de listas</h4></th>
         </tr>
         <tr>
-            <th>Nombre</th>
-            <th>Descripción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
         </tr>
     </thead>
     <tbody>
