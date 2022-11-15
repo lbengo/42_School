@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/15 21:55:19 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/15 12:46:19 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/15 21:57:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+int main (void)
 {
-	char *buffer;
-	int end;
+	int fd;
+	char *line;
 
-	if (fd == -1)
-		return (NULL);
-	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
-	end = read(fd, buffer, BUFFER_SIZE);
-	if (end == 0)
-		return (NULL);
-	return (buffer);
+	fd = open ("Ejercicio.txt", O_RDONLY);
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		printf("%s", line);
+	}
+	free (line);
+	close(fd);
+	return (0);
 }
-
-

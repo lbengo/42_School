@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/15 21:55:19 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/15 11:56:11 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/11/15 11:57:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+int	ft_putstr(char *s)
 {
-	char *buffer;
-	int end;
+	unsigned int	i;
 
-	if (fd == -1)
-		return (NULL);
-	buffer = (char *)malloc(sizeof(char) * BUFFER_SIZE);
-	end = read(fd, buffer, BUFFER_SIZE);
-	if (end == 0)
-		return (NULL);
-	return (buffer);
+	i = 0;
+	if (!s)
+	{
+		ft_putstr("(null)");
+		return (6);
+	}
+	else
+	{
+		while (s[i] != '\0')
+		{
+			write(1, &s[i], 1);
+			i++;
+		}
+	}
+	return (i);
 }
-
-
