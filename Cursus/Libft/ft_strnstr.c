@@ -6,12 +6,12 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:55:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 11:12:29 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/16 07:52:21 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
-La siguiente función busca en el primer string otro string, es decir si la
+La siguiente función busca en el primer string en otro string, es decir si la
 frase es "hola que tal" y lo que pretendo buscar es "que", el resultado sería
 "que tal". En el caso de que busque "qui", el resulado sería null ya que la
 palabra no existe en mi frase.
