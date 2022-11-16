@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/15 21:55:33 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/16 09:33:30 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 
 /* ***************************** FUNCIONES ********************************** */
 
-char	*get_next_line(int fd);
-int		ft_putstr(char *s);
+char		*get_next_line(int fd);
+int			break_status(char *buffer);
+char		*send_line(char *buffer);
+static char	*end_line(char *s, size_t len);
 
 #endif
 
 /* ***************************** VARIABLE *********************************** */
 
 #ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 42
+#	define BUFFER_SIZE 100
 #endif
