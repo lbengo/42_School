@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 20:28:02 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:39:46 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ char *get_next_line(int fd)
 			previous_line = line;
 		line = malloc(sizeof(char) * ((BUFFER_SIZE * i) + 1));
 		read(fd, line, BUFFER_SIZE);
-		printf("hola\n");
+		line[BUFFER_SIZE * 1] = '\0';
 		if (previous_line)
 		{
 			new_line = ft_strjoin(previous_line, line);
 			free(previous_line);
 		}
 		i++;
+		printf("line = %s\n", line);
 	}
 	if (!previous_line)
-		return(line);
+		return (line);
 	return (new_line);
 }

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 13:55:44 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/17 20:36:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 
 /* ***************************** FUNCIONES ********************************** */
 
-char		*get_next_line(int fd);
-//int			find_break(char *line);
+char	*get_next_line(int fd);
+int		find_break(char *line);
+size_t	ft_strlen(const char *s);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
 
