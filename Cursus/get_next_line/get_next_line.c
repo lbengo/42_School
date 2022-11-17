@@ -6,11 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 16:56:22 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/17 19:22:27 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+// substr y strjoin
 
 int	find_break(char *line)
 {
@@ -42,33 +44,37 @@ char *get_next_line(int fd)
 	i = 1;
 	previous_line = NULL;
 	line = NULL;
+	new_line = NULL;
 	while (find_break(line) == 0)
 	{
+		printf("-VUELTA\n");
 		if (line)
 		{
-			printf("entra en line \n");
 			previous_line = line;
 			printf("previous_line = %s\n", previous_line);
 		}
 		line = malloc(sizeof(char) * ((BUFFER_SIZE * i) + 1));
 		read(fd, line, BUFFER_SIZE);
-		printf("buffer_size = %i\n", (BUFFER_SIZE * i) + 1);
 		a = 0;
 		if (previous_line)
-		{ // substr y strjoin
-			printf("entra en previous");
-			printf("ft_strlen = %i \n", ft_strlen(previous_line));
+		{
+			if(new_line)
+				free (new_line);
+			printf("ft_strlen de previous = %i \n", ft_strlen(previous_line));
+			new_line = malloc(sizeof(char) * ((BUFFER_SIZE * i) + 1));
 			while (a < (ft_strlen(previous_line)))
 			{
-				printf("a");
+				printf("a\n");
 				new_line[a] = previous_line[a];
 				a++;
 			}
 			printf("new_line = %s\n", new_line);
+			printf("strlen de new_line = %i\n", ft_strlen(new_line));
 			free (previous_line);
 			j = 0;
-			while(a < ft_strlen(line))
+			while(a < (BUFFER_SIZE * i) - 1)
 			{
+				printf("siiii\n");
 				new_line[a] = line[j];
 				a++;
 			}
@@ -76,7 +82,7 @@ char *get_next_line(int fd)
 		}
 		printf("llegas \n");
 		line[(BUFFER_SIZE * i)] = '\0';
-		printf("o no \n");
+		printf("-FIN\n");
 		i++;
 	}
 
@@ -85,6 +91,7 @@ char *get_next_line(int fd)
 		printf("line = %s", line);
 		return(line);
 	}
+	printf("a ver hijo ya");
 	printf("new_line = %s", new_line);
 	return (new_line);
 }
