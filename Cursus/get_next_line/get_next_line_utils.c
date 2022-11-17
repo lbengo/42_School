@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:46:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 13:47:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/17 15:54:56 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	find_break(char *line)
+/* int	find_break(char *line)
 {
 	unsigned int	i;
 
@@ -26,4 +26,16 @@ int	find_break(char *line)
 		i++;
 	}
 	return (0);
+} */
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
