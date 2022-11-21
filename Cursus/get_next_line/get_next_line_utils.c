@@ -6,26 +6,26 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:46:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 20:36:44 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:16:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	find_break(char *line)
+int	strlen_break(char *line)
 {
 	unsigned int	i;
 
 	i = 0;
 	if (line == NULL)
-		return (0);
+		return (-1);
 	while (line[i] != '\0')
 	{
 		if (line[i] == '\n')
-			return (1);
+			return (i);
 		i++;
 	}
-	return (0);
+	return (-1);
 }
 
 size_t	ft_strlen(const char *s)
@@ -33,6 +33,8 @@ size_t	ft_strlen(const char *s)
 	unsigned int	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i] != '\0')
 	{
 		i++;
@@ -40,7 +42,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*save_previous_line(char const *s1, char const *s2)
 {
 	unsigned int	len;
 	unsigned int	i;
@@ -53,12 +55,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (0);
 	i = 0;
 	a = 0;
-	while (s1[i] != '\0')
+	while (s1 && s1[i] != '\0')
 	{
 		string[i] = s1[i];
 		i++;
 	}
-	while (s2[a] != '\0')
+	while (s2 && s2[a] != '\0')
 	{
 		string[i] = s2[a];
 		a++;
@@ -66,4 +68,47 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	string[i] = '\0';
 	return (string);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	i;
+	size_t			s_len;
+	char			*substring;
+
+	s_len = ft_strlen(s);
+	if (start > s_len)
+		return (ft_strdup(""));
+	if (len > s_len)
+		len = s_len;
+	substring = malloc((len + 1) * sizeof(char));
+	if (!substring)
+		return (0);
+	i = 0;
+	while ((len > i) && (s[start] != '\0'))
+	{
+		substring[i] = s[start];
+		i++;
+		start++;
+	}
+	substring[i] = '\0';
+	return (substring);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	unsigned int	i;
+	char			*cpy;
+
+	cpy = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!cpy)
+		return (0);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		cpy[i] = s1[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
 }

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 21:17:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:30:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,49 +16,57 @@
 
 char *get_next_line(int fd)
 {
-	int	i;
-	unsigned int	a;
-	unsigned int	j;
-	char			*line;
-	char			*new_line;
-	char			*previous_line;
+	int		i;
+	char	*line;
+	static char	*previous_line;
 
 	if (fd == -1 || BUFFER_SIZE <= 0)
 		return (NULL);
 	i = 1;
-	
-	while(i >= 0)
-	{
-		line = malloc(sizeof(char) * (BUFFER_SIZE + 1)); // control de malloc
-		i = read(fd, line, BUFFER_SIZE);
-		printf("line = %s\n", line);
-		if (i == -1)
-			return (NULL);
-		if (i == 0)
-			break ;
-		if (find_break(line) == 1)
-		{
-				// guardar el nuevo
-			break ;
-		}
-		// temporal static con malloc
-
-	}
-
-	return (0);
-}
-
-	/* while (find_break(line) == 0)
+	line = NULL;
+	if (previous_line && strlen_break(previous_line) >= 0)
+		return(cut_start_line(previous_line));
+	while (strlen_break(line) == -1)
 	{
 		if (line)
-			previous_line = line;
-		if (previous_line)
-			new_line = ft_strjoin(previous_line, line);
-		i++;
-		printf("line = %s\n", line);
-		printf("new_line = %s\n", new_line);
+		{
+			previous_line = save_previous_line (previous_line, line);
+			free(line);
+		}
+		line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		i = read(fd, line, BUFFER_SIZE);
+		if (i == -1)
+			return (0);
+		line[BUFFER_SIZE] = '\0';
 	}
-	if (!previous_line)
-		return (line);
-	free(previous_line);
-	return (new_line); */
+	if (previous_line)
+	{
+		line = save_previous_line(previous_line, line);
+		free (previous_line);
+	}
+	return (cut_final_line(line, previous_line));
+}
+
+char *cut_start_line(char *line)
+{
+	char	*send_line;
+	char	*temp_line;
+
+	send_line = ft_substr(line, 0, strlen_break(line));
+	temp_line = ft_strdup(line);
+	free (line);
+	line = ft_substr(temp_line, strlen_break(temp_line), ft_strlen(temp_line));
+	free(temp_line);
+	return (send_line);
+}
+
+char *cut_final_line(char *line, char *previous_line)
+{
+	char	*send_line;
+	char	*temp_line;
+
+	send_line = ft_substr(line, 0, strlen_break(line));
+	free (line);
+	previous_line = ft_substr(temp_line, strlen_break(temp_line), ft_strlen(temp_line));
+	return (send_line);
+}

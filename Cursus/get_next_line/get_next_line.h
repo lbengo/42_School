@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/17 20:36:48 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/21 22:29:04 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,19 @@
 /* ***************************** FUNCIONES ********************************** */
 
 char	*get_next_line(int fd);
-int		find_break(char *line);
+char	*ft_strdup(const char *s1);
+int		strlen_break(char *line);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*save_previous_line(char const *s1, char const *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*cut_final_line(char *line, char *previous_line);
+char	*cut_start_line(char *line);
+
 
 #endif
 
 /* ***************************** VARIABLE *********************************** */
 
 #ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 1
+#	define BUFFER_SIZE 3
 #endif
