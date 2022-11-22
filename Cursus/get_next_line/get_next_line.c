@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/21 22:30:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/22 21:46:39 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char *get_next_line(int fd)
 	char	*line;
 	static char	*previous_line;
 
-	if (fd == -1 || BUFFER_SIZE <= 0)
+	if (fd == -1 || BUFFER_SIZE <= 0) // fd es -1 si no se ha abierto correctamente
 		return (NULL);
 	i = 1;
 	line = NULL;
@@ -35,8 +35,10 @@ char *get_next_line(int fd)
 		}
 		line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		i = read(fd, line, BUFFER_SIZE);
-		if (i == -1)
+		if (i == -1) // si existe algun error en read
 			return (0);
+		if (i == 0) // si existe algun error en read
+			return (NULL);
 		line[BUFFER_SIZE] = '\0';
 	}
 	if (previous_line)
@@ -44,7 +46,7 @@ char *get_next_line(int fd)
 		line = save_previous_line(previous_line, line);
 		free (previous_line);
 	}
-	return (cut_final_line(line, previous_line));
+	return (cut_final_line(line, &previous_line));
 }
 
 char *cut_start_line(char *line)
@@ -60,13 +62,12 @@ char *cut_start_line(char *line)
 	return (send_line);
 }
 
-char *cut_final_line(char *line, char *previous_line)
+char *cut_final_line(char *line, char **previous_line)
 {
 	char	*send_line;
-	char	*temp_line;
 
 	send_line = ft_substr(line, 0, strlen_break(line));
-	free (line);
-	previous_line = ft_substr(temp_line, strlen_break(temp_line), ft_strlen(temp_line));
+	*previous_line = ft_substr(line, strlen_break(line), ft_strlen(line));
+	free(line);
 	return (send_line);
 }
