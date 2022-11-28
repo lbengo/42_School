@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/22 21:46:39 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:22:24 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char *get_next_line(int fd)
 {
 	int		i;
 	char	*line;
+	char	*temp;
 	static char	*previous_line;
 
 	if (fd == -1 || BUFFER_SIZE <= 0) // fd es -1 si no se ha abierto correctamente
@@ -30,21 +31,37 @@ char *get_next_line(int fd)
 	{
 		if (line)
 		{
-			previous_line = save_previous_line (previous_line, line);
+			temp = save_previous_line (previous_line, line);
+			free(previous_line);
+			previous_line = ft_strdup(temp);
+			free(temp);
+			temp = NULL;
 			free(line);
+			line = NULL;
 		}
 		line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		i = read(fd, line, BUFFER_SIZE);
-		if (i == -1) // si existe algun error en read
-			return (0);
+		if (i == -1) // si file/empty
+		{
+			free(line);
+			return(0);
+		}
 		if (i == 0) // si existe algun error en read
-			return (NULL);
+		{
+			free(line);
+			return(NULL);
+		}
 		line[BUFFER_SIZE] = '\0';
 	}
 	if (previous_line)
 	{
-		line = save_previous_line(previous_line, line);
+		temp = ft_strdup(line);
+		free(line);
+		line = NULL;
+		line = save_previous_line(previous_line, temp);
 		free (previous_line);
+		free (temp);
+		previous_line = NULL;
 	}
 	return (cut_final_line(line, &previous_line));
 }
@@ -57,6 +74,7 @@ char *cut_start_line(char *line)
 	send_line = ft_substr(line, 0, strlen_break(line));
 	temp_line = ft_strdup(line);
 	free (line);
+	line = NULL;
 	line = ft_substr(temp_line, strlen_break(temp_line), ft_strlen(temp_line));
 	free(temp_line);
 	return (send_line);

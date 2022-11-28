@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/22 21:18:22 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/28 19:06:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ char	*cut_start_line(char *line);
 /* ***************************** VARIABLE *********************************** */
 
 #ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 3
+#	define BUFFER_SIZE 1
 #endif
