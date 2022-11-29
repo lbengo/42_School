@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/29 22:01:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/29 17:30:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,15 @@ int main (void)
 	int fd;
 	char *line;
 
-	fd = open ("one_line_no_nl.txt", O_RDONLY);
-	while (line != NULL)
+	fd = open ("foo.txt", O_RDONLY);
+	//while (line != NULL)
 	{
 		line = get_next_line(fd);
 		printf("(%s)\n", line);
 		free(line);
-		/* line = get_next_line(fd);
-		printf("(%s)\n", line);
-		free(line);
 		line = get_next_line(fd);
-		printf("(%s)\n", line);
-		free(line); */
+		printf("%s", line);
+		free(line);
 	}
 	close(fd);
 	return (0);

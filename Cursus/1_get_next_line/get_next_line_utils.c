@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:46:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/29 19:14:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/29 16:58:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,21 @@ int	strlen_break(char *line)
 	return (-1);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlen(const char *s)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+char	*save_previous_line(char const *s1, char const *s2)
 {
 	unsigned int	len;
 	unsigned int	i;
@@ -54,20 +68,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	string[i] = '\0';
 	return (string);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	unsigned int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
 }
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
