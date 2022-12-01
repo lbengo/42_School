@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/01 11:29:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/01 12:36:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int		strlen_break(char *line);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+char *cut_start_line(char *previous_line);
+void cut_final_line(char *line, char **previous_line);
 
 #endif
 
