@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 13:46:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/29 19:14:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/11/30 19:21:21 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	strlen_break(char *line)
 	unsigned int	i;
 
 	i = 0;
-	if (line == NULL)
-		return (-1);
 	while (line[i] != '\0')
 	{
 		if (line[i] == '\n')

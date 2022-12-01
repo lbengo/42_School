@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/29 20:57:11 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/01 11:29:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,5 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 /* ***************************** VARIABLE *********************************** */
 
 #ifndef BUFFER_SIZE
-#	define BUFFER_SIZE 9
+#	define BUFFER_SIZE 1
 #endif
