@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:34 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/29 21:15:54 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:08:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char *get_next_line(int fd)
 				free (line);
 		}
 		line = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		if(!line)
+			return (NULL);
 		i = read(fd, line, BUFFER_SIZE);
 		if (i == -1) // si hay error en la lectura
 		{

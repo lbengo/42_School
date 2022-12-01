@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:57:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/01 12:36:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:31:38 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ char *get_next_line(int fd)
 	if(!read_line)
 		return (NULL);
 	temp = NULL;
-	if(previous_line)
-	{
-		temp = ft_strdup(previous_line);
-		free (previous_line);
-	}
 	i = BUFFER_SIZE;
-	while (strlen_break(read_line) == -1 && i > 0)
+	while (i > 0)
 	{
 		i = read(fd, read_line, BUFFER_SIZE);
 		read_line[i] = '\0';
+		if (strlen_break(read_line) >= 0)
+		{
+			line = ft_strjoin(line, read_line);
+			break;
+		}
 		if (i == 0) // ha llegado al final de la lectura
 		{
 			free(read_line);
@@ -56,15 +56,25 @@ char *get_next_line(int fd)
 		}
 		line = ft_strjoin(temp, read_line);
 		free(temp);
+		temp = NULL;
 	}
 	free(read_line);
 	if (previous_line)
-		cut_final_line(line, &previous_line);
+	{
+		temp = ft_strdup(line);
+		free (line);
+		line = NULL;
+		line = ft_strjoin(previous_line, temp);
+		free (temp);
+	}
+	cut_final_line(line, &previous_line);
 	if (strlen_break(line) >= 0)
 	{
 		temp = ft_strdup(line);
 		free (line);
-		line = ft_substr(line, 0, strlen_break(temp));
+		line = NULL;
+		line = ft_substr(temp, 0, strlen_break(temp));
+		free (temp);
 	}
 	return(line);
 }
@@ -77,6 +87,7 @@ char *cut_start_line(char *previous_line)
 	line = ft_substr(previous_line, 0, strlen_break(previous_line));
 	temp = ft_strdup(previous_line);
 	free (previous_line);
+	previous_line = NULL;
 	previous_line = ft_substr(temp, strlen_break(temp) + 1, ft_strlen(temp));
 	free(temp);
 	return (line);
