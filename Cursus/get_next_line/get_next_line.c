@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:57:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/01 18:15:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/03 21:04:30 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char *get_next_line(int fd)
 	char		*read_line;
 	char		*line;
 	char		*temp;
-	static char		*previous_line;
+	static char	*previous_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0) //fd errores lectura del txt
 		return (NULL);
@@ -33,7 +33,6 @@ char *get_next_line(int fd)
 	while (strlen_break(line) < 0 && i > 0)
 	{
 		i = read(fd, read_line, BUFFER_SIZE);
-		read_line[i] = '\0';
 		if (i == 0) // ha llegado al final de la lectura
 		{
 			free(read_line);
@@ -45,6 +44,7 @@ char *get_next_line(int fd)
 			free(line);
 			return (0);
 		}
+		read_line[i] = '\0';
 		if (line)
 		{
 			temp = ft_strdup(line);
@@ -58,6 +58,26 @@ char *get_next_line(int fd)
 		}
 	}
 	free (read_line);
+	if (previous_line)
+	{
+		temp = ft_strdup(line);
+		free (line);
+		line = ft_strjoin(previous_line, temp);
+		free (previous_line);
+		free (temp);
+	}
+	if (strlen_break(line) >= 0)
+	{
+		previous_line = ft_substr(line, strlen_break(line) + 1, ft_strlen(line));
+		temp = ft_strdup(line);
+		free(line);
+		if (strlen_break(temp) == 0)
+			line = ft_strdup("\n");
+		else
+			line = ft_substr(temp, 0, strlen_break(temp));
+	}
+	if (line == NULL)
+		free (previous_line);
 	return(line);
 }
 
@@ -66,7 +86,10 @@ char *cut_start_line(char *previous_line)
 	char	*line;
 	char	*temp;
 
-	line = ft_substr(previous_line, 0, strlen_break(previous_line));
+	if (strlen_break(previous_line) == 0)
+		line = ft_strdup("\n");
+	else
+		line = ft_substr(previous_line, 0, strlen_break(previous_line));
 	temp = ft_strdup(previous_line);
 	free (previous_line);
 	previous_line = NULL;
