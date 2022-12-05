@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 12:46:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/01 18:20:13 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:54:41 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main (void)
 	int fd;
 	char *line;
 
-	fd = open ("files/42_no_nl", O_RDONLY);
+	fd = open ("fsoares/variable_nls.txt", O_RDONLY);
 	line = "hd";
 	while (line != NULL)
 	{
