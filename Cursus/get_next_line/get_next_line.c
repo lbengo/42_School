@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:57:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/05 12:06:16 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:26:09 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ char *get_next_line(int fd)
 		line = ft_strjoin(previous_line, line);
 		free (previous_line);
 		previous_line = NULL;
+		if (line[0] == '\0')
+		{
+			free(line);
+			line = NULL;
+		}
 	}
 	while (strlen_break(line) < 0 && i > 0)
 	{
