@@ -100,6 +100,8 @@ char	*ft_strdup(const char *s1)
 	unsigned int	i;
 	char			*cpy;
 
+	if (!s1)
+		return (0);
 	cpy = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!cpy)
 		return (0);

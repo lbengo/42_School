@@ -28,10 +28,6 @@ int		strlen_break(char *line);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-void	ft_add_line(char **line, char **previous_line);
-char	*cut_line(char **line, char **previous_line, int a);
-int		ft_read_file(int fd, char **line, int i);
-int		ft_trama(int i, char **read_line, char **line);
 
 #endif
 
