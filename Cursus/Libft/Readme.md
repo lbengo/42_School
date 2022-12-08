@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/libfte.png" alt="ft_printf 42 project badge"/>
+  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/libfte.png" alt="Libft 42 project badge"/>
 </p>
 
 
