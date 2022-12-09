@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:57:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/06 19:32:34 by lbengoec         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:28:51 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static char	*cut_line(char **line, char **p_line, int is_new_line)
 		*line = ft_substr(temp, 0, strlen_break(temp) + 1);
 		free(temp);
 	}
-	return(0);
+	return (0);
 }
 
 char	*get_next_line(int fd)
