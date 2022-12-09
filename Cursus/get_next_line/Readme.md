@@ -101,7 +101,10 @@ Tras haber creado una función que lea el fichero completo, se modifica el códi
 
 **BUFFER_SIZE**
 
-En el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función NO retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea a retornar en una variable estática, la cual "guardará" estos datos sobrantes en la segunda ejecución de la función, hasta que se libere.
+En el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea a retornar en una VARIABLE ESTÁTICA.
+
+Una variable local en el momento en que acaba la subrutina/función en la que se haya declarado se eliminan las referencias de la pila y se quitan de la memoria. Sin embargo, una variable estática persiste hasta el final del programa, independientemente de donde se haya declarado.
+
 
 ---
 Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
