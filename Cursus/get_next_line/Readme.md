@@ -96,9 +96,11 @@ Esta función devuelve el número de carácteres leidos, 0 si ha llegado al fina
 ### 02. Modificar el código para que encuentre y retorne una linea
 
 **Encontrar y retornar una línea**
+
 Tras haber creado una función que lea el fichero completo, se modifica el código para que únicamente lea y retorne hasta el salto de linea (\n) o final del fichero.
 
 **BUFFER_SIZE**
+
 En el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea leida en una variable estática, la cual "guardará" estos datos sobrantes en la segunda ejecución de la función, hasta que se libere.
 
 ---
