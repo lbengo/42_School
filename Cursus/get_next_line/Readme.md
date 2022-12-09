@@ -93,6 +93,14 @@ Los parámetros son los siguientes:
 
 Esta función devuelve el número de carácteres leidos, 0 si ha llegado al final del fichero, o -1 en caso de error.
 
+En el get_next_line se pide que el tamaño del buffer se defina por la variable BUFFER_SIZE a la hora de compilar usando el flag -D. Sin embargo, en el caso de que no se pase este parámetro a la hora de compilar, para que no se produzca ningún error, se debe establecer un valor por defecto en el header del get_next_line.
+
+```c
+# ifndef BUFFER_SIZE  // Si BUFFER_SIZE no está definido
+#  define BUFFER_SIZE 42  // Dale un valor por defecto
+# endif
+```
+
 ### 02. Modificar el código para que encuentre y retorne una linea
 
 **Encontrar y retornar una línea**
