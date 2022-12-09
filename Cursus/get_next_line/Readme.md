@@ -28,7 +28,7 @@ $ ./a.out
 
 **Abrir el fichero**
 
-Para trabajar con un fichero primero hay que abrirlo con la función `open`, la cual devuelve un file descriptor o -1 en caso de error. Y finalmente, habría que cerrar el fichero con la función `close` para liberar los recursos que se tengan asignados.
+Para trabajar con un fichero primero hay que abrirlo con la función `open`, la cual devuelve un file descriptor o -1 en caso de error. Y después de utilizarlo, hay que cerrar el fichero con la función `close` para liberar los recursos que se tengan asignados.
 
 ```c
 int open(const char *pathname, int flags);
@@ -36,7 +36,7 @@ int open(const char *pathname, int flags, mode_t mode);
 int close(int fd);
 ```
 
-Los parámetros flags de la llamada al sistema `open` permite elegir el modo de acceso al fichero. Las constantes más comunes son:
+El parámetro *flags* de la llamada al sistema `open` permite elegir el modo de acceso al fichero. Las constantes más comunes son:
 
 <table>
   <thead>
@@ -73,7 +73,7 @@ Los parámetros flags de la llamada al sistema `open` permite elegir el modo de 
   </tbody>
 </table>
 
-Por ejemplo, se podría abrir un fichero y leerlo de la siguiente forma:
+Por ejemplo, se podría abrir un fichero de solo lectura de la siguiente forma:
 
 ```c
 open("file", O_RDONLY);
@@ -81,7 +81,7 @@ open("file", O_RDONLY);
 
 **Leer el fichero**
 
-Con el objetivo de leer este file descriptor se emplea la función `read`, de la biblioteca <unistd.h>
+Con el objetivo de leer el file descriptor obtenido en el paso anterior, se emplea la función `read`, de la biblioteca <unistd.h>
 
 ```c
 ssize_t read(int fd, void *buf, size_t count);
@@ -101,7 +101,7 @@ En el get_next_line se pide que el tamaño del buffer se defina por la variable 
 # endif
 ```
 
-### 02. Modificar el código para que encuentre y retorne una linea
+### 02. Implementar el código para que encuentre y retorne una linea
 
 **Encontrar y retornar una línea**
 
@@ -111,9 +111,9 @@ Tras haber creado una función que lea el fichero completo, se modifica el códi
 
 **Guardar datos que no vayan a retornarse**
 
-Por otro lado, en el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea a retornar en una VARIABLE ESTÁTICA.
+Por otro lado, en el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función `read`, esta seguirá desde el punto donde finalizó la anterior ejecución. Por ello, se ha de guardar estos datos que no corresponden con la linea a retornar en una VARIABLE ESTÁTICA para la siguiente ejecución del gnl.
 
-Una variable local en el momento en que acaba la subrutina/función en la que se haya declarado se eliminan las referencias de la pila y se quitan de la memoria. Sin embargo, una variable estática persiste hasta el final del programa, independientemente de donde se haya declarado.
+El motivo de usar una variable estática esta en que, una variable local en el momento en que acaba la subrutina/función en la que se haya declarado se eliminan las referencias de la pila y se quitan de la memoria. Sin embargo, una variable estática persiste hasta el final del programa, independientemente de donde se haya declarado.
 
 
 ---
