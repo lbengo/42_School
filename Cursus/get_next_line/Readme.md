@@ -99,9 +99,11 @@ Esta función devuelve el número de carácteres leidos, 0 si ha llegado al fina
 
 Tras haber creado una función que lea el fichero completo, se modifica el código para que únicamente lea y retorne hasta el salto de linea (\n) o final del fichero.
 
-**BUFFER_SIZE**
+> Mi recomendación mientras se prueba esta función es emplear un buffer_size menor a la línea leída.
 
-En el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea a retornar en una VARIABLE ESTÁTICA.
+**Guardar datos que no vayan a retornarse**
+
+Por otro lado, en el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea a retornar en una VARIABLE ESTÁTICA.
 
 Una variable local en el momento en que acaba la subrutina/función en la que se haya declarado se eliminan las referencias de la pila y se quitan de la memoria. Sin embargo, una variable estática persiste hasta el final del programa, independientemente de donde se haya declarado.
 
