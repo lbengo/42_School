@@ -17,8 +17,7 @@ A través de este proyecto se aprende a emplear argumentos varíadicos. Y lo que
 ## Cómo testear
 Ejecuta los siguientes comandos.
 ```shell
-$ git clone https://github.com/lbengo/42_School/tree/main/Cursus/ft_printf
-$ cd ft_printf/
+$ git clone git@github.com:lbengo/42_School.git && cd 42_School/Cursus/ft_printf/
 $ make
 $ gcc test.c libftprintf.a
 $ ./a.out
