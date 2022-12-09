@@ -31,8 +31,8 @@ $ ./a.out
 Para trabajar con un fichero primero hay que abrirlo con la función `open`, la cual devuelve un file descriptor o -1 en caso de error. Y finalmente, habría que cerrar el fichero con la función `close` para liberar los recursos que se tengan asignados.
 
 ```c
-int open(const char *camino, int flags);
-int open(const char *camino, int flags, mode_t modo);
+int open(const char *pathname, int flags);
+int open(const char *pathname, int flags, mode_t mode);
 int close(int fd);
 ```
 
@@ -73,16 +73,31 @@ Los parámetros flags de la llamada al sistema `open` permite elegir el modo de 
   </tbody>
 </table>
 
+Por ejemplo, se podría abrir un fichero y leerlo de la siguiente forma:
 
-**Abrir y leer el fichero**
+```c
+open("file", O_RDONLY);
+```
+
+**Leer el fichero**
 
 Con el objetivo de leer este file descriptor se emplea la función `read`, de la biblioteca <unistd.h>
 
+```c
+ssize_t read(int fd, void *buf, size_t count);
+```
+Los parámetros son los siguientes:
+- fd: el descriptor de fichero a leer.
+- buf: un puntero hacia una zona de memoia donde almacenar temporalmente los carácteres leídos.
+- count: un tamaño en bytes a leer, es decir, el número de carácteres a leer.
 
+Esta función devuelve el número de carácteres leidos, 0 si ha llegado al final del fichero, o -1 en caso de error.
 
+**Encontrar y retornar una línea**
+Tras haber creado una función que lea el fichero completo, se modifica el código para que únicamente lea y retorne hasta el salto de linea (\n) o final del fichero.
 
-| Valor entero |      Nombre      | Constante simbólica  | Secuencia de archivos |
-|:------------:|:----------------:|:--------------------:|:---------------------:|
-|      0       | Entrada estándar |    STDIN_FILENO      |         stdin         |
-|      1       | Salida estándar  |    STDOUT_FILENO     |         stdout        |
-|      2       | Error estándar   |    STDERR_FILENO     |         stderr        |
+**BUFFER_SIZE**
+En el caso de que el buffer_size sea mayor que la línea leida, la segunda vez que se ejecute la función no retornará lo que se ha leido anteriormente. Por ello, se ha de añadir estos datos que no corresponden con la linea leida en una variable estática, la cual "guardará" estos datos sobrantes en la segunda ejecución de la función, hasta que se libere.
+
+---
+Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
