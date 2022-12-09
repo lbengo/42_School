@@ -93,6 +93,8 @@ Los parámetros son los siguientes:
 
 Esta función devuelve el número de carácteres leidos, 0 si ha llegado al final del fichero, o -1 en caso de error.
 
+### 02. Modificar el código para que encuentre y retorne una linea
+
 **Encontrar y retornar una línea**
 Tras haber creado una función que lea el fichero completo, se modifica el código para que únicamente lea y retorne hasta el salto de linea (\n) o final del fichero.
 
