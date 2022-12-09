@@ -41,34 +41,34 @@ Los parámetros flags de la llamada al sistema `open` permite elegir el modo de 
 <table>
 <thead>
   <tr>
-    <th align="left">>Constantes</th>
-    <th align="left">>Descripción</th>
+    <th align="left">Constantes</th>
+    <th align="left">Descripción</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td align="left">>O_RONLY</td>
-    <td align="left">>Solo lectura.</td>
+    <td align="left">O_RONLY</td>
+    <td align="left">Solo lectura.</td>
   </tr>
   <tr>
-    <td align="left">>O_WRONLY</td>
-    <td align="left">>Solo escritura.</td>
+    <td align="left">O_WRONLY</td>
+    <td align="left">Solo escritura.</td>
   </tr>
   <tr>
-    <td align="left">>O_RDWR</td>
-    <td align="left">>Lectura y escritura.</td>
+    <td align="left">O_RDWR</td>
+    <td align="left">Lectura y escritura.</td>
   </tr>
   <tr>
-    <td align="left">>O_TRUNC</td>
-    <td align="left">>Modo truncado. Abre el fichero y trunca su contenido a 0 cuando se abre, con el efecto de sobreescribir el fichero.<td>
+    <td align="left">O_TRUNC</td>
+    <td align="left">Modo truncado. Abre el fichero y trunca su contenido a 0 cuando se abre, con el efecto de sobreescribir el fichero.<td>
   </tr>
   <tr>
-    <td align="left">>O_APPEND</td>
-    <td align="left">>Modo apéndice. El desplazamiento del fichero se establece al final del mismo en cada escritura.<td>
+    <td align="left">O_APPEND</td>
+    <td align="left">Modo apéndice. El desplazamiento del fichero se establece al final del mismo en cada escritura.<td>
   </tr>
   <tr>
-    <td align="left">>O_CREAT</td>
-    <td align="left">>Crea el fichero si aun no existe.<td>
+    <td align="left">O_CREAT</td>
+    <td align="left">Crea el fichero si aun no existe.<td>
   </tr>
 </tbody>
 </table>
