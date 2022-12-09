@@ -17,8 +17,7 @@ A través de este proyecto se aprende como funcionan algunas funciones estándar
 ## Cómo testear
 Ejecuta los siguientes comandos.
 ```shell
-$ git clone https://github.com/lbengo/42_School/tree/main/Cursus/Libft
-$ cd Libft/
+$ git clone git@github.com:lbengo/42_School.git && cd 42_School/Cursus/Libft/
 $ make
 $ gcc test.c libft.a
 $ ./a.out
