@@ -38,14 +38,42 @@ int close(int fd);
 
 Los parámetros flags de la llamada al sistema `open` permite elegir el modo de acceso al fichero. Las constantes más comunes son:
 
-|  Constantes  | Descripción                                                                                                        |
-|:------------:|:------------------------------------------------------------------------------------------------------------------:|
-|   O_RONLY    | Solo lectura                                                                                                       |
-|   O_WRONLY   | Solo escritura                                                                                                     |
-|    O_RDWR    | Lectura y escritura                                                                                                |
-|   O_TRUNC    | Modo truncado. Abre el fichero y trunca su contenido a 0 cuando se abre, con el efecto de sobreescribir el fichero |
-|   O_APPEND   | Modo apéndice. El desplazamiento del fichero se establece al final del mismo en cada escritura.                    |
-|   O_CREAT    | Crea el fichero si aun no existe.                                                                                  |
+<table>
+<thead>
+  <tr>
+    <th align="left">>Constantes</th>
+    <th align="left">>Descripción</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td align="left">>O_RONLY</td>
+    <td align="left">>Solo lectura.</td>
+  </tr>
+  <tr>
+    <td align="left">>O_WRONLY</td>
+    <td align="left">>Solo escritura.</td>
+  </tr>
+  <tr>
+    <td align="left">>O_RDWR</td>
+    <td align="left">>Lectura y escritura.</td>
+  </tr>
+  <tr>
+    <td align="left">>O_TRUNC</td>
+    <td align="left">>Modo truncado. Abre el fichero y trunca su contenido a 0 cuando se abre, con el efecto de sobreescribir el fichero.<td>
+  </tr>
+  <tr>
+    <td align="left">>O_APPEND</td>
+    <td align="left">>Modo apéndice. El desplazamiento del fichero se establece al final del mismo en cada escritura.<td>
+  </tr>
+  <tr>
+    <td align="left">>O_CREAT</td>
+    <td align="left">>Crea el fichero si aun no existe.<td>
+  </tr>
+</tbody>
+</table>
+
+
 
 **Abrir y leer el fichero**
 Con el objetivo de leer este file descriptor se emplea la función `read`, de la biblioteca <unistd.h>
