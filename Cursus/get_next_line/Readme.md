@@ -26,7 +26,7 @@ $ ./a.out
 
 ### 01. Crea una función que lea un fichero
 
-**Abrir y leer el fichero**
+**Abrir el fichero**
 
 Para trabajar con un fichero primero hay que abrirlo con la función `open`, la cual devuelve un file descriptor o -1 en caso de error. Y finalmente, habría que cerrar el fichero con la función `close` para liberar los recursos que se tengan asignados.
 
