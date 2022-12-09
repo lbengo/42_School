@@ -88,7 +88,7 @@ ssize_t read(int fd, void *buf, size_t count);
 ```
 Los parámetros son los siguientes:
 - fd: el descriptor de fichero a leer.
-- buf: un puntero hacia una zona de memoia donde almacenar temporalmente los carácteres leídos.
+- buf: un puntero hacia una zona de memoria donde almacenar temporalmente los carácteres leídos.
 - count: un tamaño en bytes a leer, es decir, el número de carácteres a leer. En este caso el BUFFER_SIZE.
 
 Esta función devuelve el número de carácteres leidos, 0 si ha llegado al final del fichero, o -1 en caso de error.
