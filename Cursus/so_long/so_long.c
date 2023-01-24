@@ -6,25 +6,21 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/24 08:29:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/24 10:24:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minilibx/mlx.h"
-#include <stdio.h>
-#include <unistd.h>
-#include <fcntl.h> // Librería que gestiona la función open
+#include "so_long.h"
 
-int key_hook(int keycode)
+/* int key_hook()
 {
 	printf("Hello fron keyhook\n");
 	return (0);
-}
+} */
 
 int ft_put_map(void *mlx_ptr, void *win_ptr)
 {
 	int		fd;
-	char	*line;
 	int		i;
 	void	*img;
 	char	read_line;
@@ -68,19 +64,67 @@ int ft_put_map(void *mlx_ptr, void *win_ptr)
 			mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
 			width = width + 80;
 		}
-		// si no tiene objeto (C) o posición inicial (P) debe salir error
 	}
+	close(fd);
 	return (0);
 }
 
-int main (void)
+// añadir si no tiene objeto (C) o posición inicial (P) debe salir error
+// añadir si no es rectangular y si tiene salto de linea debe salir error
+//ft_check_map(void);
+
+int ft_size_map(char c)
+{
+	int	fd;
+	int	i;
+	int	width;
+	int	height;
+	char	read_line;
+	int a;
+
+	fd = open ("map.ber", O_RDONLY);
+	i = 1;
+	width = 0;
+	height = 0;
+	a=0;
+	if (c == 'w')
+	{
+		while (i > 0)
+		{
+			i = read(fd, &read_line, 1);
+			if (read_line != '\n')
+				width = width + 80;
+			if (read_line == '\n')
+				return (width);
+		}
+	}
+	if (c == 'h')
+	{
+		while (i > 0)
+		{
+			i = read(fd, &read_line, 1);
+			if (read_line == '\n')
+			{
+				height = height + 80;
+				a++;
+			}
+		}
+		height = height + 80;
+	}
+	return (height);
+}
+
+int main(void)
 {
 	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
 	void	*win_ptr; // identificador de la nueva ventana
 
 	mlx_ptr = mlx_init(); // función principal que conecta con el servidor gráfico del Mac
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Pac Man"); // abrir una ventana
+	//mirar errores de mapa
+	/* if (ft_check_map(void) == 1)
+		return(printf("mapa mal")); */
+	win_ptr = mlx_new_window(mlx_ptr, ft_size_map('w'), ft_size_map('h'), "Pac Man"); // abrir una ventana
 	ft_put_map(mlx_ptr, win_ptr);
-	mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
+	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
 	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas
 }

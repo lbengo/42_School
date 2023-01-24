@@ -6,11 +6,11 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/01/16 09:03:48 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/01/24 09:39:11 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc so_long.c -L minilibx -lmlx -framework OpenGL -framework AppKit
+# gcc so_long.c -L minilibx -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
@@ -20,23 +20,23 @@ MANDATORY_SRC = so_long.c
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 
-INCLUDE = libft.h
+INCLUDE = so_long.h
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -Iminilibx
+FLAGS = -Wall -Werror -Wextra
 MINILIBX = -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $^
 
 # ************************* REGLAS PROPIAS DEL MAKE ************************** #
 
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
-	$(CC) $^ -L minilibx -lmlx -framework OpenGL -framework AppKit $(NAME)
+	$(CC) $^ $(MINILIBX) -o $(NAME)
 
 clean:
 	rm -f *.o
