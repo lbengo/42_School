@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/24 10:24:53 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/24 13:12:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,57 +73,59 @@ int ft_put_map(void *mlx_ptr, void *win_ptr)
 // añadir si no es rectangular y si tiene salto de linea debe salir error
 //ft_check_map(void);
 
-int ft_size_map(char c)
+int	ft_map_lines(int fd)
 {
-	int	fd;
-	int	i;
-	int	width;
-	int	height;
-	char	read_line;
-	int a;
+	char	*line;
+	int		i;
+
+	i = 0;
+	line = "line";
+	while (line != NULL)
+	{
+		line = get_next_line(fd);
+		free(line);
+		i++;
+	}
+	close(fd);
+	return (i);
+}
+
+char	**ft_matrix(void)
+{
+	char	**map;
+	char	*line;
+	int		fd;
+	int		i;
+
 
 	fd = open ("map.ber", O_RDONLY);
-	i = 1;
-	width = 0;
-	height = 0;
-	a=0;
-	if (c == 'w')
+	map = malloc((ft_map_lines(fd) + 1) * sizeof(char *));
+	if (!map)
+		return(NULL);
+	i = 0;
+	line = "line";
+	while (line != NULL)
 	{
-		while (i > 0)
-		{
-			i = read(fd, &read_line, 1);
-			if (read_line != '\n')
-				width = width + 80;
-			if (read_line == '\n')
-				return (width);
-		}
+		map[i] = get_next_line(fd);
+		i++;
 	}
-	if (c == 'h')
-	{
-		while (i > 0)
-		{
-			i = read(fd, &read_line, 1);
-			if (read_line == '\n')
-			{
-				height = height + 80;
-				a++;
-			}
-		}
-		height = height + 80;
-	}
-	return (height);
+	map[i] = NULL;
+	close(fd);
+	return (map);
 }
 
 int main(void)
 {
 	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
 	void	*win_ptr; // identificador de la nueva ventana
+	char	**map;
 
 	mlx_ptr = mlx_init(); // función principal que conecta con el servidor gráfico del Mac
 	//mirar errores de mapa
-	/* if (ft_check_map(void) == 1)
-		return(printf("mapa mal")); */
-	win_ptr = mlx_new_window(mlx_ptr, ft_size_map('w'), ft_size_map('h'), "Pac Man"); // abrir una ventana
+	map = ft_matrix();
+	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Pac Man"); // abrir una ventana
+	/* if (!win_ptr)
+		return(NULL); */
 	ft_put_map(mlx_ptr, win_ptr);
 	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
 	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas

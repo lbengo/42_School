@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/24 12:18:16 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
+/*   Updated: 2022/12/09 16:14:28 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "minilibx/mlx.h" // Librería minilibx
-# include "get_next_line/get_next_line.h" // Librería minilibx
-# include <stdio.h>
-# include <unistd.h>
+# include <unistd.h> // Librería que gestiona la función close
 # include <fcntl.h> // Librería que gestiona la función open
+# include <stdio.h>
+# include <stdlib.h>
 
 /* ***************************** FUNCIONES ********************************** */
+
+char	*get_next_line(int fd);
+char	*ft_strjoin(char const *s1, char const *s2);
+int		strlen_break(char *line);
+size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+
+/* ***************************** VARIABLE *********************************** */
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 #endif

@@ -6,26 +6,24 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/01/24 13:06:01 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/01/24 12:59:16 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc so_long.c -L minilibx -lmlx -framework OpenGL -framework AppKit -g3
-
 # ********************************* VARIABLES ******************************** #
 
-NAME = so_long.a
+NAME = get_next_line.a
 
-MANDATORY_SRC = so_long.c
+MANDATORY_SRC = get_next_line.c \
+				get_next_line_utils.c \
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
-INCLUDE = so_long.h
+INCLUDE = libft.h
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-MINILIBX = -L minilibx -lmlx -framework OpenGL -framework AppKit
-GETNEXTLINE = get_next_line/get_next_line.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
@@ -37,7 +35,10 @@ GETNEXTLINE = get_next_line/get_next_line.a
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
-	$(CC) $^ $(MINILIBX) $(GETNEXTLINE) -o $(NAME)
+	ar rcs $(NAME) $^
+
+bonus: $(BONUS_OBJ) $(MANDATORY_OBJ)
+	ar rcs $(NAME) $^
 
 clean:
 	rm -f *.o
