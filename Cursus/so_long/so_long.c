@@ -6,11 +6,15 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/24 13:12:43 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/25 11:16:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+//#include "so_long.h"
+# include <stdio.h>
+# include <unistd.h>
+# include <fcntl.h> // Librería que gestiona la función open
+# include "get_next_line/get_next_line.h" // Librería minilibx
 
 /* int key_hook()
 {
@@ -18,7 +22,7 @@
 	return (0);
 } */
 
-int ft_put_map(void *mlx_ptr, void *win_ptr)
+/* int ft_put_map(void *mlx_ptr, void *win_ptr)
 {
 	int		fd;
 	int		i;
@@ -67,25 +71,49 @@ int ft_put_map(void *mlx_ptr, void *win_ptr)
 	}
 	close(fd);
 	return (0);
-}
+} */
 
 // añadir si no tiene objeto (C) o posición inicial (P) debe salir error
 // añadir si no es rectangular y si tiene salto de linea debe salir error
 //ft_check_map(void);
 
-int	ft_map_lines(int fd)
+int	strlen_line(char *line)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (line == NULL)
+		return (-1);
+	while (line[i] != '\0')
+	{
+		if (line[i] == '\n')
+			break;
+		i++;
+	}
+	return (i);
+}
+
+int	ft_map_lines(void)
 {
 	char	*line;
 	int		i;
+	int		fd;
+	int		len;
 
+	fd = open ("maps/2exits.ber", O_RDONLY);
 	i = 0;
-	line = "line";
-	while (line != NULL)
+	line = get_next_line(fd);
+	len = strlen_line(line);
+	while (line != NULL || len == strlen_line(line))
 	{
-		line = get_next_line(fd);
 		free(line);
+		line = NULL;
+		line = get_next_line(fd);
+		if (len != strlen_line(line))
+			break;
 		i++;
 	}
+	free (line);
 	close(fd);
 	return (i);
 }
@@ -95,16 +123,17 @@ char	**ft_matrix(void)
 	char	**map;
 	char	*line;
 	int		fd;
+	int		len;
 	int		i;
 
 
-	fd = open ("map.ber", O_RDONLY);
-	map = malloc((ft_map_lines(fd) + 1) * sizeof(char *));
+	fd = open ("maps/2exits.ber", O_RDONLY);
+	len = ft_map_lines();
+	map = malloc((len + 1) * sizeof(char *));
 	if (!map)
 		return(NULL);
 	i = 0;
-	line = "line";
-	while (line != NULL)
+	while (i <= len)
 	{
 		map[i] = get_next_line(fd);
 		i++;
@@ -114,6 +143,25 @@ char	**ft_matrix(void)
 	return (map);
 }
 
+
+int main()
+{
+	char	**map;
+	int check = -1;
+	map = ft_matrix();
+
+	while (map[++check])
+	{
+		printf("line [%d] -> %s\n", check, map[check]);
+		free(map[check]);
+	}
+	free(map);
+
+	//printf("%s", ft_split(s, c));
+	return(0);
+
+}
+/*
 int main(void)
 {
 	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
@@ -124,9 +172,9 @@ int main(void)
 	//mirar errores de mapa
 	map = ft_matrix();
 	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Pac Man"); // abrir una ventana
-	/* if (!win_ptr)
-		return(NULL); */
+	//if (!win_ptr)
+	//	return(NULL);
 	ft_put_map(mlx_ptr, win_ptr);
 	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
 	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas
-}
+} */
