@@ -1,3 +1,5 @@
+# So_Long - En proceso
+
 ¿Qué es y cómo empezar con el miniLibX?
 MiniLiX es una librería gráfica que permite realizar funciones básicas para interactuar con las pantallas sin tener conocimientos de X-Window y Cocoa. Esta librería posee numerosas funciones, sin embargo las que usaremos en este proyecto serán: abrir una ventana, crear y dibujar imágenes y gestionar eventos, ganchos y entradas.
 
@@ -33,6 +35,3 @@ int main (void)
 ```
 Para compilar hay que añadir el siguiente comando:
 `gcc [función].c -L [librería minilibx] -lmlx -framework OpenGL -framework Appkit`
-
-
-
