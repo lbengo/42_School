@@ -6,15 +6,15 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/01/24 13:06:01 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/01/26 13:33:25 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc so_long.c -L minilibx -lmlx -framework OpenGL -framework AppKit -g3
+# gcc so_long.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
-NAME = so_long.a
+NAME = so_long
 
 MANDATORY_SRC = so_long.c
 
@@ -24,7 +24,7 @@ INCLUDE = so_long.h
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-MINILIBX = -L minilibx -lmlx -framework OpenGL -framework AppKit
+MINILIBX = -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit
 GETNEXTLINE = get_next_line/get_next_line.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
@@ -37,7 +37,7 @@ GETNEXTLINE = get_next_line/get_next_line.a
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
-	$(CC) $^ $(MINILIBX) $(GETNEXTLINE) -o $(NAME)
+	$(CC) $^ $(MINILIBX) -o $(NAME)
 
 clean:
 	rm -f *.o

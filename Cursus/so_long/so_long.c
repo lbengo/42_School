@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/26 10:52:38 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/26 13:33:50 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ int	strlen_line(char *line)
 	return (i);
 }
 
-int	ft_map_lines(void)
+int	ft_map_lines(char *argv)
 {
 	char	*line;
 	int		i;
 	int		fd;
 	int		len;
 
-	fd = open ("maps/2exits.ber", O_RDONLY);
+	fd = open (argv, O_RDONLY);
 	i = 0;
 	line = get_next_line(fd);
 	len = strlen_line(line);
@@ -110,14 +110,14 @@ int	ft_map_lines(void)
 	return (i);
 }
 
-char	**ft_matrix(int len)
+char	**ft_matrix(int len, char *argv)
 {
 	char	**map;
 	int		fd;
 	int		i;
 
 
-	fd = open ("maps/2exits.ber", O_RDONLY);
+	fd = open (argv, O_RDONLY);
 	map = malloc((len + 1) * sizeof(char *));
 	if (!map)
 		return(NULL);
@@ -132,7 +132,7 @@ char	**ft_matrix(int len)
 	return (map);
 }
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
 	void	*win_ptr; // identificador de la nueva ventana
@@ -140,12 +140,16 @@ int main(void)
 	int		i;
 	int		map_width;
 
+	argc = 0;
 	mlx_ptr = mlx_init(); // función principal que conecta con el servidor gráfico del Mac
-	map_width = ft_map_lines();
-	map = ft_matrix(map_width);
+	map_width = ft_map_lines(argv[1]);
+	map = ft_matrix(map_width, argv[1]);
 	win_ptr = mlx_new_window(mlx_ptr, (strlen_line(map[0]) * 80), ((map_width + 1) * 80), "Pac Man"); // abrir una ventana
-	if (!win_ptr)
-		return(0);
+	if (win_ptr == NULL)
+	{
+		free(win_ptr);
+		return (0);
+	}
 	ft_put_map(mlx_ptr, win_ptr, map, map_width);
 	i = 0;
 	while(map[i] != NULL)
@@ -156,4 +160,6 @@ int main(void)
 	free(map);
 	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
 	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas
+	free(mlx_ptr);
+	return (0);
 }
