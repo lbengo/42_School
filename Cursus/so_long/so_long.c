@@ -6,15 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/25 11:16:55 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/26 10:52:38 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "so_long.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <fcntl.h> // Librería que gestiona la función open
-# include "get_next_line/get_next_line.h" // Librería minilibx
+#include "so_long.h"
 
 /* int key_hook()
 {
@@ -22,12 +18,11 @@
 	return (0);
 } */
 
-/* int ft_put_map(void *mlx_ptr, void *win_ptr)
+int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
 {
-	int		fd;
 	int		i;
+	int		a;
 	void	*img;
-	char	read_line;
 	char	*img_espacio = "files/espacio.xpm";
 	char	*img_muro = "files/muro.xpm";
 	char	*img_pacman = "files/pacman.xpm";
@@ -36,42 +31,39 @@
 	int		width;
 	int		height;
 
-	fd = open ("map.ber", O_RDONLY);
-	i = 1;
-	width = 0;
+	i = 0;
+	a = 0;
 	height = 0;
-	while (i > 0)
+	while (len >= 0)
 	{
-		i = read(fd, &read_line, 1);
-		if (i <= 0) // ha llegado al final de la lectura o se ha producido un error en la lectura
-			break;
-		if (read_line == '\n')
+		width = 0;
+		while (map[i][a] != '\n')
 		{
-			height = height + 80;
-			width = 0;
-		}
-		if (read_line == '1')
-		{
-			img = mlx_xpm_file_to_image(mlx_ptr, img_muro, &img_width, &img_height); // lee la imagen que hayas añadido
-			mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			if (map[i][a] == '1')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_muro, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
+			if (map[i][a] == '0' || map[i][a] == 'E'|| map[i][a] == 'C')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_espacio, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
+			if (map[i][a] == 'P')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_pacman, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
 			width = width + 80;
+			a++;
 		}
-		if (read_line == '0')
-		{
-			img = mlx_xpm_file_to_image(mlx_ptr, img_espacio, &img_width, &img_height); // lee la imagen que hayas añadido
-			mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			width = width + 80;
-		}
-		if (read_line == 'P')
-		{
-			img = mlx_xpm_file_to_image(mlx_ptr, img_pacman, &img_width, &img_height); // lee la imagen que hayas añadido
-			mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			width = width + 80;
-		}
+		height = height + 80;
+		len --;
+		a = 0;
+		i++;
 	}
-	close(fd);
 	return (0);
-} */
+}
 
 // añadir si no tiene objeto (C) o posición inicial (P) debe salir error
 // añadir si no es rectangular y si tiene salto de linea debe salir error
@@ -118,17 +110,14 @@ int	ft_map_lines(void)
 	return (i);
 }
 
-char	**ft_matrix(void)
+char	**ft_matrix(int len)
 {
 	char	**map;
-	char	*line;
 	int		fd;
-	int		len;
 	int		i;
 
 
 	fd = open ("maps/2exits.ber", O_RDONLY);
-	len = ft_map_lines();
 	map = malloc((len + 1) * sizeof(char *));
 	if (!map)
 		return(NULL);
@@ -143,38 +132,28 @@ char	**ft_matrix(void)
 	return (map);
 }
 
-
-int main()
-{
-	char	**map;
-	int check = -1;
-	map = ft_matrix();
-
-	while (map[++check])
-	{
-		printf("line [%d] -> %s\n", check, map[check]);
-		free(map[check]);
-	}
-	free(map);
-
-	//printf("%s", ft_split(s, c));
-	return(0);
-
-}
-/*
 int main(void)
 {
 	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
 	void	*win_ptr; // identificador de la nueva ventana
 	char	**map;
+	int		i;
+	int		map_width;
 
 	mlx_ptr = mlx_init(); // función principal que conecta con el servidor gráfico del Mac
-	//mirar errores de mapa
-	map = ft_matrix();
-	win_ptr = mlx_new_window(mlx_ptr, 1000, 1000, "Pac Man"); // abrir una ventana
-	//if (!win_ptr)
-	//	return(NULL);
-	ft_put_map(mlx_ptr, win_ptr);
+	map_width = ft_map_lines();
+	map = ft_matrix(map_width);
+	win_ptr = mlx_new_window(mlx_ptr, (strlen_line(map[0]) * 80), ((map_width + 1) * 80), "Pac Man"); // abrir una ventana
+	if (!win_ptr)
+		return(0);
+	ft_put_map(mlx_ptr, win_ptr, map, map_width);
+	i = 0;
+	while(map[i] != NULL)
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
 	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas
-} */
+}
