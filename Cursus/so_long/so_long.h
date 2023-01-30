@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/24 12:18:16 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:47:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@
 # include <unistd.h>
 # include <fcntl.h> // Librería que gestiona la función open
 
+/* **************************** ESTRUCTURAS ********************************* */
+
+typedef struct s_program {
+	void	*mlx; // resultado de la función principal que conecta con el servidor gráfico
+	void	*win; // identificador de la nueva ventana
+	char	**map;
+	int		map_width;
+}			t_program;
+
 /* ***************************** FUNCIONES ********************************** */
+
 
 #endif

@@ -5,69 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 07:33:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/26 13:33:50 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/01/30 11:52:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/* int key_hook()
+int ft_input(int key, t_program *program)
 {
-	printf("Hello fron keyhook\n");
-	return (0);
-} */
-
-int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
-{
-	int		i;
-	int		a;
-	void	*img;
-	char	*img_espacio = "files/espacio.xpm";
-	char	*img_muro = "files/muro.xpm";
-	char	*img_pacman = "files/pacman.xpm";
-	int		img_width;
-	int		img_height;
-	int		width;
-	int		height;
-
-	i = 0;
-	a = 0;
-	height = 0;
-	while (len >= 0)
+	if(key == 53)
 	{
-		width = 0;
-		while (map[i][a] != '\n')
-		{
-			if (map[i][a] == '1')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_muro, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
-			if (map[i][a] == '0' || map[i][a] == 'E'|| map[i][a] == 'C')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_espacio, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
-			if (map[i][a] == 'P')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_pacman, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
-			width = width + 80;
-			a++;
-		}
-		height = height + 80;
-		len --;
-		a = 0;
-		i++;
+		mlx_destroy_window(program -> mlx, program -> win);
+		free(program -> mlx);
+		exit(0);
 	}
+
+	printf("Number press %d", key);
 	return (0);
 }
 
-// añadir si no tiene objeto (C) o posición inicial (P) debe salir error
-// añadir si no es rectangular y si tiene salto de linea debe salir error
-//ft_check_map(void);
 
 int	strlen_line(char *line)
 {
@@ -132,34 +89,69 @@ char	**ft_matrix(int len, char *argv)
 	return (map);
 }
 
-int main(int argc, char *argv[])
+int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
 {
-	void	*mlx_ptr; // resultado de la función principal que conecta con el servidor gráfico
-	void	*win_ptr; // identificador de la nueva ventana
-	char	**map;
 	int		i;
-	int		map_width;
+	int		a;
+	void	*img;
+	char	*img_espacio = "textures/espacio.xpm";
+	char	*img_muro = "textures/muro.xpm";
+	char	*img_pacman = "textures/pacman.xpm";
+	int		img_width;
+	int		img_height;
+	int		width;
+	int		height;
 
-	argc = 0;
-	mlx_ptr = mlx_init(); // función principal que conecta con el servidor gráfico del Mac
-	map_width = ft_map_lines(argv[1]);
-	map = ft_matrix(map_width, argv[1]);
-	win_ptr = mlx_new_window(mlx_ptr, (strlen_line(map[0]) * 80), ((map_width + 1) * 80), "Pac Man"); // abrir una ventana
-	if (win_ptr == NULL)
-	{
-		free(win_ptr);
-		return (0);
-	}
-	ft_put_map(mlx_ptr, win_ptr, map, map_width);
 	i = 0;
-	while(map[i] != NULL)
+	a = 0;
+	height = 0;
+	while (len >= 0)
 	{
-		free(map[i]);
+		width = 0;
+		while (map[i][a] != '\n')
+		{
+			if (map[i][a] == '1')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_muro, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
+			if (map[i][a] == '0' || map[i][a] == 'E'|| map[i][a] == 'C')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_espacio, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
+			if (map[i][a] == 'P')
+			{
+				img = mlx_xpm_file_to_image(mlx_ptr, img_pacman, &img_width, &img_height); // lee la imagen que hayas añadido
+				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
+			}
+			width = width + 80;
+			a++;
+		}
+		height = height + 80;
+		len --;
+		a = 0;
 		i++;
 	}
-	free(map);
-	//mlx_key_hook(win_ptr, key_hook, 0); //cuando presionas cualquier tecla se muestra en la terminal
-	mlx_loop(mlx_ptr); // función esencial para que no se cierre la ventana y más cosas
-	free(mlx_ptr);
 	return (0);
+}
+
+int main(int argc, char *argv[])
+{
+	t_program program;
+
+	// Función principal que conecta con el servidor gráfico del Mac y crear ventana
+	program.mlx = mlx_init();
+	// return void *0 if failed
+	program.map_width = ft_map_lines(argv[1]); // alto de mapa
+	program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
+	program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0]) * 80),
+		((program.map_width + 1) * 80), "Pac Man"); // Creación ventana
+	// return void *0 if failed
+
+	ft_put_map(program.mlx, program.win, program.map, program.map_width);
+	mlx_key_hook(program.win, *ft_input, &program);
+
+	// Bucle constante que mantiene detectado los eventos
+	mlx_loop(program.mlx);
 }
