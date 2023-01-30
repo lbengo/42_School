@@ -1,30 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/30 11:52:32 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/01/30 12:15:04 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/01/30 13:01:49 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-int ft_input(int key, t_program *program)
-{
-	if(key == 53)
-	{
-		mlx_destroy_window(program -> mlx, program -> win);
-		free(program -> mlx);
-		exit(0);
-	}
-
-	printf("Number press %d", key);
-	return (0);
-}
-
+#include "../so_long.h"
 
 int	strlen_line(char *line)
 {
@@ -91,16 +77,16 @@ char	**ft_matrix(int len, char *argv)
 
 int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
 {
-	int		i;
-	int		a;
+	char	*img_espacio = "files/espacio.xpm";
+	char	*img_muro = "files/muro.xpm";
+	char	*img_pacman = "files/pacman.xpm";
 	void	*img;
-	char	*img_espacio = "textures/espacio.xpm";
-	char	*img_muro = "textures/muro.xpm";
-	char	*img_pacman = "textures/pacman.xpm";
 	int		img_width;
 	int		img_height;
 	int		width;
 	int		height;
+	int		i;
+	int		a;
 
 	i = 0;
 	a = 0;
@@ -134,24 +120,4 @@ int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
 		i++;
 	}
 	return (0);
-}
-
-int main(int argc, char *argv[])
-{
-	t_program program;
-
-	// Función principal que conecta con el servidor gráfico del Mac y crear ventana
-	program.mlx = mlx_init();
-	// return void *0 if failed
-	program.map_width = ft_map_lines(argv[1]); // alto de mapa
-	program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
-	program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0]) * 80),
-		((program.map_width + 1) * 80), "Pac Man"); // Creación ventana
-	// return void *0 if failed
-
-	ft_put_map(program.mlx, program.win, program.map, program.map_width);
-	mlx_key_hook(program.win, *ft_input, &program);
-
-	// Bucle constante que mantiene detectado los eventos
-	mlx_loop(program.mlx);
 }

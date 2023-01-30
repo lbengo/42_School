@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/30 11:47:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:01:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,24 @@ typedef struct s_program {
 	int		map_width;
 }			t_program;
 
+/* typedef struct s_image {
+	char	*texture_space;
+	char	*texture_wall;
+	char	*texture_pacman;
+	void	*img;
+	int		img_width;
+	int		img_height;
+	int		width;
+	int		height;
+	int		i;
+	int		a;
+}			t_image; */
+
 /* ***************************** FUNCIONES ********************************** */
 
+char	**ft_matrix(int len, char *argv);
+int		ft_map_lines(char *argv);
+int		strlen_line(char *line);
+int		ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len);
 
 #endif

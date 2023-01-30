@@ -6,17 +6,18 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/01/26 13:33:25 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/01/30 13:02:29 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc so_long.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
+# gcc src/so_long.c src/map.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
 NAME = so_long
 
-MANDATORY_SRC = so_long.c
+MANDATORY_SRC = so_long.c \
+				map.c
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 
