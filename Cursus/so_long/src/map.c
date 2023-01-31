@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:15:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/30 13:01:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:22:09 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	strlen_line(char *line)
 {
