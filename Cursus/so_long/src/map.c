@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:15:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/31 19:22:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 09:17:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,9 @@ char	**ft_matrix(int len, char *argv)
 
 int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
 {
-	char	*img_espacio = "files/espacio.xpm";
-	char	*img_muro = "files/muro.xpm";
-	char	*img_pacman = "files/pacman.xpm";
+	char	*img_espacio = "textures/espacio.xpm";
+	char	*img_muro = "textures/muro.xpm";
+	char	*img_pacman = "textures/pacman.xpm";
 	void	*img;
 	int		img_width;
 	int		img_height;
