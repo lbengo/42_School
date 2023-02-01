@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/01/30 13:01:53 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 08:12:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "minilibx/mlx.h" // Librería minilibx
-# include "get_next_line/get_next_line.h" // Librería minilibx
+# include "../minilibx/mlx.h" // Librería minilibx
+# include "../get_next_line/get_next_line.h" // Librería gnl
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h> // Librería que gestiona la función open

@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/01/31 19:59:00 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/01 08:32:59 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,9 @@ OBJ           = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 
 INCLUDE       = ./src/so_long.h
 
-//MLX_PATH    = ./minilibx
-MLX           = -L minilibx
-MLX_ADD       = -lmlx -framework OpenGL -framework AppKit
-MINILIBX      = -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit
+MLX_H         = -L minilibx -lmlx -framework OpenGL -framework AppKit
 
 GNL_PATH      = ./get_next_line
-GNL_H         = $(GNL_PATH)/get_next_line.h
 GNL_A         = $(GNL_PATH)/get_next_line.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
@@ -47,7 +43,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $^ $(MINILIBX) -o $(NAME)
+	$(CC) $^ $(GNL_A) $(MLX_H) -o $@
 
 $(OBJ_PATH):
 	mkdir $@
