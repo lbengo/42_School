@@ -6,11 +6,11 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/01 10:41:57 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/01 12:42:59 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc src/so_long.c src/map.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
+# gcc src/so_long.c src/map.c src/texture.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
