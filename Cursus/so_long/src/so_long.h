@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 09:43:59 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 11:10:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,6 @@ typedef struct s_program {
 	int		map_width;
 }			t_program;
 
-/* typedef struct s_image {
-	char	*texture_space;
-	char	*texture_wall;
-	char	*texture_pacman;
-	void	*img;
-	int		img_width;
-	int		img_height;
-	int		width;
-	int		height;
-	int		i;
-	int		a;
-}			t_image; */
-
-
 /* ***************************** FUNCIONES ********************************** */
 
 char	**ft_matrix(int len, char *argv);
@@ -55,8 +41,10 @@ int		ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len);
 
 /* ***************************** CONSTANTES ********************************* */
 
-# define PACMAN "textures/pacman.xpm"
-# define SPACE "textures/espacio.xpm"
-# define WALL "textures/muro.xpm"
+# define PACMAN "textures/Pacman.xpm"
+# define SPACE "textures/Space.xpm"
+# define WALL "textures/Wall.xpm"
+# define GHOST "textures/Ghost.xpm"
+# define FOOD "textures/Food.xpm"
 
 #endif
