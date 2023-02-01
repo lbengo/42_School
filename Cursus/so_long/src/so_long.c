@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 09:17:35 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 09:19:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ int ft_input(int key, t_program *program)
 int main(int argc, char *argv[])
 {
 	t_program program;
-	char	*img_espacio = "textures/espacio.xpm";
-	char	*img_muro = "textures/muro.xpm";
-	char	*img_pacman = "textures/pacman.xpm";
-	void	*img;
-	int		img_width;
-	int		img_height;
 
 	argc = 0;
 	// Función principal que conecta con el servidor gráfico del Mac y crear ventana
@@ -41,7 +35,8 @@ int main(int argc, char *argv[])
 	// return void *0 if failed
 	program.map_width = ft_map_lines(argv[1]); // alto de mapa
 	program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
-	program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0]) * 80), ((program.map_width + 1) * 80), "Pac Man"); // Creación ventana
+	program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0]) * 80),
+		((program.map_width + 1) * 80), "Pac Man"); // Creación ventana
 	// return void *0 if failed
 
 	ft_put_map(program.mlx, program.win, program.map, program.map_width);
