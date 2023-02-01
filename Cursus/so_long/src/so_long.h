@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 11:10:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:04:09 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h> // Librería que gestiona la función open
-
 
 /* **************************** ESTRUCTURAS ********************************* */
 
@@ -36,8 +35,7 @@ typedef struct s_program {
 char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
-int		ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len);
-
+int		ft_put_map(t_program *program);
 
 /* ***************************** CONSTANTES ********************************* */
 
