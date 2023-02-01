@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:15:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 09:17:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 09:50:20 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,48 +75,41 @@ char	**ft_matrix(int len, char *argv)
 	return (map);
 }
 
-int ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len)
+static void	ft_put_image(void *mlx, void *win, char *fig, int x, int y)
 {
-	char	*img_espacio = "textures/espacio.xpm";
-	char	*img_muro = "textures/muro.xpm";
-	char	*img_pacman = "textures/pacman.xpm";
 	void	*img;
 	int		img_width;
 	int		img_height;
-	int		width;
-	int		height;
+
+	img = mlx_xpm_file_to_image(mlx, fig, &img_width, &img_height); // lee la imagen que hayas añadido
+	mlx_put_image_to_window(mlx, win, img, x, y); // pone la imagen en la ventana en la posición que quieras
+}
+
+int ft_put_map(void *mlx, void *win, char **map, int len)
+{
+	int		x;
+	int		y;
 	int		i;
 	int		a;
 
 	i = 0;
-	a = 0;
-	height = 0;
-	while (len >= 0)
+	y = 0;
+	while (len-- >= 0)
 	{
-		width = 0;
+		x = 0;
+		a = 0;
 		while (map[i][a] != '\n')
 		{
 			if (map[i][a] == '1')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_muro, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
-			if (map[i][a] == '0' || map[i][a] == 'E'|| map[i][a] == 'C')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_espacio, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
+				ft_put_image(mlx, win, WALL, x, y);
 			if (map[i][a] == 'P')
-			{
-				img = mlx_xpm_file_to_image(mlx_ptr, img_pacman, &img_width, &img_height); // lee la imagen que hayas añadido
-				mlx_put_image_to_window(mlx_ptr, win_ptr, img, width, height); // pone la imagen en la ventana en la posición que quieras
-			}
-			width = width + 80;
+				ft_put_image(mlx, win, PACMAN, x, y);
+			if (map[i][a] == '0')
+				ft_put_image(mlx, win, SPACE, x, y);
+			x = x + 80;
 			a++;
 		}
-		height = height + 80;
-		len --;
-		a = 0;
+		y = y + 80;
 		i++;
 	}
 	return (0);

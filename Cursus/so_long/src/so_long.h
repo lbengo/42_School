@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 08:12:10 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/01 09:43:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h> // Librería que gestiona la función open
+
 
 /* **************************** ESTRUCTURAS ********************************* */
 
@@ -43,11 +44,19 @@ typedef struct s_program {
 	int		a;
 }			t_image; */
 
+
 /* ***************************** FUNCIONES ********************************** */
 
 char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
 int		ft_put_map(void *mlx_ptr, void *win_ptr, char **map, int len);
+
+
+/* ***************************** CONSTANTES ********************************* */
+
+# define PACMAN "textures/pacman.xpm"
+# define SPACE "textures/espacio.xpm"
+# define WALL "textures/muro.xpm"
 
 #endif
