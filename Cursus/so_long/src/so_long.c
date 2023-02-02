@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/01 14:28:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:08:03 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,10 @@ static int ft_find_p_y(char **map)
 	a = 0;
 	while(map[i][a])
 	{
-		printf("i= %d\n", i);
-		printf("map = %c\n", map[i][a]);
 		a = 0;
-		while (map[i][a] != '\n' || map[i][a] != '\0')
+		while (map[i][a] != '\n')
 		{
+			printf("a ");
 			if(map[i][a] == 'P')
 				return(i);
 			a++;
@@ -59,7 +58,7 @@ static void ft_move(t_program program, char letter)
 
 	y = ft_find_p_y(program.map);
 	x = ft_find_p_x(program.map, y);
-	printf("x=%d y=%d", x, y);
+	printf("x=%d y=%d\n", x, y);
 	if(letter == 'l')
 	{
 		img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
