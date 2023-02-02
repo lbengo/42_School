@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 13:10:12 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:59:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,20 @@ static int	ft_find_p(char **map, int c)
 	return (0);
 }
 
-static void	ft_move(t_program program, char letter)
+static int	ft_check_wall(t_program program, int x, int y, char letter)
+{
+	if (letter == 'l' && program.map[y][x - 1] == '1')
+		return (1);
+	if (letter == 'r' && program.map[y][x + 1] == '1')
+		return (1);
+	if (letter == 'd' && program.map[y + 1][x] == '1')
+		return (1);
+	if (letter == 'u' && program.map[y - 1][x] == '1')
+		return (1);
+	return(0);
+}
+
+static int	ft_move(t_program program, char letter)
 {
 	int				img_height;
 	int				img_width;
@@ -51,6 +64,8 @@ static void	ft_move(t_program program, char letter)
 		y = ft_find_p(program.map, 'y');
 		x = ft_find_p(program.map, 'x');
 	}
+	if (ft_check_wall(program, x, y, letter) == 1)
+		return(0);
 	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
 	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
@@ -66,6 +81,7 @@ static void	ft_move(t_program program, char letter)
 	else if (letter == 'u')
 		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80),
 			((--y) * 80));
+	return (0);
 }
 
 void	ft_free(char **map)
