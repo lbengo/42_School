@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 11:57:50 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:16:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,26 +38,52 @@ static int ft_find_p(char **map, int c)
 	return(0);
 }
 
-static void ft_move(t_program program, char letter)
+void	*ft_change_map(t_program program, int x, int y)
 {
 	int				img_height;
 	int				img_width;
 	void			*img;
+
+	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
+	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
+	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
+	return (img);
+}
+
+static void ft_move(t_program program, char letter)
+{
 	static int		y;
 	static int		x;
+	void			*img;
 
 	if (!x && !y)
 	{
 		y = ft_find_p(program.map, 'y');
 		x = ft_find_p(program.map, 'x');
 	}
-	if (letter == 'l')
+	else if (letter == 'l')
 	{
-		img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
-		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
-		img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
+		img = ft_change_map(program, x, y);
+		mlx_put_image_to_window(program.mlx, program.win, img, ((x - 1) * 80), (y * 80));
+		x--;
+	}
+	if (letter == 'r')
+	{
+		img = ft_change_map(program, x, y);
 		mlx_put_image_to_window(program.mlx, program.win, img, ((x + 1) * 80), (y * 80));
 		x++;
+	}
+	else if (letter == 'd')
+	{
+		img = ft_change_map(program, x, y);
+		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), ((y + 1) * 80));
+		y++;
+	}
+	else if (letter == 'u')
+	{
+		img = ft_change_map(program, x, y);
+		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), ((y - 1) * 80));
+		y--;
 	}
 }
 
@@ -83,11 +109,14 @@ int	ft_input(int key, t_program *program)
 		free(program -> mlx);
 		exit(0);
 	}
-	//else if (key == 123) // left
-	else if (key == 124) // right
+	else if (key == 123) // left
 		ft_move(*program, 'l');
-	//else if (key == 125) // down
-	//else if (key == 126) // up
+	else if (key == 124) // right
+		ft_move(*program, 'r');
+	else if (key == 125) // down
+		ft_move(*program, 'd');
+	else if (key == 126) // up
+		ft_move(*program, 'u');
 
 	printf("Number press %d", key);
 	return (0);
