@@ -6,65 +6,58 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 10:08:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:57:50 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int ft_find_p_x(char **map, int i)
+static int ft_find_p(char **map, int c)
 {
-	int a;
+	int x;
+	int y;
 
-	a = 0;
-	while (map[i][a] != '\n')
+	y = 0;
+	x = 0;
+	while(map[y][x])
 	{
-		if(map[i][a] == 'P')
-			return(a);
-		a++;
-	}
-	return (0);
-}
-
-static int ft_find_p_y(char **map)
-{
-	int i;
-	int a;
-
-	i = 0;
-	a = 0;
-	while(map[i][a])
-	{
-		a = 0;
-		while (map[i][a] != '\n')
+		x = 0;
+		while (map[y][x] != '\n')
 		{
-			printf("a ");
-			if(map[i][a] == 'P')
-				return(i);
-			a++;
+			if(map[y][x] == 'P')
+			{
+				if (c == 'x')
+					return (x);
+				if (c == 'y')
+					return(y);
+			}
+			x++;
 		}
-		i++;
+		y++;
 	}
-	return(2);
+	return(0);
 }
 
 static void ft_move(t_program program, char letter)
 {
-	int		img_height;
-	int		img_width;
-	void	*img;
-	int	y;
-	int	x;
+	int				img_height;
+	int				img_width;
+	void			*img;
+	static int		y;
+	static int		x;
 
-	y = ft_find_p_y(program.map);
-	x = ft_find_p_x(program.map, y);
-	printf("x=%d y=%d\n", x, y);
-	if(letter == 'l')
+	if (!x && !y)
+	{
+		y = ft_find_p(program.map, 'y');
+		x = ft_find_p(program.map, 'x');
+	}
+	if (letter == 'l')
 	{
 		img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
 		img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
 		mlx_put_image_to_window(program.mlx, program.win, img, ((x + 1) * 80), (y * 80));
+		x++;
 	}
 }
 
