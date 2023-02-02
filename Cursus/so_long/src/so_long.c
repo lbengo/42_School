@@ -6,90 +6,71 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 12:16:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:10:12 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int ft_find_p(char **map, int c)
+static int	ft_find_p(char **map, int c)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	x = 0;
-	while(map[y][x])
+	while (map[y][x])
 	{
 		x = 0;
 		while (map[y][x] != '\n')
 		{
-			if(map[y][x] == 'P')
+			if (map[y][x] == 'P')
 			{
 				if (c == 'x')
 					return (x);
 				if (c == 'y')
-					return(y);
+					return (y);
 			}
 			x++;
 		}
 		y++;
 	}
-	return(0);
+	return (0);
 }
 
-void	*ft_change_map(t_program program, int x, int y)
+static void	ft_move(t_program program, char letter)
 {
 	int				img_height;
 	int				img_width;
 	void			*img;
-
-	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
-	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
-	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
-	return (img);
-}
-
-static void ft_move(t_program program, char letter)
-{
 	static int		y;
 	static int		x;
-	void			*img;
 
 	if (!x && !y)
 	{
 		y = ft_find_p(program.map, 'y');
 		x = ft_find_p(program.map, 'x');
 	}
-	else if (letter == 'l')
-	{
-		img = ft_change_map(program, x, y);
-		mlx_put_image_to_window(program.mlx, program.win, img, ((x - 1) * 80), (y * 80));
-		x--;
-	}
-	if (letter == 'r')
-	{
-		img = ft_change_map(program, x, y);
-		mlx_put_image_to_window(program.mlx, program.win, img, ((x + 1) * 80), (y * 80));
-		x++;
-	}
+	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
+	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
+	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
+	if (letter == 'l')
+		mlx_put_image_to_window(program.mlx, program.win, img, ((--x) * 80),
+			(y * 80));
+	else if (letter == 'r')
+		mlx_put_image_to_window(program.mlx, program.win, img, ((++x) * 80),
+			(y * 80));
 	else if (letter == 'd')
-	{
-		img = ft_change_map(program, x, y);
-		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), ((y + 1) * 80));
-		y++;
-	}
+		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80),
+			((++y) * 80));
 	else if (letter == 'u')
-	{
-		img = ft_change_map(program, x, y);
-		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), ((y - 1) * 80));
-		y--;
-	}
+		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80),
+			((--y) * 80));
 }
 
-void ft_free(char **map)
+void	ft_free(char **map)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
 	while (map[i] != NULL)
@@ -97,7 +78,7 @@ void ft_free(char **map)
 		free(map[i]);
 		i++;
 	}
-	free(map);
+	free (map);
 }
 
 int	ft_input(int key, t_program *program)
@@ -118,7 +99,7 @@ int	ft_input(int key, t_program *program)
 	else if (key == 126) // up
 		ft_move(*program, 'u');
 
-	printf("Number press %d", key);
+	printf("Number press %d\n", key);
 	return (0);
 }
 
