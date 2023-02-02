@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/01 12:42:59 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/02 14:05:03 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ CFLAGS         = -Wall -Werror -Wextra
 SRC_PATH      = ./src
 SRC           = so_long.c \
 				map.c \
-				texture.c
+				texture.c \
+				move.c
 
 OBJ_PATH      = ./obj
 OBJ           = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

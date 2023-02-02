@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 12:50:11 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:05:47 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
 int		ft_put_map(t_program *program);
+int		ft_input(int key, t_program *program);
+void	ft_free(char **map);
 
 /* ***************************** CONSTANTES ********************************* */
 
