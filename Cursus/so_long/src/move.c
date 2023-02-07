@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/02 14:06:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/06 14:21:36 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,23 @@ static int	ft_check_wall(t_program program, int x, int y, char letter)
 		return (1);
 	else if (letter == 'u' && program.map[y - 1][x] == '1')
 		return (1);
-	return(0);
+	return (0);
+}
+
+void	ft_move_p(t_program program, void *img, int *x, int *y, char letter)
+{
+	if (letter == 'l')
+		mlx_put_image_to_window(program.mlx, program.win, img, ((--(*x)) * 80),
+			(*y * 80));
+	else if (letter == 'r')
+		mlx_put_image_to_window(program.mlx, program.win, img, ((++(*x)) * 80),
+			(*y * 80));
+	else if (letter == 'd')
+		mlx_put_image_to_window(program.mlx, program.win, img, (*x * 80),
+			((++(*y)) * 80));
+	else if (letter == 'u')
+		mlx_put_image_to_window(program.mlx, program.win, img, (*x * 80),
+			((--(*y)) * 80));
 }
 
 static int	ft_move(t_program program, char letter)
@@ -65,22 +81,11 @@ static int	ft_move(t_program program, char letter)
 		x = ft_find_p(program.map, 'x');
 	}
 	if (ft_check_wall(program, x, y, letter) == 1)
-		return(0);
+		return (0);
 	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
 	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
-	if (letter == 'l')
-		mlx_put_image_to_window(program.mlx, program.win, img, ((--x) * 80),
-			(y * 80));
-	else if (letter == 'r')
-		mlx_put_image_to_window(program.mlx, program.win, img, ((++x) * 80),
-			(y * 80));
-	else if (letter == 'd')
-		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80),
-			((++y) * 80));
-	else if (letter == 'u')
-		mlx_put_image_to_window(program.mlx, program.win, img, (x * 80),
-			((--y) * 80));
+	ft_move_p(program, img, &x, &y, letter);
 	return (0);
 }
 
