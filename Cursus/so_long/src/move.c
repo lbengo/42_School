@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/06 14:21:36 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/10 09:55:15 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	ft_find_p(char **map, int c)
+int	ft_find_p(char **map, char c)
 {
 	int	x;
 	int	y;
