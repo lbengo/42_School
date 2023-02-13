@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 11:56:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:06:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ static void ft_change_c(char **area, int x, int y)
 
 int	find_end(char **area, int x, int y)
 {
-	if (area[y][x] == '1' && area[y][x] == 'X' && area[y][x] == 'e' && area[y][x] == 'c' && area[y][x] == 'p')
+	if (area[y][x] == '1' || area[y][x] == 'X' || area[y][x] == 'e' || area[y][x] == 'c' || area[y][x] == 'p')
 		return(0);
 	ft_change_c (area, x, y);
 	find_end(area, ++x, y);
-	find_end(area, --x, y);
+	find_end(area, x - 2, y);
 	find_end(area, x, ++y);
-	find_end(area, x, --y);
+	find_end(area, x, y - 2);
 	return(0);
 }
 

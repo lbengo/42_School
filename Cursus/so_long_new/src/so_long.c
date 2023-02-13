@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 11:51:01 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/13 13:47:36 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ static int	ft_find_p(char **map, char c)
 
 	y = 0;
 	x = 0;
-	while (map[y][x])
+	while (map[y] != NULL)
 	{
 		x = 0;
-		while (map[y][x] != '\n')
+		while (map[y][x] != '\0')
 		{
 			if (map[y][x] == 'P')
 			{
@@ -62,15 +62,29 @@ int	main(int argc, char *argv[])
 	program.map_width = ft_map_lines(argv[1]); // alto de mapa
 	program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
 	find_end(program.map, ft_find_p(program.map, 'x'), ft_find_p(program.map, 'y'));
-	if (search_c(program.map, program.map_width) == 1)
-		printf("eeerrooooor\n");
+	//if (search_c(program.map, program.map_width) == 1)
+	//	printf("eeerrooooor\n");
 
-	printf("map[0] = %s", program.map[0]);
-	printf("map[1] = %s", program.map[1]);
-	printf("map[2] = %s", program.map[2]);
-	printf("map[3] = %s", program.map[3]);
-	printf("map[4] = %s", program.map[4]);
-	printf("map[5] = %s", program.map[5]);
+	printf("map[0] = %s\n", program.map[0]);
+	printf("map[1] = %s\n", program.map[1]);
+	printf("map[2] = %s\n", program.map[2]);
+	printf("map[3] = %s\n", program.map[3]);
+	printf("map[4] = %s\n", program.map[4]);
+	printf("map[5] = %s\n", program.map[5]);
+	printf("map[6] = %s\n", program.map[6]);
+	printf("map[7] = %s\n", program.map[7]);
+	printf("map[8] = %s\n", program.map[8]);
+	printf("map[9] = %s\n", program.map[9]);
+	printf("map[10] = %s\n", program.map[10]);
+	printf("map[11] = %s\n", program.map[11]);
+	printf("map[12] = %s\n", program.map[12]);
+	printf("map[13] = %s\n", program.map[13]);
+	printf("map[14] = %s\n", program.map[14]);
+	printf("map[15] = %s\n", program.map[15]);
+	printf("map[16] = %s\n", program.map[16]);
+	printf("map[17] = %s\n", program.map[17]);
+	printf("map[18] = %s\n", program.map[18]);
+	printf("map[18] = %s\n", program.map[19]);
 
 	ft_free(program.map);
 	// return void *0 if failed
