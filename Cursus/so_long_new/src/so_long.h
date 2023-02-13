@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 11:50:31 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/13 16:28:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ int		strlen_line(char *line);
 int		ft_put_map(t_program *program);
 int		ft_input(int key, t_program *program);
 void	ft_free(char **map);
-int		find_end(char **area, int x, int y);
 int		search_c(char **area, int width);
+int		check_error(t_program *program);
+
 
 /* ***************************** CONSTANTES ********************************* */
 

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 13:06:33 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/13 17:03:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,10 @@ int	search_c(char **area, int width)
 	return (0);
 }
 
-static void ft_change_c(char **area, int x, int y)
+static int	check_end(char **area, int x, int y)
 {
+	if (area[y][x] == '1' || area[y][x] == 'X' || area[y][x] == 'e' || area[y][x] == 'c' || area[y][x] == 'p')
+		return(0);
 	if (area[y][x] == 'E')
 		area[y][x] = 'e';
 	else if (area[y][x] == 'C')
@@ -100,26 +102,57 @@ static void ft_change_c(char **area, int x, int y)
 		area[y][x] = 'p';
 	else
 		area[y][x] = 'X';
-}
-
-int	find_end(char **area, int x, int y)
-{
-	if (area[y][x] == '1' || area[y][x] == 'X' || area[y][x] == 'e' || area[y][x] == 'c' || area[y][x] == 'p')
-		return(0);
-	ft_change_c (area, x, y);
-	find_end(area, ++x, y);
-	find_end(area, x - 2, y);
-	find_end(area, x, ++y);
-	find_end(area, x, y - 2);
+	check_end(area, ++x, y);
+	check_end(area, x - 2, y);
+	check_end(area, x, ++y);
+	check_end(area, x, y - 2);
 	return(0);
 }
 
+static int	ft_find_p(char **map, char c)
+{
+	int	x;
+	int	y;
 
-/*
-Falta:
-- bad.ber
-- big.ber
-- brokenmap.ber
-- itriangle.ber
-- kpasa.ber
- */
+	y = 0;
+	x = 0;
+	while (map[y] != NULL)
+	{
+		x = 0;
+		while (map[y][x] != '\0')
+		{
+			if (map[y][x] == 'P')
+			{
+				if (c == 'x')
+					return (x);
+				if (c == 'y')
+					return (y);
+			}
+			x++;
+		}
+		y++;
+	}
+	return (0);
+}
+
+int	check_error(t_program *program)
+{
+	check_end(program -> map, ft_find_p(program -> map, 'x'), ft_find_p(program -> map, 'y'));
+
+	printf("Error\n");
+
+	printf("map[0] = %s\n", program -> map[0]);
+	printf("map[1] = %s\n", program -> map[1]);
+	printf("map[2] = %s\n", program -> map[2]);
+	//printf("map[3] = %s\n", program -> map[3]);
+	//printf("map[4] = %s\n", program -> map[4]);
+	//- Perímetro con '1'
+	//- Mapa roto
+	//- longitud del mapa
+	//- No existe algun objeto
+	//- Más de un objeto
+	//- NULL
+	return(2);
+}
+
+
