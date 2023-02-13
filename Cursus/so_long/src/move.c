@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/10 09:55:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/10 20:17:15 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,13 +98,13 @@ int	ft_input(int key, t_program *program)
 		free(program -> mlx);
 		exit(0);
 	}
-	else if (key == 123) // left
+	else if (key == 0) // left
 		ft_move(*program, 'l');
-	else if (key == 124) // right
+	else if (key == 2) // right
 		ft_move(*program, 'r');
-	else if (key == 125) // down
+	else if (key == 1) // down
 		ft_move(*program, 'd');
-	else if (key == 126) // up
+	else if (key == 13) // up
 		ft_move(*program, 'u');
 
 	printf("Number press %d\n", key);
