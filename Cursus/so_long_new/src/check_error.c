@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 20:08:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/14 21:31:46 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	check_map(char **map)
 			printf("Error: The map must be rectangular.\n\n");
 			return (2);
 		}
-		if (map[i][0] != '1' || map[i][len - 1] != '1')
+		if (map[0][a] != '1' || map[i][len - 1] != '1') // TODO: CAMBIAR PARA Q FUNCIONE CON 11112111
 		{
 			printf("Error: The map must be surrounded by walls.\n\n");
 			return (2);
@@ -72,7 +72,7 @@ static int	check_caract(char **map, char c)
 	}
 	if (caract > 1)
 	{
-		printf("Error: There is more than one component'%c'.\n\n", c);
+		printf("Error: There is more than one component '%c'.\n\n", c); // TODO: CAMBIAR MENOS SI ES 'C'
 		return (2);
 	}
 	return (0);
@@ -112,8 +112,11 @@ int	check_error(t_program *program)
 {
 	char	**new_map;
 
-	if (program -> map[0] == NULL) // NO FUNCIONA
+	if (program -> map[0] == NULL)
+	{
+		printf("Error: Add map.\n\n");
 		return (2);
+	}
 	if (check_map(program -> map) == 2)
 		return (2);
 	if (check_caract(program -> map, 'P') == 2 || check_caract
@@ -125,5 +128,5 @@ int	check_error(t_program *program)
 	ft_free(new_map);
 	return (0);
 }
-	//- NULL
 	//- .xpm sale error
+	//- 1111111211
