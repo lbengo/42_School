@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 16:28:00 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:07:12 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int		ft_input(int key, t_program *program);
 void	ft_free(char **map);
 int		search_c(char **area, int width);
 int		check_error(t_program *program);
+int	check_end(char **map, int x, int y);
+int	ft_find_p(char **map, char c);
+char **duplicate_map(char **map);
 
 
 /* ***************************** CONSTANTES ********************************* */

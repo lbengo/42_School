@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 13:41:10 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/14 14:44:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-
+// Check error map
 static int	check_map(char **map)
 {
 	unsigned int i;
@@ -29,7 +29,7 @@ static int	check_map(char **map)
 		}
 		if (map[i][0] != '1' || map[i][len - 1] != '1')
 		{
-			printf("Error: The map must be enclosed/surrounded by walls.\n");
+			printf("Error: The map must be surrounded by walls.\n");
 			return(2);
 		}
 		i++;
@@ -37,67 +37,61 @@ static int	check_map(char **map)
 	return(0);
 }
 
-static int	check_end(char **map, int x, int y)
-{
-	if (map[y][x] == '1' || map[y][x] == 'X')
-		return(0);
-	if (map[y][x] == 'E')
-		map[y][x] = 'e';
-	else if (map[y][x] == 'C')
-		map[y][x] = 'c';
-	else if (map[y][x] == 'P')
-		map[y][x] = 'p';
-	else
-		map[y][x] = 'X';
-	check_end(map, ++x, y);
-	check_end(map, x - 2, y);
-	check_end(map, x, ++y);
-	check_end(map, x, y - 2);
-	return(0);
-}
-
-static int	ft_find_p(char **map, char c)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	x = 0;
-	while (map[y] != NULL)
-	{
-		x = 0;
-		while (map[y][x] != '\0')
-		{
-			if (map[y][x] == 'P')
-			{
-				if (c == 'x')
-					return (x);
-				if (c == 'y')
-					return (y);
-			}
-			x++;
-		}
-		y++;
-	}
-	return (0);
-}
-
+// Check error path
 static int	check_path(char **map)
 {
+	unsigned int i;
+	unsigned int a;
+
 	check_end(map, ft_find_p(map, 'x'), ft_find_p(map, 'y'));
-	return(2);
+	i = 0;
+	a = 0;
+	while (map[i][a] != '\0')
+	{
+		while(map[i][a] != '\0')
+		{
+			printf("%c", map[i][a]);
+			if (map[i][a] == 'E')
+			{
+				printf("Error: The character would never reach the exit.\n");
+				return (2);
+			}
+			if (map[i][a] == 'C')
+			{
+				printf("Error: The character would never reach the object.\n");
+				return (2);
+			}
+			a++;
+		}
+		printf("eeee %c", map[i][a]);
+		i++;
+	}
+	return(0);
 }
 
 int	check_error(t_program *program)
 {
 	//check_end(temp, ft_find_p(temp, 'x'), ft_find_p(temp, 'y'));
+	char **new_map;
+
 	if (program -> map[0] == NULL)
 		printf("Error\n");
 	if (check_map(program -> map) == 2)
 		printf("Error\n");
-	if (check_path(program -> map) == 2)
+	//mirar si hay dobleso no hay alguno
+	//printf("Error: A starting position 'P' is required.\n");
+	new_map = duplicate_map(program -> map);
+	if (check_path(new_map) == 2)
 		printf("Error\n");
 
+
+	printf("map[0] = %s\n", new_map[0]);
+	printf("map[1] = %s\n", new_map[1]);
+	printf("map[2] = %s\n", new_map[2]);
+	printf("map[3] = %s\n", new_map[3]);
+	printf("map[4] = %s\n\n", new_map[4]);
+
+	ft_free(new_map);
 	//- No existe algun objeto
 	//- Más de un objeto
 	//- NULL
