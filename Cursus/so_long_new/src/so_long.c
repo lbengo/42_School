@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 16:58:20 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:36:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int	main(int argc, char *argv[])
 		program.map_width = ft_map_lines(argv[1]); // alto de mapa
 		program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
 		if (check_error(&program) == 2)
-			return (0);
+		//	return (0);
 
 		printf("map[0] = %s\n", program.map[0]);
 		printf("map[1] = %s\n", program.map[1]);
 		printf("map[2] = %s\n", program.map[2]);
 		printf("map[3] = %s\n", program.map[3]);
 		printf("map[4] = %s\n", program.map[4]);
-		/* printf("map[5] = %s\n", program.map[5]);
+/* 		printf("map[5] = %s\n", program.map[5]);
 		printf("map[6] = %s\n", program.map[6]);
 		printf("map[7] = %s\n", program.map[7]);
 		printf("map[8] = %s\n", program.map[8]);

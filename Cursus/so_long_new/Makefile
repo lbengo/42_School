@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/13 08:57:06 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/14 12:32:51 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,8 +22,6 @@ CFLAGS         = -Wall -Werror -Wextra
 SRC_PATH      = ./src
 SRC           = so_long.c \
 				map.c \
-				texture.c \
-				move.c \
 				check_map.c
 
 OBJ_PATH      = ./obj

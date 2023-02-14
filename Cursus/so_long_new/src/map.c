@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 12:15:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/13 13:02:13 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/14 12:59:57 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ int	ft_map_lines(char *argv)
 	i = 0;
 	line = get_next_line(fd);
 	len = strlen_line(line);
-	while (line != NULL || len == strlen_line(line))
+	while (line != NULL)
 	{
 		free(line);
 		line = NULL;
 		line = get_next_line(fd);
-		if (len != strlen_line(line))
-			break ;
 		i++;
 	}
 	free (line);
@@ -64,7 +62,7 @@ char	**ft_matrix(int len, char *argv)
 	if (!map)
 		return (NULL);
 	i = 0;
-	while (i <= len)
+	while (i < len)
 	{
 		map[i] = get_next_line(fd);
 		map[i][strlen_line(map[i])] = '\0';
