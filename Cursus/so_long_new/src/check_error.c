@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 18:20:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:26:54 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// Check error map
+// Check error map rectangular
 static int	check_map_rectangular(char **map)
 {
 	int	i;
@@ -27,17 +27,12 @@ static int	check_map_rectangular(char **map)
 			printf("Error: The map must be rectangular.\n\n");
 			return (2);
 		}
-		if (map[i][0] != '1' || map[i][len - 1] != '1')
-		{
-			printf("Error: The map must be surrounded by walls.\n\n");
-			return (2);
-		}
 		i++;
 	}
 	return (0);
 }
 
-// Check error map
+// Check error map wall
 static int	check_map_wall(char **map)
 {
 	int	i;
@@ -46,7 +41,14 @@ static int	check_map_wall(char **map)
 	i = 0;
 	len = strlen_line(map[0]);
 	while (map[i] != NULL)
+	{
+		if (map[i][0] != '1' || map[i][len - 1] != '1')
+		{
+			printf("Error: The map must be surrounded by walls.\n\n");
+			return (2);
+		}
 		i++;
+	}
 	while (len-- > 0)
 	{
 		if (map[0][len] != '1' || map[i - 1][len] != '1')
@@ -69,7 +71,7 @@ static int	check_caract(char **map, char c)
 		printf("Error: Component '%c'is required.\n\n", c);
 		return (2);
 	}
-	if (caract > 1)
+	if (caract > 1 && c != 'C')
 	{
 		printf("Error: There is more than one component '%c'.\n\n", c); // TODO: CAMBIAR MENOS SI ES 'C'
 		return (2);
@@ -116,13 +118,15 @@ int	check_error(t_program *program)
 		printf("Error: Add map.\n\n");
 		return (2);
 	}
-	if (check_map_rectangular(program -> map) == 2)
+	// Check map
+	if (check_map_rectangular(program -> map) == 2 || check_map_wall
+		(program -> map) == 2)
 		return (2);
-	if (check_map_wall(program -> map) == 2)
-		return (2);
+	//Check caract
 	if (check_caract(program -> map, 'P') == 2 || check_caract
 		(program -> map, 'E') == 2 || check_caract(program -> map, 'C') == 2)
 		return (2);
+	// Check path
 	new_map = duplicate_map(program -> map);
 	if (check_path(new_map) == 2)
 		return (2);
