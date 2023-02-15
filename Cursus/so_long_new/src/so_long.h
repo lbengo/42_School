@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 14:07:12 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:19:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		check_error(t_program *program);
 int	check_end(char **map, int x, int y);
 int	ft_find_p(char **map, char c);
 char **duplicate_map(char **map);
+int	send_numb_caract(char **map, char c);
 
 
 /* ***************************** CONSTANTES ********************************* */

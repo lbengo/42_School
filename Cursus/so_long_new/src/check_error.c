@@ -6,17 +6,17 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 21:31:46 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/15 18:20:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // Check error map
-static int	check_map(char **map)
+static int	check_map_rectangular(char **map)
 {
-	unsigned int	i;
-	int				len;
+	int	i;
+	int	len;
 
 	i = 0;
 	len = strlen_line(map[0]);
@@ -27,7 +27,7 @@ static int	check_map(char **map)
 			printf("Error: The map must be rectangular.\n\n");
 			return (2);
 		}
-		if (map[0][a] != '1' || map[i][len - 1] != '1') // TODO: CAMBIAR PARA Q FUNCIONE CON 11112111
+		if (map[i][0] != '1' || map[i][len - 1] != '1')
 		{
 			printf("Error: The map must be surrounded by walls.\n\n");
 			return (2);
@@ -37,26 +37,25 @@ static int	check_map(char **map)
 	return (0);
 }
 
-static int	send_numb_caract(char **map, char c)
+// Check error map
+static int	check_map_wall(char **map)
 {
-	unsigned int	i;
-	unsigned int	a;
-	unsigned int	count;
+	int	i;
+	int	len;
 
 	i = 0;
-	count = 0;
+	len = strlen_line(map[0]);
 	while (map[i] != NULL)
-	{
-		a = 0;
-		while (map[i][a] != '\0')
-		{
-			if (map[i][a] == c)
-				count++;
-			a++;
-		}
 		i++;
+	while (len-- > 0)
+	{
+		if (map[0][len] != '1' || map[i - 1][len] != '1')
+		{
+			printf("Error: The map must be surrounded by walls.\n\n");
+			return (2);
+		}
 	}
-	return (count);
+	return (0);
 }
 
 // Check error caracter
@@ -117,7 +116,9 @@ int	check_error(t_program *program)
 		printf("Error: Add map.\n\n");
 		return (2);
 	}
-	if (check_map(program -> map) == 2)
+	if (check_map_rectangular(program -> map) == 2)
+		return (2);
+	if (check_map_wall(program -> map) == 2)
 		return (2);
 	if (check_caract(program -> map, 'P') == 2 || check_caract
 		(program -> map, 'E') == 2 || check_caract(program -> map, 'C') == 2)
@@ -129,4 +130,3 @@ int	check_error(t_program *program)
 	return (0);
 }
 	//- .xpm sale error
-	//- 1111111211
