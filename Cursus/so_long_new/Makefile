@@ -6,11 +6,11 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/14 14:08:12 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/16 10:48:17 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# gcc src/so_long.c src/check_error.c src/create_map.c src/check_error_utils.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
+# gcc src/so_long.c src/check_error.c src/create_map.c src/check_error_utils.c src/texture.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
@@ -23,7 +23,9 @@ SRC_PATH      = ./src
 SRC           = so_long.c \
 				create_map.c \
 				check_error.c \
-				check_error_utils.c
+				check_error_utils.c \
+				texture.c \
+				move.c
 
 OBJ_PATH      = ./obj
 OBJ           = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

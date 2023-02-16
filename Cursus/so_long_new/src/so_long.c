@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/14 20:02:48 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 10:47:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,34 @@ int	main(int argc, char *argv[])
 {
 	t_program	program;
 
-	// Función principal que conecta con el servidor gráfico del Mac y crear ventana
-
-	// return void *0 if failed
 	if (argc == 2)
 	{
+		// Función principal que conecta con el servidor gráfico del Mac y crear ventana
+		program.mlx = mlx_init();
+		if (program.mlx == NULL)
+			return(0);
 		program.map_width = ft_map_lines(argv[1]); // alto de mapa
 		program.map = ft_matrix(program.map_width, argv[1]); // matriz del mapa
 		if (check_error(&program) == 2)
-		//	return (0);
+		{
+			ft_free(program.map);
+			free(program.mlx);
+			return(0);
+		}
+		program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0])
+			* 80), ((program.map_width) * 80), "Pac Man");
+		if (program.win == NULL)
+		{
+			free(program.map);
+			free(program.mlx);
+			return(0);
+		}
+
+		ft_put_map(&program);
+		mlx_key_hook(program.win, *ft_input, &program);
+
+		// Bucle constante que mantiene detectado los eventos
+		mlx_loop(program.mlx);
 		ft_free(program.map);
 	}
 	return (0);

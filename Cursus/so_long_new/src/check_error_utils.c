@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:47:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 18:21:21 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 08:11:52 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	check_end(char **map, int x, int y)
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return (0);
 	map[y][x] = 'X';
-	check_end(map, ++x, y);
-	check_end(map, x - 2, y);
-	check_end(map, x, ++y);
-	check_end(map, x, y - 2);
+	check_end(map, x + 1, y);
+	check_end(map, x - 1, y);
+	check_end(map, x, y + 1);
+	check_end(map, x, y - 1);
 	return (0);
 }
 
