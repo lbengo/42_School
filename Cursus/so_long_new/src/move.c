@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 09:32:20 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:51:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,29 +58,42 @@ static int	ft_move(t_program program, char letter)
 		return (0);
 	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
-	img = mlx_xpm_file_to_image(program.mlx, PACMAN, &img_width, &img_height);
+	/* if (letter == 'r')
+		img = mlx_xpm_file_to_image(program.mlx, PACMANR, &img_width, &img_height);
+	else if (letter == 'l')
+		img = mlx_xpm_file_to_image(program.mlx, PACMANL, &img_width, &img_height);
+	else if (letter == 'd')
+		img = mlx_xpm_file_to_image(program.mlx, PACMAND, &img_width, &img_height);
+	else if (letter == 'u') */
+		img = mlx_xpm_file_to_image(program.mlx, PACMANU, &img_width, &img_height);
 	ft_move_p(program, img, &x, &y, letter);
 	return (0);
 }
 
 int	ft_input(int key, t_program *program)
 {
-	if (key == 53)
-	{
-		mlx_destroy_window(program -> mlx, program -> win);
-		ft_free(program -> map);
-		free(program -> mlx);
-		exit(0);
-	}
-	else if (key == 0) // left
-		ft_move(*program, 'l');
-	else if (key == 2) // right
-		ft_move(*program, 'r');
-	else if (key == 1) // down
-		ft_move(*program, 'd');
-	else if (key == 13) // up
-		ft_move(*program, 'u');
+	static unsigned int i;
 
-	printf("Number press %d\n", key);
+	if(!i)
+		i = 0;
+	if (key == 53 || key == 0 || key == 2 || key == 1 || key == 13)
+	{
+		if (key == 53)
+		{
+			mlx_destroy_window(program -> mlx, program -> win);
+			ft_free(program -> map);
+			free(program -> mlx);
+			exit(0);
+		}
+		else if (key == 0) // left
+			ft_move(*program, 'l');
+		else if (key == 2) // right
+			ft_move(*program, 'r');
+		else if (key == 1) // down
+			ft_move(*program, 'd');
+		else if (key == 13) // up
+			ft_move(*program, 'u');
+		printf("Movement number %d || Number press %d\n", i++, key);
+	}
 	return (0);
 }

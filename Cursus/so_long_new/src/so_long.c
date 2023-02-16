@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 10:47:14 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:55:38 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char *argv[])
 		}
 
 		ft_put_map(&program);
-		mlx_key_hook(program.win, *ft_input, &program);
+		//mlx_key_hook(program.win, *ft_input, &program);
 
 		// Bucle constante que mantiene detectado los eventos
 		mlx_loop(program.mlx);

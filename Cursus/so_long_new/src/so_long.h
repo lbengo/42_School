@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 10:48:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 13:49:38 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ int	send_numb_caract(char **map, char c);
 
 /* ***************************** CONSTANTES ********************************* */
 
-# define PACMAN "textures/Pacman.xpm"
 # define SPACE "textures/Space.xpm"
 # define WALL "textures/Wall.xpm"
 # define GHOST "textures/Ghost.xpm"
 # define FOOD "textures/Food.xpm"
+# define PACMANL "textures/PacmanL.xpm"
+# define PACMANR "textures/PacmanR.xpm"
+# define PACMAND "textures/PacmanD.xpm"
+# define PACMANU "textures/PacmanU.xpm"
 
 #endif

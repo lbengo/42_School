@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/16 10:48:17 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/16 10:50:32 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	make -C get_next_line
+	make -C minilibx
 	$(CC) $^ $(GNL_A) $(MLX_H) -o $@
 
 $(OBJ_PATH):
