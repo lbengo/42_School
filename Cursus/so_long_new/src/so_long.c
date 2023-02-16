@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 14:03:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:36:12 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,13 @@ int	main(int argc, char *argv[])
 			free(program.mlx);
 			return(0);
 		}
-
-		ft_put_map(&program);
+		if (ft_put_map(&program) == 2)
+		{
+			printf("Error: Corrupt .xpm\n\n");
+			free(program.map);
+			free(program.mlx);
+			return (0);
+		}
 		mlx_key_hook(program.win, *ft_input, &program);
 
 		// Bucle constante que mantiene detectado los eventos

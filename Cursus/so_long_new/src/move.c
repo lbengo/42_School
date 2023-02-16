@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 14:22:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/16 17:08:08 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ static int	ft_move(t_program program, char letter)
 	}
 	if (ft_check_wall(program, x, y, letter) == 1)
 		return (0);
+	if (program.map[y][x] == 'C')
+		program.map[y][x] = '0';
 	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
 	if (letter == 'r' || letter == 'l')
@@ -99,7 +101,7 @@ int	ft_input(int key, t_program *program)
 
 	if (!i)
 		i = 0;
-	if (key == 53 || key == 0 || key == 2 || key == 1 || key == 13)
+	if (key == 123 || key == 124 || key == 125 || key == 126 || key == 53)
 	{
 		if (key == 53)
 		{
