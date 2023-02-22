@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 08:05:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:17:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ int	ft_input(int key, t_program *program)
 			ft_move(*program, 'd');
 		else if (key == 126) // up
 			ft_move(*program, 'u');
-		printf("finderror = %d", program -> find_error);
 		printf("Movement number %d || Number press %d\n", i++, key);
 	}
 	return (0);
