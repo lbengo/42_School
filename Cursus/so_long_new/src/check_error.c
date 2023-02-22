@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/15 18:26:54 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:09:15 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,12 @@ int	check_error(t_program *program)
 		printf("Error: Add map.\n\n");
 		return (2);
 	}
+	//Check .xpm
+	if (check_img(program, FOOD) == 2 || check_img(program, GHOST) == 2
+		|| check_img(program, SPACE) == 2 || check_img(program, WALL) == 2
+		|| check_img(program, PACMAND) == 2 || check_img(program, PACMANL) == 2
+		|| check_img(program, PACMANR) == 2 || check_img(program, PACMANU) == 2)
+		return (2);
 	// Check map
 	if (check_map_rectangular(program -> map) == 2 || check_map_wall
 		(program -> map) == 2)
@@ -133,4 +139,3 @@ int	check_error(t_program *program)
 	ft_free(new_map);
 	return (0);
 }
-	//- .xpm sale error

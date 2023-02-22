@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 07:46:53 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:05:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ static int	ft_move_p(t_program program, int *x, int *y, char letter)
 
 	img = mlx_xpm_file_to_image(program.mlx, ft_p_direct(letter), &img_width,
 				&img_height);
-	if (!img)
-		return (2);
 	if (letter == 'l')
 		mlx_put_image_to_window(program.mlx, program.win, img, ((--(*x)) * 80),
 			(*y * 80));
@@ -56,7 +54,7 @@ static int	ft_check_wall(t_program program, int x, int y, char letter)
 {
 	if (letter == 'l' && program.map[y][x - 1] == '1')
 		return (1);
-	else if (letter == 'r' &&  ,program.map[y][x + 1] == '1')
+	else if (letter == 'r' && program.map[y][x + 1] == '1')
 		return (1);
 	else if (letter == 'd' && program.map[y + 1][x] == '1')
 		return (1);
@@ -84,19 +82,16 @@ static int	ft_move(t_program program, char letter)
 		program.map[y][x] = '0';
 	img = mlx_xpm_file_to_image(program.mlx, SPACE, &img_width, &img_height);
 	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
-	if (ft_move_p(program, &x, &y, letter) == 2)
-		return (2);
+	ft_move_p(program, &x, &y, letter);
 	return (0);
 }
 
 int	ft_input(int key, t_program *program)
 {
 	static unsigned int	i;
-	unsigned int find_error;
 
 	if (!i)
 		i = 0;
-	find_error = 0;
 	if (key == 123 || key == 124 || key == 125 || key == 126 || key == 53)
 	{
 		if (key == 53)
@@ -107,15 +102,15 @@ int	ft_input(int key, t_program *program)
 			exit(0);
 		}
 		else if (key == 123) // left
-			find_error = ft_move(*program, 'l');
+			ft_move(*program, 'l');
 		else if (key == 124) // right
-			find_error = ft_move(*program, 'r');
+			ft_move(*program, 'r');
 		else if (key == 125) // down
-			find_error = ft_move(*program, 'd');
+			ft_move(*program, 'd');
 		else if (key == 126) // up
-			find_error = ft_move(*program, 'u');
+			ft_move(*program, 'u');
+		printf("finderror = %d", program -> find_error);
 		printf("Movement number %d || Number press %d\n", i++, key);
 	}
-	printf("q es i=%d", find_error);
-	return (find_error);
+	return (0);
 }

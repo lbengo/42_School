@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:47:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 08:11:52 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:08:30 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,20 @@ int	send_numb_caract(char **map, char c)
 		i++;
 	}
 	return (count);
+}
+
+int	check_img(t_program *program, char *img)
+{
+	void	*img_check;
+	int		img_height;
+	int		img_width;
+
+	img_check = mlx_xpm_file_to_image(program -> mlx, img, &img_width,
+			&img_height);
+	if (!img_check)
+	{
+		printf("Error: Corrupt .xpm\n\n");
+		return (2);
+	}
+	return (0);
 }

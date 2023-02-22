@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/21 11:26:11 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:12:28 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char *argv[])
 			free(program.mlx);
 			return(0);
 		}
+
 		program.win = mlx_new_window(program.mlx, (strlen_line(program.map[0])
 			* 80), ((program.map_width) * 80), "Pac Man");
 		if (program.win == NULL)
@@ -51,20 +52,9 @@ int	main(int argc, char *argv[])
 			free(program.mlx);
 			return(0);
 		}
-		if (ft_put_map(&program) == 2)
-		{
-			printf("Error: Corrupt .xpm\n\n");
-			free(program.map);
-			free(program.mlx);
-			return (0);
-		}
-		if (mlx_key_hook(program.win, *ft_input, &program) == 2)
-		{
-			printf("Error: Corrupt .xpm\n\n");
-			free(program.map);
-			free(program.mlx);
-			return (0);
-		}
+		ft_put_map(&program);
+		mlx_key_hook(program.win, *ft_input, &program);
+
 		// Bucle constante que mantiene detectado los eventos
 		mlx_loop(program.mlx);
 		ft_free(program.map);

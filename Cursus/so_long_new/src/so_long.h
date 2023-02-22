@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/16 13:49:38 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:15:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_program {
 	void	*win; // identificador de la nueva ventana
 	char	**map;
 	int		map_width;
+	int		find_error;
 }			t_program;
 
 /* ***************************** FUNCIONES ********************************** */
@@ -35,16 +36,15 @@ typedef struct s_program {
 char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
-int		ft_put_map(t_program *program);
+void	ft_put_map(t_program *program);
 int		ft_input(int key, t_program *program);
 void	ft_free(char **map);
-int		search_c(char **area, int width);
 int		check_error(t_program *program);
-int	check_end(char **map, int x, int y);
-int	ft_find_p(char **map, char c);
-char **duplicate_map(char **map);
-int	send_numb_caract(char **map, char c);
-
+int		check_end(char **map, int x, int y);
+int		ft_find_p(char **map, char c);
+char	**duplicate_map(char **map);
+int		send_numb_caract(char **map, char c);
+int		check_img(t_program *program, char *img);
 
 /* ***************************** CONSTANTES ********************************* */
 
