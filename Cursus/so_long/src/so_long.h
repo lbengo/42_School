@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 09:15:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:02:20 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		check_img(t_program *program, char *img);
 # define WALL "textures/Wall.xpm"
 # define GHOST "textures/Ghost.xpm"
 # define FOOD "textures/Food.xpm"
+# define EXIT "textures/Exit.xpm"
 # define PACMANL "textures/PacmanL.xpm"
 # define PACMANR "textures/PacmanR.xpm"
 # define PACMAND "textures/PacmanD.xpm"

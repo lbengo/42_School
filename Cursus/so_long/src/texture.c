@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:58:08 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 09:11:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:02:49 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static void	ft_find_texture(t_program *program, char fig, int x, int y)
 		ft_put_image(program, WALL, x, y);
 	else if (fig == 'C')
 		ft_put_image(program, FOOD, x, y);
-	else if (fig == 'E')
-		ft_put_image(program, GHOST, x, y);
+/* 	else if (fig == 'E')
+		ft_put_image(program, GHOST, x, y); */
 	else if (fig == 'P')
 		ft_put_image(program, PACMANR, x, y);
 }
