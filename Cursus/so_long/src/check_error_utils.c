@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:47:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 09:08:30 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:29:39 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,29 @@ int	send_numb_caract(char **map, char c)
 	return (count);
 }
 
-int	check_img(t_program *program, char *img)
+int	find_c_path (char **new_map)
+{
+	unsigned int	i;
+	unsigned int	a;
+	
+	i = 0;
+	while (new_map[i] != NULL)
+	{
+		a = 0;
+		while (new_map[i][a] != '\0')
+		{
+			if (new_map[i][a] == 'E')
+				return (1);
+			if (new_map[i][a] == 'C')
+				return (2);
+			a++;
+		}
+		i++;	
+	}
+	return (0);
+}
+
+/* int	check_img(t_program *program, char *img)
 {
 	void	*img_check;
 	int		img_height;
@@ -108,4 +130,10 @@ int	check_img(t_program *program, char *img)
 		return (2);
 	}
 	return (0);
-}
+} */
+
+/* 	if (check_img(program, FOOD) == 2 || check_img(program, GHOST) == 2
+		|| check_img(program, SPACE) == 2 || check_img(program, WALL) == 2
+		|| check_img(program, PACMAND) == 2 || check_img(program, PACMANL) == 2
+		|| check_img(program, PACMANR) == 2 || check_img(program, PACMANU) == 2)
+		return (2); */

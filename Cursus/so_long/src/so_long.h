@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 17:02:20 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:29:48 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ int		strlen_line(char *line);
 void	ft_put_map(t_program *program);
 int		ft_input(int key, t_program *program);
 void	ft_free(char **map);
-int		check_error(t_program *program);
+int		check_error(char **map);
 int		check_end(char **map, int x, int y);
 int		ft_find_p(char **map, char c);
 char	**duplicate_map(char **map);
 int		send_numb_caract(char **map, char c);
-int		check_img(t_program *program, char *img);
+int		find_c_path (char **new_map);
+/* int		check_img(t_program *program, char *img); */
 
 /* ***************************** CONSTANTES ********************************* */
 

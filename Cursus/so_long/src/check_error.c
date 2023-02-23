@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 09:09:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 10:37:50 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	check_caract(char **map, char c)
 	}
 	if (caract > 1 && c != 'C')
 	{
-		printf("Error: There is more than one component '%c'.\n\n", c); // TODO: CAMBIAR MENOS SI ES 'C'
+		printf("Error: There is more than one component '%c'.\n\n", c);
 		return (2);
 	}
 	return (0);
@@ -82,60 +82,42 @@ static int	check_caract(char **map, char c)
 // Check error path
 static int	check_path(char **map)
 {
-	unsigned int	i;
-	unsigned int	a;
-
-	check_end(map, ft_find_p(map, 'x'), ft_find_p(map, 'y'));
-	i = 0;
-	while (map[i] != NULL)
-	{
-		a = 0;
-		while (map[i][a] != '\0')
-		{
-			if (map[i][a] == 'E')
-			{
-				printf("Error: The character would never reach the exit.\n\n");
-				return (2);
-			}
-			if (map[i][a] == 'C')
-			{
-				printf("Error: The character would never reach the object.\n\n");
-				return (2);
-			}
-			a++;
-		}
-		i++;
+	char			**new_map;
+	unsigned int	error;
+	
+	new_map = duplicate_map(map);
+	check_end(new_map, ft_find_p(new_map, 'x'), ft_find_p(new_map, 'y'));
+	error = find_c_path(new_map);
+	ft_free(new_map);
+	if (error == 1 || error == 2)
+	{	
+		if (error == 1)
+			printf("Error: The character would never reach the exit.\n\n");
+		else
+			printf("Error: The character would never reach the object.\n\n");
+		
+		return (2);
 	}
 	return (0);
 }
 
-int	check_error(t_program *program)
-{
-	char	**new_map;
 
-	if (program -> map[0] == NULL)
+int	check_error(char **map)
+{
+	if (map[0] == NULL)
 	{
 		printf("Error: Add map.\n\n");
 		return (2);
 	}
-	//Check .xpm
-	if (check_img(program, FOOD) == 2 || check_img(program, GHOST) == 2
-		|| check_img(program, SPACE) == 2 || check_img(program, WALL) == 2
-		|| check_img(program, PACMAND) == 2 || check_img(program, PACMANL) == 2
-		|| check_img(program, PACMANR) == 2 || check_img(program, PACMANU) == 2)
-		return (2);
 	// Check map
-	if (check_map_rectangular(program -> map) == 2 || check_map_wall
-		(program -> map) == 2)
+	if (check_map_rectangular(map) == 2 || check_map_wall (map) == 2)
 		return (2);
 	//Check caract
-	if (check_caract(program -> map, 'P') == 2 || check_caract
-		(program -> map, 'E') == 2 || check_caract(program -> map, 'C') == 2)
+	if (check_caract(map, 'P') == 2 || check_caract(map, 'E') == 2 
+		|| check_caract(map, 'C') == 2)
 		return (2);
 	// Check path
-	new_map = duplicate_map(program -> map);
-	if (check_path(new_map) == 2)
-		return (2);
-	ft_free(new_map);
+	if (check_path(map) == 2)
+		return(2);
 	return (0);
 }
