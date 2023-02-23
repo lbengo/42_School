@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 15:15:29 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 20:09:33 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static int	ft_move_p(t_program program, int *x, int *y, char letter)
 	else if (letter == 'd')
 		mlx_put_image_to_window(program.mlx, program.win, img, (*x * 80),
 			(++(*y)) * 80);
-	else if (letter == 'u')
+	else
 		mlx_put_image_to_window(program.mlx, program.win, img, (*x * 80),
 			(--(*y)) * 80);
 	return (0);
@@ -86,7 +86,7 @@ static int	ft_move(t_program program, char letter)
 	return (0);
 }
 
-int	ft_input(int key, t_program *program)
+int	ft_input(int key, t_program program)
 {
 	static unsigned int	i;
 
@@ -95,20 +95,15 @@ int	ft_input(int key, t_program *program)
 	if (key == 123 || key == 124 || key == 125 || key == 126 || key == 53)
 	{
 		if (key == 53)
-		{
-			mlx_destroy_window(program -> mlx, program -> win);
-			ft_free(program -> map);
-			free(program -> mlx);
-			exit(0);
-		}
+			ft_close(program);
 		else if (key == 123) // left
-			ft_move(*program, 'l');
+			ft_move(program, 'l');
 		else if (key == 124) // right
-			ft_move(*program, 'r');
+			ft_move(program, 'r');
 		else if (key == 125) // down
-			ft_move(*program, 'd');
+			ft_move(program, 'd');
 		else if (key == 126) // up
-			ft_move(*program, 'u');
+			ft_move(program, 'u');
 		printf("Movement number %d || Number press %d\n", i++, key);
 	}
 	return (0);

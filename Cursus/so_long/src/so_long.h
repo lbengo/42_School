@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 10:29:48 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/02/23 20:05:20 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ typedef struct s_program {
 	void	*mlx; // resultado de la función principal que conecta con el servidor gráfico
 	void	*win; // identificador de la nueva ventana
 	char	**map;
-	int		map_width;
-	int		find_error;
+	int		width;
 }			t_program;
 
 /* ***************************** FUNCIONES ********************************** */
@@ -37,7 +36,7 @@ char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
 void	ft_put_map(t_program *program);
-int		ft_input(int key, t_program *program);
+int		ft_input(int key, t_program program);
 void	ft_free(char **map);
 int		check_error(char **map);
 int		check_end(char **map, int x, int y);
@@ -45,6 +44,8 @@ int		ft_find_p(char **map, char c);
 char	**duplicate_map(char **map);
 int		send_numb_caract(char **map, char c);
 int		find_c_path (char **new_map);
+int	ft_close(t_program program);
+
 /* int		check_img(t_program *program, char *img); */
 
 /* ***************************** CONSTANTES ********************************* */

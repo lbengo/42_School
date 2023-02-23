@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:58:08 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 17:02:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/23 11:24:52 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	check_img(t_program *program, char *img)
+{
+	void	*img_check;
+	int		img_height;
+	int		img_width;
+
+	img_check = mlx_xpm_file_to_image(program -> mlx, img, &img_width,
+			&img_height);
+	if (!img_check)
+	{
+		printf("Error: Corrupt .xpm\n\n");
+		ft_close(program);
+	}
+	return (0);
+}
 
 static void	ft_put_image(t_program *program, char *fig, int x, int y)
 {
@@ -19,6 +35,11 @@ static void	ft_put_image(t_program *program, char *fig, int x, int y)
 	int		img_height;
 
 	img = mlx_xpm_file_to_image(program -> mlx, fig, &img_width, &img_height); // lee la imagen que hayas añadido
+	if (!img)
+	{
+		printf("Error: Corrupt .xpm\n\n");
+		ft_close(program);
+	}
 	mlx_put_image_to_window(program -> mlx, program -> win, img, x, y); // pone la imagen en la ventana en la posición que quieras
 }
 
