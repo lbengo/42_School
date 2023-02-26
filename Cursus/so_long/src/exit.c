@@ -6,24 +6,24 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:16:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/22 16:52:16 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/24 19:20:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int	find_c(t_program program)
+int	find_c(char **map)
 {
 	unsigned int	i;
 	unsigned int	a;
 
 	i = 0;
-	while (program.map[i] != NULL)
+	while (map[i] != NULL)
 	{
 		a = 0;
-		while (program.map[i][a] != '\0')
+		while (map[i][a] != '\0')
 		{
-			if (program.map[i][a] == 'C')
+			if (map[i][a] == 'C')
 				return (1);
 			a++;
 		}
@@ -32,11 +32,18 @@ static int	find_c(t_program program)
 	return (0);
 }
 
-int	ft_exit(t_program program)
+void	ft_exit(t_program *program, int x, int y, char letter)
 {
-	if (find_c(&program) == 1)
-		return (0);
-	img = mlx_xpm_file_to_image(program.mlx, EXIT, &img_width, &img_height);
-	mlx_put_image_to_window(program.mlx, program.win, img, (x * 80), (y * 80));
-	return (1);
+	if (letter == 'l' && program->map[y][x - 1] == 'E' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'r' && program->map[y][x + 1] == '1' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'd' && program->map[y + 1][x] == '1' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'u' && program->map[y - 1][x] == '1' &&
+		find_c(program->map) == 0)
+		ft_close(program);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 20:05:20 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/02/24 19:24:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ char	**ft_matrix(int len, char *argv);
 int		ft_map_lines(char *argv);
 int		strlen_line(char *line);
 void	ft_put_map(t_program *program);
-int		ft_input(int key, t_program program);
+int		ft_input(int key, t_program *program);
 void	ft_free(char **map);
 int		check_error(char **map);
 int		check_end(char **map, int x, int y);
 int		ft_find_p(char **map, char c);
 char	**duplicate_map(char **map);
 int		send_numb_caract(char **map, char c);
-int		find_c_path (char **new_map);
-int	ft_close(t_program program);
-
-/* int		check_img(t_program *program, char *img); */
+int		find_c_path(char **new_map);
+int		ft_close(t_program *program);
+void	ft_exit(t_program *program, int x, int y, char letter);
+int		find_c(char **map);
 
 /* ***************************** CONSTANTES ********************************* */
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:47:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 11:31:26 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/02/24 19:21:35 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 int	check_end(char **map, int x, int y)
 {
-	if (map[y][x] == '1' || map[y][x] == 'X')
+	if (map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'F')
 		return (0);
+	if (map[y][x] == 'E' )
+	{
+		map[y][x] = 'e';
+		return (0);
+	}
 	map[y][x] = 'X';
 	check_end(map, x + 1, y);
 	check_end(map, x - 1, y);
@@ -94,11 +99,11 @@ int	send_numb_caract(char **map, char c)
 	return (count);
 }
 
-int	find_c_path (char **new_map)
+int	find_c_path(char **new_map)
 {
 	unsigned int	i;
 	unsigned int	a;
-	
+
 	i = 0;
 	while (new_map[i] != NULL)
 	{
@@ -111,7 +116,7 @@ int	find_c_path (char **new_map)
 				return (2);
 			a++;
 		}
-		i++;	
+		i++;
 	}
 	return (0);
 }

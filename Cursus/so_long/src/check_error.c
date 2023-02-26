@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 20:01:21 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/02/24 19:22:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,23 +84,21 @@ static int	check_path(char **map)
 {
 	char			**new_map;
 	unsigned int	error;
-	
+
 	new_map = duplicate_map(map);
 	check_end(new_map, ft_find_p(new_map, 'x'), ft_find_p(new_map, 'y'));
 	error = find_c_path(new_map);
 	ft_free(new_map);
 	if (error == 1 || error == 2)
-	{	
+	{
 		if (error == 1)
 			printf("Error: The character would never reach the exit.\n\n");
 		else
 			printf("Error: The character would never reach the object.\n\n");
-		
 		return (1);
 	}
 	return (0);
 }
-
 
 int	check_error(char **map)
 {
@@ -113,7 +111,7 @@ int	check_error(char **map)
 	if (check_map_rectangular(map) == 1 || check_map_wall (map) == 1)
 		return (1);
 	//Check caract
-	if (check_caract(map, 'P') == 1 || check_caract(map, 'E') == 1 
+	if (check_caract(map, 'P') == 1 || check_caract(map, 'E') == 1
 		|| check_caract(map, 'C') == 1)
 		return (1);
 	// Check path

@@ -3,30 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:58:08 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/23 11:24:52 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/02/24 19:20:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int	check_img(t_program *program, char *img)
-{
-	void	*img_check;
-	int		img_height;
-	int		img_width;
-
-	img_check = mlx_xpm_file_to_image(program -> mlx, img, &img_width,
-			&img_height);
-	if (!img_check)
-	{
-		printf("Error: Corrupt .xpm\n\n");
-		ft_close(program);
-	}
-	return (0);
-}
 
 static void	ft_put_image(t_program *program, char *fig, int x, int y)
 {
@@ -45,15 +29,16 @@ static void	ft_put_image(t_program *program, char *fig, int x, int y)
 
 static void	ft_find_texture(t_program *program, char fig, int x, int y)
 {
-
 	if (fig == '0')
 		ft_put_image(program, SPACE, x, y);
 	else if (fig == '1')
 		ft_put_image(program, WALL, x, y);
 	else if (fig == 'C')
 		ft_put_image(program, FOOD, x, y);
-/* 	else if (fig == 'E')
-		ft_put_image(program, GHOST, x, y); */
+	else if (fig == 'E')
+		ft_put_image(program, EXIT, x, y);
+	else if (fig == 'F')
+		ft_put_image(program, EXIT, x, y);
 	else if (fig == 'P')
 		ft_put_image(program, PACMANR, x, y);
 }
