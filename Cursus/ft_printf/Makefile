@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/28 18:52:02 by lbengoec          #+#    #+#              #
-#    Updated: 2022/11/09 08:43:50 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/26 13:51:20 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ MANDATORY_SRC = ft_printf.c \
 				ft_strlen.c \
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 INCLUDE = ft_printf.h
 
