@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/24 19:24:53 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 09:55:12 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ int		find_c_path(char **new_map);
 int		ft_close(t_program *program);
 void	ft_exit(t_program *program, int x, int y, char letter);
 int		find_c(char **map);
+void	ft_ghost(t_program *program, int x, int y, char letter);
+void	find_ghost(t_program *program);
 
 /* ***************************** CONSTANTES ********************************* */
 
 # define SPACE "textures/Space.xpm"
 # define WALL "textures/Wall.xpm"
 # define GHOST "textures/Ghost.xpm"
+# define GHOSTV "textures/Ghostv.xpm"
 # define FOOD "textures/Food.xpm"
 # define EXIT "textures/Exit.xpm"
 # define PACMANL "textures/PacmanL.xpm"

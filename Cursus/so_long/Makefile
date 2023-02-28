@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/24 18:38:20 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/28 09:32:10 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRC           = so_long.c \
 				check_error_utils.c \
 				texture.c \
 				move.c \
-				exit.c
+				exit.c \
+				ghost.c
 
 OBJ_PATH      = ./obj
 OBJ           = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
