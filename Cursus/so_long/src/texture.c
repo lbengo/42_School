@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 09:58:08 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 09:37:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:18:56 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_put_image(t_program *program, char *fig, int x, int y)
 	img = mlx_xpm_file_to_image(program -> mlx, fig, &img_width, &img_height); // lee la imagen que hayas añadido
 	if (!img)
 	{
-		printf("Error: Corrupt .xpm\n\n");
+		ft_printf("Error: Corrupt .xpm\n\n");
 		ft_close(program);
 	}
 	mlx_put_image_to_window(program -> mlx, program -> win, img, x, y); // pone la imagen en la ventana en la posición que quieras

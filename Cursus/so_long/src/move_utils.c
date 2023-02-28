@@ -1,16 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   move_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 15:16:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 09:40:45 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:59:30 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+char	*pacman_direction(char letter)
+{
+	char	*path;
+
+	if (letter == 'l')
+		path = PACMANL;
+	else if (letter == 'r')
+		path = PACMANR;
+	else if (letter == 'd')
+		path = PACMAND;
+	else
+		path = PACMANU;
+	return (path);
+}
 
 int	find_c(char **map)
 {

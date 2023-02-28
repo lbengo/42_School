@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:31:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 10:43:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:18:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	change_ghost(t_program *program, unsigned int i, unsigned int a)
 	img = mlx_xpm_file_to_image(program->mlx, GHOSTV, &img_width, &img_height);
 	if (!img)
 	{
-		printf("Error: Corrupt .xpm\n\n");
+		ft_printf("Error: Corrupt .xpm\n\n");
 		ft_close(program);
 	}
 	mlx_put_image_to_window(program->mlx, program->win, img, (a * 80),

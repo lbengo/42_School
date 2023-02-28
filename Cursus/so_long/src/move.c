@@ -6,26 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 10:57:28 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:18:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static char	*pacman_direction(char letter)
-{
-	char	*path;
-
-	if (letter == 'l')
-		path = PACMANL;
-	else if (letter == 'r')
-		path = PACMANR;
-	else if (letter == 'd')
-		path = PACMAND;
-	else
-		path = PACMANU;
-	return (path);
-}
 
 static int	print_pacman(t_program *program, int *x, int *y, char letter)
 {
@@ -33,11 +18,11 @@ static int	print_pacman(t_program *program, int *x, int *y, char letter)
 	int		img_height;
 	int		img_width;
 
-	img = mlx_xpm_file_to_image(program->mlx, pacman_direction(letter), &img_width,
-			&img_height);
+	img = mlx_xpm_file_to_image(program->mlx, pacman_direction(letter),
+	 &img_width, &img_height);
 	if (!img)
 	{
-		printf("Error: Corrupt .xpm\n\n");
+		ft_printf("Error: Corrupt .xpm\n\n");
 		ft_close(program);
 	}
 	if (letter == 'l')
@@ -140,7 +125,7 @@ int	ft_input(int key, t_program *program)
 		else if (key == 126) // up
 			check_move = ft_move(program, 'u');
 		if (check_move == 0)
-			printf("Movement number %d || Number press %d\n", i++, key);
+			ft_printf("Movement number %d || Number press %d\n", i++, key);
 	}
 	return (0);
 }

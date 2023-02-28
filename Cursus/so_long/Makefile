@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/28 10:46:38 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/28 11:15:46 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,9 @@ MLX_H         = -L minilibx -lmlx -framework OpenGL -framework AppKit
 GNL_PATH      = ./get_next_line
 GNL_A         = $(GNL_PATH)/get_next_line.a
 
+PRINTF_PATH      = ./ft_printf
+PRINTF_A         = $(PRINTF_PATH)/ft_printf.a
+
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
@@ -50,8 +53,9 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C get_next_line
+	make -C ft_printf
 	make -C minilibx
-	$(CC) $^ $(GNL_A) $(MLX_H) -o $@
+	$(CC) $^ $(GNL_A) $(PRINTF_A) $(MLX_H) -o $@
 
 $(OBJ_PATH):
 	mkdir $@

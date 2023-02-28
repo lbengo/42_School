@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 09:55:12 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:14:35 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include "../minilibx/mlx.h" // Librería minilibx
 # include "../get_next_line/get_next_line.h" // Librería gnl
+# include "../ft_printf/ft_printf.h" // Librería printf
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h> // Librería que gestiona la función open
@@ -49,6 +50,7 @@ void	ft_exit(t_program *program, int x, int y, char letter);
 int		find_c(char **map);
 void	ft_ghost(t_program *program, int x, int y, char letter);
 void	find_ghost(t_program *program);
+char	*pacman_direction(char letter);
 
 /* ***************************** CONSTANTES ********************************* */
 

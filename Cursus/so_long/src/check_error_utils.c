@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 13:47:35 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 10:42:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:17:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,25 +121,3 @@ int	find_c_path(char **new_map)
 	}
 	return (0);
 }
-
-/* int	check_img(t_program *program, char *img)
-{
-	void	*img_check;
-	int		img_height;
-	int		img_width;
-
-	img_check = mlx_xpm_file_to_image(program -> mlx, img, &img_width,
-			&img_height);
-	if (!img_check)
-	{
-		printf("Error: Corrupt .xpm\n\n");
-		return (2);
-	}
-	return (0);
-} */
-
-/* 	if (check_img(program, FOOD) == 2 || check_img(program, GHOST) == 2
-		|| check_img(program, SPACE) == 2 || check_img(program, WALL) == 2
-		|| check_img(program, PACMAND) == 2 || check_img(program, PACMANL) == 2
-		|| check_img(program, PACMANR) == 2 || check_img(program, PACMANU) == 2)
-		return (2); */

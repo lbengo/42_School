@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/24 19:22:10 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:18:19 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	check_map_rectangular(char **map)
 	{
 		if (len != strlen_line(map[i]))
 		{
-			printf("Error: The map must be rectangular.\n\n");
+			ft_printf("Error: The map must be rectangular.\n\n");
 			return (1);
 		}
 		i++;
@@ -44,7 +44,7 @@ static int	check_map_wall(char **map)
 	{
 		if (map[i][0] != '1' || map[i][len - 1] != '1')
 		{
-			printf("Error: The map must be surrounded by walls.\n\n");
+			ft_printf("Error: The map must be surrounded by walls.\n\n");
 			return (1);
 		}
 		i++;
@@ -68,7 +68,7 @@ static int	check_caract(char **map, char c)
 	caract = send_numb_caract(map, c);
 	if (caract == 0)
 	{
-		printf("Error: Component '%c'is required.\n\n", c);
+		ft_printf("Error: Component '%c'is required.\n\n", c);
 		return (1);
 	}
 	if (caract > 1 && c != 'C')
@@ -92,9 +92,9 @@ static int	check_path(char **map)
 	if (error == 1 || error == 2)
 	{
 		if (error == 1)
-			printf("Error: The character would never reach the exit.\n\n");
+			ft_printf("Error: The character would never reach the exit.\n\n");
 		else
-			printf("Error: The character would never reach the object.\n\n");
+			ft_printf("Error: The character would never reach the object.\n\n");
 		return (1);
 	}
 	return (0);
@@ -104,7 +104,7 @@ int	check_error(char **map)
 {
 	if (map[0] == NULL)
 	{
-		printf("Error: Add map.\n\n");
+		ft_printf("Error: Add map.\n\n");
 		return (1);
 	}
 	// Check map
