@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 11:14:35 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:25:52 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "../minilibx/mlx.h" // Librería minilibx
-# include "../get_next_line/get_next_line.h" // Librería gnl
-# include "../ft_printf/ft_printf.h" // Librería printf
-# include <stdio.h>
+# include "../minilibx/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
 # include <unistd.h>
-# include <fcntl.h> // Librería que gestiona la función open
+# include <fcntl.h>
 
 /* **************************** ESTRUCTURAS ********************************* */
 
 typedef struct s_program {
-	void	*mlx; // resultado de la función principal que conecta con el servidor gráfico
-	void	*win; // identificador de la nueva ventana
+	void	*mlx;
+	void	*win;
 	char	**map;
 	int		width;
 }			t_program;

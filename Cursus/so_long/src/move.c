@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 11:18:45 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:22:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	print_pacman(t_program *program, int *x, int *y, char letter)
 	int		img_width;
 
 	img = mlx_xpm_file_to_image(program->mlx, pacman_direction(letter),
-	 &img_width, &img_height);
+			&img_width, &img_height);
 	if (!img)
 	{
 		ft_printf("Error: Corrupt .xpm\n\n");
@@ -40,7 +40,7 @@ static int	print_pacman(t_program *program, int *x, int *y, char letter)
 	return (0);
 }
 
-static void move_pacman(t_program *program, int *x, int *y, char letter)
+static void	move_pacman(t_program *program, int *x, int *y, char letter)
 {
 	int		img_height;
 	int		img_width;
@@ -85,7 +85,6 @@ static int	stop_moving(t_program *program, int x, int y, char letter)
 	return (0);
 }
 
-
 static int	ft_move(t_program *program, char letter)
 {
 	static int		y;
@@ -116,13 +115,13 @@ int	ft_input(int key, t_program *program)
 	{
 		if (key == 53)
 			check_move = ft_close(program);
-		else if (key == 123) // left
+		else if (key == 123)
 			check_move = ft_move(program, 'l');
-		else if (key == 124) // right
+		else if (key == 124)
 			check_move = ft_move(program, 'r');
-		else if (key == 125) // down
+		else if (key == 125)
 			check_move = ft_move(program, 'd');
-		else if (key == 126) // up
+		else if (key == 126)
 			check_move = ft_move(program, 'u');
 		if (check_move == 0)
 			ft_printf("Movement number %d || Number press %d\n", i++, key);

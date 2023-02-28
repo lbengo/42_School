@@ -6,13 +6,12 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 08:40:21 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 11:18:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 11:21:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// Check error map rectangular
 static int	check_map_rectangular(char **map)
 {
 	int	i;
@@ -32,7 +31,6 @@ static int	check_map_rectangular(char **map)
 	return (0);
 }
 
-// Check error map wall
 static int	check_map_wall(char **map)
 {
 	int	i;
@@ -60,7 +58,6 @@ static int	check_map_wall(char **map)
 	return (0);
 }
 
-// Check error caracter
 static int	check_caract(char **map, char c)
 {
 	unsigned int	caract;
@@ -79,7 +76,6 @@ static int	check_caract(char **map, char c)
 	return (0);
 }
 
-// Check error path
 static int	check_path(char **map)
 {
 	char			**new_map;
@@ -107,14 +103,11 @@ int	check_error(char **map)
 		ft_printf("Error: Add map.\n\n");
 		return (1);
 	}
-	// Check map
 	if (check_map_rectangular(map) == 1 || check_map_wall (map) == 1)
 		return (1);
-	//Check caract
 	if (check_caract(map, 'P') == 1 || check_caract(map, 'E') == 1
 		|| check_caract(map, 'C') == 1)
 		return (1);
-	// Check path
 	if (check_path(map) == 1)
 		return (1);
 	return (0);
