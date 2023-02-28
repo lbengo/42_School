@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 09:31:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 10:28:31 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:43:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void change_ghost(t_program *program, unsigned int i, unsigned int a)
+static void	change_ghost(t_program *program, unsigned int i, unsigned int a)
 {
 	void	*img;
 	int		img_width;
@@ -24,13 +24,14 @@ static void change_ghost(t_program *program, unsigned int i, unsigned int a)
 		printf("Error: Corrupt .xpm\n\n");
 		ft_close(program);
 	}
-	mlx_put_image_to_window(program->mlx, program->win, img, (a * 80), (i * 80));
+	mlx_put_image_to_window(program->mlx, program->win, img, (a * 80),
+		(i * 80));
 }
 
 void	find_ghost(t_program *program)
 {
-	unsigned int i;
-	unsigned int a;
+	unsigned int	i;
+	unsigned int	a;
 
 	i = 0;
 	while (program -> map[i] != NULL)
@@ -48,7 +49,7 @@ void	find_ghost(t_program *program)
 
 void	ft_ghost(t_program *program, int x, int y, char letter)
 {
-	static unsigned int change_ghost;
+	static unsigned int	change_ghost;
 
 	change_ghost = 0;
 	if (find_c(program->map) == 0 && change_ghost == 0)

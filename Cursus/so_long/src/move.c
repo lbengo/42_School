@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 10:33:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:57:28 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static char	*ft_p_direct(char letter)
+static char	*pacman_direction(char letter)
 {
 	char	*path;
 
@@ -27,13 +27,13 @@ static char	*ft_p_direct(char letter)
 	return (path);
 }
 
-static int	ft_move_p(t_program *program, int *x, int *y, char letter)
+static int	print_pacman(t_program *program, int *x, int *y, char letter)
 {
 	void	*img;
 	int		img_height;
 	int		img_width;
 
-	img = mlx_xpm_file_to_image(program->mlx, ft_p_direct(letter), &img_width,
+	img = mlx_xpm_file_to_image(program->mlx, pacman_direction(letter), &img_width,
 			&img_height);
 	if (!img)
 	{
@@ -55,7 +55,23 @@ static int	ft_move_p(t_program *program, int *x, int *y, char letter)
 	return (0);
 }
 
-static int	check_1_and_E(t_program *program, int x, int y, char letter)
+static void move_pacman(t_program *program, int *x, int *y, char letter)
+{
+	int		img_height;
+	int		img_width;
+	void	*img;
+
+	img = mlx_xpm_file_to_image(program->mlx, SPACE, &img_width, &img_height);
+	mlx_put_image_to_window(program->mlx, program->win, img,
+		(*x * 80), (*y * 80));
+	print_pacman(program, x, y, letter);
+	if (program->map[*y][*x] == 'C' || program->map[*y][*x] == 'G')
+		program->map[*y][*x] = '0';
+	if (find_c(program->map) == 0)
+		find_ghost(program);
+}
+
+static int	stop_moving(t_program *program, int x, int y, char letter)
 {
 	if (letter == 'l')
 	{
@@ -84,11 +100,9 @@ static int	check_1_and_E(t_program *program, int x, int y, char letter)
 	return (0);
 }
 
+
 static int	ft_move(t_program *program, char letter)
 {
-	int				img_height;
-	int				img_width;
-	void			*img;
 	static int		y;
 	static int		x;
 
@@ -97,25 +111,18 @@ static int	ft_move(t_program *program, char letter)
 		y = ft_find_p(program->map, 'y');
 		x = ft_find_p(program->map, 'x');
 	}
-	if (check_1_and_E(program, x, y, letter) == 1)
+	if (stop_moving(program, x, y, letter) == 1)
 		return (1);
 	ft_ghost(program, x, y, letter);
 	ft_exit(program, x, y, letter);
-	img = mlx_xpm_file_to_image(program->mlx, SPACE, &img_width, &img_height);
-	mlx_put_image_to_window(program->mlx, program->win, img,
-		(x * 80), (y * 80));
-	ft_move_p(program, &x, &y, letter);
-	if (program->map[y][x] == 'C' || program->map[y][x] == 'G')
-		program->map[y][x] = '0';
-	if (find_c(program->map) == 0)
-		find_ghost(program);
+	move_pacman(program, &x, &y, letter);
 	return (0);
 }
 
 int	ft_input(int key, t_program *program)
 {
 	static unsigned int	i;
-	unsigned int	check_move;
+	unsigned int		check_move;
 
 	if (!i)
 		i = 0;
