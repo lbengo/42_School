@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:53:39 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/07 18:21:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:18:13 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ int	ft_printf(char const *format, ...)
 	unsigned int	i;
 	unsigned int	a;
 	unsigned int	len;
-	va_list			arg; // Declara la variable arg
-	va_start (arg, format); // Introduce dentro de la variable arg lo que haya en format y ...
+	va_list			arg;
+
+	va_start(arg, format);
 	i = 0;
 	a = 0;
 	len = 0;
@@ -60,8 +61,6 @@ int	ft_printf(char const *format, ...)
 		len = a + len;
 		i++;
 	}
-	va_end(arg); //	Finaliza
+	va_end(arg);
 	return (len);
 }
-
-

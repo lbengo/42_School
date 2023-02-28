@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 08:43:04 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/09 16:14:28 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:16:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include <unistd.h> // Librería que gestiona la función close
-# include <fcntl.h> // Librería que gestiona la función open
+# include <unistd.h>
+# include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 

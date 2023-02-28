@@ -6,13 +6,9 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 08:26:05 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/12 17:34:39 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:15:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* DEFINICIÓN:
-%x & %X - Imprimme un número hexadecimal (base 16) en minúsculas y mayúsculas.
------------------------------------------------------------------------------ */
 
 #include "ft_printf.h"
 
@@ -32,13 +28,3 @@ int	ft_putnbr_16(unsigned int n, char *base)
 		ft_putchar(base[n]);
 	return (len);
 }
-
-/* int main(void)
-{
-	int n;
-
-	n = -9846;
-	ft_putnbr_16(n);
-	printf("\n%x", -9846);
-	return (0);
-} */

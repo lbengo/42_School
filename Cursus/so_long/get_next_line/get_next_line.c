@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:57:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/12/09 16:28:51 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:16:28 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_read_file(int fd, char **line)
 	while (strlen_break(*line) < 0 && i > 0)
 	{
 		i = read(fd, read_line, BUFFER_SIZE);
-		if (i <= 0) // ha llegado al final de la lectura o se ha producido un error en la lectura
+		if (i <= 0)
 		{
 			free (read_line);
 			return (i);
@@ -57,7 +57,7 @@ static char	*cut_line(char **line, char **p_line, int is_new_line)
 {
 	char	*temp;
 
-	if (is_new_line == 1) // añade y envía line hasta el \n de la linea anterior y recorta para la siguiente linea
+	if (is_new_line == 1)
 	{
 		*line = ft_substr(*p_line, 0, strlen_break(*p_line) + 1);
 		temp = ft_strdup(*p_line);
@@ -66,7 +66,7 @@ static char	*cut_line(char **line, char **p_line, int is_new_line)
 		free(temp);
 		return (*line);
 	}
-	else // recortaline es hasta \n y previous_line el resto
+	else
 	{
 		*p_line = ft_substr(*line, strlen_break(*line) + 1, ft_strlen(*line));
 		temp = ft_strdup(*line);
@@ -83,14 +83,14 @@ char	*get_next_line(int fd)
 	static char	*previous_line;
 	int			i;
 
-	if (fd < 0 || BUFFER_SIZE <= 0) //fd errores lectura del txt
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	line = NULL;
-	if (previous_line && strlen_break(previous_line) >= 0) // mira si la anterior linea guardada tiene \n
+	if (previous_line && strlen_break(previous_line) >= 0)
 		return (cut_line(&line, &previous_line, 1));
 	if (previous_line)
-		ft_add_line(&line, &previous_line); // añade dentro de line lo que haya en previous_line
-	i = ft_read_file(fd, &line); // lee el file y lo añade dentro de line
+		ft_add_line(&line, &previous_line);
+	i = ft_read_file(fd, &line);
 	if (i == -1)
 	{
 		free(line);
@@ -98,7 +98,7 @@ char	*get_next_line(int fd)
 	}
 	else if (i > 0)
 	{
-		if (strlen_break(line) >= 0) //si hay salto de linea quita el resto y envia la lina sin \n
+		if (strlen_break(line) >= 0)
 			cut_line(&line, &previous_line, 0);
 		if (line == NULL)
 			free (previous_line);

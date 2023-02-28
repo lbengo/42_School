@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 18:55:11 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 08:43:33 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:15:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 /* ***************************** LIBRERIAS ********************************** */
 
 # include <unistd.h>
-# include <stdarg.h> // Librería que gestiona las variádicas
+# include <stdarg.h>
 
 /* ***************************** FUNCIONES ********************************** */
 

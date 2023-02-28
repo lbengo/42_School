@@ -6,11 +6,9 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/02/28 11:15:46 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/02/28 12:21:43 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-# gcc src/so_long.c src/check_error.c src/create_map.c src/check_error_utils.c src/texture.c -L minilibx get_next_line/get_next_line.a -lmlx -framework OpenGL -framework AppKit -g3
 
 # ********************************* VARIABLES ******************************** #
 
@@ -57,11 +55,19 @@ $(NAME): $(OBJ)
 	make -C minilibx
 	$(CC) $^ $(GNL_A) $(PRINTF_A) $(MLX_H) -o $@
 
+bonus: $(OBJ)
+	make -C get_next_line
+	make -C ft_printf
+	make -C minilibx
+	$(CC) $^ $(GNL_A) $(PRINTF_A) $(MLX_H) -o $@
+
 $(OBJ_PATH):
 	mkdir $@
 
 clean:
 	rm -rf $(OBJ_PATH)
+	make -C $(GNL_PATH) clean
+	make -C $(PRINTF_PATH) clean
 
 fclean: clean
 	rm -rf $(NAME)

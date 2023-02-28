@@ -10,10 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DEFINICIÓN:
-%p - El puntero void * dado como arumento se imprime en formato hexadecimal.
------------------------------------------------------------------------------ */
-
 #include "ft_printf.h"
 
 int	ft_putpointer(unsigned long long int n, char *base)
@@ -36,17 +32,3 @@ int	ft_putpointer(unsigned long long int n, char *base)
 	}
 	return (len);
 }
-
-/* int main (void)
-{
-    long int *pointer;
-	char *base;
-	int	a;
-	int b;
-
-	pointer = 15;
-	base = "0123456789abcdef";
-    a = ft_putpointer(pointer, base);
-	b = printf("\n%p", pointer);
-	printf("\n %i \n %i", a, b);
-} */

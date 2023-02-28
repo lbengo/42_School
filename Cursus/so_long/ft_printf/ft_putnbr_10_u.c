@@ -6,19 +6,9 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:37:41 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/12 17:34:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/02/28 12:15:34 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* DEFINICIÓN:
-%u - Imprime un número decimal (base 10) sin signo.
------------------------------------------------------------------------------ */
-
-/* NOTA:
-Se ha extraido %u ya que únicamente necesita realizar los números positivos,
-por lo que se le añade a la función (unsigned int) y no una protección ya que
-no se debe gestionar dichos números.
------------------------------------------------------------------------------ */
 
 #include "ft_printf.h"
 
