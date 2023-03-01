@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/01 17:18:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:34:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "../minilibx/mlx.h"
-# include "../get_next_line/get_next_line.h"
-# include "../ft_printf/ft_printf.h"
+# include "../functions/get_next_line/get_next_line.h"
+# include "../functions/ft_printf/ft_printf.h"
+# include "../functions/minilibx/mlx.h"
 # include <unistd.h>
 # include <fcntl.h>
 
