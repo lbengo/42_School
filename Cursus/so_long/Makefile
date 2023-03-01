@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/01 17:22:57 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/01 17:55:14 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,13 @@ OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 OBJ_BONUS_PATH = ./obj_bonus
 OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC_BONUS:.c=.o))
 
-MLX_H          = -L minilibx -lmlx -framework OpenGL -framework AppKit
+MLX_PATH       = ./functions/minilibx
+MLX_H          = -L $(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 
-GNL_PATH       = ./get_next_line
+GNL_PATH       = ./functions/get_next_line
 GNL_A          = $(GNL_PATH)/get_next_line.a
 
-PRINTF_PATH    = ./ft_printf
+PRINTF_PATH    = ./functions/ft_printf
 PRINTF_A       = $(PRINTF_PATH)/ft_printf.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
@@ -62,16 +63,16 @@ $(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
 
 all: $(NAME)
 $(NAME): $(OBJ)
-	make -C get_next_line
-	make -C ft_printf
-	make -C minilibx
+	make -C $(GNL_PATH)
+	make -C $(PRINTF_PATH)
+	make -C $(MLX_PATH)
 	$(CC) $^ $(GNL_A) $(PRINTF_A) $(MLX_H) -o $@
 
 bonus: $(BONUS)
 $(BONUS): $(OBJ_BONUS)
-	make -C get_next_line
-	make -C ft_printf
-	make -C minilibx
+	make -C $(GNL_PATH)
+	make -C $(PRINTF_PATH)
+	make -C $(MLX_PATH)
 	$(CC) $^ $(GNL_A) $(PRINTF_A) $(MLX_H) -o $@
 
 $(OBJ_PATH):
@@ -86,14 +87,14 @@ clean:
 	rm -rf $(OBJ_BONUS_PATH)
 	make -C $(GNL_PATH) clean
 	make -C $(PRINTF_PATH) clean
-	make -C ./minilibx clean
+	make -C $(MLX_PATH) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(BONUS)
 	make -C $(GNL_PATH) fclean
 	make -C $(PRINTF_PATH) fclean
-	make -C ./minilibx clean
+	make -C $(MLX_PATH) clean
 
 re:	fclean all
 
