@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 11:25:52 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:18:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ char	**duplicate_map(char **map);
 int		send_numb_caract(char **map, char c);
 int		find_c_path(char **new_map);
 int		ft_close(t_program *program);
-void	ft_exit(t_program *program, int x, int y, char letter);
 int		find_c(char **map);
-void	ft_ghost(t_program *program, int x, int y, char letter);
-void	find_ghost(t_program *program);
 char	*pacman_direction(char letter);
+int		print_pacman(t_program *program, int *x, int *y, char letter);
 
 /* ***************************** CONSTANTES ********************************* */
 

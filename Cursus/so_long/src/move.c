@@ -6,39 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:03:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/02/28 11:22:25 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:19:02 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-static int	print_pacman(t_program *program, int *x, int *y, char letter)
-{
-	void	*img;
-	int		img_height;
-	int		img_width;
-
-	img = mlx_xpm_file_to_image(program->mlx, pacman_direction(letter),
-			&img_width, &img_height);
-	if (!img)
-	{
-		ft_printf("Error: Corrupt .xpm\n\n");
-		ft_close(program);
-	}
-	if (letter == 'l')
-		mlx_put_image_to_window(program->mlx, program->win, img,
-			((--(*x)) * 80), (*y * 80));
-	else if (letter == 'r')
-		mlx_put_image_to_window(program->mlx, program->win, img,
-			((++(*x)) * 80), (*y * 80));
-	else if (letter == 'd')
-		mlx_put_image_to_window(program->mlx, program->win, img,
-			(*x * 80), (++(*y)) * 80);
-	else if (letter == 'u')
-		mlx_put_image_to_window(program->mlx, program->win, img,
-			(*x * 80), (--(*y)) * 80);
-	return (0);
-}
 
 static void	move_pacman(t_program *program, int *x, int *y, char letter)
 {
@@ -50,10 +22,24 @@ static void	move_pacman(t_program *program, int *x, int *y, char letter)
 	mlx_put_image_to_window(program->mlx, program->win, img,
 		(*x * 80), (*y * 80));
 	print_pacman(program, x, y, letter);
-	if (program->map[*y][*x] == 'C' || program->map[*y][*x] == 'G')
+	if (program->map[*y][*x] == 'C')
 		program->map[*y][*x] = '0';
-	if (find_c(program->map) == 0)
-		find_ghost(program);
+}
+
+static void	ft_exit(t_program *program, int x, int y, char letter)
+{
+	if (letter == 'l' && program->map[y][x - 1] == 'E' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'r' && program->map[y][x + 1] == 'E' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'd' && program->map[y + 1][x] == 'E' &&
+		find_c(program->map) == 0)
+		ft_close(program);
+	else if (letter == 'u' && program->map[y - 1][x] == 'E' &&
+		find_c(program->map) == 0)
+		ft_close(program);
 }
 
 static int	stop_moving(t_program *program, int x, int y, char letter)
@@ -97,7 +83,6 @@ static int	ft_move(t_program *program, char letter)
 	}
 	if (stop_moving(program, x, y, letter) == 1)
 		return (1);
-	ft_ghost(program, x, y, letter);
 	ft_exit(program, x, y, letter);
 	move_pacman(program, &x, &y, letter);
 	return (0);
