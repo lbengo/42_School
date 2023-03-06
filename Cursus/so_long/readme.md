@@ -122,6 +122,6 @@ Antes de iniciar el juego, es fundamental gestionar posibles errores que puedan 
 
 Si se detecta algún error, se mostrará un mensaje correspondiente al usuario para que pueda corregirlo de manera efectiva.
 
-### Parte 04. Leer el mapa
+### Parte 03. Leer y mostrar el mapa
 
-
+Con el objetivo de facilitar posteriormente el proceso de movimiento del personaje, recomiendo leer y almacenar el mapa en una matríz, pudiendo emplear como ayuda la función get_next_line.
