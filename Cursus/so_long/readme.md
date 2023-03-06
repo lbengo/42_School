@@ -23,12 +23,16 @@ $ ./so_long_bonus maps/example2.ber
 Antes de empezar con el proyecto, es mejor aprender a manejarnos con la librería MiniLibX.
 
 ***¿Qué es la miniLibX?***
+
 MiniLiX es una librería gráfica que permite realizar funciones básicas para interactuar con las pantallas sin tener conocimientos de X-Window y Cocoa. Esta librería posee numerosas funciones, sin embargo las que usaremos en este proyecto serán: abrir una ventana, crear y dibujar imágenes y gestionar eventos, ganchos y entradas.
 
 ***Funciones principales***
 
 <table>
     <thead>
+        <tr>
+            <th colspan=2><h4 align="left">Funciones principales</h4></th>
+        </tr>
         <tr>
             <th align="left">Función</th>
             <th align="left">Descripción</th>
