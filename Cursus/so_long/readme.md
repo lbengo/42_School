@@ -111,10 +111,7 @@ int main (void)
 
 Para más información de la minilibx mirar: [Harm_Smits](https://harm-smits.github.io/42docs/libs/minilibx) y [Aurelien_Brabant](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
 
-### Parte 02. Crea un Makefile.
-Realiza un [makefile](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/Makefile) para que las pruebas durante el ejercicio se realicen más rapidamente.
-
-### Parte 03. Gestión de errores.
+### Parte 02. Gestión de errores.
 
 Antes de iniciar el juego, es fundamental gestionar posibles errores que puedan surgir. Estos incluyen:
 
@@ -125,6 +122,6 @@ Antes de iniciar el juego, es fundamental gestionar posibles errores que puedan 
 
 Si se detecta algún error, se mostrará un mensaje correspondiente al usuario para que pueda corregirlo de manera efectiva.
 
-Parte 04. Leer el mapa
+### Parte 04. Leer el mapa
 
 
