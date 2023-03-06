@@ -8,6 +8,13 @@
 
 En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables y llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
 
+## Consideraciones técnicas
+- El jugador debe poder moverse en 4 direcciones, subir, bajar, izquierda o derecha.
+- El jugador no puede entrar dentro de las paredes.
+- El número de cada movimiento debe mostrarse en la terminal.
+- Utilizar una perspectiva 2D.
+- Ver más en la [ficha del proyecto]().
+
 ## Cómo testear
 Ejecuta los siguientes comandos.
 ```shell
@@ -17,11 +24,11 @@ $ ./so_long_bonus maps/example2.ber
 ```
 > Puedes sustituir el `maps/example2.ber` por tu propio mapa de prueba.
 
-Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estaran disponibles:
+Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estarán disponibles:
 
 <table>
   <tr><td><strong>Controles</strong></td><td><strong>Acción</strong></td></tr>
-  <tr><td><kbd>&nbsp;▲&nbsp;</kbd><kbd>&nbsp;◄&nbsp;</kbd><kbd>&nbsp;▼&nbsp;</kbd><kbd>&nbsp;►&nbsp;</kbd></td><td>Mover personaje</td></tr>
+  <tr><td><kbd>&nbsp;▲&nbsp;</kbd><kbd>&nbsp;◄&nbsp;</kbd><kbd>&nbsp;▼&nbsp;</kbd><kbd>&nbsp;►&nbsp;</kbd></td><td>Mover personaje principal</td></tr>
   <tr><td><kbd>&nbsp;esc&nbsp;</kbd> or close window</td><td>Salir del juego</td></tr>
 </table>
 
@@ -105,3 +112,6 @@ Para más información de la minilibx mirar: [Harm_Smits](https://harm-smits.git
 
 ### 02. Crea un Makefile.
 Realiza un [makefile](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/Makefile) para que las pruebas durante el ejercicio se realicen más rapidamente.
+
+### 03. Gestión de errores.
+Previamente a
