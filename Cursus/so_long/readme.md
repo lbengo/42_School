@@ -1,4 +1,26 @@
-# So_Long - En proceso
+<p align="center">
+  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/so_longe.png" alt="so_long 42 project badge"/>
+</p>
+
+# So_Long
+
+***El objetivo del proyecto so_long es programar un juego sencillo en 2D.***
+
+En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables y llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
+
+## Cómo testear
+Ejecuta los siguientes comandos.
+```shell
+$ git clone git@github.com:lbengo/42_School.git && cd 42_School/Cursus/so_long/
+$ make bonus
+$ ./so_long_bonus maps/example2.ber
+```
+> Puedes sustituir el `maps/example2.ber` por tu propio mapa de prueba.
+
+## Cómo empezar
+
+### 01. C.
+Antes de empezar con el proyecto, es mejor aprender a manejarnos con la librería MiniLibX, por ello:
 
 ## ¿Qué es y cómo empezar con la miniLibX?
 MiniLiX es una librería gráfica que permite realizar funciones básicas para interactuar con las pantallas sin tener conocimientos de X-Window y Cocoa. Esta librería posee numerosas funciones, sin embargo las que usaremos en este proyecto serán: abrir una ventana, crear y dibujar imágenes y gestionar eventos, ganchos y entradas.
@@ -77,4 +99,7 @@ Otras funciones importantes que se han empleado en el desarrollo del proyecto so
 	</tbody>
 <table>
 
-Para más información de la minilibx mirar: <a src="https://harm-smits.github.io/42docs/libs/minilibx">Harm_Smits</a> y <a src="https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx">Aurelien_Brabant</a>
+Para más información de la minilibx mirar: [Harm_Smits](https://harm-smits.github.io/42docs/libs/minilibx) y [Aurelien_Brabant](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
+
+### 02. Crea un Makefile.
+Realiza un [makefile](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/Makefile) para que las pruebas durante el ejercicio se realicen más rapidamente.
