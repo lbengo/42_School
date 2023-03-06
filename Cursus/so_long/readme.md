@@ -26,7 +26,7 @@ Antes de empezar con el proyecto, es mejor aprender a manejarnos con la librerí
 
 MiniLiX es una librería gráfica que permite realizar funciones básicas para interactuar con las pantallas sin tener conocimientos de X-Window y Cocoa. Esta librería posee numerosas funciones, sin embargo las que usaremos en este proyecto serán: abrir una ventana, crear y dibujar imágenes y gestionar eventos, ganchos y entradas.
 
-####***Funciones principales***
+#### ***Funciones principales***
 
 Las funciones principales que se deben emplear en el proyecto son:
 
