@@ -6,14 +6,15 @@
 
 ***El objetivo del proyecto so_long es programar un juego sencillo en 2D.***
 
-En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables y llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
+En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables antes de llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
 
 ## Consideraciones técnicas
 - El jugador debe poder moverse en 4 direcciones, subir, bajar, izquierda o derecha.
 - El jugador no puede entrar dentro de las paredes.
 - El número de cada movimiento debe mostrarse en la terminal.
 - Utilizar una perspectiva 2D.
-- Ver más en la [ficha del proyecto]().
+- El mapa estará constituido por 6 carácteres: P (pacman), 1 (wall), 0 (empty), C (coolecible), E (exit) y G (ghost).
+- Ver más en la [ficha del proyecto](https://github.com/lbengo/42_School/blob/main/Cursus/so_long/So_Long_Subject.pdf).
 
 ## Cómo testear
 Ejecuta los siguientes comandos.
@@ -34,7 +35,7 @@ Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estar
 
 ## Cómo empezar
 
-### 01. Conoce la MiniLibX
+### Parte 01. Conoce la MiniLibX
 Antes de empezar con el proyecto, es mejor aprender a manejarnos con la librería MiniLibX.
 
 ***¿Qué es la miniLibX?***
@@ -110,8 +111,20 @@ int main (void)
 
 Para más información de la minilibx mirar: [Harm_Smits](https://harm-smits.github.io/42docs/libs/minilibx) y [Aurelien_Brabant](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
 
-### 02. Crea un Makefile.
+### Parte 02. Crea un Makefile.
 Realiza un [makefile](https://github.com/lbengo/42_School/blob/main/Cursus/ft_printf/Makefile) para que las pruebas durante el ejercicio se realicen más rapidamente.
 
-### 03. Gestión de errores.
-Previamente a
+### Parte 03. Gestión de errores.
+
+Antes de iniciar el juego, es fundamental gestionar posibles errores que puedan surgir. Estos incluyen:
+
+- Asegurarse de que el mapa contenga al menos una salida, un objeto y una posición inicial. Si hay caracteres duplicados en la salida o en la posición, se producirá un error.
+- Verificar que el mapa sea rectangular y esté rodeado por muros.
+- Comprobar si existe un camino válido en el mapa.
+- Comprobar que el archivo .xpm no esté corrupto.
+
+Si se detecta algún error, se mostrará un mensaje correspondiente al usuario para que pueda corregirlo de manera efectiva.
+
+Parte 04. Leer el mapa
+
+
