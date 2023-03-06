@@ -125,3 +125,18 @@ Si se detecta algún error, se mostrará un mensaje correspondiente al usuario p
 ### Parte 03. Leer y mostrar el mapa
 
 Con el objetivo de facilitar posteriormente el proceso de movimiento del personaje, recomiendo leer y almacenar el mapa en una matríz, pudiendo emplear como ayuda la función get_next_line.
+
+Después de que el mapa haya sido guardado, se utilizará la librería MiniLibX para mostrarlo en una nueva ventana.
+
+
+### Parte 04. Mover al personaje
+
+Por último, se buscará al personaje principal en el mapa y se moverá utilizando la función "hook" de MiniLibX y la matriz creada previamente. El personaje deberá cumplir con las siguientes condiciones:
+
+- Si se encuentra con un muro, no podrá atravesarlo.
+- No podrá salir sin haber recogido todos los objetos coleccionables previamente.
+- Después de cada movimiento, se mostrará en la terminal el número de movimientos realizados.
+- Si el personaje entra en contacto con un fantasma, morirá (parte bonus).
+
+---
+Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
