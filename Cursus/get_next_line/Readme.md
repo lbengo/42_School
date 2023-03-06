@@ -4,7 +4,7 @@
 
 # Get Next Line
 
-***El objetivo del proyecto ft_printf es programar una función que devuelva una línea leída de un file descriptor.***
+***El objetivo del proyecto get_next_line es programar una función que devuelva una línea leída de un file descriptor.***
 
 Esta función devuelve una sola línea de un descriptor de archivo dado. Al llamar a la función en bucle, get_next_line devuelve todo el contenido de un fichero, línea a línea hasta llegar al final. Y además, puede compilarse especificando el tamaño de búfer. A través de este proyecto aprendemos a leer de un descriptor de fichero e introduce el concepto de variables estáticas en la programación en C.
 
