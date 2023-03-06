@@ -27,7 +27,7 @@ $ git clone git@github.com:lbengo/42_School.git && cd 42_School/Cursus/so_long/
 $ make bonus
 $ ./so_long_bonus maps/example2.ber
 ```
-> Puedes sustituir el `maps/example2.ber` por tu propio mapa de prueba.
+> Puedes sustituir el `maps/example.ber` por tu propio mapa de prueba.
 
 Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estarán disponibles:
 
