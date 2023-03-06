@@ -17,14 +17,11 @@ $ ./so_long_bonus maps/example2.ber
 ```
 > Puedes sustituir el `maps/example2.ber` por tu propio mapa de prueba.
 
-***Controles***
-
 Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estaran disponibles:
 
 <table>
-  <tr><td><strong>Controls</strong></td><td><strong>Action</strong></td></tr>
+  <tr><td><strong>Controles</strong></td><td><strong>Acción</strong></td></tr>
   <tr><td><kbd>&nbsp;▲&nbsp;</kbd><kbd>&nbsp;◄&nbsp;</kbd><kbd>&nbsp;▼&nbsp;</kbd><kbd>&nbsp;►&nbsp;</kbd></td><td>Mover personaje</td></tr>
-
   <tr><td><kbd>&nbsp;esc&nbsp;</kbd> or close window</td><td>Salir del juego</td></tr>
 </table>
 
