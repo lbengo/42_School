@@ -19,13 +19,14 @@ $ ./so_long_bonus maps/example2.ber
 
 ## Cómo empezar
 
-### 01. C.
+### 01. Conoce la MiniLibX
 Antes de empezar con el proyecto, es mejor aprender a manejarnos con la librería MiniLibX, por ello:
 
-## ¿Qué es y cómo empezar con la miniLibX?
+***¿Qué es la miniLibX?***
+
 MiniLiX es una librería gráfica que permite realizar funciones básicas para interactuar con las pantallas sin tener conocimientos de X-Window y Cocoa. Esta librería posee numerosas funciones, sin embargo las que usaremos en este proyecto serán: abrir una ventana, crear y dibujar imágenes y gestionar eventos, ganchos y entradas.
 
-### 1. Funciones principales
+***Funciones principales***
 
 Las funciones principales que se deben emplear en el proyecto son:
 
@@ -52,8 +53,6 @@ Las funciones principales que se deben emplear en el proyecto son:
 	</tbody>
 <table>
 
-Inicio de la minilibX
-
 ```C
 #include "mlx.h" // librería minilibx
 
@@ -69,15 +68,12 @@ int main (void)
 ```
 Nota: para compilar la minilibX se debe añadir la siguiente flag `-L [librería minilibx] -lmlx -framework OpenGL -framework Appkit`.
 
-### 2. Funciones complementarias
+***Funciones complementarias***
 
 Otras funciones importantes que se han empleado en el desarrollo del proyecto son los siguiente:
 
 <table>
     <thead>
-        <tr>
-            <th colspan=2><h3 align="left">Funciones complementarias</h3></th>
-        </tr>
         <tr>
             <th align="left">Función</th>
             <th align="left">Descripción</th>
