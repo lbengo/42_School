@@ -17,7 +17,7 @@ $ ./so_long_bonus maps/example2.ber
 ```
 > Puedes sustituir el `maps/example2.ber` por tu propio mapa de prueba.
 
-## Controles
+### Controles
 
 Mientras el So_Long se este ejecutando, el siguiente conjunto de controles estaran disponibles:
 
