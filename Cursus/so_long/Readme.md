@@ -6,7 +6,7 @@
 
 ***El objetivo del proyecto so_long es programar un juego sencillo en 2D.***
 
-En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables antes de llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX
+En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables antes de llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
 
 <p align="center">
   <img src="https://github.com/lbengo/42_School/blob/main/Cursus/so_long/Readme/Game.png" alt="so_long game"/>
