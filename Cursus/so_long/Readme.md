@@ -9,7 +9,7 @@
 En este juego, tendrás un personaje principal cuya misión será recolectar todos los objetos coleccionables antes de llegar a la salida utilizando la menor cantidad de movimientos posibles. Este proyecto nos permitirá familiarizarnos con la librería gráfica de 42, MiniLibX.
 
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/so_long/Readme/Game.png" alt="so_long game"/>
+  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/so_long/Readme_img/Game.png" alt="so_long game"/>
 </p>
 
 ## Consideraciones técnicas
@@ -18,7 +18,7 @@ En este juego, tendrás un personaje principal cuya misión será recolectar tod
 - El número de cada movimiento debe mostrarse en la terminal.
 - Utilizar una perspectiva 2D.
 - El mapa estará constituido por 6 carácteres: P (pacman), 1 (wall), 0 (empty), C (coolecible), E (exit) y G (ghost).
-- Ver más en la [ficha del proyecto](https://github.com/lbengo/42_School/blob/main/Cursus/so_long/Readme/So_Long_Subject.pdf).
+- Ver más en la [ficha del proyecto](https://github.com/lbengo/42_School/blob/main/Cursus/so_long/Readme_img/So_Long_Subject.pdf).
 
 ## Cómo testear
 Ejecuta los siguientes comandos.
