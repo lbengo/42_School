@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/21 14:42:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:48:58 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static void check_error(char *temp[])
 
 static void change_to_str(int argc, char *argv[])
 {
+	t_list	list;
 	int numb;
 	int i;
 	int a;
@@ -54,7 +55,7 @@ static void change_to_str(int argc, char *argv[])
 	while (numb++ < argc)
 	{
 		temp = ft_split(argv[i], ' ', '+');
-		check_error(temp);
+
 		a = 0;
 		while(temp[a] != NULL)
 		{
@@ -64,8 +65,12 @@ static void change_to_str(int argc, char *argv[])
 		ft_free(temp);
 		i++;
 	}
-
+	check_error(temp);
 }
+
+typedef struct s_list {
+	int		numb;
+}			t_list;
 
 int main (int argc, char *argv[])
 {
