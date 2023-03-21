@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/20 11:55:30 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/21 15:08:25 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 
 all: $(NAME)
 $(NAME): $(OBJ)
-	make -C $(LIBFT_PATH)
+	make bonus -C $(LIBFT_PATH)
 	$(CC) $^ $(LIBFT_A) -o $@
 
 $(OBJ_PATH):
