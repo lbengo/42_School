@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/20 19:19:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/21 14:42:03 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 static void check_num(char **temp)
 {
-	char sign;
 	int i;
 	int a;
 
 	i = 0;
-
-	sign = 0;
 	while (temp[i] != NULL)
 	{
 		a = 0;
@@ -37,21 +34,7 @@ static void check_num(char **temp)
 		}
 		i++;
 	}
-
 }
-
-/* static void check_duplicate(int argc, char *argv[])
-{
-	int numb;
-	int i;
-
-	numb = 0;
-	i = 0;
-	while (numb++ < argc)
-	{
-		while (argv[i])
-	}
-} */
 
 static void check_error(char *temp[])
 {
@@ -68,20 +51,20 @@ static void change_to_str(int argc, char *argv[])
 
 	numb = 0;
 	i = 0;
-	temp = NULL;
 	while (numb++ < argc)
 	{
-		temp = ft_split(argv[i], ' ');
+		temp = ft_split(argv[i], ' ', '+');
 		check_error(temp);
 		a = 0;
 		while(temp[a] != NULL)
 		{
-			printf("número = %s\n", temp[a]);
+			printf("número = %s\n", temp[a]); //guardar en las listas
 			a++;
 		}
 		ft_free(temp);
 		i++;
 	}
+
 }
 
 int main (int argc, char *argv[])
@@ -97,3 +80,50 @@ int main (int argc, char *argv[])
 
 	return(0);
 }
+
+
+/* static int	ft_compare(char *number, char **list)
+{
+	unsigned int	i;
+	unsigned int	a;
+	unsigned int	j;
+
+	i = 0;
+	while (list[i] != NULL)
+	{
+		a = 0;
+		while (list[i][a] != '\0')
+		{
+			j = 0;
+			while (list[i][a + j] == number[a + j])
+			{
+				if (number[a + j] == '\0')
+					return (1);
+				j++;
+			}
+			a++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static void check_duplicate(char **temp)
+{
+	unsigned int	i;
+	unsigned int	duplicate;
+
+	i = 0;
+	duplicate = 0;
+	while (temp[i] != NULL)
+	{
+		duplicate = ft_compare(temp[i], temp);
+		if (duplicate > 1)
+		{
+			printf("Error\nDuplicate numbers");
+			exit(0);
+		}
+		printf("duplicate = %d\n", ft_compare(temp[i], temp));
+		i++;
+	}
+} */

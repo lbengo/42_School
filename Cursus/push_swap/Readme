@@ -5,6 +5,8 @@
 - Alguno de los números es más grande que un int
 - Nunca duplicados
 - Separados solo or un espacio
+- Cuidado con el 0 -0
+- Cuidado con los números positivos ejemp +0
 
 Ej: ./push_swap 2 1 3
 
