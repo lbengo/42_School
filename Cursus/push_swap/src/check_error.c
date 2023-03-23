@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 13:12:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 12:16:10 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/03/23 12:16:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_isdigit(int c)
+void check_num(char *temp)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	else
-		return (0);
+	int i;
+
+	i = 0;
+	if (temp[0] == '-' || temp[0] == '+')
+		i++;
+	while (temp[i] != '\0')
+	{
+		if (ft_isdigit(temp[i]) == 0)
+		{
+			printf("Error\nEverything must be numbers");
+			exit(0);
+		}
+		i++;
+	}
 }

@@ -6,54 +6,44 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 11:15:36 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/23 12:08:24 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void deallocate(t_lst **lst_1)
+/* static void check_error(char *temp[])
 {
-	t_lst *curr;
-	t_lst *aux;
-
-	curr = *lst_1;
-	while (curr != NULL)
-	{
-		aux = curr;
-		curr = curr -> next;
-		free(aux);
-	}
-	*lst_1 = NULL;
-}
+	check_num(temp);
+	//check_duplicate(temp);
+} */
 
 static void change_to_str(int argc, char *argv[])
 {
 	t_lst	*lst_1;
-	int input;
-	int i;
-	int a;
-	int numb;
-	char **temp;
+	char	**temp;
+	int		input;
+	int		i;
+	int		a;
 
-	input = 0;
 	i = 0;
+	input = 0;
 	lst_1 = NULL;
 	while (input++ < argc)
 	{
-		temp = ft_split(argv[i], ' ', '+');
+		temp = ft_split(argv[i], ' ');
 		a = 0;
 		while(temp[a] != NULL)
 		{
-			numb = ft_atoi(temp[a]);
-			ft_lstadd_back(&lst_1, ft_lstnew(numb));
-			//printf("1->%d\n", list_1->content);
-			//printf("número = %s\n", temp[a]); //guardar en las listas
+			check_num(temp[a]);
+			ft_lstadd_back(&lst_1, ft_lstnew(ft_atoi(temp[a])));
 			a++;
 		}
 		ft_free(temp);
 		i++;
 	}
+	//check_error();
+
 	t_lst *curr;
 
 	curr = lst_1;
@@ -79,36 +69,6 @@ int main (int argc, char *argv[])
 
 	return(0);
 }
-
-/* static void check_num(char **temp)
-{
-	int i;
-	int a;
-
-	i = 0;
-	while (temp[i] != NULL)
-	{
-		a = 0;
-		if (temp[i][0] == '-')
-			a++;
-		while (temp[i][a] != '\0')
-		{
-			if (ft_isdigit(temp[i][a]) == 0 || temp[i][a] == '-')
-			{
-				printf("Error\nEverything must be numbers");
-				exit(0);
-			}
-			a++;
-		}
-		i++;
-	}
-}
-
-static void check_error(char *temp[])
-{
-	check_num(temp);
-	//check_duplicate(temp);
-} */
 
 /* static int	ft_compare(char *number, char **list)
 {

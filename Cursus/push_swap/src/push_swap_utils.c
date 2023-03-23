@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:48:24 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 11:03:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:38:49 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,19 @@ void	ft_lstadd_back(t_lst **lst, t_lst *new)
 		*lst = new;
 	else
 		ft_lstlast(*lst)-> next = new;
+}
+
+void deallocate(t_lst **lst_1)
+{
+	t_lst *curr;
+	t_lst *aux;
+
+	curr = *lst_1;
+	while (curr != NULL)
+	{
+		aux = curr;
+		curr = curr -> next;
+		free(aux);
+	}
+	*lst_1 = NULL;
 }
