@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/21 15:26:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/23 09:32:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,13 @@
 
 # include "../libft/libft.h"
 # include <unistd.h>
-# include <fcntl.h>
 # include <stdio.h>
 
 /* ******************************* LISTS ************************************ */
 
-typedef struct s_list {
+/* typedef struct s_lst {
 	int				numb;
-	struct s_list	*next;
-}t_list;
+	struct s_lst	*next;
+}					t_lst; */
 
 #endif
