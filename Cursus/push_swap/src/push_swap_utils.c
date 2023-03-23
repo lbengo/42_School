@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast_bonus.c                                 :+:      :+:    :+:   */
+/*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/22 08:58:17 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 10:47:11 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/03/23 10:48:24 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/03/23 11:03:26 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* DEFINICIÓN:
-Devuelve el último nodo de la lista.
------------------------------------------------------------------------------ */
+#include "push_swap.h"
 
-/* PARÁMETROS:
-- lst: el principio de la lista.
------------------------------------------------------------------------------ */
+t_lst	*ft_lstnew(int content)
+{
+	t_lst	*new;
 
-#include "libft.h"
+	new = malloc(sizeof(t_list));
+	if (!new)
+		return (0);
+	new -> content = content;
+	new -> next = NULL;
+	return (new);
+}
 
-t_list	*ft_lstlast(t_list *lst)
+t_lst	*ft_lstlast(t_lst *lst)
 {
 	if (!lst)
 		return (0);
 	while (lst -> next)
 		lst = lst -> next;
 	return (lst);
+}
+
+void	ft_lstadd_back(t_lst **lst, t_lst *new)
+{
+	if (!*lst)
+		*lst = new;
+	else
+		ft_lstlast(*lst)-> next = new;
 }

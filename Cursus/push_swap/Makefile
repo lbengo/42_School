@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/21 15:08:25 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/23 11:06:20 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ CC            = gcc
 CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src
-SRC           = push_swap.c
+SRC           = push_swap.c \
+				push_swap_utils.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
@@ -36,7 +37,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 
 all: $(NAME)
 $(NAME): $(OBJ)
-	make bonus -C $(LIBFT_PATH)
+	make -C $(LIBFT_PATH)
 	$(CC) $^ $(LIBFT_A) -o $@
 
 $(OBJ_PATH):

@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/20 17:18:08 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/23 11:05:33 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,18 +50,7 @@ MANDATORY_SRC = ft_isalpha.c \
 				ft_split.c \
 				ft_free.c
 
-BONUS_SRC = ft_lstnew_bonus.c \
-			ft_lstadd_front_bonus.c \
-			ft_lstsize_bonus.c \
-			ft_lstlast_bonus.c \
-			ft_lstadd_back_bonus.c \
-			ft_lstdelone_bonus.c \
-			ft_lstclear_bonus.c \
-			ft_lstiter_bonus.c \
-			ft_lstmap_bonus.c \
-
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
-BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 INCLUDE = libft.h
 
@@ -78,9 +67,6 @@ FLAGS = -Wall -Werror -Wextra
 all: $(NAME)
 
 $(NAME): $(MANDATORY_OBJ)
-	ar rcs $(NAME) $^
-
-bonus: $(BONUS_OBJ) $(MANDATORY_OBJ)
 	ar rcs $(NAME) $^
 
 clean:

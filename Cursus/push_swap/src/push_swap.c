@@ -6,63 +6,63 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 09:42:24 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/23 11:15:36 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void deallocate(t_list **list_1)
+static void deallocate(t_lst **lst_1)
 {
-	t_list *curr;
-	t_list *aux;
+	t_lst *curr;
+	t_lst *aux;
 
-	curr = *list_1;
+	curr = *lst_1;
 	while (curr != NULL)
 	{
 		aux = curr;
 		curr = curr -> next;
 		free(aux);
 	}
-	*list_1 = NULL;
+	*lst_1 = NULL;
 }
 
 static void change_to_str(int argc, char *argv[])
 {
-	t_list	*list_1;
-	int numb;
+	t_lst	*lst_1;
+	int input;
 	int i;
 	int a;
+	int numb;
 	char **temp;
 
-	numb = 0;
+	input = 0;
 	i = 0;
-	list_1 = NULL;
-	while (numb++ < argc)
+	lst_1 = NULL;
+	while (input++ < argc)
 	{
 		temp = ft_split(argv[i], ' ', '+');
 		a = 0;
 		while(temp[a] != NULL)
 		{
-			ft_lstadd_back(&list_1, ft_lstnew(ft_strdup(temp[a])));
-			printf("1->%d\n", list_1->content);
+			numb = ft_atoi(temp[a]);
+			ft_lstadd_back(&lst_1, ft_lstnew(numb));
+			//printf("1->%d\n", list_1->content);
 			//printf("número = %s\n", temp[a]); //guardar en las listas
 			a++;
 		}
 		ft_free(temp);
 		i++;
 	}
-	t_list *curr;
+	t_lst *curr;
 
-	curr = list_1;
+	curr = lst_1;
 	while (curr != NULL)
 	{
-		printf("lista = %s\n", curr->content);
-		printf("1->%s\n", curr->next->content);
+		printf("lista = %d\n", curr->content);
 		curr = curr -> next;
 	}
-	printf("12\n");
-	deallocate(&list_1);
+	deallocate(&lst_1);
 }
 
 int main (int argc, char *argv[])
