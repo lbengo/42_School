@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 12:08:24 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:49:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 /* static void check_error(char *temp[])
 {
-	check_num(temp);
+
 	//check_duplicate(temp);
 } */
 
-static void change_to_str(int argc, char *argv[])
+static t_lst *change_to_str(int argc, char *argv[])
 {
 	t_lst	*lst_1;
 	char	**temp;
@@ -42,27 +42,51 @@ static void change_to_str(int argc, char *argv[])
 		ft_free(temp);
 		i++;
 	}
-	//check_error();
+	return (lst_1);
+}
 
+static void check_duplicate(t_lst *lst_1)
+{
 	t_lst *curr;
+	t_lst *temp;
 
 	curr = lst_1;
 	while (curr != NULL)
 	{
-		printf("lista = %d\n", curr->content);
+		temp = curr -> next;
+		while (temp != NULL)
+		{
+			if (curr -> content ==  temp -> content)
+			{
+				printf("Error\nDuplicate numbers");
+				exit(0);
+			}
+			temp = temp -> next;
+		}
 		curr = curr -> next;
 	}
-	deallocate(&lst_1);
 }
 
 int main (int argc, char *argv[])
 {
+	t_lst	*lst_1;
+
 	if (argc > 1)
 	{
 		printf("argc = %d\n", argc);
 		printf("argv = %s\n\n", argv[0]);
-		change_to_str(--argc, ++argv);
-		//check_error(temp);
+		lst_1 = change_to_str(--argc, ++argv);
+		check_duplicate(lst_1);
+
+		t_lst *curr;
+
+		curr = lst_1;
+		while (curr != NULL)
+		{
+			printf("lista = %d\n", curr->content);
+			curr = curr -> next;
+		}
+		deallocate(&lst_1);
 	}
 	else
 		printf("Error\nAdd a number");
