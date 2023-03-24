@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/23 12:10:31 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/24 12:54:04 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src
 SRC           = push_swap.c \
-				push_swap_utils.c \
+				list_functions.c \
 				check_error.c
 
 OBJ_PATH       = ./obj

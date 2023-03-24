@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/24 12:49:00 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:52:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,66 +18,17 @@
 	//check_duplicate(temp);
 } */
 
-static t_lst *change_to_str(int argc, char *argv[])
-{
-	t_lst	*lst_1;
-	char	**temp;
-	int		input;
-	int		i;
-	int		a;
-
-	i = 0;
-	input = 0;
-	lst_1 = NULL;
-	while (input++ < argc)
-	{
-		temp = ft_split(argv[i], ' ');
-		a = 0;
-		while(temp[a] != NULL)
-		{
-			check_num(temp[a]);
-			ft_lstadd_back(&lst_1, ft_lstnew(ft_atoi(temp[a])));
-			a++;
-		}
-		ft_free(temp);
-		i++;
-	}
-	return (lst_1);
-}
-
-static void check_duplicate(t_lst *lst_1)
-{
-	t_lst *curr;
-	t_lst *temp;
-
-	curr = lst_1;
-	while (curr != NULL)
-	{
-		temp = curr -> next;
-		while (temp != NULL)
-		{
-			if (curr -> content ==  temp -> content)
-			{
-				printf("Error\nDuplicate numbers");
-				exit(0);
-			}
-			temp = temp -> next;
-		}
-		curr = curr -> next;
-	}
-}
-
 int main (int argc, char *argv[])
 {
 	t_lst	*lst_1;
 
 	if (argc > 1)
 	{
-		printf("argc = %d\n", argc);
-		printf("argv = %s\n\n", argv[0]);
-		lst_1 = change_to_str(--argc, ++argv);
+		lst_1 = add_to_lst(--argc, ++argv);
 		check_duplicate(lst_1);
 
+
+		//Comprobación de lista
 		t_lst *curr;
 
 		curr = lst_1;
@@ -86,6 +37,7 @@ int main (int argc, char *argv[])
 			printf("lista = %d\n", curr->content);
 			curr = curr -> next;
 		}
+		//Free de la lista
 		deallocate(&lst_1);
 	}
 	else

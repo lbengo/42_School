@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 12:07:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:54:27 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_lst
 
 /* ***************************** FUNCIONES ********************************** */
 
-/* ----------------------------- push_swap_utils ---------------------------- */
+/* ----------------------------- list_functions ----------------------------- */
 
 t_lst	*ft_lstlast(t_lst *lst);
 t_lst	*ft_lstnew(int content);
@@ -39,5 +39,7 @@ void	deallocate(t_lst **lst_1);
 /* ------------------------------- check_error ------------------------------ */
 
 void check_num(char *temp);
+t_lst *add_to_lst(int argc, char *argv[]);
+void check_duplicate(t_lst *lst_1);
 
 #endif
