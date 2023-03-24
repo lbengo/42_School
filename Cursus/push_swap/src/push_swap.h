@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/24 12:54:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:16:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	deallocate(t_lst **lst_1);
 /* ------------------------------- check_error ------------------------------ */
 
 void check_num(char *temp);
+void check_limits(char *temp);
 t_lst *add_to_lst(int argc, char *argv[]);
 void check_duplicate(t_lst *lst_1);
 

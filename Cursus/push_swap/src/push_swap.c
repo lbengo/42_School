@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/24 12:52:43 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/24 13:16:44 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int main (int argc, char *argv[])
 		lst_1 = add_to_lst(--argc, ++argv);
 		check_duplicate(lst_1);
 
-
 		//Comprobación de lista
 		t_lst *curr;
 
@@ -45,49 +44,3 @@ int main (int argc, char *argv[])
 
 	return(0);
 }
-
-/* static int	ft_compare(char *number, char **list)
-{
-	unsigned int	i;
-	unsigned int	a;
-	unsigned int	j;
-
-	i = 0;
-	while (list[i] != NULL)
-	{
-		a = 0;
-		while (list[i][a] != '\0')
-		{
-			j = 0;
-			while (list[i][a + j] == number[a + j])
-			{
-				if (number[a + j] == '\0')
-					return (1);
-				j++;
-			}
-			a++;
-		}
-		i++;
-	}
-	return (0);
-}
-
-static void check_duplicate(char **temp)
-{
-	unsigned int	i;
-	unsigned int	duplicate;
-
-	i = 0;
-	duplicate = 0;
-	while (temp[i] != NULL)
-	{
-		duplicate = ft_compare(temp[i], temp);
-		if (duplicate > 1)
-		{
-			printf("Error\nDuplicate numbers");
-			exit(0);
-		}
-		printf("duplicate = %d\n", ft_compare(temp[i], temp));
-		i++;
-	}
-} */
