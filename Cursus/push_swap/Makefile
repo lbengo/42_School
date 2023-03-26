@@ -6,7 +6,7 @@
 #    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/26 18:57:53 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/03/26 19:39:40 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CFLAGS        = -Wall -Werror -Wextra
 SRC_PATH      = ./src
 SRC           = push_swap.c \
 				list_functions.c \
-				create_lst.c
+				create_lst.c \
+				check_error.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
