@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
+#    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/24 12:54:04 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/26 18:57:53 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS        = -Wall -Werror -Wextra
 SRC_PATH      = ./src
 SRC           = push_swap.c \
 				list_functions.c \
-				check_error.c
+				create_lst.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

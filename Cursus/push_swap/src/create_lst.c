@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   create_lst.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/24 13:38:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/26 19:28:35 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void check_num(char *temp)
+/* void check_num(char *temp)
 {
 	int i;
 
@@ -28,9 +28,55 @@ void check_num(char *temp)
 		}
 		i++;
 	}
+} */
+
+static int check_limits(int i, int a, char *temp)
+{
+	char *int_max;
+	
+	int_max = "2147483647";
+	if (strlen(temp) >= 10)
+	{
+		if (temp[i] > int_max[a])
+		{
+			if (i == 10 && temp[0] == '-' && temp[10] == '8')
+			{
+				i++;
+				return(0);
+			}
+			return (1);
+		}
+	}
+	return (0);
 }
 
-void check_limits(char *temp)
+void check_num(char *temp)
+{
+	int i;
+	int a;
+
+	i = 0;
+	a = 0;
+	if (temp[0] == '-' || temp[0] == '+')
+		i++;
+	while (temp[i] != '\0')
+	{
+		if (ft_isdigit(temp[i]) == 0)
+		{
+			printf("Error\nEverything must be numbers");
+			exit(0);
+		}
+		if (check_limits(i, a, temp) == 1)
+		{
+			printf("Error\nNumerito máximo superado");
+			exit(0);
+		}
+		i++;
+		a++;
+	}
+}
+
+/* void check_limits(char *temp)
 {
 	char *int_max;
 	int i;
@@ -39,17 +85,20 @@ void check_limits(char *temp)
 	i = 0;
 	a = 0;
 	int_max = "2147483647";
-
 	if (strlen(temp) >= 10)
 	{
 		if (temp[0] == '-' || temp[0] == '+')
 			i++;
 		while (temp[i] != '\0')
 		{
-			printf("temp[%d]= %c yyy int_max[%d]= %c\n", i, temp[i], i, int_max[a]);
-			//if (temp[0] == '-' && temp[i] > int_min[a])
-			if ((temp[i] > int_max[a]) && (temp[0] == '-' && temp[10] > '8'))
+			printf("temp[%d]= %c yyy int_max[%d]= %c\n", i, temp[i], a, int_max[a]);
+			if (temp[i] > int_max[a])
 			{
+				if (i == 10 && temp[0] == '-' && temp[10] == '8')
+				{
+					i++;
+					continue;
+				}
 				printf("Error\nNumerito máximo superado");
 				exit(0);
 			}
@@ -57,8 +106,7 @@ void check_limits(char *temp)
 			a++;
 		}
 	}
-
-}
+} */
 
 t_lst *add_to_lst(int argc, char *argv[])
 {
@@ -78,7 +126,7 @@ t_lst *add_to_lst(int argc, char *argv[])
 		while(temp[a] != NULL)
 		{
 			check_num(temp[a]);
-			check_limits(temp[a]);
+			//check_limits(temp[a]);
 			ft_lstadd_back(&lst_1, ft_lstnew(ft_atoi(temp[a])));
 			a++;
 		}
