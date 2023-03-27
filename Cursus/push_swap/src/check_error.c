@@ -6,22 +6,22 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/26 19:35:14 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/27 11:17:16 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int check_limits(int i, int a, char *temp)
+static int check_limits(int i, int a, char *str_nbr)
 {
 	char *int_max;
 	
 	int_max = "2147483647";
-	if (strlen(temp) >= 10)
+	if (strlen(str_nbr) >= 10)
 	{
-		if (temp[i] > int_max[a])
+		if (str_nbr[i] > int_max[a])
 		{
-			if (i == 10 && temp[0] == '-' && temp[10] == '8')
+			if (i == 10 && str_nbr[0] == '-' && str_nbr[10] == '8')
 			{
 				i++;
 				return(0);
@@ -32,23 +32,23 @@ static int check_limits(int i, int a, char *temp)
 	return (0);
 }
 
-void check_digit_and_limit(char *temp)
+void check_digit_and_limit(char *str_nbr)
 {
 	int i;
 	int a;
 
 	i = 0;
 	a = 0;
-	if (temp[0] == '-' || temp[0] == '+')
+	if (str_nbr[0] == '-' || str_nbr[0] == '+')
 		i++;
-	while (temp[i] != '\0')
+	while (str_nbr[i] != '\0')
 	{
-		if (ft_isdigit(temp[i]) == 0)
+		if (ft_isdigit(str_nbr[i]) == 0)
 		{
 			printf("Error\nEverything must be numbers");
 			exit(0);
 		}
-		if (check_limits(i, a, temp) == 1)
+		if (check_limits(i, a, str_nbr) == 1)
 		{
 			printf("Error\nNumerito máximo superado");
 			exit(0);
@@ -58,12 +58,12 @@ void check_digit_and_limit(char *temp)
 	}
 }
 
-void check_duplicate(t_lst *lst_1)
+void check_duplicate(t_lst *lst)
 {
 	t_lst *curr;
 	t_lst *temp;
 
-	curr = lst_1;
+	curr = lst;
 	while (curr != NULL)
 	{
 		temp = curr -> next;

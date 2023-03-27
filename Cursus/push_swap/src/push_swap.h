@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/26 19:38:48 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/27 11:22:28 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct s_lst
 t_lst	*ft_lstlast(t_lst *lst);
 t_lst	*ft_lstnew(int content);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
-void	deallocate(t_lst **lst_1);
+void	deallocate(t_lst **lst);
 
 /* Create_lst --------------------------------------------------------------- */
 
@@ -42,7 +42,7 @@ t_lst *add_to_lst(int argc, char *argv[]);
 
 /* Check_error -------------------------------------------------------------- */
 
-void check_digit_and_limit(char *temp);
-void check_duplicate(t_lst *lst_1);
+void check_digit_and_limit(char *str_nbr);
+void check_duplicate(t_lst *lst);
 
 #endif
