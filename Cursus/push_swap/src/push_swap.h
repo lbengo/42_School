@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/28 13:33:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:30:37 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

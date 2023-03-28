@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/28 14:21:30 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:39:48 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ void rotate_a(t_lst **lst)
 /* push b - toma el primer elemento del stack a y lo pone encima del stack b. */
 void push_b(t_lst **lst_a, t_lst **lst_b)
 {
-	t_lst *last_nbr;
+	t_lst *curr;
 
-	last_nbr = ft_lstlast(*lst_a);
-	(ft_lstpenultimate(*lst_a))->next = NULL;
-	if (lst_b)
-	last_nbr->next = *lst_b;
-	*lst_b = last_nbr;
+	curr = *lst_a;
+	*lst_a = (*lst_a)->next;
+	curr->next = *lst_b;
+	*lst_b = curr;
 }
 
 /* reverse rotate a - desplaza hacia abajo todos los elementos del stack a una
@@ -78,7 +77,9 @@ int main (int argc, char *argv[])
 	}
 
 	//rotación y comprobación de lista
-	reverse_rotate_a(&lst_a);
+	push_b(&lst_a, &lst_b);
+	push_b(&lst_a, &lst_b);
+
 
 	t_lst *curr_a;
 
@@ -88,14 +89,14 @@ int main (int argc, char *argv[])
 		curr_a = curr_a->next;
 	}
 
-	/* t_lst *curr_b;
+	t_lst *curr_b;
 
 	curr_b = lst_b;
 	while (curr_b) {
 		printf("bbbbb = %d\n", curr_b->content);
 		curr_b = curr_b->next;
 	}
- */
+
 
 
 
