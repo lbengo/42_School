@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/28 10:45:13 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:46:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 void rotate_a(t_lst **lst)
 {
 	t_lst *curr;
-	__unused t_lst *temp;
 
 	curr = (*lst)->next;
 	ft_lstlast(*lst)->next = *lst;
@@ -26,24 +25,40 @@ void rotate_a(t_lst **lst)
 	(*lst) = curr;
 }
 
+/* push b - toma el primer elemento del stack a y lo pone encima del stack b.
+No hace nada si a está vacío */
 
+static void push_b(t_lst **lst_a, t_lst **lst_b)
+{
+	t_lst *last_nbr;
+
+	last_nbr = ft_lstlast(*lst_a);
+	(ft_lstpenultimate(*lst_a))->next = NULL;
+	if (lst_b)
+	last_nbr->next = *lst_b;
+	*lst_b = last_nbr;
+
+
+}
 
 int main (int argc, char *argv[])
 {
-	t_lst	*lst;
+	t_lst	*lst_a;
+	t_lst	*lst_b;
 
 	if (argc == 1)
 	{
 		printf("Error\nAdd a number");
 		return (0);
 	}
-	lst = add_to_lst(--argc, ++argv);
-	check_duplicate(lst);
+	lst_a = add_to_lst(--argc, ++argv);
+	lst_b = NULL;
+	check_duplicate(lst_a);
 
 	//Comprobación de lista
 	t_lst *curr;
 
-	curr = lst;
+	curr = lst_a;
 	while (curr != NULL)
 	{
 		printf("lista = %d\n", curr->content);
@@ -51,17 +66,30 @@ int main (int argc, char *argv[])
 	}
 
 	//rotación y comprobación de lista
-	rotate_a(&lst);
-		while (lst) {
-		printf("aaaaaaaaa = %d\n", lst->content);
-		lst = lst->next;
+	push_b(&lst_a, &lst_b);
+
+	t_lst *curr_a;
+
+	curr_a = lst_a;
+	while (curr_a) {
+		printf("aaaaaaaaa = %d\n", curr_a->content);
+		curr_a = curr_a->next;
+	}
+
+	t_lst *curr_b;
+
+	curr_b = lst_b;
+	while (curr_b) {
+		printf("bbbbb = %d\n", curr_b->content);
+		curr_b = curr_b->next;
 	}
 
 
 
 
 	//Free de la lista
-	deallocate(&lst);
+	deallocate(&lst_a);
+	deallocate(&lst_b);
 
 	return(0);
 }

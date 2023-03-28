@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   list_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:48:24 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/23 11:38:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/28 13:32:56 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_lst	*ft_lstnew(int content)
 {
 	t_lst	*new;
 
-	new = malloc(sizeof(t_list));
+	new = malloc(sizeof(t_lst));
 	if (!new)
 		return (0);
 	new -> content = content;
@@ -33,12 +33,34 @@ t_lst	*ft_lstlast(t_lst *lst)
 	return (lst);
 }
 
+t_lst *ft_lstpenultimate(t_lst *lst)
+{
+	t_lst *curr;
+	t_lst *prev;
+
+	if(!lst)
+		return (0);
+	prev = lst;
+	while (prev->next != NULL)
+	{
+		curr = prev;
+		prev = prev->next;
+	}
+	return (curr);
+}
+
 void	ft_lstadd_back(t_lst **lst, t_lst *new)
 {
 	if (!*lst)
 		*lst = new;
 	else
 		ft_lstlast(*lst)-> next = new;
+}
+
+void	ft_lstadd_front(t_lst **lst, t_lst *new)
+{
+	new -> next = lst[0];
+	lst[0] = new;
 }
 
 void deallocate(t_lst **lst_1)
