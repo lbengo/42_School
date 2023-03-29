@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/29 08:28:07 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/29 08:47:23 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_lst
 /* ***************************** FUNCIONES ********************************** */
 
 /* List_functions ----------------------------------------------------------- */
-
 t_lst	*ft_lstlast(t_lst *lst);
 t_lst	*ft_lstnew(int content);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
@@ -39,21 +38,23 @@ void	deallocate(t_lst **lst);
 t_lst *ft_lstpenultimate(t_lst *lst);
 
 /* Create_lst --------------------------------------------------------------- */
-
 t_lst *add_to_lst(int argc, char *argv[]);
 
 /* Check_error -------------------------------------------------------------- */
-
 void check_digit_and_limit(char *str_nbr);
 void check_duplicate(t_lst *lst);
 
 /* Game_rules --------------------------------------------------------------- */
-void swap_a(t_lst **lst_a)
+void swap_a(t_lst **lst_a);
 void swap_b(t_lst **lst_b);
 void swap_a_b(t_lst **lst_a, t_lst **lst_b);
-
-void push(t_lst **lst_a, t_lst **lst_b);
-void rotate(t_lst **lst);
-void reverse_rotate(t_lst **lst);
+void push_a(t_lst **lst_a, t_lst **lst_b);
+void push_b(t_lst **lst_a, t_lst **lst_b);
+void rotate_a(t_lst **lst_a);
+void rotate_b(t_lst **lst_b);
+void rotate_a_b(t_lst **lst_a, t_lst **lst_b);
+void reverse_rotate_a(t_lst **lst_a);
+void reverse_rotate_b(t_lst **lst_b);
+void reverse_rotate_a_b(t_lst **lst_a, t_lst **lst_b);
 
 #endif

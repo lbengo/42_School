@@ -6,7 +6,7 @@
 #    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/29 08:07:38 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/03/29 08:35:29 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,10 @@ SRC           = push_swap.c \
 				list_functions.c \
 				create_lst.c \
 				check_error.c \
-				game_rules/swap.c
+				game_rules/swap.c \
+				game_rules/push.c \
+				game_rules/rotate.c \
+				game_rules/reverse_rotate.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

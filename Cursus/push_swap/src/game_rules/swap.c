@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 07:29:35 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/29 08:27:48 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/29 08:39:55 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static void swap(t_lst **lst)
 void swap_a(t_lst **lst_a)
 {
 	swap(lst_a);
-	write(1, "sa", 1);
+	write(1, "sa", 2);
 }
 
 // swap b - intercambia los dos primeros elementos encima de la lista b.
 void swap_b(t_lst **lst_b)
 {
 	swap(lst_b);
-	write(1, "sb", 1);
+	write(1, "sb", 2);
 }
 
 // swap a y b - hace swap de la lista a y b a la vez.
@@ -43,5 +43,5 @@ void swap_a_b(t_lst **lst_a, t_lst **lst_b)
 {
 	swap(lst_a);
 	swap(lst_b);
-	write(1, "ss", 1);
+	write(1, "ss", 2);
 }

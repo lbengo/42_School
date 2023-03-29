@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/29 08:15:01 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/29 08:48:18 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ int main (int argc, char *argv[])
 	}
 
 	//rotación y comprobación de lista
-	swap(&lst_a);
+	swap_a(&lst_a);
 
 	t_lst *curr_a;
 
 	curr_a = lst_a;
 	while (curr_a) {
-		printf("aaaaaaaaa = %d\n", curr_a->content);
+		printf("\naaaaaaaaa = %d", curr_a->content);
 		curr_a = curr_a->next;
 	}
 
