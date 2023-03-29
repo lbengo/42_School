@@ -6,7 +6,7 @@
 #    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/26 19:39:40 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/03/29 08:07:38 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,8 @@ SRC_PATH      = ./src
 SRC           = push_swap.c \
 				list_functions.c \
 				create_lst.c \
-				check_error.c
+				check_error.c \
+				game_rules/swap.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
@@ -44,6 +45,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH):
 	mkdir $@
+	mkdir obj/game_rules
 
 clean:
 	rm -rf $(OBJ_PATH)
