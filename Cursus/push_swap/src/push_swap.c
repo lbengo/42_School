@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/29 07:15:06 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/29 08:15:01 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main (int argc, char *argv[])
 	}
 
 	//rotación y comprobación de lista
-	swap_a(&lst_a);
+	swap(&lst_a);
 
 	t_lst *curr_a;
 

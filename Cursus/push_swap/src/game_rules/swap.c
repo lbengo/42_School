@@ -6,15 +6,15 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 07:29:35 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/29 08:06:58 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/29 08:27:48 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* sa : swap a - intercambia los dos primeros elementos encima del stack a. No hace
-nada si hay uno o menos elementos */
-void swap_a(t_lst **lst)
+/* swap - intercambia los dos primeros elementos de la lista. No hace nada si 
+hay uno o menos elementos. Ej: 1234 -> 2134 */
+static void swap(t_lst **lst)
 {
 	t_lst *second_nbr;
 	
@@ -22,4 +22,26 @@ void swap_a(t_lst **lst)
 	(*lst)->next = second_nbr->next;
 	second_nbr->next = *lst;
 	*lst = second_nbr;
+}
+
+// swap a - intercambia los dos primeros elementos encima de la lista a.
+void swap_a(t_lst **lst_a)
+{
+	swap(lst_a);
+	write(1, "sa", 1);
+}
+
+// swap b - intercambia los dos primeros elementos encima de la lista b.
+void swap_b(t_lst **lst_b)
+{
+	swap(lst_b);
+	write(1, "sb", 1);
+}
+
+// swap a y b - hace swap de la lista a y b a la vez.
+void swap_a_b(t_lst **lst_a, t_lst **lst_b)
+{
+	swap(lst_a);
+	swap(lst_b);
+	write(1, "ss", 1);
 }
