@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/30 11:55:08 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/30 11:59:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 //Si el primer número es mayor que todos los de la lista lo cambia a la lista B. Ej: 431(lista a). -> 31(lista a) 4(lista b)
 //Si no, lo rota al último de la misma lista. Ej: 143 -> 431
 
-static void	find_move_top(t_lst **lst_a, t_lst **lst_b)
+static void	find_move_top(t_lst **lst_a)
 {
 	t_lst *curr;
 	int	len;
 	int	i;
 	int	a;
 
-	lst_b = NULL;
 	i = 0;
 	curr = *lst_a;
 	len = ft_lstsize(*lst_a);
@@ -39,6 +38,10 @@ static void	find_move_top(t_lst **lst_a, t_lst **lst_b)
 	}
 }
 
+static void	find_move_b(t_lst **lst_a, t_lst **lst_b)
+{
+	
+}
 
 int	main(int argc, char *argv[])
 {
@@ -53,7 +56,8 @@ int	main(int argc, char *argv[])
 	lst_a = add_to_lst(--argc, ++argv);
 	lst_b = NULL;
 	check_duplicate(lst_a);
-	find_move_top(&lst_a, &lst_b);
+	find_move_top(&lst_a);
+	find_move_b(&lst_a, &lst_b);
 
 	//Comprobación de lista
 	t_lst *curr;

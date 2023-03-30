@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/29 08:47:23 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/30 11:11:19 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 typedef struct s_lst
 {
 	int				content;
+	int				move_top;
+	int				move_b;
 	struct s_lst	*next;
 }	t_lst;
 
@@ -35,7 +37,8 @@ t_lst	*ft_lstnew(int content);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
 void	ft_lstadd_front(t_lst **lst, t_lst *new);
 void	deallocate(t_lst **lst);
-t_lst *ft_lstpenultimate(t_lst *lst);
+t_lst	*ft_lstpenultimate(t_lst *lst);
+int		ft_lstsize(t_lst *lst);
 
 /* Create_lst --------------------------------------------------------------- */
 t_lst *add_to_lst(int argc, char *argv[]);
