@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/23 11:05:33 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/03/30 08:34:55 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ MANDATORY_SRC = ft_isalpha.c \
 				ft_strtrim.c \
 				ft_itoa.c \
 				ft_putchar_fd.c \
+				ft_putstr.c \
 				ft_putstr_fd.c \
 				ft_putendl_fd.c \
 				ft_putnbr_fd.c \

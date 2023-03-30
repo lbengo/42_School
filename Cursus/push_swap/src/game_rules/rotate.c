@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:11:36 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/29 08:43:51 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/30 10:18:01 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,14 @@ static void rotate(t_lst **lst)
 void rotate_a(t_lst **lst_a)
 {
 	rotate(lst_a);
-	write(1, "ra", 2);
+	ft_putstr("ra\n");
 }
 
 // rotate b - el primer elemento de la lista b pasa al último.
 void rotate_b(t_lst **lst_b)
 {
 	rotate(lst_b);
-	write(1, "rb", 2);
+	ft_putstr("rb\n");
 }
 
 // rotate a y b - los primeros elementos de la lista a y b pasan al último.
@@ -42,5 +42,5 @@ void rotate_a_b(t_lst **lst_a, t_lst **lst_b)
 {
 	rotate(lst_a);
 	rotate(lst_b);
-	write(1, "rr", 2);
+	ft_putstr("rr\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 07:29:35 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/29 08:40:00 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/30 10:17:01 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void push(t_lst **lst, t_lst **dest)
 void push_a(t_lst **lst_a, t_lst **lst_b)
 {
 	push(lst_b, lst_a);
-	write(1, "pa", 2);
+	ft_putstr("pa\n");
 }
 
 // push b - toma el primer elemento de la lista a y lo situa encima de la b.
 void push_b(t_lst **lst_a, t_lst **lst_b)
 {
 	push(lst_a, lst_b);
-	write(1, "pb", 2);
+	ft_putstr("pb\n");
 }

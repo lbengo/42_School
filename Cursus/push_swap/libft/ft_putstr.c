@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_lst.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 19:34:59 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/30 10:01:19 by lbengoec         ###   ########.fr       */
+/*   Created: 2022/09/15 19:27:16 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/03/30 08:35:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-t_lst *add_to_lst(int argc, char *argv[])
+void	ft_putstr(char *s)
 {
-	t_lst	*lst;
-	char	**temp;
-	int		input;
-	int		i;
-	int		a;
+	unsigned int	i;
 
 	i = 0;
-	input = 0;
-	lst = NULL;
-	while (input++ < argc)
+	while (s[i] != '\0')
 	{
-		temp = ft_split(argv[i], ' ');
-		a = 0;
-		while(temp[a] != NULL)
-		{
-			check_digit_and_limit(temp[a]);
-			ft_lstadd_back(&lst, ft_lstnew(ft_atoi(temp[a])));
-			a++;
-		}
-		ft_free(temp);
+		write(1, &s[i], 1);
 		i++;
 	}
-	return (lst);
 }
