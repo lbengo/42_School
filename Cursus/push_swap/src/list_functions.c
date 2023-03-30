@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:48:24 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/28 13:32:56 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/03/30 10:43:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,19 @@ t_lst	*ft_lstnew(int content)
 	new -> content = content;
 	new -> next = NULL;
 	return (new);
+}
+
+int	ft_lstsize(t_lst *lst)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (lst)
+	{
+		lst = lst -> next;
+		i++;
+	}
+	return (i);
 }
 
 t_lst	*ft_lstlast(t_lst *lst)

@@ -3,19 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/29 08:48:18 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/03/30 11:55:08 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 //Si el primer número es mayor que todos los de la lista lo cambia a la lista B. Ej: 431(lista a). -> 31(lista a) 4(lista b)
-//Si no, lo rota al último de la misma lista. Ej: 143. -> 431
+//Si no, lo rota al último de la misma lista. Ej: 143 -> 431
 
-int main (int argc, char *argv[])
+static void	find_move_top(t_lst **lst_a, t_lst **lst_b)
+{
+	t_lst *curr;
+	int	len;
+	int	i;
+	int	a;
+
+	lst_b = NULL;
+	i = 0;
+	curr = *lst_a;
+	len = ft_lstsize(*lst_a);
+	while (i <= len/2)
+	{
+		curr->move_top = i++;
+		curr = curr->next;
+	}
+	a = len/2;
+	while (i++ < len)
+	{
+		curr->move_top = a--;
+		curr = curr->next;
+	}
+}
+
+
+int	main(int argc, char *argv[])
 {
 	t_lst	*lst_a;
 	t_lst	*lst_b;
@@ -28,6 +53,7 @@ int main (int argc, char *argv[])
 	lst_a = add_to_lst(--argc, ++argv);
 	lst_b = NULL;
 	check_duplicate(lst_a);
+	find_move_top(&lst_a, &lst_b);
 
 	//Comprobación de lista
 	t_lst *curr;
@@ -36,10 +62,11 @@ int main (int argc, char *argv[])
 	while (curr != NULL)
 	{
 		printf("lista = %d\n", curr->content);
+		printf("top = %d\n", curr->move_top);
 		curr = curr -> next;
 	}
 
-	//rotación y comprobación de lista
+/* 	//rotación y comprobación de lista
 	swap_a(&lst_a);
 
 	t_lst *curr_a;
@@ -50,16 +77,13 @@ int main (int argc, char *argv[])
 		curr_a = curr_a->next;
 	}
 
-	/* t_lst *curr_b;
+	t_lst *curr_b;
 
 	curr_b = lst_b;
 	while (curr_b) {
 		printf("bbbbb = %d\n", curr_b->content);
 		curr_b = curr_b->next;
 	} */
-
-
-
 
 	//Free de la lista
 	deallocate(&lst_a);
