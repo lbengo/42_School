@@ -1,4 +1,4 @@
-# Push_Swap en proceso
+# Push_Swap - En proceso
 
 ***Errores a gestionar***
 - Números positivos y/o negativos (una instrucción no existe también)
