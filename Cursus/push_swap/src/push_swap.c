@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/03 10:16:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/03 11:29:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static int	check_order(t_lst **lst)
 }
 
 // 3 numbers
-
 static void	small_nbr(t_lst **lst)
 {
 	t_lst	*first;
@@ -84,7 +83,28 @@ static void	small_nbr(t_lst **lst)
 	}
 }
 
+// 5 numbers
 
+/* 23415 -> 2145 -> 1245 -> 31245
+// saco los dos primeros números a la lista b
+// cambio los 3 números con el de 3
+static void	medium_nbr(t_lst **lst_a, t_lst **lst_b)
+{
+} */
+
+static void	move_lst(t_lst **lst_a, t_lst **lst_b)
+{
+	int	len;
+
+	*lst_b = NULL;
+	len = ft_lstsize(*lst_a);
+	if (len == 2 && check_order(lst_a) == 1)
+		swap_a(lst_a);
+	else if (len == 3)
+		small_nbr(lst_a);
+	//else if (len == 5)
+		//medium_nbr(lst_a, lst_b);
+}
 
 int	main(int argc, char *argv[])
 {
@@ -99,7 +119,8 @@ int	main(int argc, char *argv[])
 	lst_a = add_to_lst(--argc, ++argv);
 	lst_b = NULL;
 	check_duplicate(lst_a);
-	small_nbr(&lst_a);
+	move_lst(&lst_a, &lst_b);
+	//small_nbr(&lst_a);
 	//find_move_top(&lst_a);
 	//find_move_b(&lst_a, &lst_b);
 
