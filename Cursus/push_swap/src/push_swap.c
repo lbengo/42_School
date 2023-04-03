@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/03 17:40:10 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:47:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,47 @@ static void	find_move_top(t_lst **lst_a)
 		curr = curr->next;
 	}
 }
-
-/* static void	find_move_b(t_lst **lst_a, t_lst **lst_b)
+/*
+static int	max_min_nbr(t_lst **lst, int nbr)
 {
 
-} */
+}
 
+static int	find_nbr_b(t_lst **lst, int nbr)
+{
+	t_lst	*curr;
+	t_lst	*next;
+	int		i;
+
+	i = 0;
+	while (curr != NULL)
+	{
+		curr = *lst;
+		next = (*lst)->next;
+		if (max_min_nbr(lst, nbr) == 1)
+			break;
+		if (nbr > curr->content && nbr < next->content)
+			break;
+		i++;
+		curr = curr->next;
+	}
+	return (i);
+}
+
+static void	find_move_b(t_lst **lst_a, t_lst **lst_b)
+{
+	t_lst *stack_a; errores
+	: - ""
+		- " "
+
+	stack_a = *lst_a;
+	while (stack_a != NULL)
+	{
+		stack_a->move_b = find_nbr_b(lst_b, stack_a->content);
+		stack_a = stack_a->next;
+	}
+}
+ */
 static int	check_order(t_lst **lst)
 {
 	t_lst *curr;
@@ -105,12 +140,13 @@ int	main(int argc, char *argv[])
 	t_lst	*lst_a;
 	t_lst	*lst_b;
 
-	if (argc == 1)
+	lst_a = add_to_lst(--argc, ++argv);
+	if (argc == 1 || !lst_a)
 	{
 		printf("Error\nAdd a number");
 		return (0);
 	}
-	lst_a = add_to_lst(--argc, ++argv);
+
 	lst_b = NULL;
 	check_duplicate(lst_a);
 	move_lst(&lst_a, &lst_b);
