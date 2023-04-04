@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/04 18:22:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/04 20:50:07 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 
 	i = 0;
 	len = ft_lstsize(lst);
+	printf("aaaa\n");
 	while (lst != NULL)
 	{
 		if (lst->content == nbr->content)
@@ -34,18 +35,40 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 	return (i);
 }
 
-/* static int	find_move_b(t_lst *lst, t_lst *nbr)
+/* static int	check_max_min(t_lst *lst, t_lst *nbr)
+{
+	t_lst *curr;
+	int	max_min;
+
+	curr = lst;
+	max_min = 0;
+	while (curr != NULL)
+	{
+		if (nbr->content > curr->content || nbr->content < curr->content)
+			max_min = -1;
+	}
+	return(max_min);
+} */
+
+static int	find_move_b(t_lst *lst, t_lst *nbr)
 {
 	t_lst *next;
 	int len;
 	int i;
 
 	i = 0;
-	printf("aaaa\n");
 	len = ft_lstsize(lst);
-	while (lst != NULL)
+	printf("bbbbb\n");
+	if (len < 2)
+		return (i);
+/* 	if (check_max_min(lst, nbr) == 1)
+		return(check_max_min(lst, nbr)); */
+	while (lst->next != NULL)
 	{
 		next = lst->next;
+		//printf("lst->content = %d\n", lst->content);
+		//printf("nbr->content = %d\n", nbr->content);
+		//printf("next->content = %d\n\n", next->content);
 		if (lst->content > nbr->content && lst->content < next->content)
 			break;
 		i++;
@@ -54,7 +77,7 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 	if (i >= len/2)
 		i = i - len;
 	return (i);
-} */
+}
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 {
@@ -63,18 +86,17 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	int		move_top;
 	int		move_b;
 
-	lst_b = NULL;
 	stack_a = *lst_a;
 	while (stack_a != NULL)
 	{
 		stack_a->move_top = find_move_top(*lst_a, stack_a);
-		//printf("lista = %d\n", stack_a->content);
-		//printf("top = %d\n", stack_a->move_top);
-		//printf("b = %d\n", stack_a->move_b);
-		//stack_a->move_b = find_move_b(*lst_b, stack_a); //es aquiiii el errorsitoo
-		//printf("aaaa\n");
+		stack_a->move_b = find_move_b(*lst_b, stack_a);
+		printf("lista = %d\n", stack_a->content);
+		printf("top = %d\n", stack_a->move_top);
+		printf("b = %d\n", stack_a->move_b);
 		stack_a = stack_a->next;
 	}
+	printf("\n\n");
 	curr = *lst_a;
 	while (curr != NULL)
 	{
@@ -173,6 +195,12 @@ static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 	{
 		find_moves(lst_a, lst_b);
 		select_and_move(lst_a, lst_b);
+		find_moves(lst_a, lst_b);
+		select_and_move(lst_a, lst_b);
+		find_moves(lst_a, lst_b);
+		select_and_move(lst_a, lst_b);
+		//find_moves(lst_a, lst_b);
+		//select_and_move(lst_a, lst_b);
 	}
 }
 
