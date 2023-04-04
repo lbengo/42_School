@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/30 10:22:23 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/04 17:50:32 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@
 
 NAME          = push_swap
 CC            = gcc
+#CC            = gcc -fsanitize=address
 CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src

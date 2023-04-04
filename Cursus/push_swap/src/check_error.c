@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/27 11:17:16 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/04/04 17:47:15 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int check_limits(int i, int a, char *str_nbr)
 {
 	char *int_max;
-	
+
 	int_max = "2147483647";
 	if (strlen(str_nbr) >= 10)
 	{
@@ -60,12 +60,15 @@ void check_digit_and_limit(char *str_nbr)
 
 void check_duplicate(t_lst *lst)
 {
-	t_lst *curr;
-	t_lst *temp;
+	t_lst	*curr;
+	t_lst	*temp;
+	int		len;
 
+	len = 0;
 	curr = lst;
 	while (curr != NULL)
 	{
+		len++;
 		temp = curr -> next;
 		while (temp != NULL)
 		{
@@ -78,4 +81,6 @@ void check_duplicate(t_lst *lst)
 		}
 		curr = curr -> next;
 	}
+	if (len == 1)
+		exit(0);
 }
