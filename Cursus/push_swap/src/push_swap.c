@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/04 14:45:43 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:53:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,6 @@
 	}
 }
 
-static int	max_min_nbr(t_lst **lst, int nbr)
-{
-
-}
-
 static int	find_nbr_b(t_lst **lst, int nbr)
 {
 	t_lst	*curr;
@@ -66,7 +61,14 @@ static int	find_nbr_b(t_lst **lst, int nbr)
 
 static int	space_in_lst(t_lst *lst, t_lst *nbr)
 {
-	int i;
+
+	return (i);
+}
+
+static int	find_move_top(t_lst *lst, t_lst *nbr)
+{
+	int	len;
+	int	i;
 
 	i = 0;
 	while (lst != NULL)
@@ -76,18 +78,28 @@ static int	space_in_lst(t_lst *lst, t_lst *nbr)
 		i++;
 		lst = lst->next;
 	}
+	len = ft_lstsize(lst);
+	if (i >= len/2)
+		i = i - len;
 	return (i);
 }
 
-static int	find_move_top(t_lst *lst, t_lst *nbr)
+static int	find_move_b(t_lst *lst, t_lst *nbr)
 {
-	t_lst *curr;
-	int	len;
-	int	i;
+	t_lst *next;
+	int len;
+	int i;
 
-	curr = lst;
+	i = 0;
+	while (lst != NULL)
+	{
+		next = lst->next;
+		if (lst->content > nbr->content && lst->content < next->content)
+			return (i);
+		i++;
+		lst = lst->next;
+	}
 	len = ft_lstsize(lst);
-	i = space_in_lst(lst, nbr);
 	if (i >= len/2)
 		i = i - len;
 	return (i);
@@ -102,7 +114,7 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	while (stack_a != NULL)
 	{
 		stack_a->move_top = find_move_top(*lst_a, stack_a);
-		//stack_a->move_b = find_nbr_b(lst_b, stack_a->content);
+		stack_a->move_b = find_move_b(*lst_b, stack_a);
 		stack_a = stack_a->next;
 	}
 }
