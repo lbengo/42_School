@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/30 11:11:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/04 14:56:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_lst
 	int				content;
 	int				move_top;
 	int				move_b;
+	int				count;
 	struct s_lst	*next;
 }	t_lst;
 
