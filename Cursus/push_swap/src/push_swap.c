@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/05 13:22:59 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:25:37 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,129 +35,70 @@ static int	find_move_top(t_lst *lst, int nbr)
 	return (i);
 }
 
-/* static int	check_max_min(t_lst *lst, t_lst *nbr)
-{
-	t_lst	*curr;
-	int		nbr_max;
-	int		nbr_min;
-	int		max_min;
-
-	curr = lst;
-	max_min = 0;
-	nbr_max = nbr->content;
-	nbr_min = nbr->content;
-	while (curr != NULL)
-	{
-		if (nbr_min > curr->content)
-			nbr_min = curr->content;
-		else if (nbr_max < curr->content)
-			nbr_max = curr->content;
-		curr = curr->next;
-	}
-	if (nbr->content >= nbr_max || nbr->content <= nbr_min)
-			max_min = 1;
-	return(max_min);
-}
-
-static int	find_max_min(t_lst *lst, int len)
-{
-	int		nbr_max;
-	int		nbr_min;
-	int		start;
-	int		end;
-	int		i;
-
-	i = 0;
-	start = lst->content;
-	end = ft_lstlast(lst)->content;
-	nbr_max = lst->content;
-	nbr_min = lst->content;
-	while (lst != NULL)
-	{
-		if (nbr_min > lst->content)
-		{
-			if (len < i)
-				len = i;
-			nbr_min = lst->content;
-		}
-		else if (nbr_max < lst->content)
-		{
-			if (len < i)
-				len = i;
-			nbr_max = lst->content;
-		}
-		i++;
-		lst = lst->next;
-	}
-	if (start == nbr_min && end == nbr_max)
-		len = 0;
-	return (len);
-}
-
-// Columna izquierda
-static int	find_move_b(t_lst *lst, t_lst *nbr)
-{
-	t_lst *next;
-	int len;
-	int i;
-
-	i = 0;
-	len = ft_lstsize(lst);
-	if (len < 2)
-		return (i);
-
-	printf("------------");
-	printf("\nnbr = %d\n", nbr->content);
-
-	if (check_max_min(lst, nbr) == 1)
-		i = find_max_min(lst, i);
-
-	else
-	{
-		while (lst->next != NULL)
-		{
-			next = lst->next;
-			if (lst->content > nbr->content && lst->content < next->content)
-				break;
-			//else if (lst->content < nbr->content && lst->content > next->content)
-			//	break;
-			i++;
-			lst = lst->next;
-		}
-	}
-	if (i > len/2)
-		i = i - len;
-	return (i);
-}
- */
-
 //Donde se encuentra el número indicado
 static int find_nbr(t_lst *lst, int nbr)
 {
-	while (lst != NULL)
+	t_lst *curr;
+	t_lst *next;
+	int		i;
+
+	curr = lst;
+	next = lst->next;
+	i = 0;
+	if ((nbr > curr->content && nbr < ft_lstlast(curr)->content) || (nbr < curr->content && nbr > ft_lstlast(curr)->content))
+		return (i);
+
+	while (curr != NULL)
 	{
-		
+		printf("ñaskdfn\n");
+		if ((nbr > curr->content && nbr < next->content) || (nbr < curr->content && nbr > next->content))
+			return (i + 1);
+		i++;
+		curr = curr->next;
 	}
+	return (i);
+}
+
+//Donde se encuentra el max o min
+static int find_len_max_min(t_lst *lst, int max, int min)
+{
+	t_lst *curr;
+	t_lst *next;
+	int		i;
+
+	curr = lst;
+	next = lst->next;
+	i = 0;
+	while (curr != NULL)
+	{
+		if ((max == curr->content && min == next->content) || (min == curr->content && max == next->content))
+			return (i + 1);
+		i++;
+		curr = curr->next;
+	}
+	return (i);
 }
 
 //Encuentrame el mayor o menor
 static int	find_max_min(t_lst *lst, char c)
 {
+	t_lst	*curr;
 	int		min;
 	int		max;
 	int		i;
 
 	i = 0;
+	curr = lst;
 	max = lst->content;
 	min = lst->content;
-	while (lst != NULL)
+	while (curr != NULL)
 	{
-		if (max < lst->content)
-			max = lst->content;
-		else if (min > lst->content)
-			min = lst->content;
+		if (max < curr->content)
+			max = curr->content;
+		else if (min > curr->content)
+			min = curr->content;
 		i++;
-		lst = lst->next;
+		curr = curr->next;
 	}
 	if (c == 'M')
 		return (max);
@@ -170,6 +111,7 @@ static int	find_move_b(t_lst *lst, int nbr)
 	int	max;
 	int	min;
 	int	len;
+	int	i;
 
 	printf("NUMERO = %d\n", nbr);
 
@@ -184,42 +126,13 @@ static int	find_move_b(t_lst *lst, int nbr)
 	{
 		if (lst->content == min && ft_lstlast(lst)->content == max)
 			return (0);
-
+		printf("lo usoooo\n");
+		i = find_len_max_min(lst, max, min);
+		return(i);
 	}
-	return(22);
-
-/*
-	t_lst *next;
-	int len;
-	int i;
-
-	i = 0;
-	len = ft_lstsize(lst);
-	if (len < 2)
-		return (i);
-
-	printf("------------");
-	printf("\nnbr = %d\n", nbr->content);
-
-	if (check_max_min(lst, nbr) == 1)
-		i = find_max_min(lst, i);
-
-	else
-	{
-		while (lst->next != NULL)
-		{
-			next = lst->next;
-			if (lst->content > nbr->content && lst->content < next->content)
-				break;
-			//else if (lst->content < nbr->content && lst->content > next->content)
-			//	break;
-			i++;
-			lst = lst->next;
-		}
-	}
-	if (i > len/2)
-		i = i - len;
-	return (i); */
+	printf("lo usoooo\n");
+	i = find_nbr(lst, nbr);
+	return(i);
 }
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
@@ -395,6 +308,27 @@ static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 		while (curr_b3) {
 			printf("bbbbb = %d\n", curr_b3->content);
 			curr_b3 = curr_b3->next;
+		}
+		printf("------------------------------------------\n");
+
+		find_moves(lst_a, lst_b);
+		select_and_move(lst_a, lst_b);
+
+		//------------------------------
+		// comprobación de 2 listas
+		t_lst *curr_a4;
+
+		curr_a4 = *lst_a;
+		while (curr_a4) {
+			printf("aaaaaaaaa = %d\n", curr_a4->content);
+			curr_a4 = curr_a4->next;
+		}
+
+		t_lst *curr_b4;
+		curr_b4 = *lst_b;
+		while (curr_b4) {
+			printf("bbbbb = %d\n", curr_b4->content);
+			curr_b4 = curr_b4->next;
 		}
 		printf("------------------------------------------\n");
 		//------------------------------
