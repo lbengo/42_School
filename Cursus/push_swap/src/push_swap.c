@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/04 20:50:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/05 12:45:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //Si el primer número es mayor que todos los de la lista lo cambia a la lista B. Ej: 431(lista a). -> 31(lista a) 4(lista b)
 //Si no, lo rota al último de la misma lista. Ej: 143 -> 43
 
+// Columna derecha
 static int	find_move_top(t_lst *lst, t_lst *nbr)
 {
 	int	len;
@@ -22,7 +23,6 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 
 	i = 0;
 	len = ft_lstsize(lst);
-	printf("aaaa\n");
 	while (lst != NULL)
 	{
 		if (lst->content == nbr->content)
@@ -35,21 +35,67 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 	return (i);
 }
 
-/* static int	check_max_min(t_lst *lst, t_lst *nbr)
+static int	check_max_min(t_lst *lst, t_lst *nbr)
 {
-	t_lst *curr;
-	int	max_min;
+	t_lst	*curr;
+	int		nbr_max;
+	int		nbr_min;
+	int		max_min;
 
 	curr = lst;
 	max_min = 0;
+	nbr_max = nbr->content;
+	nbr_min = nbr->content;
 	while (curr != NULL)
 	{
-		if (nbr->content > curr->content || nbr->content < curr->content)
-			max_min = -1;
+		if (nbr_min > curr->content)
+			nbr_min = curr->content;
+		else if (nbr_max < curr->content)
+			nbr_max = curr->content;
+		curr = curr->next;
 	}
+	if (nbr->content >= nbr_max || nbr->content <= nbr_min)
+			max_min = 1;
 	return(max_min);
-} */
+}
 
+
+static int	find_max_min(t_lst *lst, int len)
+{
+	int		nbr_max;
+	int		nbr_min;
+	int		start;
+	int		end;
+	int		i;
+
+	i = 0;
+	start = lst->content;
+	end = ft_lstlast(lst)->content;
+	nbr_max = lst->content;
+	nbr_min = lst->content;
+	while (lst != NULL)
+	{
+		if (nbr_min > lst->content)
+		{
+			if (len < i)
+				len = i;
+			nbr_min = lst->content;
+		}
+		else if (nbr_max < lst->content)
+		{
+			if (len < i)
+				len = i;
+			nbr_max = lst->content;
+		}
+		i++;
+		lst = lst->next;
+	}
+	if (start == nbr_min && end == nbr_max)
+		len = 0;
+	return (len);
+}
+
+// Columna izquierda
 static int	find_move_b(t_lst *lst, t_lst *nbr)
 {
 	t_lst *next;
@@ -58,23 +104,28 @@ static int	find_move_b(t_lst *lst, t_lst *nbr)
 
 	i = 0;
 	len = ft_lstsize(lst);
-	printf("bbbbb\n");
 	if (len < 2)
 		return (i);
-/* 	if (check_max_min(lst, nbr) == 1)
-		return(check_max_min(lst, nbr)); */
-	while (lst->next != NULL)
+
+	printf("------------");
+	printf("\nnbr = %d\n", nbr->content);
+
+	if (check_max_min(lst, nbr) == 1)
+		i = find_max_min(lst, i);
+	else
 	{
-		next = lst->next;
-		//printf("lst->content = %d\n", lst->content);
-		//printf("nbr->content = %d\n", nbr->content);
-		//printf("next->content = %d\n\n", next->content);
-		if (lst->content > nbr->content && lst->content < next->content)
-			break;
-		i++;
-		lst = lst->next;
+		while (lst->next != NULL)
+		{
+			next = lst->next;
+			if (lst->content > nbr->content && lst->content < next->content)
+				break;
+			//else if (lst->content < nbr->content && lst->content > next->content)
+			//	break;
+			i++;
+			lst = lst->next;
+		}
 	}
-	if (i >= len/2)
+	if (i > len/2)
 		i = i - len;
 	return (i);
 }
@@ -87,17 +138,19 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	int		move_b;
 
 	stack_a = *lst_a;
+	// Colocar las columnas
 	while (stack_a != NULL)
 	{
 		stack_a->move_top = find_move_top(*lst_a, stack_a);
 		stack_a->move_b = find_move_b(*lst_b, stack_a);
-		printf("lista = %d\n", stack_a->content);
+		//printf("lista = %d\n", stack_a->content);
 		printf("top = %d\n", stack_a->move_top);
 		printf("b = %d\n", stack_a->move_b);
 		stack_a = stack_a->next;
 	}
-	printf("\n\n");
+
 	curr = *lst_a;
+	// Sumar las columnas y guardar el resultado
 	while (curr != NULL)
 	{
 		move_top = curr->move_top;
@@ -108,10 +161,6 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 		if (move_b < 0)
 			move_b = move_b * (-1);
 		curr->count = move_top + move_b;
-		/* printf("lista = %d\n", curr->content);
-		printf("top = %d\n", curr->move_top);
-		printf("b = %d\n", curr->move_b);
-		printf("count = %d\n\n", curr->count); */
 		curr = curr->next;
 	}
 }
@@ -195,12 +244,68 @@ static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 	{
 		find_moves(lst_a, lst_b);
 		select_and_move(lst_a, lst_b);
+		//------------------------------
+		// comprobación de 2 listas
+		t_lst *curr_a1;
+
+		curr_a1 = *lst_a;
+		while (curr_a1) {
+			printf("aaaaaaaaa = %d\n", curr_a1->content);
+			curr_a1 = curr_a1->next;
+		}
+
+		t_lst *curr_b1;
+		curr_b1 = *lst_b;
+		while (curr_b1) {
+			printf("bbbbb = %d\n", curr_b1->content);
+			curr_b1 = curr_b1->next;
+		}
+		printf("------------------------------------------\n");
+		//------------------------------
+
 		find_moves(lst_a, lst_b);
 		select_and_move(lst_a, lst_b);
+
+		//------------------------------
+		// comprobación de 2 listas
+		t_lst *curr_a2;
+
+		curr_a2 = *lst_a;
+		while (curr_a2) {
+			printf("aaaaaaaaa = %d\n", curr_a2->content);
+			curr_a2 = curr_a2->next;
+		}
+
+		t_lst *curr_b2;
+		curr_b2 = *lst_b;
+		while (curr_b2) {
+			printf("bbbbb = %d\n", curr_b2->content);
+			curr_b2 = curr_b2->next;
+		}
+		printf("------------------------------------------\n");
+		//------------------------------
+
 		find_moves(lst_a, lst_b);
 		select_and_move(lst_a, lst_b);
-		//find_moves(lst_a, lst_b);
-		//select_and_move(lst_a, lst_b);
+
+		//------------------------------
+		// comprobación de 2 listas
+		t_lst *curr_a3;
+
+		curr_a3 = *lst_a;
+		while (curr_a3) {
+			printf("aaaaaaaaa = %d\n", curr_a3->content);
+			curr_a3 = curr_a3->next;
+		}
+
+		t_lst *curr_b3;
+		curr_b3 = *lst_b;
+		while (curr_b3) {
+			printf("bbbbb = %d\n", curr_b3->content);
+			curr_b3 = curr_b3->next;
+		}
+		printf("------------------------------------------\n");
+		//------------------------------
 	}
 }
 
@@ -219,19 +324,7 @@ int	main(int argc, char *argv[])
 	check_duplicate(lst_a);
 	move_lst(&lst_a, &lst_b);
 
-	//Comprobación de lista
-/* 	t_lst *curr;
-
-	curr = lst_a;
-	while (curr != NULL)
-	{
-		printf("lista = %d\n", curr->content);
-		printf("top = %d\n", curr->move_top);
-		//printf("top = %d\n", curr->move_b);
-		curr = curr -> next;
-	} */
-
-	// comprobación de 2 listas
+/* 	// comprobación de 2 listas
 	t_lst *curr_a;
 
 	curr_a = lst_a;
@@ -245,7 +338,7 @@ int	main(int argc, char *argv[])
 	while (curr_b) {
 		printf("bbbbb = %d\n", curr_b->content);
 		curr_b = curr_b->next;
-	}
+	} */
 
 	//Free de la lista
 	deallocate(&lst_a);
