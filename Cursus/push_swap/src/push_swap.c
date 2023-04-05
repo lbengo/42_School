@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/05 14:25:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:44:53 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	find_move_top(t_lst *lst, int nbr)
 }
 
 //Donde se encuentra el número indicado
-static int find_nbr(t_lst *lst, int nbr)
+static int find_nbr(t_lst *lst, int nbr, int len)
 {
 	t_lst *curr;
 	t_lst *next;
@@ -44,15 +44,16 @@ static int find_nbr(t_lst *lst, int nbr)
 
 	curr = lst;
 	next = lst->next;
+	if (len > 0)
+		len--;
 	i = 0;
 	if ((nbr > curr->content && nbr < ft_lstlast(curr)->content) || (nbr < curr->content && nbr > ft_lstlast(curr)->content))
 		return (i);
 
 	while (curr != NULL)
 	{
-		printf("ñaskdfn\n");
-		if ((nbr > curr->content && nbr < next->content) || (nbr < curr->content && nbr > next->content))
-			return (i + 1);
+		if ((nbr > curr->content && nbr < next->content && i != len) || (nbr < curr->content && nbr > next->content && i != len))
+			return (i);
 		i++;
 		curr = curr->next;
 	}
@@ -71,9 +72,12 @@ static int find_len_max_min(t_lst *lst, int max, int min)
 	i = 0;
 	while (curr != NULL)
 	{
-		if ((max == curr->content && min == next->content) || (min == curr->content && max == next->content))
-			return (i + 1);
+		//printf("max = %d\n", max);
+		//printf("min = %d\n", min);
 		i++;
+		if ((max == curr->content && min == next->content) || (min == curr->content && max == next->content))
+		return (i);
+
 		curr = curr->next;
 	}
 	return (i);
@@ -122,16 +126,16 @@ static int	find_move_b(t_lst *lst, int nbr)
 	max = find_max_min(lst, 'M');
 	min = find_max_min(lst, 'm');
 
+	i = find_len_max_min(lst, max, min);
+
 	if (nbr > max || nbr < min)
 	{
 		if (lst->content == min && ft_lstlast(lst)->content == max)
 			return (0);
-		printf("lo usoooo\n");
-		i = find_len_max_min(lst, max, min);
 		return(i);
 	}
 	printf("lo usoooo\n");
-	i = find_nbr(lst, nbr);
+	i = find_nbr(lst, nbr, i);
 	return(i);
 }
 
