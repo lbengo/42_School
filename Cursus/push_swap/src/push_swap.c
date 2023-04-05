@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/05 12:45:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:22:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //Si no, lo rota al último de la misma lista. Ej: 143 -> 43
 
 // Columna derecha
-static int	find_move_top(t_lst *lst, t_lst *nbr)
+static int	find_move_top(t_lst *lst, int nbr)
 {
 	int	len;
 	int	i;
@@ -25,7 +25,7 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 	len = ft_lstsize(lst);
 	while (lst != NULL)
 	{
-		if (lst->content == nbr->content)
+		if (lst->content == nbr)
 			break;
 		i++;
 		lst = lst->next;
@@ -35,7 +35,7 @@ static int	find_move_top(t_lst *lst, t_lst *nbr)
 	return (i);
 }
 
-static int	check_max_min(t_lst *lst, t_lst *nbr)
+/* static int	check_max_min(t_lst *lst, t_lst *nbr)
 {
 	t_lst	*curr;
 	int		nbr_max;
@@ -58,7 +58,6 @@ static int	check_max_min(t_lst *lst, t_lst *nbr)
 			max_min = 1;
 	return(max_min);
 }
-
 
 static int	find_max_min(t_lst *lst, int len)
 {
@@ -112,6 +111,7 @@ static int	find_move_b(t_lst *lst, t_lst *nbr)
 
 	if (check_max_min(lst, nbr) == 1)
 		i = find_max_min(lst, i);
+
 	else
 	{
 		while (lst->next != NULL)
@@ -129,6 +129,98 @@ static int	find_move_b(t_lst *lst, t_lst *nbr)
 		i = i - len;
 	return (i);
 }
+ */
+
+//Donde se encuentra el número indicado
+static int find_nbr(t_lst *lst, int nbr)
+{
+	while (lst != NULL)
+	{
+		
+	}
+}
+
+//Encuentrame el mayor o menor
+static int	find_max_min(t_lst *lst, char c)
+{
+	int		min;
+	int		max;
+	int		i;
+
+	i = 0;
+	max = lst->content;
+	min = lst->content;
+	while (lst != NULL)
+	{
+		if (max < lst->content)
+			max = lst->content;
+		else if (min > lst->content)
+			min = lst->content;
+		i++;
+		lst = lst->next;
+	}
+	if (c == 'M')
+		return (max);
+	return (min);
+}
+
+// Columna izquierda
+static int	find_move_b(t_lst *lst, int nbr)
+{
+	int	max;
+	int	min;
+	int	len;
+
+	printf("NUMERO = %d\n", nbr);
+
+	len = ft_lstsize(lst);
+	if (len < 2)
+		return (0);
+
+	max = find_max_min(lst, 'M');
+	min = find_max_min(lst, 'm');
+
+	if (nbr > max || nbr < min)
+	{
+		if (lst->content == min && ft_lstlast(lst)->content == max)
+			return (0);
+
+	}
+	return(22);
+
+/*
+	t_lst *next;
+	int len;
+	int i;
+
+	i = 0;
+	len = ft_lstsize(lst);
+	if (len < 2)
+		return (i);
+
+	printf("------------");
+	printf("\nnbr = %d\n", nbr->content);
+
+	if (check_max_min(lst, nbr) == 1)
+		i = find_max_min(lst, i);
+
+	else
+	{
+		while (lst->next != NULL)
+		{
+			next = lst->next;
+			if (lst->content > nbr->content && lst->content < next->content)
+				break;
+			//else if (lst->content < nbr->content && lst->content > next->content)
+			//	break;
+			i++;
+			lst = lst->next;
+		}
+	}
+	if (i > len/2)
+		i = i - len;
+	return (i); */
+}
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 {
@@ -141,11 +233,11 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	// Colocar las columnas
 	while (stack_a != NULL)
 	{
-		stack_a->move_top = find_move_top(*lst_a, stack_a);
-		stack_a->move_b = find_move_b(*lst_b, stack_a);
+		stack_a->move_top = find_move_top(*lst_a, stack_a->content);
+		stack_a->move_b = find_move_b(*lst_b, stack_a->content);
 		//printf("lista = %d\n", stack_a->content);
 		printf("top = %d\n", stack_a->move_top);
-		printf("b = %d\n", stack_a->move_b);
+		printf("b = %d\n\n", stack_a->move_b);
 		stack_a = stack_a->next;
 	}
 
