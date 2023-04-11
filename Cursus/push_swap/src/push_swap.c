@@ -3,19 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/05 23:12:52 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/04/11 11:52:19 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-//Si el primer número es mayor que todos los de la lista lo cambia a la lista B. Ej: 431(lista a). -> 31(lista a) 4(lista b)
-//Si no, lo rota al último de la misma lista. Ej: 143 -> 43
-
-// Columna izquierda
+/* Cost of moving a number in stack A. From the middle of the stack up it is
+positive and from the middle of the stack down it is negative. Used to know
+if whether to use "rotate" or "rotate backwards". */
 static int	find_move_top(t_lst *lst, int nbr)
 {
 	int	len;
@@ -35,135 +34,68 @@ static int	find_move_top(t_lst *lst, int nbr)
 	return (i);
 }
 
-/* //Donde se encuentra el número indicado
-static int find_nbr(t_lst *lst, int nbr, int len)
+static int	check_max_min(t_lst *lst, int nbr, char c)
 {
-	t_lst *curr;
-	t_lst *next;
-	int		i;
+	int max;
+	int min;
 
-	curr = lst;
-	next = lst->next;
-	if (len > 0)
-		len--;
-	i = 0;
-	if ((nbr > curr->content && nbr < ft_lstlast(curr)->content) || (nbr < curr->content && nbr > ft_lstlast(curr)->content))
-		return (i);
-
-	while (curr != NULL)
+	max = nbr;
+	min = nbr;
+	while (lst != NULL)
 	{
-		if ((nbr > curr->content && nbr < next->content && i != len) || (nbr < curr->content && nbr > next->content && i != len))
-			return (i);
-		i++;
-		curr = curr->next;
-	}
-	return (i);
-} */
-
-/* //Donde se encuentra el max o min
-static int find_len_max_min(t_lst *lst, int max, int min)
-{
-	t_lst *curr;
-	t_lst *next;
-	int		i;
-
-	curr = lst;
-	next = lst->next;
-	i = 0;
-	while (curr != NULL)
-	{
-		//printf("max = %d\n", max);
-		//printf("min = %d\n", min);
-		i++;
-		if ((max == curr->content && min == next->content) || (min == curr->content && max == next->content))
-		return (i);
-
-		curr = curr->next;
-	}
-	return (i);
-} */
-
-/* //Encuentrame el mayor o menor
-static int	find_max_min(t_lst *lst, char c)
-{
-	t_lst	*curr;
-	int		min;
-	int		max;
-	int		i;
-
-	i = 0;
-	curr = lst;
-	max = lst->content;
-	min = lst->content;
-	while (curr != NULL)
-	{
-		if (max < curr->content)
-			max = curr->content;
-		else if (min > curr->content)
-			min = curr->content;
-		i++;
-		curr = curr->next;
+		if (max < lst->content)
+			max = lst->content;
+		if (min > lst->content)
+			min = lst->content;
+		lst = lst->next;
 	}
 	if (c == 'M')
 		return (max);
 	return (min);
-} */
+}
 
-/* // Columna derecha
+/* Cost of moving a number in stack B. From the middle of the stack up it is
+positive and from the middle of the stack down it is negative. Used to know
+if whether to use "rotate" or "rotate backwards". */
 static int	find_move_b(t_lst *lst, int nbr)
 {
-	int	max;
-	int	min;
-	int	len;
-	int	i;
-
-	printf("NUMERO = %d\n", nbr);
-
-	len = ft_lstsize(lst);
-	if (len < 2)
-		return (0);
-
-	max = find_max_min(lst, 'M');
-	min = find_max_min(lst, 'm');
-
-	i = find_len_max_min(lst, max, min);
-
-	if (nbr > max || nbr < min)
-	{
-		if (lst->content == min && ft_lstlast(lst)->content == max)
-			return (0);
-		return(i);
-	}
-	printf("lo usoooo\n");
-	i = find_nbr(lst, nbr, i);
-	return(i);
-} */
-
-// Columna derecha
-static int	find_move_b(t_lst *lst, int nbr)
-{
-	t_lst	*curr;
-	int		next;
+	t_lst	*next;
+	int		max;
+	int		min;
+	int		len;
 	int		i;
 
-	printf("NUMERO = %d\n", nbr);
+
 	i = 0;
-	curr = lst;
-	while (curr != NULL)
+	len = ft_lstsize(lst);
+	max = check_max_min(lst, nbr, 'M');
+	min = check_max_min(lst, nbr, 'm');
+	while (lst != NULL)
 	{
-		next = (curr->next)->content;
-		if (nbr > curr->content || (nbr > next && curr > next))
-		{
+		next = lst->next;
+		if (nbr > lst->content && nbr < max)
 			break;
-		}
-		else if (nbr > next || !next)
-				return (++i);
-			
-			
-		curr = curr->next;
+		if (lst->content == max && nbr == min)
+			break;
+		i++;
+		if ((nbr == max && !next) || (nbr == max && lst->content < next->content))
+			break;
+		lst = lst->next;
 	}
+	if (i > len/2)
+		i = i - len;
 	return(i);
 }
+
+/* 1	3	9
+
+6	7	2
+2	6	7
+7	2	6
+ */
+
+// el menor siempre tiene q estar arriba
+// el mayor siempre tiene q estar abajo
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 {
