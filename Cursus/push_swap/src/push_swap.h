@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/04 14:56:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:50:27 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,31 @@ t_lst	*ft_lstpenultimate(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
 
 /* Create_lst --------------------------------------------------------------- */
-t_lst *add_to_lst(int argc, char *argv[]);
+t_lst	*add_to_lst(int argc, char *argv[]);
 
 /* Check_error -------------------------------------------------------------- */
-void check_digit_and_limit(char *str_nbr);
-void check_duplicate(t_lst *lst);
+void	check_digit_and_limit(char *str_nbr);
+void	check_duplicate(t_lst *lst);
 
 /* Game_rules --------------------------------------------------------------- */
-void swap_a(t_lst **lst_a);
-void swap_b(t_lst **lst_b);
-void swap_a_b(t_lst **lst_a, t_lst **lst_b);
-void push_a(t_lst **lst_a, t_lst **lst_b);
-void push_b(t_lst **lst_a, t_lst **lst_b);
-void rotate_a(t_lst **lst_a);
-void rotate_b(t_lst **lst_b);
-void rotate_a_b(t_lst **lst_a, t_lst **lst_b);
-void reverse_rotate_a(t_lst **lst_a);
-void reverse_rotate_b(t_lst **lst_b);
-void reverse_rotate_a_b(t_lst **lst_a, t_lst **lst_b);
+void	swap_a(t_lst **lst_a);
+void	swap_b(t_lst **lst_b);
+void	swap_a_b(t_lst **lst_a, t_lst **lst_b);
+void	push_a(t_lst **lst_a, t_lst **lst_b);
+void	push_b(t_lst **lst_a, t_lst **lst_b);
+void	rotate_a(t_lst **lst_a);
+void	rotate_b(t_lst **lst_b);
+void	rotate_a_b(t_lst **lst_a, t_lst **lst_b);
+void	reverse_rotate_a(t_lst **lst_a);
+void	reverse_rotate_b(t_lst **lst_b);
+void	reverse_rotate_a_b(t_lst **lst_a, t_lst **lst_b);
+
+/* Algorithm ---------------------------------------------------------------- */
+void	algorithm(t_lst **lst_a, t_lst **lst_b);
+void	move_lst(t_lst **lst_a, t_lst **lst_b, int move, char c);
+int		check_max_min(t_lst *lst, int nbr, char c);
+int		check_order(t_lst **lst, char c);
+int		find_move_b(t_lst *lst, int nbr);
+int		find_move_top(t_lst *lst, int nbr);
 
 #endif
