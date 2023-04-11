@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 13:29:58 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:14:16 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	{
 		stack_a->move_top = find_move_top(*lst_a, stack_a->content);
 		stack_a->move_b = find_move_b(*lst_b, stack_a->content);
-		printf("lista = %d\n", stack_a->content);
-		printf("top = %d\n", stack_a->move_top);
-		printf("b = %d\n\n", stack_a->move_b);
+		//printf("lista = %d\n", stack_a->content);
+		//printf("top = %d\n", stack_a->move_top);
+		//printf("b = %d\n\n", stack_a->move_b);
 		stack_a = stack_a->next;
 	}
 
@@ -164,7 +164,7 @@ static void	select_and_move(t_lst **lst_a, t_lst **lst_b)
 }
 
 // --------------------------------------------------------------------------------
-static int	check_order(t_lst **lst)
+static int	check_order(t_lst **lst, char c)
 {
 	t_lst *curr;
 	t_lst *next;
@@ -173,7 +173,9 @@ static int	check_order(t_lst **lst)
 	next = (*lst)->next;
 	while(next != NULL)
 	{
-		if(curr->content > next->content)
+		if(curr->content > next->content && c == 'a')
+			return(1);
+		if(curr->content < next->content && c == 'b')
 			return(1);
 		curr = curr->next;
 		next = next->next;
@@ -188,7 +190,7 @@ static void	small_nbr(t_lst **lst)
 	t_lst	*second;
 	t_lst	*third;
 
-	while(check_order(lst) == 1)
+	while(check_order(lst, 'a') == 1)
 	{
 		first = (*lst);
 		second = (*lst)->next;
@@ -204,13 +206,41 @@ static void	small_nbr(t_lst **lst)
 	}
 }
 
+static void	push_to_a(t_lst **lst_a, t_lst **lst_b)
+{
+	t_lst *curr;
+	int len;
+	int i;
+
+	i = 0;
+	curr = *lst_b;
+	len = ft_lstsize(curr);
+	while (curr != NULL)
+	{
+		if (curr->content == (check_max_min(curr, curr->content, 'M')))
+			break;
+		i++;
+		curr = curr->next;
+	}
+	while (check_order(lst_b, 'b') == 1)
+	{
+		if (i > len/2)
+			reverse_rotate_b(lst_b);
+		else
+			rotate_b(lst_b);
+	}
+	while (len-- > 0)
+		push_a(lst_a, lst_b);
+
+}
+
 static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 {
 	int	len;
 
 	*lst_b = NULL;
 	len = ft_lstsize(*lst_a);
-	if (len == 2 && check_order(lst_a) == 1)
+	if (len == 2 && check_order(lst_a, 'a') == 1)
 		swap_a(lst_a);
 	else if (len == 3)
 		small_nbr(lst_a);
@@ -218,26 +248,10 @@ static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 	{
 		while (*lst_a != NULL)
 		{
-			printf("EMPEZAMOOOOOSSSS\n");
 			find_moves(lst_a, lst_b);
 			select_and_move(lst_a, lst_b);
-
-
-			t_lst *curr_a1;
-			curr_a1 = *lst_a;
-			while (curr_a1) {
-				printf("aaaaaaaaa = %d\n", curr_a1->content);
-				curr_a1 = curr_a1->next;
-			}
-
-			t_lst *curr_b1;
-			curr_b1 = *lst_b;
-			while (curr_b1) {
-				printf("bbbbb = %d\n", curr_b1->content);
-				curr_b1 = curr_b1->next;
-			}
-			printf("------------------------------------------\n");
 		}
+		push_to_a(lst_a, lst_b);
 	}
 }
 
@@ -256,7 +270,7 @@ int	main(int argc, char *argv[])
 	check_duplicate(lst_a);
 	move_lst(&lst_a, &lst_b);
 
-/* 	// comprobación de 2 listas
+	/* // comprobación de 2 listas
 	t_lst *curr_a;
 
 	curr_a = lst_a;
