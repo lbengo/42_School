@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 11:52:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 12:11:07 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int	find_move_b(t_lst *lst, int nbr)
 	int		len;
 	int		i;
 
-
 	i = 0;
 	len = ft_lstsize(lst);
 	max = check_max_min(lst, nbr, 'M');
@@ -86,16 +85,16 @@ static int	find_move_b(t_lst *lst, int nbr)
 		i = i - len;
 	return(i);
 }
+// el menor siempre tiene q estar arriba
+// el mayor siempre tiene q estar abajo
 
 /* 1	3	9
 
 6	7	2
 2	6	7
 7	2	6
- */
 
-// el menor siempre tiene q estar arriba
-// el mayor siempre tiene q estar abajo
+*/
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 {
@@ -110,7 +109,7 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	{
 		stack_a->move_top = find_move_top(*lst_a, stack_a->content);
 		stack_a->move_b = find_move_b(*lst_b, stack_a->content);
-		//printf("lista = %d\n", stack_a->content);
+		printf("lista = %d\n", stack_a->content);
 		printf("top = %d\n", stack_a->move_top);
 		printf("b = %d\n\n", stack_a->move_b);
 		stack_a = stack_a->next;
