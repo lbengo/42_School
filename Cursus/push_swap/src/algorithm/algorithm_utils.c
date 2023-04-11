@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:17:25 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 14:49:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:17:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,12 @@ int	find_move_b(t_lst *lst, int nbr)
 	while (lst != NULL)
 	{
 		next = lst->next;
-		if (nbr > lst->content && nbr < max)
-			break;
+
 		if (lst->content == max && nbr == min)
 			break;
 		i++;
+		if ((nbr < lst->content && !next) || (nbr < lst->content && nbr > next->content))
+			break;
 		if ((nbr == max && !next) || (nbr == max && lst->content < next->content))
 			break;
 		lst = lst->next;

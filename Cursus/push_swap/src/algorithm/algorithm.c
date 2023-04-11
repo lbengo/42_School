@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:16:33 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 14:49:51 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:37:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,29 +90,6 @@ static void	push_to_a(t_lst **lst_a, t_lst **lst_b)
 
 }
 
-// Algorithm for 3 numbers
-static void	small_nbr(t_lst **lst)
-{
-	t_lst	*first;
-	t_lst	*second;
-	t_lst	*third;
-
-	while(check_order(lst, 'a') == 1)
-	{
-		first = (*lst);
-		second = (*lst)->next;
-		third = second->next;
-		if (first->content > second->content && first->content < third->content)
-			swap_a(lst);
-		else if (first->content > second->content && first->content > third->content)
-			rotate_a(lst);
-		else if (first->content < second->content && first->content > third->content)
-			reverse_rotate_a(lst);
-		else if (first->content < second->content && first->content < third->content)
-			swap_a(lst);
-	}
-}
-
 // Detect how many numbers there are and choose which algorithm to use.
 void	algorithm(t_lst **lst_a, t_lst **lst_b)
 {
@@ -120,11 +97,15 @@ void	algorithm(t_lst **lst_a, t_lst **lst_b)
 
 	*lst_b = NULL;
 	len = ft_lstsize(*lst_a);
-	if (len == 2 && check_order(lst_a, 'a') == 1)
+	if (check_order(lst_a, 'a') == 0)
+		exit (0);
+	if (len == 2)
 		swap_a(lst_a);
 	else if (len == 3)
-		small_nbr(lst_a);
-	else if (len > 3)
+		three_nbr(lst_a);
+	else if (len == 5)
+		five_nbr(lst_a, lst_b);
+	else
 	{
 		while (*lst_a != NULL)
 		{

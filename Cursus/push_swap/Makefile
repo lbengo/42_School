@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/11 14:48:06 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/11 17:30:06 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC           = push_swap.c \
 				game_rules/rotate.c \
 				game_rules/reverse_rotate.c \
 				algorithm/algorithm.c \
+				algorithm/small_algorithm.c \
 				algorithm/algorithm_utils.c
 
 OBJ_PATH       = ./obj

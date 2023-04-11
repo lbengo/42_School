@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 14:50:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:38:34 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	reverse_rotate_a_b(t_lst **lst_a, t_lst **lst_b);
 
 /* Algorithm ---------------------------------------------------------------- */
 void	algorithm(t_lst **lst_a, t_lst **lst_b);
+void	three_nbr(t_lst **lst);
+void	five_nbr(t_lst **lst_a, t_lst **lst_b);
 void	move_lst(t_lst **lst_a, t_lst **lst_b, int move, char c);
 int		check_max_min(t_lst *lst, int nbr, char c);
 int		check_order(t_lst **lst, char c);
