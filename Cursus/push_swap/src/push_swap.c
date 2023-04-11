@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 12:11:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/11 13:29:58 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,6 @@ static int	find_move_b(t_lst *lst, int nbr)
 		i = i - len;
 	return(i);
 }
-// el menor siempre tiene q estar arriba
-// el mayor siempre tiene q estar abajo
-
-/* 1	3	9
-
-6	7	2
-2	6	7
-7	2	6
-
-*/
 
 static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 {
@@ -131,6 +121,29 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	}
 }
 
+static void	ft_move(t_lst **lst_a, t_lst **lst_b, int move, char c)
+{
+	while (move != 0)
+	{
+		if (move > 0)
+		{
+			if (c == 'a')
+				rotate_a(lst_a);
+			else if (c == 'b')
+				rotate_b(lst_b);
+			move--;
+		}
+		else if (move < 0)
+		{
+			if (c == 'a')
+				reverse_rotate_a(lst_a);
+			else if (c == 'b')
+				reverse_rotate_b(lst_b);
+			move++;
+		}
+	}
+}
+
 static void	select_and_move(t_lst **lst_a, t_lst **lst_b)
 {
 	t_lst *curr;
@@ -144,13 +157,8 @@ static void	select_and_move(t_lst **lst_a, t_lst **lst_b)
 			select = curr;
 		curr = curr->next;
 	}
-/* 	while (select->move_top < 0)
-	{
-		ra....
-	} */
-	/* printf("aaaaaa =%d\n", select->content);
-	printf("move_top =%d\n", select->move_top);
-	printf("move_b =%d\n", select->move_b); */
+	ft_move(lst_a, lst_b, select->move_top, 'a');
+	ft_move(lst_a, lst_b, select->move_b, 'b');
 	push_b(lst_a, lst_b);
 
 }
@@ -208,91 +216,28 @@ static void	move_lst(t_lst **lst_a, t_lst **lst_b)
 		small_nbr(lst_a);
 	else if (len > 3)
 	{
-		find_moves(lst_a, lst_b);
-		select_and_move(lst_a, lst_b);
-		//------------------------------
-		// comprobación de 2 listas
-		t_lst *curr_a1;
+		while (*lst_a != NULL)
+		{
+			printf("EMPEZAMOOOOOSSSS\n");
+			find_moves(lst_a, lst_b);
+			select_and_move(lst_a, lst_b);
 
-		curr_a1 = *lst_a;
-		while (curr_a1) {
-			printf("aaaaaaaaa = %d\n", curr_a1->content);
-			curr_a1 = curr_a1->next;
+
+			t_lst *curr_a1;
+			curr_a1 = *lst_a;
+			while (curr_a1) {
+				printf("aaaaaaaaa = %d\n", curr_a1->content);
+				curr_a1 = curr_a1->next;
+			}
+
+			t_lst *curr_b1;
+			curr_b1 = *lst_b;
+			while (curr_b1) {
+				printf("bbbbb = %d\n", curr_b1->content);
+				curr_b1 = curr_b1->next;
+			}
+			printf("------------------------------------------\n");
 		}
-
-		t_lst *curr_b1;
-		curr_b1 = *lst_b;
-		while (curr_b1) {
-			printf("bbbbb = %d\n", curr_b1->content);
-			curr_b1 = curr_b1->next;
-		}
-		printf("------------------------------------------\n");
-		//------------------------------
-
-		find_moves(lst_a, lst_b);
-		select_and_move(lst_a, lst_b);
-
-		//------------------------------
-		// comprobación de 2 listas
-		t_lst *curr_a2;
-
-		curr_a2 = *lst_a;
-		while (curr_a2) {
-			printf("aaaaaaaaa = %d\n", curr_a2->content);
-			curr_a2 = curr_a2->next;
-		}
-
-		t_lst *curr_b2;
-		curr_b2 = *lst_b;
-		while (curr_b2) {
-			printf("bbbbb = %d\n", curr_b2->content);
-			curr_b2 = curr_b2->next;
-		}
-		printf("------------------------------------------\n");
-		//------------------------------
-
-		find_moves(lst_a, lst_b);
-		select_and_move(lst_a, lst_b);
-
-		//------------------------------
-		// comprobación de 2 listas
-		t_lst *curr_a3;
-
-		curr_a3 = *lst_a;
-		while (curr_a3) {
-			printf("aaaaaaaaa = %d\n", curr_a3->content);
-			curr_a3 = curr_a3->next;
-		}
-
-		t_lst *curr_b3;
-		curr_b3 = *lst_b;
-		while (curr_b3) {
-			printf("bbbbb = %d\n", curr_b3->content);
-			curr_b3 = curr_b3->next;
-		}
-		printf("------------------------------------------\n");
-
-		find_moves(lst_a, lst_b);
-		select_and_move(lst_a, lst_b);
-
-		//------------------------------
-		// comprobación de 2 listas
-		t_lst *curr_a4;
-
-		curr_a4 = *lst_a;
-		while (curr_a4) {
-			printf("aaaaaaaaa = %d\n", curr_a4->content);
-			curr_a4 = curr_a4->next;
-		}
-
-		t_lst *curr_b4;
-		curr_b4 = *lst_b;
-		while (curr_b4) {
-			printf("bbbbb = %d\n", curr_b4->content);
-			curr_b4 = curr_b4->next;
-		}
-		printf("------------------------------------------\n");
-		//------------------------------
 	}
 }
 
