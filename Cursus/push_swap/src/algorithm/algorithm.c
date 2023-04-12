@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:16:33 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 17:37:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:30:50 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ void	algorithm(t_lst **lst_a, t_lst **lst_b)
 {
 	int	len;
 
-	*lst_b = NULL;
 	len = ft_lstsize(*lst_a);
 	if (check_order(lst_a, 'a') == 0)
 		exit (0);

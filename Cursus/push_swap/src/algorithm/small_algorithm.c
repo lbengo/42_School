@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:24:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 19:52:36 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/12 16:43:15 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	three_nbr(t_lst **lst)
 	}
 }
 
-static int	find_space(t_lst *lst_a, t_lst *lst_b)
+/* static int	find_space(t_lst *lst_a, t_lst *lst_b)
 {
 	int		len;
 	int		i;
@@ -99,6 +99,48 @@ static void	send_to_a(t_lst **lst_a, t_lst **lst_b)
 	}
 	push_a(lst_a, lst_b);
 	order_lst_a(lst_a);
+} */
+
+/* static int	find_space(t_lst *lst_a, t_lst *lst_b)
+{
+	int		len;
+	int		i;
+
+	i = 0;
+	len = ft_lstsize(lst_a);
+	while (lst_a != NULL)
+	{
+		if (lst_b->content < lst_a->content)
+			break;
+		i++;
+		lst_a = lst_a->next;
+	}
+	if (i > len/2)
+		i = i - len;
+	return (i);
+} */
+
+static void	send_to_a(t_lst **lst_a, t_lst **lst_b)
+{
+	int i;
+
+	i = find_move_b(*lst_a, (*lst_b)->content);
+	printf("content = %d\n", (*lst_b)->content);
+	printf("i = %d\n\n", i);
+	while (i != 0)
+	{
+		if (i > 0)
+		{
+			rotate_a(lst_a);
+			i--;
+		}
+		else if (i < 0)
+		{
+			reverse_rotate_a(lst_a);
+			i++;
+		}
+	}
+	push_a(lst_a, lst_b);
 }
 
 // Algorithm for 5 numbers

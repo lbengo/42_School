@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
+/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:17:25 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 17:17:32 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/12 17:11:54 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	find_move_top(t_lst *lst, int nbr)
 	while (lst != NULL)
 	{
 		if (lst->content == nbr)
-			break;
+			break ;
 		i++;
 		lst = lst->next;
 	}
-	if (i > len/2)
+	if (i > len / 2)
 		i = i - len;
 	return (i);
 }
@@ -39,7 +39,7 @@ positive and from the middle of the stack down it is negative. Used to know
 if whether to use "rotate" or "rotate backwards". */
 int	find_move_b(t_lst *lst, int nbr)
 {
-	t_lst	*next;
+	t_lst	*pre;
 	int		max;
 	int		min;
 	int		len;
@@ -47,24 +47,23 @@ int	find_move_b(t_lst *lst, int nbr)
 
 	i = 0;
 	len = ft_lstsize(lst);
+	pre = ft_lstlast(lst);
 	max = check_max_min(lst, nbr, 'M');
 	min = check_max_min(lst, nbr, 'm');
 	while (lst != NULL)
 	{
-		next = lst->next;
-
-		if (lst->content == max && nbr == min)
-			break;
+		if ((nbr == min && lst->content == max) \
+		|| (pre->content > nbr && nbr > lst->content))
+			break ;
 		i++;
-		if ((nbr < lst->content && !next) || (nbr < lst->content && nbr > next->content))
-			break;
-		if ((nbr == max && !next) || (nbr == max && lst->content < next->content))
-			break;
+		if (nbr == max && lst->content == min)
+			break ;
+		pre = lst;
 		lst = lst->next;
 	}
-	if (i > len/2)
+	if (i > len / 2)
 		i = i - len;
-	return(i);
+	return (i);
 }
 
 /* Checks the order from smallest to largest (a) or from largest to smallest (b)
