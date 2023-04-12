@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/04 17:47:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/12 20:02:27 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ void check_digit_and_limit(char *str_nbr)
 	{
 		if (ft_isdigit(str_nbr[i]) == 0)
 		{
-			printf("Error\nEverything must be numbers");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		if (check_limits(i, a, str_nbr) == 1)
 		{
-			printf("Error\nNumerito máximo superado");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		i++;
@@ -74,7 +74,7 @@ void check_duplicate(t_lst *lst)
 		{
 			if (curr -> content ==  temp -> content)
 			{
-				printf("Error\nDuplicate numbers");
+				ft_putstr_fd("Error\n", 2);
 				exit(0);
 			}
 			temp = temp -> next;

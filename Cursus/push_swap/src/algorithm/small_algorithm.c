@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_algorithm.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:24:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 16:43:15 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/04/12 21:05:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,120 +35,81 @@ void	three_nbr(t_lst **lst)
 	}
 }
 
-/* static int	find_space(t_lst *lst_a, t_lst *lst_b)
+static int	cost2a(t_lst *lst, int nbr)
 {
+	t_lst	*pre;
+	int		max;
+	int		min;
 	int		len;
 	int		i;
 
 	i = 0;
-	len = ft_lstsize(lst_a);
-	while (lst_a != NULL)
+	len = ft_lstsize(lst);
+	pre = ft_lstlast(lst);
+	max = check_max_min(lst, nbr, 'M');
+	min = check_max_min(lst, nbr, 'm');
+	while (lst != NULL)
 	{
-		if (lst_b->content < lst_a->content)
-			break;
+		if (nbr == max && lst->content == min)
+			break ;
 		i++;
-		lst_a = lst_a->next;
+		if (pre->content < nbr && nbr > lst->content)
+			break ;
+		if (nbr == min && lst->content == max)
+			break;
+
+		pre = lst;
+		lst = lst->next;
 	}
-	if (i > len/2)
+	if (i > len / 2)
 		i = i - len;
 	return (i);
 }
 
-static void	order_lst_a(t_lst **lst)
+static void	order_lst(t_lst **lst, int i)
 {
-	t_lst	*curr;
-	int		len;
-	int		i;
-
-	i = 0;
-	curr = *lst;
-	len = ft_lstsize(curr);
-	while (curr != NULL)
+	while (i != 0)
 	{
-		if (curr->content == (check_max_min(curr, curr->content, 'M')))
-			break;
-		i++;
-		curr = curr->next;
-	}
-	while (check_order(lst, 'a') == 1)
-	{
-		if (i >= len/2)
-			reverse_rotate_a(lst);
-		else
+		if (i > 0)
+		{
 			rotate_a(lst);
+			i--;
+		}
+		else if (i < 0)
+		{
+			reverse_rotate_a(lst);
+			i++;
+		}
 	}
 }
 
-static void	send_to_a(t_lst **lst_a, t_lst **lst_b)
+static void	send2a(t_lst **lst_a, t_lst **lst_b)
 {
 	int i;
 
-	i = find_space (*lst_a, *lst_b);
-	while (i != 0)
-	{
-		if (i > 0)
-		{
-			rotate_a(lst_a);
-			i--;
-		}
-		else if (i < 0)
-		{
-			reverse_rotate_a(lst_a);
-			i++;
-		}
-	}
-	push_a(lst_a, lst_b);
-	order_lst_a(lst_a);
-} */
-
-/* static int	find_space(t_lst *lst_a, t_lst *lst_b)
-{
-	int		len;
-	int		i;
-
-	i = 0;
-	len = ft_lstsize(lst_a);
-	while (lst_a != NULL)
-	{
-		if (lst_b->content < lst_a->content)
-			break;
-		i++;
-		lst_a = lst_a->next;
-	}
-	if (i > len/2)
-		i = i - len;
-	return (i);
-} */
-
-static void	send_to_a(t_lst **lst_a, t_lst **lst_b)
-{
-	int i;
-
-	i = find_move_b(*lst_a, (*lst_b)->content);
-	printf("content = %d\n", (*lst_b)->content);
-	printf("i = %d\n\n", i);
-	while (i != 0)
-	{
-		if (i > 0)
-		{
-			rotate_a(lst_a);
-			i--;
-		}
-		else if (i < 0)
-		{
-			reverse_rotate_a(lst_a);
-			i++;
-		}
-	}
+	i = cost2a(*lst_a, (*lst_b)->content);
+	order_lst(lst_a, i);
 	push_a(lst_a, lst_b);
 }
 
 // Algorithm for 5 numbers
 void	five_nbr(t_lst **lst_a, t_lst **lst_b)
 {
+	t_lst *curr;
+	int i;
+
 	push_b(lst_a, lst_b);
 	push_b(lst_a, lst_b);
 	three_nbr(lst_a);
-	send_to_a(lst_a, lst_b);
-	send_to_a(lst_a, lst_b);
+	send2a(lst_a, lst_b);
+	send2a(lst_a, lst_b);
+	curr = *lst_a;
+	i = 0;
+	while (curr->content != check_max_min(*lst_a, (*lst_a)->content, 'm'))
+	{
+		i++;
+		curr = curr->next;
+	}
+
+	order_lst(lst_a, i);
 }

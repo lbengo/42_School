@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 14:56:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/12 21:09:36 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 	lst_b = NULL;
 	if (argc == 0 || !lst_a)
 	{
-		printf("Error\nAdd a number\n");
+		//ft_putstr_fd("Error\n", 2);
 		return (0);
 	}
 	check_duplicate(lst_a);
