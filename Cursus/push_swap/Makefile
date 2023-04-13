@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/13 13:12:57 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/13 15:04:44 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@
 
 NAME          = push_swap
 CC            = gcc
-#CC            = gcc -fsanitize=address
 CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src
@@ -61,9 +60,8 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
-	rm -rf $(BONUS)
 	make -C $(LIBFT_PATH) fclean
 
 re:	fclean all
 
-.PHONY: clean fclean all re bonus
+.PHONY: clean fclean all re
