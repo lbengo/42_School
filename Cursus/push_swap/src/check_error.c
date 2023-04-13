@@ -6,17 +6,17 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 12:32:25 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:02:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void check_limit(char *str_nbr)
+void	check_limit(char *str_nbr)
 {
-	char *int_max;
-	int i;
-	int a;
+	char	*int_max;
+	int		i;
+	int		a;
 
 	i = 0;
 	a = 0;
@@ -39,9 +39,9 @@ void check_limit(char *str_nbr)
 	}
 }
 
-void check_digit(char *str_nbr)
+void	check_digit(char *str_nbr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str_nbr[0] == '-' || str_nbr[0] == '+')
@@ -64,7 +64,7 @@ void check_digit(char *str_nbr)
 	}
 }
 
-void check_duplicate(t_lst *lst)
+void	check_duplicate(t_lst *lst)
 {
 	t_lst	*curr;
 	t_lst	*temp;
@@ -78,7 +78,7 @@ void check_duplicate(t_lst *lst)
 		temp = curr -> next;
 		while (temp != NULL)
 		{
-			if (curr -> content ==  temp -> content)
+			if (curr->data == temp->data)
 			{
 				ft_putstr_fd("Error\n", 2);
 				exit(0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:16:33 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 16:30:50 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/04/13 12:56:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 	stack_a = *lst_a;
 	while (stack_a != NULL)
 	{
-		stack_a->move_top = find_move_top(*lst_a, stack_a->content);
-		stack_a->move_b = find_move_b(*lst_b, stack_a->content);
+		stack_a->move_top = find_move_top(*lst_a, stack_a->data);
+		stack_a->move_b = find_move_b(*lst_b, stack_a->data);
 		stack_a = stack_a->next;
 	}
 	curr = *lst_a;
@@ -45,14 +45,14 @@ static void	find_moves(t_lst **lst_a, t_lst **lst_b)
 // Selects which number requires fewer moves and passes them to list_b
 static void	select_and_move(t_lst **lst_a, t_lst **lst_b)
 {
-	t_lst *curr;
-	t_lst *select;
+	t_lst	*curr;
+	t_lst	*select;
 
 	curr = *lst_a;
 	select = curr;
 	while (curr != NULL)
 	{
-		if(select->count > curr->count)
+		if (select->count > curr->count)
 			select = curr;
 		curr = curr->next;
 	}
@@ -64,30 +64,29 @@ static void	select_and_move(t_lst **lst_a, t_lst **lst_b)
 // Sorts list_b and sends it to list_a
 static void	push_to_a(t_lst **lst_a, t_lst **lst_b)
 {
-	t_lst *curr;
-	int len;
-	int i;
+	t_lst	*curr;
+	int		len;
+	int		i;
 
 	i = 0;
 	curr = *lst_b;
 	len = ft_lstsize(curr);
 	while (curr != NULL)
 	{
-		if (curr->content == (check_max_min(curr, curr->content, 'M')))
-			break;
+		if (curr->data == (check_max_min(curr, curr->data, 'M')))
+			break ;
 		i++;
 		curr = curr->next;
 	}
 	while (check_order(lst_b, 'b') == 1)
 	{
-		if (i > len/2)
+		if (i > len / 2)
 			reverse_rotate_b(lst_b);
 		else
 			rotate_b(lst_b);
 	}
 	while (len-- > 0)
 		push_a(lst_a, lst_b);
-
 }
 
 // Detect how many numbers there are and choose which algorithm to use.

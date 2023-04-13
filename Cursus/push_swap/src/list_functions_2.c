@@ -1,41 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_functions.c                                   :+:      :+:    :+:   */
+/*   list_functions_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 10:48:24 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/03/30 10:43:10 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:03:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_lst	*ft_lstnew(int content)
-{
-	t_lst	*new;
-
-	new = malloc(sizeof(t_lst));
-	if (!new)
-		return (0);
-	new -> content = content;
-	new -> next = NULL;
-	return (new);
-}
-
-int	ft_lstsize(t_lst *lst)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (lst)
-	{
-		lst = lst -> next;
-		i++;
-	}
-	return (i);
-}
 
 t_lst	*ft_lstlast(t_lst *lst)
 {
@@ -46,12 +21,12 @@ t_lst	*ft_lstlast(t_lst *lst)
 	return (lst);
 }
 
-t_lst *ft_lstpenultimate(t_lst *lst)
+t_lst	*ft_lstpenultimate(t_lst *lst)
 {
-	t_lst *curr;
-	t_lst *prev;
+	t_lst	*curr;
+	t_lst	*prev;
 
-	if(!lst)
+	if (!lst)
 		return (0);
 	prev = lst;
 	while (prev->next != NULL)
@@ -68,25 +43,4 @@ void	ft_lstadd_back(t_lst **lst, t_lst *new)
 		*lst = new;
 	else
 		ft_lstlast(*lst)-> next = new;
-}
-
-void	ft_lstadd_front(t_lst **lst, t_lst *new)
-{
-	new -> next = lst[0];
-	lst[0] = new;
-}
-
-void deallocate(t_lst **lst_1)
-{
-	t_lst *curr;
-	t_lst *aux;
-
-	curr = *lst_1;
-	while (curr != NULL)
-	{
-		aux = curr;
-		curr = curr -> next;
-		free(aux);
-	}
-	*lst_1 = NULL;
 }

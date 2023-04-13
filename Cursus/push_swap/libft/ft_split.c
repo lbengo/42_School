@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:41:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/22 12:10:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:10:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,18 +61,3 @@ char	**ft_split(char const *s, char c)
 	str[a] = NULL;
 	return (str);
 }
-
-/* int main(void)
-{
-	char const s[] = "  hola  que pasa";
-	char c;
-	char **result;
-
-	c = ' ';
-	result = ft_split(s, c);
-	int check = -1;
-	while (result[++check])
-		printf("line [%d] -> %s\n", check, result[check]);
-	//printf("%s", ft_split(s, c));
-	return (0);
-} */

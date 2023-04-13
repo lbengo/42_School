@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/11 17:30:06 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/13 13:12:57 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src
 SRC           = push_swap.c \
-				list_functions.c \
+				list_functions_1.c \
+				list_functions_2.c \
 				create_lst.c \
 				check_error.c \
 				game_rules/swap.c \

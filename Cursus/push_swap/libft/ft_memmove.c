@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 21:11:49 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 11:04:50 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:09:35 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ La función memmove copia len bytes de la cadena src a la cadena dst. Las
 funciones no se pueden solapar, por ello si dst es mayor que src hay que
 copiarlo de alante hacia atrás. Y, por el contrario, si src es mayor que dst
 hay que copiarlo de atrás hacia alante.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "libft.h"
 
@@ -36,13 +36,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		ft_memcpy(dst, src, len);
 	return (dst);
 }
-
-/* int main(void)
-{
-	char dst [] = "hola que tal";
-	char src[] = "lorem ipsum dolor sit amet";
-
-	printf("%s\n", ft_memmove(dst, src, 4));
-	printf("%s\n", memmove(dst, src, 4));
-	return (0);
-} */

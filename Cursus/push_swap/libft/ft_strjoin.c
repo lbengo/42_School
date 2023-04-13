@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 08:05:47 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/15 17:55:21 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:10:24 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	string[i] = '\0';
 	return (string);
 }
-
-/* int main(void)
-{
-	char const s1[] = "";
-	char const s2[] = "que tal";
-
-	printf("%s", ft_strjoin(s1, s2));
-	return (0);
-} */

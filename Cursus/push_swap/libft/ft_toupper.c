@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:34:54 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/03 11:43:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:11:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,3 @@ int	ft_toupper(int c)
 		c = c - 32;
 	return (c);
 }
-
-/*int main(void)
-{
-	int c;
-
-	c = 'a';
-	printf("%c", ft_toupper(c));
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 13:15:19 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 11:04:12 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:09:11 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ como valores unsigned char, de modo que `\200' es mayor que "0",por ejemplo).
 Las cadenas de longitud cero son siempre idénticas. Este comportamiento no es
 requerido por C y el código portable debería depender únicamente del signo
 del valor devuelto.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "libft.h"
 
@@ -36,13 +36,3 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-
-/* int main(void)
-{
-	const char s1[] = "hola";
-	const char s2[] = "hole";
-
-	printf("%d\n", ft_memcmp(s1, s2, 6));
-	printf("%d\n", memcmp(s1, s2, 6));
-	return (0);
-} */

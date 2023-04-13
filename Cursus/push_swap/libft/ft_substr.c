@@ -6,14 +6,14 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 13:07:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 11:15:38 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:11:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
 Reserva (con malloc(3)) y devuelve una substring de la string ’s’. La
 substring empieza desde el índice ’start’ y tiene una longitud máxima ’len’.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "libft.h"
 
@@ -41,10 +41,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substring[i] = '\0';
 	return (substring);
 }
-
-/* int main(void)
-{
-	char const s[] = "hola que tal";
-	printf("mi función = %s", ft_substr(s, 2, 6));
-	return (0);
-} */

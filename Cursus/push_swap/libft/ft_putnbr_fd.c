@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 19:47:43 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/21 11:28:36 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:09:55 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd((n / 10), fd);
 	ft_putchar_fd(((n % 10) + '0'), fd);
 }
-
-/* int main(void)
-{
-	int n;
-	int fd;
-
-	n = 5646;
-	fd = 1;
-	ft_putnbr_fd(n, fd);
-	return (0);
-} */

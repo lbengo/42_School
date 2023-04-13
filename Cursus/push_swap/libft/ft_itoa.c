@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 17:48:43 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 12:03:13 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:08:48 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* DEFINICIÓN:
 La función itoa pasa un int a un char.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 /* COMO SE HACE:
 Primero hay que contar que longitud ocupa el int. Para ello, hay que ir
@@ -34,12 +34,12 @@ Por último, se protege la función:
 	la función strdup.
 	- En el caso de que sea -2147483648, al ser un número tan grande hay que
 	imprimirlo directamente.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 /* CUIDADO:
 Al hacer el main y probar con int = 0923. El 0 me hacia error por que lo toma
 como octal.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "libft.h"
 
@@ -99,15 +99,3 @@ char	*ft_itoa(int n)
 	}
 	return (ft_number(n, len, sign));
 }
-
-/* int main(void)
-{
-	int n;
-	char *string;
-
-	n = 0144;
-	string = ft_itoa(n);
-	printf("mi función = %s", string);
-	free(string);
-	return (0);
-} */

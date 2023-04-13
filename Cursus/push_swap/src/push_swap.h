@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 11:45:08 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:53:37 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 typedef struct s_lst
 {
-	int				content;
+	int				data;
 	int				move_top;
 	int				move_b;
 	int				count;
@@ -34,7 +34,7 @@ typedef struct s_lst
 
 /* List_functions ----------------------------------------------------------- */
 t_lst	*ft_lstlast(t_lst *lst);
-t_lst	*ft_lstnew(int content);
+t_lst	*ft_lstnew(int data);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
 void	ft_lstadd_front(t_lst **lst, t_lst *new);
 void	deallocate(t_lst **lst);

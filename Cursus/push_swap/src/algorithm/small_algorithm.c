@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:24:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 09:37:47 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:54:49 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ void	three_nbr(t_lst **lst)
 	t_lst	*second;
 	t_lst	*third;
 
-	while(check_order(lst, 'a') == 1)
+	while (check_order(lst, 'a') == 1)
 	{
 		first = (*lst);
 		second = (*lst)->next;
 		third = second->next;
-		if (first->content > second->content && first->content < third->content)
+		if (first->data > second->data && first->data < third->data)
 			swap_a(lst);
-		else if (first->content > second->content && first->content > third->content)
+		else if (first->data > second->data && first->data > third->data)
 			rotate_a(lst);
-		else if (first->content < second->content && first->content > third->content)
+		else if (first->data < second->data && first->data > third->data)
 			reverse_rotate_a(lst);
-		else if (first->content < second->content && first->content < third->content)
+		else if (first->data < second->data && first->data < third->data)
 			swap_a(lst);
 	}
 }
@@ -50,12 +50,12 @@ static int	cost2a(t_lst *lst, int nbr)
 	min = check_max_min(lst, nbr, 'm');
 	while (lst != NULL)
 	{
-		if ((nbr == max && lst->content == min) \
-		|| (pre->content < nbr && nbr < lst->content))
+		if ((nbr == max && lst->data == min) \
+		|| (pre->data < nbr && nbr < lst->data))
 			break ;
 		i++;
-		if (nbr == min && lst->content == max)
-			break;
+		if (nbr == min && lst->data == max)
+			break ;
 		pre = lst;
 		lst = lst->next;
 	}
@@ -83,9 +83,9 @@ static void	order_lst(t_lst **lst, int i)
 
 static void	send2a(t_lst **lst_a, t_lst **lst_b)
 {
-	int i;
+	int	i;
 
-	i = cost2a(*lst_a, (*lst_b)->content);
+	i = cost2a(*lst_a, (*lst_b)->data);
 	order_lst(lst_a, i);
 	push_a(lst_a, lst_b);
 }
@@ -93,8 +93,8 @@ static void	send2a(t_lst **lst_a, t_lst **lst_b)
 // Algorithm for 5 numbers
 void	five_nbr(t_lst **lst_a, t_lst **lst_b)
 {
-	t_lst *curr;
-	int i;
+	t_lst	*curr;
+	int		i;
 
 	push_b(lst_a, lst_b);
 	push_b(lst_a, lst_b);
@@ -103,11 +103,10 @@ void	five_nbr(t_lst **lst_a, t_lst **lst_b)
 	send2a(lst_a, lst_b);
 	curr = *lst_a;
 	i = 0;
-	while (curr->content != check_max_min(*lst_a, (*lst_a)->content, 'm'))
+	while (curr->data != check_max_min(*lst_a, (*lst_a)->data, 'm'))
 	{
 		i++;
 		curr = curr->next;
 	}
-
 	order_lst(lst_a, i);
 }

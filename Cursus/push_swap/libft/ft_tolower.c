@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 19:56:05 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/03 20:42:04 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:11:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,3 @@ int	ft_tolower(int c)
 		c = c + 32;
 	return (c);
 }
-
-/*int main (void)
-{
-	int c;
-
-	c = 'A';
-	printf("%c", tolower(c));
-	return (0);
-}*/

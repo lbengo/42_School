@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 14:32:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/11/09 11:12:20 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:10:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Por ejemplo, si la primera frase es "Hola que tal" y la segunda "Hola Que al",
 el resultado sería "-32". Por otro lado, si le digo que busque 3 carácteres,
 nunca encontrará la diferencia, devolviendome el resultado de null. Asimismo,
 obtendremos este resultado si no existiese ninguna diferencia entre ambas.
------------------------------------------------------------------------------ */
+---------------------------------------------------------------------------- */
 
 #include "libft.h"
 
@@ -37,13 +37,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-/* int main(void)
-{
-	const char s1[] = "\200";
-	const char s2[] = "\0";
-
-	printf("%d\n", ft_strncmp(s1, s2, 6));
-	printf("%d\n", strncmp(s1, s2, 6));
-	return (0);
-} */

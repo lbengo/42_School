@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:41:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2022/09/03 11:42:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:08:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,3 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-
-/*int	main(void)
-{
-	int	c; 
-
-	c = '\n';
-	printf("%d", ft_isprint (c));
-	return (0);
-}*/

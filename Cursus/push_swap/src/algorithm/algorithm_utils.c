@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   algorithm_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:17:25 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 17:11:54 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/04/13 12:55:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	find_move_top(t_lst *lst, int nbr)
 	len = ft_lstsize(lst);
 	while (lst != NULL)
 	{
-		if (lst->content == nbr)
+		if (lst->data == nbr)
 			break ;
 		i++;
 		lst = lst->next;
@@ -52,11 +52,11 @@ int	find_move_b(t_lst *lst, int nbr)
 	min = check_max_min(lst, nbr, 'm');
 	while (lst != NULL)
 	{
-		if ((nbr == min && lst->content == max) \
-		|| (pre->content > nbr && nbr > lst->content))
+		if ((nbr == min && lst->data == max) \
+		|| (pre->data > nbr && nbr > lst->data))
 			break ;
 		i++;
-		if (nbr == max && lst->content == min)
+		if (nbr == max && lst->data == min)
 			break ;
 		pre = lst;
 		lst = lst->next;
@@ -70,37 +70,37 @@ int	find_move_b(t_lst *lst, int nbr)
  of a list. */
 int	check_order(t_lst **lst, char c)
 {
-	t_lst *curr;
-	t_lst *next;
+	t_lst	*curr;
+	t_lst	*next;
 
 	curr = *lst;
 	next = (*lst)->next;
-	while(next != NULL)
+	while (next != NULL)
 	{
-		if(curr->content > next->content && c == 'a')
-			return(1);
-		if(curr->content < next->content && c == 'b')
-			return(1);
+		if (curr->data > next->data && c == 'a')
+			return (1);
+		if (curr->data < next->data && c == 'b')
+			return (1);
 		curr = curr->next;
 		next = next->next;
 	}
-	return(0);
+	return (0);
 }
 
 // Sends the smallest or largest value in a list
 int	check_max_min(t_lst *lst, int nbr, char c)
 {
-	int max;
-	int min;
+	int	max;
+	int	min;
 
 	max = nbr;
 	min = nbr;
 	while (lst != NULL)
 	{
-		if (max < lst->content)
-			max = lst->content;
-		if (min > lst->content)
-			min = lst->content;
+		if (max < lst->data)
+			max = lst->data;
+		if (min > lst->data)
+			min = lst->data;
 		lst = lst->next;
 	}
 	if (c == 'M')
