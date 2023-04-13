@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/11 17:38:34 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:45:08 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int		ft_lstsize(t_lst *lst);
 t_lst	*add_to_lst(int argc, char *argv[]);
 
 /* Check_error -------------------------------------------------------------- */
-void	check_digit_and_limit(char *str_nbr);
+void	check_digit(char *str_nbr);
+void	check_limit(char *str_nbr);
 void	check_duplicate(t_lst *lst);
 
 /* Game_rules --------------------------------------------------------------- */
