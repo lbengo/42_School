@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:34:59 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/03/30 10:01:19 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 11:44:39 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_lst *add_to_lst(int argc, char *argv[])
 		a = 0;
 		while(temp[a] != NULL)
 		{
-			check_digit_and_limit(temp[a]);
+			check_digit(temp[a]);
+			check_limit(temp[a]);
 			ft_lstadd_back(&lst, ft_lstnew(ft_atoi(temp[a])));
 			a++;
 		}
