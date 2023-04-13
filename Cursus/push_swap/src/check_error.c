@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 12:04:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 20:02:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 09:43:05 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,18 @@ void check_digit_and_limit(char *str_nbr)
 	i = 0;
 	a = 0;
 	if (str_nbr[0] == '-' || str_nbr[0] == '+')
-		i++;
-	while (str_nbr[i] != '\0')
 	{
-		if (ft_isdigit(str_nbr[i]) == 0)
+		i++;
+		if (!str_nbr[i])
 		{
 			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
-		if (check_limits(i, a, str_nbr) == 1)
+	}
+	while (str_nbr[i] != '\0')
+	{
+		if ((ft_isdigit(str_nbr[i]) == 0) \
+		|| (check_limits(i, a, str_nbr) == 1))
 		{
 			ft_putstr_fd("Error\n", 2);
 			exit(0);

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 21:09:36 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 09:37:57 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char *argv[])
 	algorithm(&lst_a, &lst_b);
 
 	// comprobación de 2 listas
-	t_lst *curr_a;
+/* 	t_lst *curr_a;
 
 	curr_a = lst_a;
 	while (curr_a) {
@@ -41,7 +41,7 @@ int	main(int argc, char *argv[])
 	while (curr_b) {
 		printf("bbbbb = %d\n", curr_b->content);
 		curr_b = curr_b->next;
-	}
+	} */
 
 	//Free de la lista
 	deallocate(&lst_a);

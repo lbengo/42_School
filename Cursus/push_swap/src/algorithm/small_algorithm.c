@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 17:24:13 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/12 21:05:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/13 09:37:47 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,14 +50,12 @@ static int	cost2a(t_lst *lst, int nbr)
 	min = check_max_min(lst, nbr, 'm');
 	while (lst != NULL)
 	{
-		if (nbr == max && lst->content == min)
+		if ((nbr == max && lst->content == min) \
+		|| (pre->content < nbr && nbr < lst->content))
 			break ;
 		i++;
-		if (pre->content < nbr && nbr > lst->content)
-			break ;
 		if (nbr == min && lst->content == max)
 			break;
-
 		pre = lst;
 		lst = lst->next;
 	}
