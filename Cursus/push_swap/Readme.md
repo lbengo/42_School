@@ -1,4 +1,14 @@
-# Push_Swap - En proceso
+<p align="center">
+  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/push_swape.png" alt="Push_Swap 42 project badge"/>
+</p>
+
+# Push_Swap
+
+***El objetivo del proyecto push_swap es programar un algoritmo de ordenamiento.***
+
+Este programa deberá ordenar una lista dada de números aleatorios, a través de unas instrucciones, utilizando el menor número de acciones posibles. Para ello, tendremos que manipular varios tipos de algoritmos y elegir la solución más adecuada para una ordenación optimizada de los datos. Este proyecto es un gran ejemplo para aprender a trabajar con listas, por lo que recomiendo utilizarlas.
+
+
 
 ***Errores a gestionar***
 - Números positivos y/o negativos (una instrucción no existe también)
