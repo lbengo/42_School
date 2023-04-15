@@ -6,18 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:37:01 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:30:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:52:06 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-int	change_positive(int n)
-{
-	if (n < 0)
-		n = n * -1;
-	return (n);
-}
 
 /* Checks the order from smallest to largest (a) or from largest to smallest (b)
  of a list. */
@@ -86,4 +79,11 @@ void	order_a(t_lst **lst_a)
 		curr = curr->next;
 	}
 	move_a(lst_a, i);
+}
+
+int	change_positive(int n)
+{
+	if (n < 0)
+		n = n * -1;
+	return (n);
 }

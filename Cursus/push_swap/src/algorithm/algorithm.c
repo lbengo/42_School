@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:16:33 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:46:02 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:54:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ static void	five_nbr(t_lst **lst_a, t_lst **lst_b)
 }
 
 // Algorithm for big numbers
-static void big_nbr(t_lst **lst_a, t_lst **lst_b)
+static void	big_nbr(t_lst **lst_a, t_lst **lst_b)
 {
 	while (*lst_a != NULL)
-		{
-			find_moves(lst_a, lst_b);
-			select_and_move(lst_a, lst_b);
-		}
-		push_to_a(lst_a, lst_b);
+	{
+		find_moves(lst_a, lst_b);
+		select_and_move(lst_a, lst_b);
+	}
+	push_to_a(lst_a, lst_b);
 }
 
 // Detect how many numbers there are and choose which algorithm to use.

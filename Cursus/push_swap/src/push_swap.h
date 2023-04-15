@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:43:29 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:55:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,5 @@ void	total_cost(t_lst *lst);
 void	move_together(t_lst **lst_a, t_lst **lst_b, t_lst *curr);
 void	move_a(t_lst **lst_a, int move_top);
 void	move_b(t_lst **lst_b, int move_b);
-
 
 #endif
