@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/13 15:04:44 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/15 21:46:18 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,10 +18,10 @@ CFLAGS        = -Wall -Werror -Wextra
 
 SRC_PATH      = ./src
 SRC           = push_swap.c \
-				list_functions_1.c \
-				list_functions_2.c \
-				create_lst.c \
 				check_error.c \
+				create_lst/create_lst.c \
+				create_lst/lst_functions_1.c \
+				create_lst/lst_functions_2.c \
 				game_rules/swap.c \
 				game_rules/push.c \
 				game_rules/rotate.c \
@@ -51,6 +51,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH):
 	mkdir $@
+	mkdir obj/create_lst
 	mkdir obj/game_rules
 	mkdir obj/algorithm
 

@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 19:34:59 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/04/13 13:03:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/15 21:41:52 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_lst	*add_to_lst(int argc, char *argv[])
 {
