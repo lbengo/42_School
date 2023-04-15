@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/15 21:46:18 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/16 00:47:29 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,10 @@ SRC           = push_swap.c \
 				game_rules/rotate.c \
 				game_rules/reverse_rotate.c \
 				algorithm/algorithm.c \
-				algorithm/small_algorithm.c \
-				algorithm/algorithm_utils.c
+				algorithm/algorithm_utils.c \
+				algorithm/cost.c \
+				algorithm/big_algorithm.c \
+				algorithm/move.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

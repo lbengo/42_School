@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 12:53:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 00:43:29 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@
 typedef struct s_lst
 {
 	int				data;
-	int				move_top;
-	int				move_b;
+	int				cost_a;
+	int				cost_b;
 	int				count;
 	struct s_lst	*next;
 }	t_lst;
 
 /* ***************************** FUNCIONES ********************************** */
 
-/* List_functions ----------------------------------------------------------- */
+/* Create_lst --------------------------------------------------------------- */
+t_lst	*add_to_lst(int argc, char *argv[]);
 t_lst	*ft_lstlast(t_lst *lst);
 t_lst	*ft_lstnew(int data);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
@@ -40,9 +41,6 @@ void	ft_lstadd_front(t_lst **lst, t_lst *new);
 void	deallocate(t_lst **lst);
 t_lst	*ft_lstpenultimate(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
-
-/* Create_lst --------------------------------------------------------------- */
-t_lst	*add_to_lst(int argc, char *argv[]);
 
 /* Check_error -------------------------------------------------------------- */
 void	check_digit(char *str_nbr);
@@ -64,12 +62,29 @@ void	reverse_rotate_a_b(t_lst **lst_a, t_lst **lst_b);
 
 /* Algorithm ---------------------------------------------------------------- */
 void	algorithm(t_lst **lst_a, t_lst **lst_b);
-void	three_nbr(t_lst **lst);
-void	five_nbr(t_lst **lst_a, t_lst **lst_b);
-void	move_lst(t_lst **lst_a, t_lst **lst_b, int move, char c);
-int		check_max_min(t_lst *lst, int nbr, char c);
+
+/* Algorithm utils ---------------------------------------------------------- */
+int		change_positive(int n);
 int		check_order(t_lst **lst, char c);
-int		find_move_b(t_lst *lst, int nbr);
-int		find_move_top(t_lst *lst, int nbr);
+int		check_max_min(t_lst *lst, int nbr, char c);
+void	send_to_a(t_lst **lst_a, t_lst **lst_b);
+void	order_a(t_lst **lst_a);
+
+/* Algorithm big ------------------------------------------------------------ */
+void	push_to_a(t_lst **lst_a, t_lst **lst_b);
+void	select_and_move(t_lst **lst_a, t_lst **lst_b);
+void	find_moves(t_lst **lst_a, t_lst **lst_b);
+
+/* Algorithm cost ----------------------------------------------------------- */
+int		cost_in_a(t_lst *lst, int nbr);
+int		cost_to_b(t_lst *lst, int nbr);
+int		cost_to_a(t_lst *lst, int nbr);
+void	total_cost(t_lst *lst);
+
+/* Algorithm move ----------------------------------------------------------- */
+void	move_together(t_lst **lst_a, t_lst **lst_b, t_lst *curr);
+void	move_a(t_lst **lst_a, int move_top);
+void	move_b(t_lst **lst_b, int move_b);
+
 
 #endif

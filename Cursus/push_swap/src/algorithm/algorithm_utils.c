@@ -5,65 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 14:17:25 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 12:55:40 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/04/15 23:37:01 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/04/16 00:30:03 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-/* Cost of moving a number in stack A. From the middle of the stack up it is
-positive and from the middle of the stack down it is negative. Used to know
-if whether to use "rotate" or "rotate backwards". */
-int	find_move_top(t_lst *lst, int nbr)
+int	change_positive(int n)
 {
-	int	len;
-	int	i;
-
-	i = 0;
-	len = ft_lstsize(lst);
-	while (lst != NULL)
-	{
-		if (lst->data == nbr)
-			break ;
-		i++;
-		lst = lst->next;
-	}
-	if (i > len / 2)
-		i = i - len;
-	return (i);
-}
-
-/* Cost of moving a number in stack B. From the middle of the stack up it is
-positive and from the middle of the stack down it is negative. Used to know
-if whether to use "rotate" or "rotate backwards". */
-int	find_move_b(t_lst *lst, int nbr)
-{
-	t_lst	*pre;
-	int		max;
-	int		min;
-	int		len;
-	int		i;
-
-	i = 0;
-	len = ft_lstsize(lst);
-	pre = ft_lstlast(lst);
-	max = check_max_min(lst, nbr, 'M');
-	min = check_max_min(lst, nbr, 'm');
-	while (lst != NULL)
-	{
-		if ((nbr == min && lst->data == max) \
-		|| (pre->data > nbr && nbr > lst->data))
-			break ;
-		i++;
-		if (nbr == max && lst->data == min)
-			break ;
-		pre = lst;
-		lst = lst->next;
-	}
-	if (i > len / 2)
-		i = i - len;
-	return (i);
+	if (n < 0)
+		n = n * -1;
+	return (n);
 }
 
 /* Checks the order from smallest to largest (a) or from largest to smallest (b)
@@ -108,26 +61,29 @@ int	check_max_min(t_lst *lst, int nbr, char c)
 	return (min);
 }
 
-// Executes the movements of the lists
-void	move_lst(t_lst **lst_a, t_lst **lst_b, int move, char c)
+void	send_to_a(t_lst **lst_a, t_lst **lst_b)
 {
-	while (move != 0)
+	int		i;
+
+	while (*lst_b != NULL)
 	{
-		if (move > 0)
-		{
-			if (c == 'a')
-				rotate_a(lst_a);
-			else if (c == 'b')
-				rotate_b(lst_b);
-			move--;
-		}
-		else if (move < 0)
-		{
-			if (c == 'a')
-				reverse_rotate_a(lst_a);
-			else if (c == 'b')
-				reverse_rotate_b(lst_b);
-			move++;
-		}
+		i = cost_to_a(*lst_a, (*lst_b)->data);
+		move_a(lst_a, i);
+		push_a(lst_a, lst_b);
 	}
+}
+
+void	order_a(t_lst **lst_a)
+{
+	t_lst	*curr;
+	int		i;
+
+	curr = *lst_a;
+	i = 0;
+	while (curr->data != check_max_min(*lst_a, (*lst_a)->data, 'm'))
+	{
+		i++;
+		curr = curr->next;
+	}
+	move_a(lst_a, i);
 }
