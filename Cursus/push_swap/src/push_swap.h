@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:55:23 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:10:02 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		check_order(t_lst **lst, char c);
 int		check_max_min(t_lst *lst, int nbr, char c);
 void	send_to_a(t_lst **lst_a, t_lst **lst_b);
 void	order_a(t_lst **lst_a);
+void	order_b(t_lst **lst_b);
 
 /* Algorithm big ------------------------------------------------------------ */
 void	push_to_a(t_lst **lst_a, t_lst **lst_b);

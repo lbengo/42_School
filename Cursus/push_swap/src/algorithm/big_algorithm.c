@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:28:10 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:16:04 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:12:37 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,10 @@
 // Sorts list_b and sends it to list_a
 void	push_to_a(t_lst **lst_a, t_lst **lst_b)
 {
-	t_lst	*curr;
 	int		len;
-	int		i;
 
-	i = 0;
-	curr = *lst_b;
-	len = ft_lstsize(curr);
-	while (curr != NULL)
-	{
-		if (curr->data == (check_max_min(curr, curr->data, 'M')))
-			break ;
-		i++;
-		curr = curr->next;
-	}
-	while (check_order(lst_b, 'b') == 1)
-	{
-		if (i > len / 2)
-			reverse_rotate_b(lst_b);
-		else
-			rotate_b(lst_b);
-	}
+	order_b(lst_b);
+	len = ft_lstsize(*lst_b);
 	while (len-- > 0)
 		push_a(lst_a, lst_b);
 }

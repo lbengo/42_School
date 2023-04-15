@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:37:01 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:52:06 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/16 01:12:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,16 +69,39 @@ void	send_to_a(t_lst **lst_a, t_lst **lst_b)
 void	order_a(t_lst **lst_a)
 {
 	t_lst	*curr;
+	int		len;
 	int		i;
 
 	curr = *lst_a;
+	len = ft_lstsize(*lst_a);
 	i = 0;
 	while (curr->data != check_max_min(*lst_a, (*lst_a)->data, 'm'))
 	{
 		i++;
 		curr = curr->next;
 	}
+	if (i > len / 2)
+		i = i - len;
 	move_a(lst_a, i);
+}
+
+void	order_b(t_lst **lst_b)
+{
+	t_lst	*curr;
+	int		len;
+	int		i;
+
+	curr = *lst_b;
+	len = ft_lstsize(*lst_b);
+	i = 0;
+	while (curr->data != check_max_min(*lst_b, (*lst_b)->data, 'M'))
+	{
+		i++;
+		curr = curr->next;
+	}
+	if (i > len / 2)
+		i = i - len;
+	move_b(lst_b, i);
 }
 
 int	change_positive(int n)
