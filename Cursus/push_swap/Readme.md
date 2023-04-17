@@ -54,7 +54,8 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
     </tr>
 	<tr>
             <td>pb</td>
-            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</a></td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_b</a></td>
+			<td>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</td>
             <td>lista a: 1 2 3 -> 2 3</td>
 			<td>lista b: 4 5 -> 1 4 5</td>
     </tr>
