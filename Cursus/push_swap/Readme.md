@@ -8,15 +8,67 @@
 
 Este programa deberá ordenar una lista dada de números aleatorios, a través de unas instrucciones, utilizando el menor número de acciones posibles. Para ello, tendremos que manipular varios tipos de algoritmos y elegir la solución más adecuada para una ordenación optimizada de los datos. Este proyecto es un gran ejemplo para aprender a trabajar con listas, por lo que recomiendo utilizarlas.
 
+## Enunciado del ejercicio
+- Dispones de dos listas, llamadas a y b. En la lista a tendrás los números y en b no habrá nada.
+- El objetivo es ordenar la lista a en orden ascendente con la ayuda de la lista b.
+- Para hacerlo se deben seguir las siguientes instrucciones:
+
+<table>
+    <thead>
+        <tr>
+            <th align="left">Instrucción</th>
+            <th align="left">Nombre</th>
+            <th align="left">Descripción</th>
+			<th align="left">Ejemplo</th>
+			<th></th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr>
+            <td>sa</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_a</a></td>
+            <td>Intercambia los dos primeros elementos encima del stack a.</td>
+			<td>lista a: 1 2 3 4 -> 2 1 3 4</td>
+			<td>lista b: </td>
+    </tr>
+	<tr>
+            <td>sb</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_b</a></td>
+            <td>Intercambia los dos primeros elementos encima del stack B.</td>
+			<td>lista a: </td>
+			<td>lista b: 1 2 3 4 -> 2 1 3 4</td>
+    </tr>
+	<tr>
+            <td>ss</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_a_b</a></td>
+            <td>swap_a y swap_b a la vez</td>
+			<td>lista a: 1 2 3 4 -> 2 1 3 4</td>
+			<td>lista b: 1 2 3 4 -> 2 1 3 4</td>
+    </tr>
+	<tr>
+            <td>pa</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_a</a></td>
+            <td>Toma el primer elemento de la lista b y lo situa al principio de la lista a.</td>
+			<td>lista a: 1 2 3 -> 4 1 2 3</td>
+			<td>lista b: 4 5 -> 5</td>
+    </tr>
+	<tr>
+            <td>pb</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</a></td>
+            <td>lista a: 1 2 3 -> 2 3</td>
+			<td>lista b: 4 5 -> 1 4 5</td>
+    </tr>
+	</tbody>
+<table>
+
 
 
 ***Errores a gestionar***
-- Números positivos y/o negativos (una instrucción no existe también)
+- Números positivos y/o negativos. Ej: 2 -2 7 / 4 3 5 / -5 -1 -9
 - Alguno de los números es más grande que un int
-- Nunca duplicados.
+- Nunca duplicados (Cuidado con: 0 -0 / -05 -5 / 5 +5)
 - Separados solo por un espacio
-- Cuidado con el 0 -0. Y con -05 y -5
-- Cuidado con los números positivos ejemp +0
+- Pueden entrar tanto por argumentos como por arrays. Ej: 5 "3 8" / 5 3 8 / "5 3 8"
 
 Ej: ./push_swap 2 1 3
 
