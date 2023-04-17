@@ -21,7 +21,6 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
             <th align="left">Descripción</th>
 			<th align="left">Lista a</th>
 			<th align="left">Lista b</th>
-			<th></th>
         </tr>
     </thead>
     <tbody>
