@@ -19,7 +19,8 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
             <th align="left">Instrucción</th>
             <th align="left">Nombre</th>
             <th align="left">Descripción</th>
-			<th align="left">Ejemplo</th>
+			<th align="left">Lista a</th>
+			<th align="left">Lista b</th>
 			<th></th>
         </tr>
     </thead>
@@ -28,36 +29,78 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
             <td>sa</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_a</a></td>
             <td>Intercambia los dos primeros elementos encima del stack a.</td>
-			<td>lista a: 1 2 3 4 -> 2 1 3 4</td>
-			<td>lista b: </td>
+			<td>1 2 3 4 -> 2 1 3 4</td>
+			<td></td>
     </tr>
 	<tr>
             <td>sb</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_b</a></td>
             <td>Intercambia los dos primeros elementos encima del stack B.</td>
-			<td>lista a: </td>
-			<td>lista b: 1 2 3 4 -> 2 1 3 4</td>
+			<td></td>
+			<td>1 2 3 4 -> 2 1 3 4</td>
     </tr>
 	<tr>
             <td>ss</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/swap.c>swap_a_b</a></td>
             <td>swap_a y swap_b a la vez</td>
-			<td>lista a: 1 2 3 4 -> 2 1 3 4</td>
-			<td>lista b: 1 2 3 4 -> 2 1 3 4</td>
+			<td>1 2 3 4 -> 2 1 3 4</td>
+			<td>1 2 3 4 -> 2 1 3 4</td>
     </tr>
 	<tr>
             <td>pa</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_a</a></td>
             <td>Toma el primer elemento de la lista b y lo situa al principio de la lista a.</td>
-			<td>lista a: 1 2 3 -> 4 1 2 3</td>
-			<td>lista b: 4 5 -> 5</td>
+			<td>1 2 3 -> 4 1 2 3</td>
+			<td>4 5 -> 5</td>
     </tr>
 	<tr>
             <td>pb</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_b</a></td>
 			<td>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</td>
-            <td>lista a: 1 2 3 -> 2 3</td>
-			<td>lista b: 4 5 -> 1 4 5</td>
+            <td>1 2 3 -> 2 3</td>
+			<td>4 5 -> 1 4 5</td>
+    </tr>
+	<tr>
+            <td>ra</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/rotate.c>rotate_a</a></td>
+			<td>El primer elemento de la lista a pasa al último.</td>
+            <td>1 2 3 4 -> 2 3 4 1</td>
+			<td></td>
+    </tr>
+	<tr>
+            <td>rb</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/rotate.c>rotate_b</a></td>
+			<td>El primer elemento de la lista b pasa al último.</td>
+            <td>1 2 3 4 -> 2 3 4 1</td>
+			<td></td>
+    </tr>
+	<tr>
+            <td>rr</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/rotate.c>rotate_a_b</a></td>
+			<td>El primer elemento de la lista a y b pasan al último.</td>
+            <td>1 2 3 4 -> 2 3 4 1</td>
+			<td>1 2 3 4 -> 2 3 4 1</td>
+    </tr>
+	<tr>
+            <td>rra</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/reverse_rotate.c>reverse_rotate_a</a></td>
+			<td>El último elemento de la lista a pasa al primero.</td>
+            <td>1 2 3 4 -> 4 1 2 3</td>
+			<td></td>
+    </tr>
+	<tr>
+            <td>rrb</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/reverse_rotate.c>reverse_rotate_b</a></td>
+			<td>El último elemento de la lista a pasa al primero.</td>
+            <td></td>
+			<td>1 2 3 4 -> 4 1 2 3</td>
+    </tr>
+	<tr>
+            <td>rrr</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/reverse_rotate.c>reverse_rotate_a_b</a></td>
+			<td>El último elemento de la lista a y b pasan al primero.</td>
+            <td>1 2 3 4 -> 4 1 2 3</td>
+			<td>1 2 3 4 -> 4 1 2 3</td>
     </tr>
 	</tbody>
 <table>
