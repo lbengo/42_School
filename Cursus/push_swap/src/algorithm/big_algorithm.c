@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:28:10 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 01:12:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:09:06 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,11 @@ void	find_moves(t_lst **lst_a, t_lst **lst_b)
 		curr = curr->next;
 	}
 	total_cost(*lst_a);
+}
+
+int	change_positive(int n)
+{
+	if (n < 0)
+		n = n * -1;
+	return (n);
 }

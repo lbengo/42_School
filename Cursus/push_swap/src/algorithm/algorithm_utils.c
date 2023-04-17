@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:37:01 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 01:12:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:09:01 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,4 @@ void	order_b(t_lst **lst_b)
 	if (i > len / 2)
 		i = i - len;
 	move_b(lst_b, i);
-}
-
-int	change_positive(int n)
-{
-	if (n < 0)
-		n = n * -1;
-	return (n);
 }
