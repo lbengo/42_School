@@ -46,20 +46,6 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
 			<td>5 4 6</td>
     </tr>
 	<tr>
-            <td>pa</td>
-            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_a</a></td>
-            <td>Toma el primer elemento de la lista b y lo situa al principio de la lista a.</td>
-			<td>4 1 2 3</td>
-			<td>5 6</td>
-    </tr>
-	<tr>
-            <td>pb</td>
-            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_b</a></td>
-			<td>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</td>
-            <td>2 3</td>
-			<td>1 4 5 6</td>
-    </tr>
-	<tr>
             <td>ra</td>
             <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/rotate.c>rotate_a</a></td>
 			<td>El primer elemento de la lista a pasa al último.</td>
@@ -100,6 +86,20 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
 			<td>El último elemento de la lista a y b pasan al primero.</td>
             <td>3 1 2</td>
 			<td>6 4 5</td>
+    </tr>
+		<tr>
+            <td>pa</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_a</a></td>
+            <td>Toma el primer elemento de la lista b y lo situa al principio de la lista a.</td>
+			<td>4 1 2 3</td>
+			<td>5 6</td>
+    </tr>
+	<tr>
+            <td>pb</td>
+            <td><a href=https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/src/game_rules/push.c>push_b</a></td>
+			<td>Toma el primer elemento de la listaa y lo situa al principio de la lista b.</td>
+            <td>2 3</td>
+			<td>1 4 5 6</td>
     </tr>
 	</tbody>
 <table>
