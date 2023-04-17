@@ -13,7 +13,7 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
 - El objetivo es ordenar la lista a en orden ascendente con la ayuda de la lista b.
 - Para hacerlo se deben seguir las siguientes instrucciones:
 
-<table>
+<table align="center">
     <thead>
         <tr>
             <th align="left">Nombre</th>
