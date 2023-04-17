@@ -16,11 +16,11 @@ Este programa deberá ordenar una lista dada de números aleatorios, a través d
 <table>
     <thead>
         <tr>
-            <th align="left">Instrucción</th>
             <th align="left">Nombre</th>
+            <th align="left">Instrucción</th>
             <th align="left">Descripción</th>
-			<th align="left">Lista a</th>
-			<th align="left">Lista b</th>
+			<th align="left">Lista a (1 2 3)</th>
+			<th align="left">Lista b (4 5 6)</th>
         </tr>
     </thead>
     <tbody>
