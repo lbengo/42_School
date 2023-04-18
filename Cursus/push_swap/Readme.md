@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/42_badges/push_swape.png" alt="Push_Swap 42 project badge"/>
+  <img src="../../42_badges/push_swape.png" alt="Push_Swap 42 project badge"/>
 </p>
 
 # Push_Swap
@@ -135,21 +135,78 @@ Tras evaluar y estudiar diferentes algoritmos, el que se ha seguido en este proy
 El Insertion Sort es un algoritmo de ordenación que coloca un elemento sin ordenar (de la lista a) en su lugar adecuado (de la lista b) en cada iteración. Veamos a continuación más detalladamente los pasos de este algoritmo:
 
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/List.png" alt="list"/>
+  <img src="./Readme_img/List.png" alt="list"/>
+</p>
+
+En primer lugar, calculamos el coste total que nos supone mover cada número de la lista a a la lista b, seleccionando aquel que requiera un menor número de movimientos, consiguiendo con ello una ordenación más optimizada. Para ello, el coste total se divide en dos: cost_to_top y cost_to_place.
+
+### 04.1 Calcular Cost_to_top
+
+Cost_to_top referencia al número de movimientos de cada número para situarse en la parte superior de la misma lista. A través de este obtenemos los movimientos de la lista a, cuyas instrucciones son: ra y rra.
+
+<p align="center">
+  <img src="./Readme_img/Cost_to_top.png" alt="Cost_to_top"/>
+</p>
+
+### 04.2 Calcular Cost_to_place
+
+Por otro lado, Cost_to_place es el número de movimientos requeridos que necesita cada número de la lista a para situarse adecuadamente en la lista b. Mediante este procedimiento se obtienen los movimientos de la lista b, cuyas instrucciones son: rb y rrb.
+
+<p align="center">
+  <img src="./Readme_img/Cost_to_place_1.png" alt="Cost_to_place_1"/>
+</p>
+
+Como se puede apreciar en la imagen, Cost_to_place no tendrá ningún valor en los primeros dos movimientos ya que cualquier número es indiferente su colocación.
+
+<p align="center">
+  <img src="./Readme_img/Cost_to_place_2.png" alt="Cost_to_place_2"/>
+</p>
+
+Una vez ya se tiene más de dos valores en la lista b, Cost_to_place comienza a tener valor. Como se ha mencionado anteriormente, el número dependerá de los movimientos que se requieran hacer en la lista b para situar los números de la lista a. 
+
+Un consejo a tener en cuenta es que los números de la lista b situen de mayor a menor, con el objetivo de enviar posteriormente de forma correcta a la lista a, la cual quedará ordenada de menor a mayor. 
+
+Otro dato a mencionar en la realización de Cost_to_place es imaginarte la lista b como si fuese circular, no hace falta que esté ordenada en todo momento (comenzando con el número mayor), eso hace que disminuyan los movimientos.
+
+<p align="center">
+  <img src="./Readme_img/Cost_to_place_3.png" alt="Cost_to_place_3"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/List2.png" alt="list"/>
+  <img src="./Readme_img/Cost_to_place_4.png" alt="Cost_to_place_4"/>
+</p>
+
+### 04.3 Calcular el coste total
+
+A continuación, se calcula el número total de coste de cada número. Para ello, se suman ambos valores, sin embargo, en el caso de que sean ambos del mismo signo (+ o -) se haría una suma de sus valores absolutos para optimizar el algorítmo con las instrucciones: rr y rrr.
+
+<p align="center">
+  <img src="./Readme_img/Total_cost_1.png" alt="Total_cost_1"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/Cost_to_top.png" alt="list"/>
+  <img src="./Readme_img/Total_cost_2.png" alt="Total_cost_2"/>
 </p>
 
+### 04.4 Traspaso a la lista b
 
-En primer lugar, 
+Una vez sepamos el coste total de los números de la lista a, se selecciona el que suponga menos movimientos y se pasa a la lista b.
 
+<p align="center">
+  <img src="./Readme_img/Pass_a_to_b.png" alt="Pass_a_to_b"/>
+</p>
 
+### 04.5 Ordenamiento de la lista b
+Tras haber vaciado tota la lista a, tendremos la lista b de mayor a menor pero, es muy probable que el mayor número no esté en primer lugar. Por lo que se deberá ordenar previamente a enviarlo a la lista a.
 
+<p align="center">
+  <img src="./Readme_img/Order_b.png" alt="Order_b"/>
+</p>
 
-calcular el coste que tendría mover cada número en la siguiente lista
+### 04.6 Traspaso a la lista a y final
+
+Por último, pasaremos los números, uno por uno, a la lista a, la cual finalizará totalmente ordenada.
+
+<p align="center">
+  <img src="./Readme_img/Pass_b_to_a.png" alt="Pass_b_to_a"/>
+</p>
