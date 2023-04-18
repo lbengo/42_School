@@ -142,6 +142,11 @@ El Insertion Sort es un algoritmo de ordenación que coloca un elemento sin orde
   <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/List2.png" alt="list"/>
 </p>
 
+<p align="center">
+  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/Cost_to_top.png" alt="list"/>
+</p>
+
+
 En primer lugar, 
 
 
