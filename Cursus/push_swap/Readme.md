@@ -211,9 +211,5 @@ Por último, pasaremos los números, uno por uno, a la lista A, la cual finaliza
   <img src="./Readme_img/Pass_b_to_a.png" alt="Pass_b_to_a"/>
 </p>
 
-**shoutout**
-- Aarrien- y Ubegona por enseñarme el algoritmo.
-- Dampuru,
-
 ---
 Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
