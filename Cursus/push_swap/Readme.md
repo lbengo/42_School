@@ -197,7 +197,7 @@ Una vez sepamos el coste total de los números de la lista A, se selecciona el q
 </p>
 
 ### 04.5 Ordenamiento de la lista b
-Tras haber vaciado tota la lista A, tendremos la lista B de mayor a menor pero, es muy probable que el mayor número no esté en primer lugar. Por lo que se deberá ordenar previamente a enviarlo a la lista A.
+Tras haber vaciado tota la lista A, tendremos la lista B de mayor a menor. Sin embargo, es muy probable que el mayor número no esté en primer lugar, por lo que se deberá ordenar previamente a enviarlo a la lista A.
 
 <p align="center">
   <img src="./Readme_img/Order_b.png" alt="Order_b"/>
