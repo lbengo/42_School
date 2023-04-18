@@ -156,7 +156,7 @@ Por otro lado, "Cost_to_place" es la cantidad de movimientos que tiene que suced
   <img src="./Readme_img/Cost_to_place_1.png" alt="Cost_to_place_1"/>
 </p>
 
-Como se puede apreciar en la imagen, "Cost_to_place" no tendrá ningún valor en los primeros dos movimientos ya que cualquier número es indiferente su colocación.
+Como se puede apreciar en la imagen, "Cost_to_place" no tendrá ningún valor en los primeros dos movimientos ya que cualquier número es indiferente en su colocación.
 
 <p align="center">
   <img src="./Readme_img/Cost_to_place_2.png" alt="Cost_to_place_2"/>
@@ -164,9 +164,9 @@ Como se puede apreciar en la imagen, "Cost_to_place" no tendrá ningún valor en
 
 Una vez ya se tienen más de dos valores en la lista B, "Cost_to_place" comienza a tener valor. Como se ha mencionado anteriormente, el número dependerá de los movimientos que se requieran hacer en la lista B para situar los números de la lista A. 
 
-Un consejo a tener en cuenta es que los números de la lista B situen de mayor a menor, con el objetivo de enviar posteriormente de forma correcta a la lista A, la cual quedará ordenada de menor a mayor. 
+Un consejo a tener en cuenta es que los números de la lista B se situen de mayor a menor, con el objetivo de enviar posteriormente de forma correcta a la lista A, la cual quedará ordenada de menor a mayor. 
 
-Otro dato a mencionar en la realización de "Cost_to_place" es imaginarte la lista B como si fuese circular, no hace falta que esté ordenada en todo momento (comenzando con el número mayor), eso hace que disminuyan los movimientos.
+Otro consejo a mencionar en la realización de "Cost_to_place" es imaginarte la lista B como si fuese circular. Es decir, no hace falta que esté ordenada en todo momento (comenzando con el número mayor), ya que esto hace que disminuyan los movimientos.
 
 <p align="center">
   <img src="./Readme_img/Cost_to_place_3.png" alt="Cost_to_place_3"/>
