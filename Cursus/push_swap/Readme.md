@@ -135,7 +135,7 @@ Tras evaluar y estudiar diferentes algoritmos, el que se ha seguido en este proy
 El Insertion Sort es un algoritmo de ordenación que coloca un elemento sin ordenar (de la lista a) en su lugar adecuado (de la lista b) en cada iteración. Veamos a continuación más detalladamente los pasos de este algoritmo:
 
 <p align="center">
-  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/Lista.jpg" alt="list"/>
+  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/List.png" alt="list"/>
 </p>
 
 En primer lugar, 
