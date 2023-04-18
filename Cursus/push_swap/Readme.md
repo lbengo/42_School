@@ -132,9 +132,13 @@ Tras haber rellenado la lista, realicé las instrucciones del push_swap (sa, rb,
 ### 04. Implementación del algoritmo: Insertion Sort
 Tras evaluar y estudiar diferentes algoritmos, el que se ha seguido en este proyecto es el Insertion Sort ya que me ha parecido más intuitivo y fácil de implementar.
 
-El Insertion Sort es un algoritmo de ordenación que coloca un elemento sin ordenar (de la lista a) en su lugar adecuado (de la lista b) en cada iteración.
+El Insertion Sort es un algoritmo de ordenación que coloca un elemento sin ordenar (de la lista a) en su lugar adecuado (de la lista b) en cada iteración. Veamos a continuación más detalladamente los pasos de este algoritmo:
 
+<p align="center">
+  <img src="https://github.com/lbengo/42_School/blob/main/Cursus/push_swap/Readme_img/Lista.jpg" alt="list"/>
+</p>
 
+En primer lugar, 
 
 
 
