@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/19 13:48:24 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/04/19 17:18:04 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
 	make -C $(LIBLST_PATH)
-	$(CC) -I $(INCLUDE) $^ $(LIBFT_A) $(LIBLST_A) -o $@
+	$(CC) $^ $(LIBFT_A) $(LIBLST_A) -o $@
 
 $(OBJ_PATH):
 	mkdir $@
