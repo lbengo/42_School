@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 00:19:51 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 01:04:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 // Execute list movements together
 void	move_together(t_lst **lst_a, t_lst **lst_b, t_lst *curr)

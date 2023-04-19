@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:12:17 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/04/13 12:57:35 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:02 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 /* reverse_rotate - el último elemento de la lista pasa al primero.
 Ej: 1234 -> 4123 */

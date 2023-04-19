@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 07:29:35 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/04/13 12:58:03 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:37:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 // push - toma el primer elemento de la lista y lo situa encima de la otra.
 static void	push(t_lst **lst, t_lst **dest)

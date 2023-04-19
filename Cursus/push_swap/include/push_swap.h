@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:46:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 01:10:02 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:52:13 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,10 @@
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "../libft/libft.h"
+# include "libft.h"
+# include "liblst.h"
 # include <unistd.h>
 # include <stdio.h>
-
-/* ******************************* LISTS ************************************ */
-
-typedef struct s_lst
-{
-	int				data;
-	int				cost_a;
-	int				cost_b;
-	int				count;
-	struct s_lst	*next;
-}	t_lst;
 
 /* ***************************** FUNCIONES ********************************** */
 
@@ -38,7 +28,6 @@ t_lst	*ft_lstlast(t_lst *lst);
 t_lst	*ft_lstnew(int data);
 void	ft_lstadd_back(t_lst **lst, t_lst *new);
 void	ft_lstadd_front(t_lst **lst, t_lst *new);
-void	deallocate(t_lst **lst);
 t_lst	*ft_lstpenultimate(t_lst *lst);
 int		ft_lstsize(t_lst *lst);
 

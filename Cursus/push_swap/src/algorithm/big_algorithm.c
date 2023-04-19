@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:28:10 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/17 10:09:06 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:20 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 // Sorts list_b and sends it to list_a
 void	push_to_a(t_lst **lst_a, t_lst **lst_b)

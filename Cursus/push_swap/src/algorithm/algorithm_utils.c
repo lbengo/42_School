@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:37:01 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/17 10:09:01 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 /* Checks the order from smallest to largest (a) or from largest to smallest (b)
  of a list. */

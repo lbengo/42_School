@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 08:11:36 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/04/13 12:57:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:06 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 // rotate - el primer elemento de la lista pasa al último. Ej: 1234 -> 2341
 static void	rotate(t_lst **lst)

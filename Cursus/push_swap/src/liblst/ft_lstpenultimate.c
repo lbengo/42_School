@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_lstpenultimate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/19 13:53:08 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/04/19 13:22:01 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/04/19 13:22:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "liblst.h"
 
-int	main(int argc, char *argv[])
+t_lst	*ft_lstpenultimate(t_lst *lst)
 {
-	t_lst	*lst_a;
-	t_lst	*lst_b;
+	t_lst	*curr;
+	t_lst	*prev;
 
-	lst_a = add_to_lst(--argc, ++argv);
-	lst_b = NULL;
-	if (argc == 0 || !lst_a)
+	if (!lst)
 		return (0);
-	check_duplicate(lst_a);
-	algorithm(&lst_a, &lst_b);
-	ft_deallocate(&lst_a);
-	ft_deallocate(&lst_b);
-	return (0);
+	prev = lst;
+	while (prev->next != NULL)
+	{
+		curr = prev;
+		prev = prev->next;
+	}
+	return (curr);
 }

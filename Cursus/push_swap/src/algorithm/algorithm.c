@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:16:33 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:54:43 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:18 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 // Algorithm for 3 numbers
 static void	three_nbr(t_lst **lst)

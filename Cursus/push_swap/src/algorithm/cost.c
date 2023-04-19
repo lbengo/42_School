@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/15 23:28:44 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/16 00:25:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:38:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap.h"
 
 /* Cost of moving a number in stack A. From the middle of the stack up it is
 positive and from the middle of the stack down it is negative. Used to know

@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_deallocate.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/20 11:45:32 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/19 13:53:08 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/04/19 13:21:00 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/04/19 13:21:16 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "liblst.h"
 
-int	main(int argc, char *argv[])
+void	ft_deallocate(t_lst **lst_1)
 {
-	t_lst	*lst_a;
-	t_lst	*lst_b;
+	t_lst	*curr;
+	t_lst	*aux;
 
-	lst_a = add_to_lst(--argc, ++argv);
-	lst_b = NULL;
-	if (argc == 0 || !lst_a)
-		return (0);
-	check_duplicate(lst_a);
-	algorithm(&lst_a, &lst_b);
-	ft_deallocate(&lst_a);
-	ft_deallocate(&lst_b);
-	return (0);
+	curr = *lst_1;
+	while (curr != NULL)
+	{
+		aux = curr;
+		curr = curr -> next;
+		free(aux);
+	}
+	*lst_1 = NULL;
 }
