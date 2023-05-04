@@ -8,7 +8,7 @@
 
 ## Función execve()
 
-```shell
+```c
 int execve(const char *filename, char *const argv[], char *const envp[]);
 ```
 
@@ -30,7 +30,7 @@ En caso de éxito execve() no regresa mientas que en caso de error el valor devu
 
 ### Ejemplo:
 
-```shell
+```c
 int	main(void)
 {
 	int val;
@@ -67,7 +67,7 @@ Nota: cuando se mata al hijo pero no al padre, este permanecerá zombi. Es decir
 
 ### Ejemplo 01:
 
-```shell
+```c
 int	main(void)
 {
 	fork();
@@ -82,7 +82,7 @@ Hello
 
 ### Ejemplo 02:
 
-```shell
+```c
 void forexample(void)
 {
 	int pid = fork();
@@ -115,7 +115,7 @@ Child has x = 2
 
 ## Función pipe()
 
-```shell
+```c
 int pipe(int fd[2]);
 ```
 
@@ -140,7 +140,7 @@ En caso de éxito pipe() devuelve 0, mientas que en caso de error el valor devue
   <img src="./Readme_img/pipe_fork.png" alt="Pipe_Fork"/>
 </p>
 
-```shell
+```c
 int	main(void)
 {
 	int fd[2];
@@ -158,7 +158,7 @@ int	main(void)
 		close(fd[1]);
 		exit(0);
 	}
-	else
+	else /* padre */
 	{
 		close(fd[1]);
 		num = read(fd[0], buf, sizeof(buf));
