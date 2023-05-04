@@ -129,37 +129,46 @@ int pipe(int fd[2]);
 ### Valor devuelto
 En caso de éxito pipe() devuelve 0, mientas que en caso de error el valor devuelto es -1.
 
-### Funciones relacionadas:
-
+### Funciones relacionadas
 - Escribir: ssize_t write(int fd, const void *buf, size_t nr);
 - Leer: ssize_t read(int fd, void *buf, size_t nr);
 - Cerrar: int close(int fd);
 
-<table>
-    <thead>
-        <tr>
-            <th align="left">Descripción</th>
-            <th align="left">Función</th>
-        </tr>
-    </thead>
-    <tbody>
-		<tr>
-            <td valign="top"><b>Escribir</b></td>
-            <td valign="top">ssize_t write(int fd, const void *buf, size_t nr)</td>
-        </tr>
-		<tr>
-            <td valign="top"><b>Leer</b></td>
-            <td valign="top">ssize_t read(int fd, void *buf, size_t nr)</td>
-        </tr>
-		<tr>
-            <td valign="top"><b>Cerrar</b></td>
-            <td valign="top">int close(int fd)</td>
-        </tr>
-	</tbody>
-<table>
+### Ejemplo de comunicación entre pipe() y fork()
 
 <p align="center">
   <img src="./Readme_img/pipe_fork.png" alt="Pipe_Fork"/>
 </p>
 
-ls = fd[0] | fd[1] = wc
+```shell
+int	main(void)
+{
+	int fd[2];
+	pid_t pidC;
+	char buf[10];
+	int num;
+
+	pipe(fd); /* TODO: error manamgent. */
+	pidC = fork();
+
+	if (pidC == 0) /* hijo */
+	{
+		close(fd[0]);
+		write(fd[1], "abdce", 5);
+		close(fd[1]);
+		exit(0);
+	}
+	else
+	{
+		close(fd[1]);
+		num = read(fd[0], buf, sizeof(buf));
+		printf("Padre lee %d bytes: %s\n", num, buf);
+		close(fd[0]);
+	}
+	return (0);
+}
+```
+
+```bash
+Padre lee 5 bytes: abdce
+```
