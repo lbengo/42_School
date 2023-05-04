@@ -126,6 +126,9 @@ int pipe(int fd[2]);
 	- fd[0]: READ.
 	- fd[1]: WRITE.
 
+### Valor devuelto
+En caso de éxito pipe() devuelve 0, mientas que en caso de error el valor devuelto es -1.
+
 ### Funciones relacionadas:
 
 <table>
@@ -151,6 +154,8 @@ int pipe(int fd[2]);
 	</tbody>
 <table>
 
-
+<p align="center">
+  <img src="./Readme_img/pipe_fork.png" alt="Pipe_Fork"/>
+</p>
 
 ls = fd[0] | fd[1] = wc
