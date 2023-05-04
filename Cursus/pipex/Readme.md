@@ -55,7 +55,7 @@ La llamada al sistema Fork crea un nuevo proceso llamado proceso hijo, que es un
 - Tienen PIDs diferentes.
 - Corren en espacios de memoria separados.
 
-Nota (mia): es mejor matar al padre primero ya que si se mata al hijo, quedará zombi. Es decir, este habrá terminado pero queda de alguna manera representado en el sistema, almacenando algunos recursos.
+Nota: cuando se mata al hijo pero no al padre, este permanecerá zombi. Es decir, este habrá terminado pero quedará de alguna manera representado en el sistema, almacenando algunos recursos. Sin embargo, al contrario no se produce esta situación.
 
 ### Valor devuelto
 - En caso de exito:
@@ -130,6 +130,10 @@ int pipe(int fd[2]);
 En caso de éxito pipe() devuelve 0, mientas que en caso de error el valor devuelto es -1.
 
 ### Funciones relacionadas:
+
+- Escribir: ssize_t write(int fd, const void *buf, size_t nr);
+- Leer: ssize_t read(int fd, void *buf, size_t nr);
+- Cerrar: int close(int fd);
 
 <table>
     <thead>
