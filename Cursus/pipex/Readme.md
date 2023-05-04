@@ -50,8 +50,20 @@ pid_t fork(void);
 ```
 
 ### Descripción
-La llamada al sistema Fork crea un nuevo proceso llamado proceso hijo, que es una copia exacta del proceso padre que lo creó. El proceso hijo comienza a ejecutarse justo después de la llamada a fork(), mientras que el proceso padre continúa su ejecución normalmente.
+La llamada al sistema Fork crea un nuevo proceso llamado proceso hijo, que es una copia exacta del proceso padre que lo creó.
 
+- Tienen PIDs diferentes.
+- Corren en espacios de memoria separados.
+
+Nota (mia): es mejor matar al padre primero ya que si se mata al hijo, quedará zombi. Es decir, este habrá terminado pero queda de alguna manera representado en el sistema, almacenando algunos recursos.
+
+### Valor devuelto
+- En caso de exito:
+	- Retorno al padre: PID del hijo.
+	- Retorno al hijo: 0.
+- Si hay errores:
+	- Retorno al padre: -1
+	- (el hijo no es creado)
 
 ### Ejemplo 01:
 
@@ -78,15 +90,15 @@ void forexample(void)
 
 	// instrucciones que tanto el padre como el hijo harán
 
+	if (pid >= 0)
+	{
+		// instrucciones que solo el proceso padre hará
+		printf("Parent has x = %d\n", --x);
+	}
 	if (pid == 0)
 	{
 		// instrucciones que solo el proceso hijo hará
 		printf("Child has x = %d\n", ++x);
-	}
-	else
-	{
-		// instrucciones que solo el proceso padre hará
-		printf("Parent has x = %d\n", --x);
 	}
 }
 
@@ -104,8 +116,41 @@ Child has x = 2
 ## Función pipe()
 
 ```shell
-$
+int pipe(int fd[2]);
 ```
+
+### Descripción
+- Es un mecanismo IPC (comunicación entre procesos) unidireccional.
+- Comunican procesos "relacionados". Ej: padre e hijo, hijo e hijo.
+- Pipe asociado a dos fd:
+	- fd[0]: READ.
+	- fd[1]: WRITE.
+
+### Funciones relacionadas:
+
+<table>
+    <thead>
+        <tr>
+            <th align="left">Descripción</th>
+            <th align="left">Función</th>
+        </tr>
+    </thead>
+    <tbody>
+		<tr>
+            <td valign="top"><b>Escribir</b></td>
+            <td valign="top">ssize_t write(int fd, const void *buf, size_t nr)</td>
+        </tr>
+		<tr>
+            <td valign="top"><b>Leer</b></td>
+            <td valign="top">ssize_t read(int fd, void *buf, size_t nr)</td>
+        </tr>
+		<tr>
+            <td valign="top"><b>Cerrar</b></td>
+            <td valign="top">int close(int fd)</td>
+        </tr>
+	</tbody>
+<table>
+
 
 
 ls = fd[0] | fd[1] = wc
