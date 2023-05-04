@@ -150,7 +150,8 @@ int	main(void)
 
 	pipe(fd); /* TODO: error manamgent. */
 	pidC = fork();
-
+	if (pidC == -1) /* error */
+		return (1);
 	if (pidC == 0) /* hijo */
 	{
 		close(fd[0]);
@@ -172,3 +173,6 @@ int	main(void)
 ```bash
 Padre lee 5 bytes: abdce
 ```
+
+## Función dup2()
+
