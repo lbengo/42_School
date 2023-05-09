@@ -6,47 +6,55 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/04 11:23:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:48:57 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-#include <stdlib.h>
+//#include <stdlib.h>
 
-/* int	main(int argc, char *argv[], char **env)
+/* void	ft_pipex(argc, argv)
 {
-	argv = NULL;
-	if (argc == 1)
-	{
-		printf("Error");
-		return (0);
-	}
-	return (0);
+
 } */
 
-int	main(void)
+void	check_archive (char *argv)
 {
-	int fd[2];
-	pid_t pidC;
-	char buf[10];
-	int num;
+	int fd;
 
-	pipe(fd); /* TODO: error manamgent. */
-	pidC = fork();
+	fd = open (argv, O_RDONLY);
+	if(fd < 0)
+		printf("Error\nNo existe el archivo: %s \n", argv);
+	else
+		printf("siiii\n");
+	close (fd);
+}
 
-	if (pidC == 0) /* hijo */
+void	check_error(char *argv[])
+{
+	check_archive (argv[1]);
+}
+
+int	main(int argc, char *argv[])
+{
+	if (argc == 5)
 	{
-		close(fd[0]);
-		write(fd[1], "abdce", 5);
-		close(fd[1]);
-		exit(0);
+		check_error(argv);
 	}
 	else
-	{
-		close(fd[1]);
-		num = read(fd[0], buf, sizeof(buf));
-		printf("Padre lee %d bytes: %s\n", num, buf);
-		close(fd[0]);
-	}
+		printf("Error\nArgumentos esperados: 4. Entregados: %d.\n", (argc - 1));
+	//ft_pipex(argc, argv);
 	return (0);
 }
+
+/* int	main(int argc, char *argv[])
+{
+	argv = NULL;
+	if (argc < 5)
+	{
+		printf("Error\nArgumentos mínimos esperados: 4. Entregados: %d.\n", (argc - 1));
+		return (1);
+	}
+	ft_pipex(argc, argv);
+	return (0);
+} */
