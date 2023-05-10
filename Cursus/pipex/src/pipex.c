@@ -6,44 +6,49 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/09 16:48:57 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:16:58 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
-//#include <stdlib.h>
 
-/* void	ft_pipex(argc, argv)
+void	ft_pipex(char *argv)
 {
+	int val;
+	char *command;
+	char **args;
 
-} */
-
-void	check_archive (char *argv)
-{
-	int fd;
-
-	fd = open (argv, O_RDONLY);
-	if(fd < 0)
-		printf("Error\nNo existe el archivo: %s \n", argv);
-	else
-		printf("siiii\n");
-	close (fd);
+	command = ft_strjoin("/bin/", argv);
+	args = ft_split(command, ' ');
+	val = execve(args[0], args, NULL);
+	if (val == -1)
+		perror("Error");
+	free (command);
 }
 
-void	check_error(char *argv[])
+int error_message(char *msg)
 {
-	check_archive (argv[1]);
+	printf("%s", msg);
+	return (1);
+}
+
+int	check_error(char *argv[])
+{
+	if (access(argv[1], R_OK) != 0)
+		return (error_message("Error\nNo existe el archivo\n"));
+	return(0);
 }
 
 int	main(int argc, char *argv[])
 {
 	if (argc == 5)
 	{
-		check_error(argv);
+		if (check_error(argv) == 1)
+			return (1);
+		ft_pipex(argv[2]);
 	}
 	else
 		printf("Error\nArgumentos esperados: 4. Entregados: %d.\n", (argc - 1));
-	//ft_pipex(argc, argv);
 	return (0);
 }
 

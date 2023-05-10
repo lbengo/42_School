@@ -176,3 +176,17 @@ Padre lee 5 bytes: abdce
 
 ## Función dup2()
 
+
+
+
+
+## Como empezar
+
+### 0.1 Control de errores
+
+	- Solo pueden haber 4 argumentos.
+	- El primer archivo debe existir.
+
+### 0.2 Ejecutar el primer comando
+
+### 0.3 Ejecutar dicho comando desde el archivo 1
