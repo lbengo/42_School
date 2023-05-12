@@ -157,7 +157,6 @@ int	main(void)
 		close(fd[0]);
 		write(fd[1], "abdce", 5);
 		close(fd[1]);
-		exit(0);
 	}
 	else /* padre */
 	{
@@ -174,14 +173,14 @@ int	main(void)
 Padre lee 5 bytes: abdce
 ```
 
-## FUNCIÓN DUP() Y DUP2()
+## Función dup() y dup2()
 
-### NOMBRE
+### Nombre
 ```
 dup, dup2 - duplica un descriptor de fichero
 ```
 
-### SINOPSIS
+### Sinopsis
 
 ```c
 #include <unistd.h>
@@ -190,7 +189,7 @@ int dup(int oldfd);
 int dup2(int oldfd, int newfd);
 ```
 
-### DESCRIPCIÓN
+### Descripción
 
 **dup** y **dup2** crea una copia del descriptor de fichero oldfd en newfd.
 
@@ -203,7 +202,7 @@ Sin embargo los descriptores no comparten la bandera close-on-exec, (cerrar-al-e
 **dup2** hace que newfd sea la copia de oldfd, cerrando primero newfd si es necesario.
 
 
-### VALOR DEVUELTO
+### Valor devuelto
 
 **dup** y **dup2** devuelven el valor del nuevo descriptor, ó -1 si ocurre algún error, en cuyo caso errno toma un valor apropiado.
 

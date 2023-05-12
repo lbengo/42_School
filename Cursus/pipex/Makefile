@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/04/19 17:25:34 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/12 08:48:01 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ CFLAGS        = -Wall -Werror -Wextra
 INCLUDE       = ./include
 
 SRC_PATH      = ./src
-SRC           = pipex.c
+SRC           = pipex.c \
+				check_error.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
@@ -42,6 +43,10 @@ $(NAME): $(OBJ)
 $(OBJ_PATH):
 	mkdir $@
 
+leaks: $(OBJ)
+	make -C $(LIBFT_PATH)
+	$(CC) -g3 $^ $(LIBFT_A) -o $@
+
 clean:
 	rm -rf $(OBJ_PATH)
 	make -C $(LIBFT_PATH) clean
@@ -52,4 +57,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: clean fclean all re
+.PHONY: clean fclean all leaks re
