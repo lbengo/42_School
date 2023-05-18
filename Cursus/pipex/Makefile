@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/12 08:48:01 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/18 16:25:17 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ INCLUDE       = ./include
 
 SRC_PATH      = ./src
 SRC           = pipex.c \
+				pipex_utils.c \
 				check_error.c
 
 OBJ_PATH       = ./obj
