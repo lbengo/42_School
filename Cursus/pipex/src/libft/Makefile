@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/12 10:45:50 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/18 08:35:06 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ MANDATORY_SRC = ft_isalpha.c \
 				ft_strmapi.c \
 				ft_striteri.c \
 				ft_split.c \
-				ft_free.c
+				ft_str_free.c
 
 MANDATORY_OBJ = $(MANDATORY_SRC:.c=.o)
 
