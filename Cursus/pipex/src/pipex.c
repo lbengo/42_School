@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/18 08:36:15 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:20:14 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,36 +78,46 @@ void	ft_make_command(char *argv, char **env) // Ejecuta el comando
 int	ft_pipex(int argc, char *argv[], char **env) // TODO: habría que hacer un bucle para que vaya pasando comandos x veces
 {
 	pid_t	pid;
-	int		fd1[2];
-	//int		fd2[2];
+	int		fd[2];
+	int		file;
 
 	argc = 0;
 
-	pipe(fd1);
-	pid = fork();
+	pipe(fd);
+
+	pid = fork(); // primero
 	if (pid == -1) // error
 		return (1);
 	if (pid == 0) // hijo
 	{
-		close(fd1[READ_FD]);
+		fd[READ_FD] = open (argv[1], O_RDONLY);
+		dup2(fd[READ_FD], STDIN_FILENO);
+		close(fd[READ_FD]);
 
-		dup2(fd1[WRITE_FD], STDOUT_FILENO);
-		close(fd1[WRITE_FD]);
+		dup2(fd[WRITE_FD], STDOUT_FILENO);
+		close(fd[WRITE_FD]);
 
 		ft_make_command(argv[2], env);
 	}
 	else // padre
-		close(fd1[WRITE_FD]);
-	pid = fork();
-	if (!pid)
-	{
-		dup2(fd1[READ_FD], STDIN_FILENO);
-		close(fd1[READ_FD]);
+		close(fd[WRITE_FD]);
 
+	pid = fork(); // último
+	if (pid == -1) // error
+		return (1);
+	if (pid == 0)
+	{
+		dup2(fd[READ_FD], STDIN_FILENO);
+		close(fd[READ_FD]);
+
+		file = open(argv[4], O_CREAT | O_TRUNC | O_RDWR , 0644);
+		dup2(file, STDOUT_FILENO);
+		close(file);
 		ft_make_command(argv[3], env);
 	}
 	else
-		close(fd1[0]);
+		close(fd[WRITE_FD]);
+		
 	return (0);
 }
 
