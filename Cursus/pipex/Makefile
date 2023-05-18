@@ -6,33 +6,44 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/18 16:25:17 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/18 17:22:49 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ********************************* VARIABLES ******************************** #
 
-NAME          = pipex
-CC            = gcc
-CFLAGS        = -Wall -Werror -Wextra
+NAME           = pipex
+CC             = gcc
+CFLAGS         = -Wall -Werror -Wextra
 
-INCLUDE       = ./include
+INCLUDE        = ./include
 
-SRC_PATH      = ./src
-SRC           = pipex.c \
-				pipex_utils.c \
-				check_error.c
+SRC_PATH       = ./src
+SRC            = pipex.c \
+				 pipex_utils.c \
+				 check_error.c
+
+SRC_BONUS_PATH = ./src_bonus
+SRC_BONUS      = pipex.c \
+				 pipex_utils.c \
+				 check_error.c
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 
-LIBFT_PATH       = ./src/libft
-LIBFT_A          = $(LIBFT_PATH)/libft.a
+OBJ_BONUS_PATH = ./obj_bonus
+OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC:.c=.o))
+
+LIBFT_PATH     = ./src/libft
+LIBFT_A        = $(LIBFT_PATH)/libft.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -c $^ -o $@
+
+$(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 # ********************************* REGLAS *********************************** #
 
@@ -41,19 +52,25 @@ $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
 	$(CC) $^ $(LIBFT_A) -o $@
 
+bonus: $(BONUS)
+$(BONUS): $(OBJ_BONUS)
+	make -C $(LIBFT_PATH)
+	$(CC) $^ $(LIBFT_A) -o $@
+
 $(OBJ_PATH):
 	mkdir $@
 
-leaks: $(OBJ)
-	make -C $(LIBFT_PATH)
-	$(CC) -g3 $^ $(LIBFT_A) -o $@
+$(OBJ_BONUS_PATH):
+	mkdir $@
 
 clean:
 	rm -rf $(OBJ_PATH)
+	rm -rf $(OBJ_BONUS_PATH)
 	make -C $(LIBFT_PATH) clean
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(BONUS)
 	make -C $(LIBFT_PATH) fclean
 
 re:	fclean all
