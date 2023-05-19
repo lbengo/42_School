@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/18 17:10:20 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/19 21:56:09 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	ft_enter_file(char *argv[], char **env, int fd[2])
 		close(fd[WRITE_FD]);
 
 		ft_execute_command(argv[1], env);
+			return (1);
+
 	}
 	else // padre
 		close(fd[WRITE_FD]);
@@ -39,28 +41,6 @@ int	ft_enter_file(char *argv[], char **env, int fd[2])
 }
 
 int	ft_create_file(char *argv[], char **env, int fd[2])
-{
-	pid_t	pid;
-
-	pid = fork(); // último
-	if (pid == -1) // error
-		return (1);
-	if (pid == 0)
-	{
-		dup2(fd[READ_FD], STDIN_FILENO);
-		close(fd[READ_FD]);
-
-		dup2(fd[WRITE_FD], STDOUT_FILENO);
-		close(fd[WRITE_FD]);
-
-		ft_execute_command(argv[1], env);
-	}
-	else
-		close(fd[WRITE_FD]);
-	return (0);
-}
-
-int	ft_make_multiple_commands(char *argv[], char **env, int fd[2])
 {
 	pid_t	pid;
 	int		file;
@@ -73,27 +53,26 @@ int	ft_make_multiple_commands(char *argv[], char **env, int fd[2])
 		dup2(fd[READ_FD], STDIN_FILENO);
 		close(fd[READ_FD]);
 
-		file = open(argv[4], O_CREAT | O_TRUNC | O_RDWR , 0644);
+		file = open(argv[3], O_CREAT | O_TRUNC | O_RDWR , 0644);
 		dup2(file, STDOUT_FILENO);
 		close(file);
-		ft_execute_command(argv[3], env);
+		ft_execute_command(argv[2], env);
+		return (1);
 	}
 	else
 		close(fd[WRITE_FD]);
 	return (0);
 }
 
-int	ft_pipex(int argc, char *argv[], char **env)
+int	ft_pipex(char *argv[], char **env)
 {
-	int		fd[2];
+	int	fd[2];
 
 	pipe(fd);
-	printf("argc = %d\n", argc);
-	printf("argv = %s\n", argv[0]);
-	ft_enter_file(argv, env, fd);
-	//ft_make_multiple_commands(argv, env, fd);
-	ft_create_file(argv, env, fd);
-
+	if (ft_enter_file(argv, env, fd) == 1)
+		return (1);
+	if (ft_create_file(argv, env, fd) == 1)
+		return (1);
 	return (0);
 }
 
@@ -103,7 +82,7 @@ int	main(int argc, char *argv[], char **env)
 	{
 		if (check_file(argv) == 1)
 			return (1);
-		if (ft_pipex(--argc, ++argv, env) == 1)
+		if (ft_pipex(++argv, env) == 1)
 			return (1);
 	}
 	else

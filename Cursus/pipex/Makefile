@@ -6,13 +6,14 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/18 17:22:49 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/19 21:50:24 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ********************************* VARIABLES ******************************** #
 
 NAME           = pipex
+BONUS          = pipex_bonus
 CC             = gcc
 CFLAGS         = -Wall -Werror -Wextra
 
@@ -32,7 +33,7 @@ OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 
 OBJ_BONUS_PATH = ./obj_bonus
-OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC:.c=.o))
+OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC_BONUS:.c=.o))
 
 LIBFT_PATH     = ./src/libft
 LIBFT_A        = $(LIBFT_PATH)/libft.a
@@ -43,7 +44,7 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
 	$(CC) $(CFLAGS) -I $(INCLUDE) -c $^ -o $@
 
 $(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
-	$(CC) $(CFLAGS) -c $^ -o $@
+	$(CC) $(CFLAGS) -I $(INCLUDE) -c $^ -o $@
 
 # ********************************* REGLAS *********************************** #
 
@@ -55,7 +56,7 @@ $(NAME): $(OBJ)
 bonus: $(BONUS)
 $(BONUS): $(OBJ_BONUS)
 	make -C $(LIBFT_PATH)
-	$(CC) $^ $(LIBFT_A) -o $@
+	$(CC) $^ $(LIBFT_A) -o pipex_bonus
 
 $(OBJ_PATH):
 	mkdir $@
@@ -75,4 +76,4 @@ fclean: clean
 
 re:	fclean all
 
-.PHONY: clean fclean all leaks re
+.PHONY: bonus clean fclean all leaks re
