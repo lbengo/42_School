@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/22 11:25:29 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:43:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,13 @@ int	ft_pipex(char *argv[], int argc, char **env)
 	while (cmd <= argc - 3)
 	{
 		fd = make_cmds(argv, cmd, env, fd);
+		if (fd == 1)
+			return (1);
 		cmd++;
 	}
-	file_out(argv, cmd, env, fd);
+	fd = file_out(argv, cmd, env, fd);
+	if (fd == 1)
+			return (1);
 	return (0);
 }
 
@@ -102,6 +106,6 @@ int	main(int argc, char *argv[], char **env)
 			return (1);
 	}
 	else
-		error_message("Error: Argumentos mínimos esperados: 4\n");
+		error_message("Error: Minimum expected arguments 4\n");
 	return (0);
 }
