@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/18 16:51:51 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:06:07 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	**ft_separate_path(char **env) // separa y pone bien cada path
 	return(path);
 }
 
-void	ft_execute_command(char *argv, char **env) // Ejecuta el comando
+void	exec_cmd(char *argv, char **env) // Ejecuta el comando
 {
 	int i;
 	int val;

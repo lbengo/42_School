@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/20 00:10:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/22 10:08:04 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 #define READ_FD 0
 #define WRITE_FD 1
 
-int	file_in(char *argv_in)
+int	file_in(char *argv[], char **env)
 {
-	int	fd[2];
 	pid_t	pid;
+	int	fd[2];
 
 	pipe(fd);
 	pid = fork();
@@ -44,13 +44,12 @@ int	file_in(char *argv_in)
 	return (fd[READ_FD]);
 }
 
-
-int	file_out(char *argv[], char **env, int fdin)
+int	file_out(char *argv[], char **env, int fd[2])
 {
 	int		file;
 
-	dup2(fdin, STDIN_FILENO);
-	close(fdin);
+	dup2(fd[READ_FD], STDIN_FILENO);
+	close(fd[READ_FD]);
 
 	file = open(argv[3], O_CREAT | O_TRUNC | O_RDWR , 0644);
 	dup2(file, STDOUT_FILENO);
@@ -64,12 +63,10 @@ int	file_out(char *argv[], char **env, int fdin)
 
 int	ft_pipex(char *argv[], char **env)
 {
-	int	fd[2];
+	int	fd;
 
-	pipe(fd);
-	if (file_in(argv, env, fd) == 1)
-		return (1);
-	if (file_out(argv, env, fd) == 1)
+	fd = file_in(argv, env);
+	if (file_out(argv, env, &fd) == 1)
 		return (1);
 	return (0);
 }
