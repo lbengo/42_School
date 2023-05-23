@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/19 21:50:24 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/23 17:38:56 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRC            = pipex.c \
 SRC_BONUS_PATH = ./src_bonus
 SRC_BONUS      = pipex.c \
 				 pipex_utils.c \
-				 check_error.c
+				 check_error.c \
+				 here_doc.c
+
 
 OBJ_PATH       = ./obj
 OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

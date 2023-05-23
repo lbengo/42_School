@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 11:43:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:37:42 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 #define READ_FD 0
 #define WRITE_FD 1
@@ -73,7 +73,7 @@ void	ft_pipex(char *argv[], int argc, char **env)
 {
 	int	cmd;
 
-	file_in(argv);
+	select_file_in(argv);
 	cmd = 1;
 	while (cmd <= argc - 3)
 	{

@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error.c                                      :+:      :+:    :+:   */
+/*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 07:43:05 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 13:38:08 by lbengoec         ###   ########.fr       */
+/*   Created: 2023/05/23 15:58:18 by lbengoec          #+#    #+#             */
+/*   Updated: 2023/05/23 17:41:16 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-int error_message(char *msg)
+void	here_doc(char *argv[])
 {
-	ft_putstr_fd(msg, 2);
-	return (1);
-}
+	int	file;
 
-int	check_file(char *argv[])
-{
-	if (access(argv[1], R_OK) != 0)
+	file = open(".new_file", O_CREAT | O_APPEND | O_RDWR , 0644);
+	while (1)
 	{
-		if (ft_strncmp(argv[1], "here_doc", 7) == 0)
-			return(0);
-		return (error_message("Error: File does not exist\n"));
+		read()
 	}
-	return(0);
+	close(file);
 }

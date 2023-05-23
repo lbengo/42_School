@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 17:39:27 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:33:41 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 /* ***************************** LIBRERIAS ********************************** */
 
-# include "libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <unistd.h> // Librería que gestiona la función close
-# include <fcntl.h> // Librería que gestiona la función open
+# include "pipex.h"
 
 /* ***************************** FUNCIONES ********************************** */
 
-/* Check_error -------------------------------------------------------------- */
-int	error_message(char *msg);
-int	check_file(char *argv[]);
-
 /* Pipex_utils --------------------------------------------------------------- */
-char	*ft_find_path(char **env);
-char	**ft_separate_path(char **env);
-void	exec_cmd(char *argv, char **env);
+void	select_file_in(char *argv[]);
+void	file_in(char *argv[]);
+void	here_doc(char *argv[]);
 
 #endif

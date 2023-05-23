@@ -217,3 +217,5 @@ Sin embargo los descriptores no comparten la bandera close-on-exec, (cerrar-al-e
 ### 0.2 Ejecutar el primer comando
 
 ### 0.3 Ejecutar dicho comando desde el archivo 1
+
+here_doc añade al final en el archivo, el pipex trunca y sobreescribe el archivo
