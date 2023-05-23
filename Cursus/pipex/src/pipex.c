@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/22 15:36:32 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:22:09 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	file_in(char *argv[])
 	close(fd[WRITE_FD]);
 
 	fd[READ_FD] = open (argv[0], O_RDONLY);
-	dup2(fd[READ_FD], STDIN_FILENO);
+	if (dup2(fd[READ_FD], STDIN_FILENO) == -1)
+		exit(1);
 	close(fd[READ_FD]);
 
 	return (fd[READ_FD]);
@@ -41,7 +42,8 @@ int	make_cmds(char *argv[], int cmd, char **env, int fdin)
 
 	if (pid == 0)
 	{
-		dup2(fdin, fd[READ_FD]);
+		if (dup2(fdin, fd[READ_FD]) == -1)
+			exit(1);
 		close(fdin);
 
 		dup2(fd[READ_FD], STDIN_FILENO);
@@ -51,7 +53,6 @@ int	make_cmds(char *argv[], int cmd, char **env, int fdin)
 		close(fd[WRITE_FD]);
 
 		exec_cmd(argv[cmd], env);
-		return (1);
 	}
 	else // padre
 	{
@@ -61,7 +62,7 @@ int	make_cmds(char *argv[], int cmd, char **env, int fdin)
 	return (fd[READ_FD]);
 }
 
-int	file_out(char *argv[], int cmd, char **env, int fdin)
+void	file_out(char *argv[], int cmd, char **env, int fdin)
 {
 	int		file;
 
@@ -73,10 +74,9 @@ int	file_out(char *argv[], int cmd, char **env, int fdin)
 	close(file);
 
 	exec_cmd(argv[cmd], env);
-	return (1);
 }
 
-int	ft_pipex(char *argv[], int argc, char **env)
+void	ft_pipex(char *argv[], int argc, char **env)
 {
 	int	fd;
 	int	cmd;
@@ -86,14 +86,9 @@ int	ft_pipex(char *argv[], int argc, char **env)
 	while (cmd <= argc - 3)
 	{
 		fd = make_cmds(argv, cmd, env, fd);
-		if (fd == 1)
-			return (1);
 		cmd++;
 	}
-	fd = file_out(argv, cmd, env, fd);
-	if (fd == 1)
-			return (1);
-	return (0);
+	file_out(argv, cmd, env, fd);
 }
 
 int	main(int argc, char *argv[], char **env)
@@ -102,8 +97,7 @@ int	main(int argc, char *argv[], char **env)
 	{
 		if (check_file(argv) == 1)
 			return (1);
-		if (ft_pipex(++argv, --argc, env) == 1)
-			return (1);
+		ft_pipex(++argv, --argc, env);
 	}
 	else
 		error_message("Error: Expected arguments 4\n");
