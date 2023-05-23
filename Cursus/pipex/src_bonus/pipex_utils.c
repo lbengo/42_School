@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/22 15:42:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 11:43:20 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ char	**ft_separate_path(char **env) // separa y pone bien cada path
 void	exec_cmd(char *argv, char **env) // Ejecuta el comando
 {
 	int i;
-	int val;
 	char *command;
 	char **path;
 	char **args;
@@ -63,11 +62,12 @@ void	exec_cmd(char *argv, char **env) // Ejecuta el comando
 	{
 		command = ft_strjoin(path[i], argv);
 		args = ft_split(command, ' ');
-		val = execve(args[0], args, NULL);
+		execve(args[0], args, NULL);
 		free(command);
 		ft_str_free(args);
 		i++;
 	}
 	ft_str_free(path);
 	error_message("Error: Command or path not found\n");
+	exit(1);
 }
