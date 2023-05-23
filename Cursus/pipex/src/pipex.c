@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 11:41:35 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:09:33 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_pipex(char *argv[], int argc, char **env)
 
 int	main(int argc, char *argv[], char **env)
 {
-	if (argc >= 5)
+	if (argc == 5)
 	{
 		if (check_file(argv) == 1)
 			return (1);
