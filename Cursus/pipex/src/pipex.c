@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 12:09:33 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:27:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,13 @@ int	main(int argc, char *argv[], char **env)
 	if (argc == 5)
 	{
 		if (check_file(argv) == 1)
-			return (1);
+			return (0);
 		ft_pipex(++argv, --argc, env);
 	}
 	else
+	{
 		error_message("Error: Expected arguments 4\n");
+		return(1);
+	}
 	return (0);
 }

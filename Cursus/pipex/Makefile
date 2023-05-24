@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/23 17:38:56 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/24 14:56:52 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,9 @@ OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC_BONUS:.c=.o))
 LIBFT_PATH     = ./src/libft
 LIBFT_A        = $(LIBFT_PATH)/libft.a
 
+GNL_PATH     = ./src_bonus/get_next_line
+GNL_A        = $(GNL_PATH)/get_next_line.a
+
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c | $(OBJ_PATH)
@@ -53,12 +56,13 @@ $(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
 all: $(NAME)
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $^ $(LIBFT_A) -o $@
+	$(CC) $^ -g3 $(LIBFT_A) -o $@
 
 bonus: $(BONUS)
 $(BONUS): $(OBJ_BONUS)
 	make -C $(LIBFT_PATH)
-	$(CC) $^ $(LIBFT_A) -o pipex_bonus
+	make -C $(GNL_PATH)
+	$(CC) $^ $(LIBFT_A) $(GNL_A) -o pipex_bonus
 
 $(OBJ_PATH):
 	mkdir $@
@@ -70,11 +74,13 @@ clean:
 	rm -rf $(OBJ_PATH)
 	rm -rf $(OBJ_BONUS_PATH)
 	make -C $(LIBFT_PATH) clean
+	make -C $(GNL_PATH) clean
 
 fclean: clean
 	rm -rf $(NAME)
 	rm -rf $(BONUS)
 	make -C $(LIBFT_PATH) fclean
+	make -C $(GNL_PATH) fclean
 
 re:	fclean all
 
