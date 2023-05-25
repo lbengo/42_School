@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/24 10:28:25 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:21:43 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@
 /* ***************************** LIBRERIAS ********************************** */
 
 # include "pipex.h"
-# include "get_next_line.h"
 
 /* ***************************** FUNCIONES ********************************** */
 
 /* Pipex_utils --------------------------------------------------------------- */
-void	select_file_in(char *argv[]);
+int		select_file_in(char *argv[]);
 void	file_in(char *argv[]);
 void	here_doc(char *argv[]);
 

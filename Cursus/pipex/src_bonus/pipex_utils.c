@@ -6,18 +6,22 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/24 15:00:17 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:31:00 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	select_file_in(char *argv[])
+int	select_file_in(char *argv[])
 {
 	if (ft_strncmp(argv[0], "here_doc", 7) == 0)
+	{
 		here_doc(argv);
+		return(2);
+	}
 	else
 		file_in(argv);
+	return(1);
 }
 
 char	*ft_find_path(char **env) // encuentra path dentro de env
@@ -95,5 +99,4 @@ void	exec_cmd(char *argv, char **env) // Ejecuta el comando
 	}
 	ft_str_free(path);
 	error_message("Error: Command or path not found\n");
-	exit(0);
 }

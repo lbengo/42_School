@@ -218,4 +218,10 @@ Sin embargo los descriptores no comparten la bandera close-on-exec, (cerrar-al-e
 
 ### 0.3 Ejecutar dicho comando desde el archivo 1
 
-here_doc añade al final en el archivo, el pipex trunca y sobreescribe el archivo
+> y >>
+
+La principal diferencia entre ellos radica en cómo manejan la salida cuando el archivo de destino ya existe:
+
+> (redirección de salida sobrescrita): Si utilizas el operador >, la salida del comando se redirige hacia el archivo especificado, sobrescribiendo cualquier contenido previo que pudiera tener. Si el archivo no existe, se crea.
+
+>> (redirección de salida agregada): Por otro lado, si utilizas el operador >>, la salida del comando se agrega al final del archivo especificado, preservando cualquier contenido existente. Si el archivo no existe, se crea.

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/23 17:37:42 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:24:04 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void	file_in(char *argv[])
 	int	fd;
 
 	fd = open (argv[0], O_RDONLY);
+	if (fd < 0)
+		error_message("Error: Function 'open' failed\n");
 	if (dup2(fd, STDIN_FILENO) == -1)
-		exit(1);
+		error_message("Error: Function 'dup2' failed\n");
 	close(fd);
 }
 
@@ -34,13 +36,13 @@ void	make_cmds(char *argv[], int cmd, char **env)
 		exit(1);
 	pid = fork();
 	if (pid == -1) // error
-		exit (1);
+		error_message("Error: Function 'pid' failed\n");
 	if (pid == 0) // hijo
 	{
 		close(fd[READ_FD]);
 
 		if (dup2(fd[WRITE_FD], STDOUT_FILENO) == -1)
-			exit(1);
+			error_message("Error: Function 'dup2' failed\n");
 		close(fd[WRITE_FD]);
 
 		exec_cmd(argv[cmd], env);
@@ -52,7 +54,7 @@ void	make_cmds(char *argv[], int cmd, char **env)
 		close(fd[WRITE_FD]);
 
 		if (dup2(fd[READ_FD], STDIN_FILENO) == -1)
-			exit(1);
+			error_message("Error: Function 'dup2' failed\n");
 		close(fd[READ_FD]);
 	}
 }
@@ -62,8 +64,10 @@ void	file_out(char *argv[], int cmd, char **env)
 	int		file;
 
 	file = open(argv[cmd+1], O_CREAT | O_TRUNC | O_RDWR , 0644);
+	if (file < 0)
+		error_message("Error: Function 'open' failed\n");
 	if (dup2(file, STDOUT_FILENO) == -1)
-		exit(1);
+		error_message("Error: Function 'dup2' failed\n");
 	close(file);
 
 	exec_cmd(argv[cmd], env);
@@ -73,8 +77,9 @@ void	ft_pipex(char *argv[], int argc, char **env)
 {
 	int	cmd;
 
-	select_file_in(argv);
-	cmd = 1;
+	cmd = select_file_in(argv);
+	printf("eeeee222 = %s\n", argv[2]);
+	printf("eeeee1111 = %s\n", argv[1]);
 	while (cmd <= argc - 3)
 	{
 		make_cmds(argv, cmd, env);
@@ -87,8 +92,7 @@ int	main(int argc, char *argv[], char **env)
 {
 	if (argc >= 5)
 	{
-		if (check_file(argv) == 1)
-			return (1);
+		check_file(argv);
 		ft_pipex(++argv, --argc, env);
 	}
 	else

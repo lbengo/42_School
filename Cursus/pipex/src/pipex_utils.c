@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/24 13:52:01 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 08:46:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,4 @@ void	exec_cmd(char *argv, char **env) // Ejecuta el comando
 	}
 	ft_str_free(path);
 	error_message("Error: Command or path not found\n");
-	exit(0);
 }

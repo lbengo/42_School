@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 09:52:25 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/04/13 13:10:18 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 11:32:56 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ char	*ft_strdup(const char *s1)
 	unsigned int	i;
 	char			*cpy;
 
+	if (!s1)
+		return (0);
 	cpy = malloc((ft_strlen(s1) + 1) * sizeof(char));
 	if (!cpy)
 		return (0);
