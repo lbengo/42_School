@@ -6,23 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/25 14:31:00 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:51:01 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-
-int	select_file_in(char *argv[])
-{
-	if (ft_strncmp(argv[0], "here_doc", 7) == 0)
-	{
-		here_doc(argv);
-		return(2);
-	}
-	else
-		file_in(argv);
-	return(1);
-}
 
 char	*ft_find_path(char **env) // encuentra path dentro de env
 {

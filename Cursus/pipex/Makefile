@@ -6,42 +6,44 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/25 15:47:07 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/25 18:16:18 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ********************************* VARIABLES ******************************** #
 
-NAME           = pipex
-BONUS          = pipex_bonus
-CC             = gcc
-CFLAGS         = -Wall -Werror -Wextra
+NAME              = pipex
+BONUS             = pipex_bonus
 
-INCLUDE        = ./include
+CC                = gcc
+CFLAGS            = -Wall -Werror -Wextra
 
-SRC_PATH       = ./src
-SRC            = pipex.c \
-				 pipex_utils.c \
-				 check_error.c
+INCLUDE           = ./include
 
-SRC_BONUS_PATH = ./src_bonus
-SRC_BONUS      = pipex.c \
-				 pipex_utils.c \
-				 check_error.c \
-				 here_doc.c
+SRC_PATH          = ./src
+SRC               = pipex.c \
+					pipex_utils.c \
+					check_error.c
+
+SRC_BONUS_PATH    = ./src_bonus
+SRC_BONUS         = pipex.c \
+					file_in.c \
+					pipex_utils.c \
+					check_error.c \
 
 
-OBJ_PATH       = ./obj
-OBJ            = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 
-OBJ_BONUS_PATH = ./obj_bonus
-OBJ_BONUS      = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC_BONUS:.c=.o))
+OBJ_PATH          = ./obj
+OBJ               = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
 
-LIBFT_PATH     = ./src/libft
-LIBFT_A        = $(LIBFT_PATH)/libft.a
+OBJ_BONUS_PATH    = ./obj_bonus
+OBJ_BONUS         = $(addprefix $(OBJ_BONUS_PATH)/, $(SRC_BONUS:.c=.o))
 
-LIBFT_BONUS_PATH     = ./src_bonus/libft
-LIBFT_BONUS_A        = $(LIBFT_BONUS_PATH)/libft.a
+LIBFT_PATH        = ./src/libft
+LIBFT_A           = $(LIBFT_PATH)/libft.a
+
+LIBFT_BONUS_PATH  = ./src_bonus/libft
+LIBFT_BONUS_A     = $(LIBFT_BONUS_PATH)/libft.a
 
 # ******************* REGLAS INTERNAS MODIFICADAS DEL MAKE ******************* #
 
@@ -53,7 +55,7 @@ $(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
 
 # ********************************* REGLAS *********************************** #
 
-.SILENT:
+#.SILENT:
 
 # MAKEFILE ART #
 # COLORS #
@@ -85,7 +87,7 @@ $(NAME): $(OBJ)
 bonus: $(BONUS)
 $(BONUS): $(OBJ_BONUS)
 	make -C $(LIBFT_BONUS_PATH)
-	$(CC) $^ -g3 -fsanitize=address $(LIBFT_BONUS_A) $(GNL_A) -o pipex_bonus
+	$(CC) $(CFLAGS) $^ $(LIBFT_BONUS_A) -o pipex_bonus
 	echo "$$PIPEX"
 
 $(OBJ_PATH):
@@ -105,7 +107,6 @@ fclean: clean
 	rm -rf $(BONUS)
 	make -C $(LIBFT_PATH) fclean
 	make -C $(LIBFT_BONUS_PATH) fclean
-
 
 re:	fclean all
 

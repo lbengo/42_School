@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:34:28 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/24 13:09:37 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:55:51 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ int		check_file(char *argv[]);
 char	*ft_find_path(char **env);
 char	**ft_separate_path(char **env);
 void	exec_cmd(char *argv, char **env);
+
+#define READ_FD 0
+#define WRITE_FD 1
 
 #endif
