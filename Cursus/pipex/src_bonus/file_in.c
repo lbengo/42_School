@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:53:26 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/25 18:31:46 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:04:28 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ char	*get_line(int fd)
 	return (line);
 }
 
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
+
 void	here_doc(char *argv[])
 {
 	int		fd;
@@ -51,19 +53,11 @@ void	here_doc(char *argv[])
 	{
 		write(1, "pipe heredoc> ", 14);
 		line = get_line(0);
-		/* if (line && line[0] == '\n')
-		{
-			//printf("ENTRAAA\n");
-			//free(line);
-			continue ;
-		} */
-		printf("input: (%s)\n", line);
-		if (ft_strncmp(line, argv[1], strlen(argv[1])) == 0)
+		if (ft_cmpsame(argv[1], line) == 0)
 		{
 			free(line);
 			break;
 		}
-
 		write(fd, line, ft_strlen(line));
 		free(line);
 	}
@@ -88,7 +82,7 @@ void	file_in(char *argv[])
 
 int	select_file_in(char *argv[])
 {
-	if (ft_strncmp(argv[0], "here_doc", 7) == 0)
+	if (ft_cmpsame("here_doc", argv[0]) == 0)
 	{
 		here_doc(argv);
 		return(2);

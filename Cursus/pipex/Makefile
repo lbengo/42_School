@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/25 18:16:18 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/26 13:55:00 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME              = pipex
 BONUS             = pipex_bonus
 
 CC                = gcc
-CFLAGS            = -Wall -Werror -Wextra
+CFLAGS            = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 INCLUDE           = ./include
 
@@ -81,7 +81,7 @@ export PIPEX
 all: $(NAME)
 $(NAME): $(OBJ)
 	make -C $(LIBFT_PATH)
-	$(CC) $^ -g3 $(LIBFT_A) -o $@
+	$(CC) $(CFLAGS) $^ $(LIBFT_A) -o $@
 	echo "$$PIPEX"
 
 bonus: $(BONUS)

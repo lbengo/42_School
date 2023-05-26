@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/25 16:19:32 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/26 11:14:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,15 @@ void	ft_pipex(char *argv[], int argc, char **env)
 	int	cmd;
 
 	cmd = select_file_in(argv);
-	//printf("eeeee222 = %s\n", argv[2]);
-	//printf("eeeee1111 = %s\n", argv[1]);
-	//printf("iiiii = %s\n", argv[cmd]);
+	printf("argv[%i]= %s\n", cmd, argv[cmd]);
 	while (cmd <= argc - 3)
 	{
+		printf("aa\n");
 		make_cmds(argv, cmd, env);
 		cmd++;
 	}
+	printf("cmd = %s\n", argv[cmd]);
+	printf("cmd = %s\n", argv[cmd+1]);
 	file_out(argv, cmd, env);
 }
 

@@ -6,11 +6,11 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/25 16:51:01 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/26 17:15:45 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "pipex.h"
 
 char	*ft_find_path(char **env) // encuentra path dentro de env
 {
@@ -21,8 +21,8 @@ char	*ft_find_path(char **env) // encuentra path dentro de env
 	path = NULL;
 	while (env[i])
 	{
-		if (ft_strstr(env[i], "PATH") != NULL)
-			return(ft_strstr(env[i], "PATH"));
+		if (ft_strncmp(env[i], "PATH=", 5) == 0)
+			return(env[i]);
 		i++;
 	}
 	return(path);
@@ -34,13 +34,14 @@ char	*delete_start(char *str, int n)
 	int a;
 
 	a = 0;
-	new = malloc(sizeof(char) * (strlen(str) - n));
+	new = malloc(sizeof(char) * (strlen(str) - n + 1));
 	while (str[n] != '\0')
 	{
 		new[a] = str[n];
 		a++;
 		n++;
 	}
+	new[a] = '\0';
 	return(new);
 }
 
@@ -58,10 +59,11 @@ char	**ft_separate_path(char **env) // separa y pone bien cada path
 	i = 0;
 	while (path[i])
 	{
-		temp = path[i];
+		temp = ft_strdup(path[i]);
 		free(path[i]);
 		path[i] = NULL;
 		path[i] = ft_strjoin(temp, "/");
+		free(temp);
 		i++;
 	}
 	return(path);
