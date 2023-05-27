@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/26 13:55:00 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/27 18:52:49 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,10 @@ SRC               = pipex.c \
 
 SRC_BONUS_PATH    = ./src_bonus
 SRC_BONUS         = pipex.c \
-					file_in.c \
 					pipex_utils.c \
 					check_error.c \
+					file_in.c \
+					file_out.c
 
 
 

@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/26 11:14:40 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/27 19:26:02 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,6 @@ void	make_cmds(char *argv[], int cmd, char **env)
 	}
 }
 
-void	file_out(char *argv[], int cmd, char **env)
-{
-	int		file;
-
-	file = open(argv[cmd+1], O_CREAT | O_TRUNC | O_RDWR , 0644);
-	if (file < 0)
-		error_message("Error: Function 'open' failed\n");
-	if (dup2(file, STDOUT_FILENO) == -1)
-		error_message("Error: Function 'dup2' failed\n");
-	close(file);
-
-	exec_cmd(argv[cmd], env);
-}
-
 void	ft_pipex(char *argv[], int argc, char **env)
 {
 	int	cmd;
@@ -66,13 +52,12 @@ void	ft_pipex(char *argv[], int argc, char **env)
 	printf("argv[%i]= %s\n", cmd, argv[cmd]);
 	while (cmd <= argc - 3)
 	{
-		printf("aa\n");
 		make_cmds(argv, cmd, env);
 		cmd++;
 	}
 	printf("cmd = %s\n", argv[cmd]);
 	printf("cmd = %s\n", argv[cmd+1]);
-	file_out(argv, cmd, env);
+	select_file_out(argv, cmd, env);
 }
 
 int	main(int argc, char *argv[], char **env)
