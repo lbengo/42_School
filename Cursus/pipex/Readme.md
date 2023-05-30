@@ -72,10 +72,10 @@ Después de comprender el funcionamiento de las funciones mencionadas anteriorme
 Una vez que se ejecuta un comando, se implementó un bucle para establecer que la salida estándar (STDOUT) del comando anterior se convierta en la entrada estándar (STDIN) del siguiente. De esta manera, se logra ejecutar varios comandos en secuencia, canalizando así el resultado del primer comando hacia el siguiente.
 
 ### 04. Añade un file_in
-***File_in normal***
+***File_in normal*** <br>
 Para ejecutar el primer comando en el archivo de entrada, se necesita redirigir la lectura del archivo hacia la entrada estándar (STDIN) del comando. Esto se logra mediante la utilización de la redirección de entrada. Al redirigir la entrada, el primer comando podrá leer el contenido del archivo como su entrada de datos.
 
-***File_in here_doc***
+***File_in here_doc*** <br>
 Una alternativa adicional (bonus) es el uso de "here_doc", que no requiere de un archivo de entrada "file_in". En este caso, el usuario puede proporcionar directamente el texto de entrada en la terminal para ejecutar los comandos. Para lograr esto, se crea un archivo temporal en el que se guarda el texto de entrada y, una vez finalizado su uso, se elimina.
 
 ### 05. Añade un file_out
