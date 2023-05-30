@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 15:53:26 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/27 19:19:49 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/30 09:26:01 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-char	*get_line(int fd)
+static char	*get_line(int fd)
 {
 	char	*line;
 	char	*read_c;
@@ -39,12 +39,12 @@ char	*get_line(int fd)
 	return (line);
 }
 
-void	here_doc(char *argv[])
+static void	here_doc(char *argv[])
 {
 	int		fd;
 	char	*line;
 
-	fd = open(".new_file.txt", O_CREAT | O_TRUNC | O_WRONLY , 0644);
+	fd = open(".new_file.txt", O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (fd < 0)
 		error_message("Error: Function 'open' failed\n");
 	while (1)
@@ -52,7 +52,7 @@ void	here_doc(char *argv[])
 		write(1, "pipe heredoc> ", 14);
 		line = get_line(0);
 		if (ft_cmpsame(argv[1], line) == 0)
-			break;
+			break ;
 		write(fd, line, ft_strlen(line));
 		free(line);
 	}
@@ -80,8 +80,8 @@ int	select_file_in(char *argv[])
 	if (ft_cmpsame("here_doc", argv[0]) == 0)
 	{
 		here_doc(argv);
-		return(2);
+		return (2);
 	}
 	file_in(argv[0]);
-	return(1);
+	return (1);
 }

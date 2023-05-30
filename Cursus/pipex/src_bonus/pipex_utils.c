@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 16:22:06 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/26 17:15:45 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/30 09:23:40 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*ft_find_path(char **env) // encuentra path dentro de env
+static char	*ft_find_path(char **env)
 {
 	char	*path;
 	int		i;
@@ -22,16 +22,16 @@ char	*ft_find_path(char **env) // encuentra path dentro de env
 	while (env[i])
 	{
 		if (ft_strncmp(env[i], "PATH=", 5) == 0)
-			return(env[i]);
+			return (env[i]);
 		i++;
 	}
-	return(path);
+	return (path);
 }
 
-char	*delete_start(char *str, int n)
+static char	*delete_start(char *str, int n)
 {
-	char *new;
-	int a;
+	char	*new;
+	int		a;
 
 	a = 0;
 	new = malloc(sizeof(char) * (strlen(str) - n + 1));
@@ -42,10 +42,10 @@ char	*delete_start(char *str, int n)
 		n++;
 	}
 	new[a] = '\0';
-	return(new);
+	return (new);
 }
 
-char	**ft_separate_path(char **env) // separa y pone bien cada path
+static char	**ft_separate_path(char **env)
 {
 	char	*all_path;
 	char	*temp;
@@ -66,19 +66,19 @@ char	**ft_separate_path(char **env) // separa y pone bien cada path
 		free(temp);
 		i++;
 	}
-	return(path);
+	return (path);
 }
 
-void	exec_cmd(char *argv, char **env) // Ejecuta el comando
+void	exec_cmd(char *argv, char **env)
 {
-	int i;
-	char *command;
-	char **path;
-	char **args;
+	int		i;
+	char	*command;
+	char	**path;
+	char	**args;
 
 	path = ft_separate_path(env);
 	i = 0;
-	while(path[i])
+	while (path[i])
 	{
 		command = ft_strjoin(path[i], argv);
 		args = ft_split(command, ' ');

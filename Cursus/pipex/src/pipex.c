@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 15:00:37 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/25 15:56:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:42:57 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,24 +32,20 @@ void	make_cmds(char *argv[], int cmd, char **env)
 	if (pipe(fd) == -1)
 		exit(1);
 	pid = fork();
-	if (pid == -1) // error
+	if (pid == -1)
 		error_message("Error: Function 'pid' failed\n");
-	if (pid == 0) // hijo
+	if (pid == 0)
 	{
 		close(fd[READ_FD]);
-
 		if (dup2(fd[WRITE_FD], STDOUT_FILENO) == -1)
 			error_message("Error: Function 'dup2' failed\n");
 		close(fd[WRITE_FD]);
-
 		exec_cmd(argv[cmd], env);
 	}
-	else // padre
+	else
 	{
 		wait(NULL);
-
 		close(fd[WRITE_FD]);
-
 		if (dup2(fd[READ_FD], STDIN_FILENO) == -1)
 			error_message("Error: Function 'dup2' failed\n");
 		close(fd[READ_FD]);
@@ -60,13 +56,12 @@ void	file_out(char *argv[], int cmd, char **env)
 {
 	int		file;
 
-	file = open(argv[cmd+1], O_CREAT | O_TRUNC | O_RDWR , 0644);
+	file = open(argv[cmd + 1], O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (file < 0)
 		error_message("Error: Function 'open' failed\n");
 	if (dup2(file, STDOUT_FILENO) == -1)
 		error_message("Error: Function 'dup2' failed\n");
 	close(file);
-
 	exec_cmd(argv[cmd], env);
 }
 

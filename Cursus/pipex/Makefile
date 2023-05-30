@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/20 11:48:35 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/27 18:52:49 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/30 09:33:44 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME              = pipex
 BONUS             = pipex_bonus
 
 CC                = gcc
-CFLAGS            = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS            = -Wall -Werror -Wextra
 
 INCLUDE           = ./include
 
@@ -56,7 +56,7 @@ $(OBJ_BONUS_PATH)/%.o: $(SRC_BONUS_PATH)/%.c | $(OBJ_BONUS_PATH)
 
 # ********************************* REGLAS *********************************** #
 
-#.SILENT:
+.SILENT:
 
 # MAKEFILE ART #
 # COLORS #

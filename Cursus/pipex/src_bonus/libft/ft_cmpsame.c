@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 10:52:58 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/05/26 11:02:31 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/05/29 10:34:21 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	ft_cmpsame(const char *s1, const char *s2)
 		a++;
 	}
 	if (s2[i] == '\0' || s2[i] == '\n')
-		return(0);
-	return(1);
+		return (0);
+	return (1);
 }
