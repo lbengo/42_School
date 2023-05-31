@@ -57,10 +57,10 @@ $  command1 << LIMITER | command2 >> output_file
 ## Cómo empezar
 
 ### 01. Conocer las funciones
-- [execve()](./Readme/functions/execve())
-- [fork()](./Readme/functions/fork())
-- [pipe()](./Readme/functions/pipe())
-- [dup() y dup2()](./Readme/functions/dup2())
+- [execve()](./Readme/functions/execve().md)
+- [fork()](./Readme/functions/fork().md)
+- [pipe()](./Readme/functions/pipe().md)
+- [dup() y dup2()](./Readme/functions/dup2().md)
 
 ### 02. Control de errores
 - Solo puede haber 4 argumentos (4 o más en caso de bonus).
@@ -71,14 +71,14 @@ Después de comprender el funcionamiento de las funciones mencionadas anteriorme
 
 Una vez que se ejecuta un comando, se implementó un bucle para establecer que la salida estándar (STDOUT) del comando anterior se convierta en la entrada estándar (STDIN) del siguiente. De esta manera, se logra ejecutar varios comandos en secuencia, canalizando así el resultado del primer comando hacia el siguiente.
 
-### 04. Añade un file_in
+### 04. Lee el file_in
 ***File_in normal*** <br>
 Para ejecutar el primer comando en el archivo de entrada, se necesita redirigir la lectura del archivo hacia la entrada estándar (STDIN) del comando. Esto se logra mediante la utilización de la redirección de entrada. Al redirigir la entrada, el primer comando podrá leer el contenido del archivo como su entrada de datos.
 
 ***File_in here_doc*** <br>
 Una alternativa adicional (bonus) es el uso de "here_doc", que no requiere de un archivo de entrada "file_in". En este caso, el usuario puede proporcionar directamente el texto de entrada en la terminal para ejecutar los comandos. Para lograr esto, se crea un archivo temporal en el que se guarda el texto de entrada y, una vez finalizado su uso, se elimina.
 
-### 05. Añade un file_out
+### 05. Lee el file_out
 Por último, para enviar la salida estándar (STDOUT) al archivo de salida (file_out), fue necesario redirigir la salida del último comando hacia el archivo.
 
 Es importante tener en cuenta la diferencia entre los operadores ">" y ">>":
@@ -86,3 +86,6 @@ Es importante tener en cuenta la diferencia entre los operadores ">" y ">>":
 - ">" (redirección de salida sobrescrita): Si utilizas el operador >, la salida del comando se redirige hacia el archivo especificado, sobrescribiendo cualquier contenido previo que pudiera tener. Si el archivo no existe, se crea.
 
 - ">>" (redirección de salida agregada): Por otro lado, si utilizas el operador >>, la salida del comando se agrega al final del archivo especificado, preservando cualquier contenido existente. Si el archivo no existe, se crea.
+
+---
+Made by lbengoec: lbengoec@student.42urduliz.com | LinkedIn: [lbengoec](https://www.linkedin.com/in/laura-bengoechea-navarro/)
