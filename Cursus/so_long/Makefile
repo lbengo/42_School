@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 12:52:49 by lbengoec          #+#    #+#              #
-#    Updated: 2023/03/20 12:39:18 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/05/19 21:34:15 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,7 +94,6 @@ fclean: clean
 	rm -rf $(BONUS)
 	make -C $(GNL_PATH) fclean
 	make -C $(PRINTF_PATH) fclean
-	make -C $(MLX_PATH) clean
 
 re:	fclean all
 
