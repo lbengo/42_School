@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
+#    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:43:45 by lbengoec          #+#    #+#              #
-#    Updated: 2023/05/31 09:45:17 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/06/06 12:31:57 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,13 @@
 NAME              = philo
 
 CC                = gcc
-CFLAGS            = -Wall -Werror -Wextra
+CFLAGS            = -Wall -Werror -Wextra -pthread
 
 INCLUDE           = ./include
 
 SRC_PATH          = ./src
 SRC               = philo.c \
+					check_error.c
 
 OBJ_PATH          = ./obj
 OBJ               = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))

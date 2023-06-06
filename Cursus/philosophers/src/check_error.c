@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.h                                            :+:      :+:    :+:   */
+/*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/06 12:31:43 by laurabengoe      ###   ########.fr       */
+/*   Created: 2023/06/06 12:31:22 by laurabengoe       #+#    #+#             */
+/*   Updated: 2023/06/06 12:31:32 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_H
-# define PHILO_H
+#include "philo.h"
 
-/* ***************************** LIBRERIAS ********************************** */
+int check_error(char *argv[]) // checkeo de número entero
+{
+	int i;
+	int a;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <pthread.h> // Librería que gestiona las funciones pthread
-
-/* ***************************** FUNCIONES ********************************** */
-
-int check_error(char *argv[]);
-
-
-#endif
+	i = 0;
+	while (argv[i])
+	{
+		a = 0;
+		while (argv[i][a])
+		{
+			if (argv[i][a] >= '0' && argv[i][a] <= '9')
+				a++;
+			else
+			{
+				printf("Error: '%s' No es un número entero\n", argv[i]);
+				return (1);
+			}
+		}
+		i++;
+	}
+	return(0);
+}
