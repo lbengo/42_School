@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/06 12:31:43 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/06 12:46:30 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 /* ***************************** FUNCIONES ********************************** */
 
-int check_error(char *argv[]);
+int check_error(int argc, char *argv[]);
 
 
 #endif
