@@ -6,7 +6,7 @@
 #    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:43:45 by lbengoec          #+#    #+#              #
-#    Updated: 2023/06/08 10:28:21 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/06/12 15:06:18 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ INCLUDE           = ./include
 SRC_PATH          = ./src
 SRC               = philo.c \
 					check_error.c \
-					philo_utils.c
+					philo_utils.c \
+					thread.c
 
 OBJ_PATH          = ./obj
 OBJ               = $(addprefix $(OBJ_PATH)/, $(SRC:.c=.o))
