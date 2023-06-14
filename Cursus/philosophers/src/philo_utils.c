@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:28:02 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/12 15:05:57 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/14 12:35:49 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_atoi(const char *str)
 t_rules	add_rules(char *argv[])
 {
 	t_rules	rules;
-
+	
+	rules.start_time = ft_time();
 	rules.nbr_philos = ft_atoi(argv[0]);
 	rules.time_to_die = ft_atoi(argv[1]);
 	rules.time_to_eat = ft_atoi(argv[2]);
@@ -40,17 +41,18 @@ t_rules	add_rules(char *argv[])
 	return (rules);
 }
 
-t_philo	create_philo(int n_philos, int n_philo, pthread_mutex_t *fork)
+t_philo	create_philo(int n_philos, int n_philo, pthread_mutex_t *fork, t_rules rules)
 {
 	t_philo	philo;
 
+	philo.rules = rules;
 	philo.nbr = n_philo + 1;
-	philo.fork_r = fork[n_philo];
-	philo.fork_l = fork[(n_philo + 1) % n_philos];
+	philo.fork_r = &fork[n_philo];
+	philo.fork_l = &fork[(n_philo + 1) % n_philos];
 	return (philo);
 }
 
-int	add_philos(int n_philos, t_data *data)
+int	add_philos(int n_philos, t_data *data, t_rules rules)
 {
 	int	n_philo;
 
@@ -60,7 +62,7 @@ int	add_philos(int n_philos, t_data *data)
 	n_philo = 0;
 	while (n_philo < n_philos)
 	{
-		data->lst_philos[n_philo] = create_philo(n_philos, n_philo, data->fork);
+		data->lst_philos[n_philo] = create_philo(n_philos, n_philo, data->fork, rules);
 		n_philo++;
 	}
 	return (0);

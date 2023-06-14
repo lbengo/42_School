@@ -6,21 +6,11 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:59:54 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/12 15:03:53 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/13 12:20:53 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void *routine(void *lst_philos)
-{
-	t_philo			*lst;
-
-	lst = (t_philo *)lst_philos;
-	lst[0].nbr = lst[0].nbr + 1;
-	printf("lst = %d\n", lst[0].nbr);
-	return (NULL);
-}
 
 int create_thread(t_rules rules, t_data *data)
 {

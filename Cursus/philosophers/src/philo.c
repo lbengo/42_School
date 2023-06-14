@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:42:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/12 14:58:23 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/13 19:07:45 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int philo(char *argv[])
 	rules = add_rules(argv);
 	if (init_fork(&data.fork, rules.nbr_philos))
 		return (1);
-	if (add_philos(rules.nbr_philos, &data))
+	if (add_philos(rules.nbr_philos, &data, rules))
 		return (1);
 	if (create_thread(rules, &data))
 		return (1);
@@ -30,14 +30,17 @@ int philo(char *argv[])
 		return (1);
 	if (delete_fork(&data.fork, rules.nbr_philos))
 		return (1);
+	free(data.lst_philos);
+	free(data.th);
+	free(data.fork);
 	
 	//
-	int i = 0;
+	/* int i = 0;
 	while (i < rules.nbr_philos)
 	{
 		printf("philo[%d] = %d\n", i + 1, (data.lst_philos[i]).nbr);
 		i++;
-	}
+	} */
 	//
 	
 	/* printf("rules.nbr_philo = %d\n", rules.nbr_philos);
@@ -48,6 +51,7 @@ int philo(char *argv[])
 		printf("rules.nbr_mut_eat = %d\n", rules.nbr_mut_eat); */
 	return(0);
 }
+
 
 int	main(int argc, char *argv[])
 {
