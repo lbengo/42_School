@@ -6,7 +6,7 @@
 #    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:43:45 by lbengoec          #+#    #+#              #
-#    Updated: 2023/06/13 12:21:27 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/06/14 22:47:33 by laurabengoe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME              = philo
 
 CC                = gcc
-CFLAGS            = -Wall -Werror -Wextra -pthread
+CFLAGS            = -Wall -Werror -Wextra -pthread -g3 -fsanitize=address
 
 INCLUDE           = ./include
 

@@ -6,13 +6,13 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:59:54 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/13 12:20:53 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/18 18:44:22 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int create_thread(t_rules rules, t_data *data)
+int create_thread(t_data *data, t_rules rules)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ int create_thread(t_rules rules, t_data *data)
 	return (0);
 }
 
-int delete_thread(t_rules rules, t_data *data)
+int delete_thread(t_data *data, t_rules rules)
 {
 	int	i;
 
@@ -40,22 +40,23 @@ int delete_thread(t_rules rules, t_data *data)
 			return (1);
 		i++;
 	}
+	free(data->th);
 	return (0);
 }
 
-int init_fork(pthread_mutex_t **fork, int nbr)
+int init_fork(t_rules **rules, int nbr)
 {
 	int i;
 
-	*fork = malloc(sizeof(pthread_mutex_t) * nbr);
-	if (!*fork)
+	(*rules)->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nbr);
+	if (!(*rules)->fork)
 		return (1);
 	i = 0;
 	while(i < nbr)
 	{
-		if (pthread_mutex_init(&((*fork)[i]), NULL) != 0) // inicio del mutex
+		if (pthread_mutex_init(&((*rules)->fork[i]), NULL) != 0) // inicio del mutex
 		{
-			free(*fork);
+			free((*rules)->fork);
 			return (1);
 		}
 		i++;
@@ -63,20 +64,20 @@ int init_fork(pthread_mutex_t **fork, int nbr)
 	return (0);
 }
 
-int delete_fork(pthread_mutex_t **fork, int nbr)
+int delete_fork(t_rules **rules, int nbr)
 {
 	int i;
 
 	i = 0;
 	while (i < nbr)
 	{
-		if (pthread_mutex_destroy(&((*fork)[i])) != 0) // finalización del mutex
+		if (pthread_mutex_destroy(&((*rules)->fork[i])) != 0) // finalización del mutex
 		{
-			free(*fork);
+			free((*rules)->fork);
 			return (1);
 		}
 		i++;
 	}
-	free(*fork);
+	free((*rules)->fork);
 	return (0);
 }

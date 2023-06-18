@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:42:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/13 19:07:45 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/18 18:49:41 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,33 @@
 
 int philo(char *argv[])
 {
-	t_rules	rules;
+	t_rules	*rules;
 	t_data	data;
 	
-	rules = add_rules(argv);
-	if (init_fork(&data.fork, rules.nbr_philos))
+	add_rules(&rules, argv);
+	if (init_fork(&rules, rules->nbr_philos))
 		return (1);
-	if (add_philos(rules.nbr_philos, &data, rules))
+	if (add_philos(&data, rules))
 		return (1);
-	if (create_thread(rules, &data))
+	if (create_thread(&data, rules))
 		return (1);
-	if (delete_thread(rules, &data))
+	if (delete_thread(&data, rules))
 		return (1);
-	if (delete_fork(&data.fork, rules.nbr_philos))
+	if (delete_fork(&rules, rules->nbr_philos))
 		return (1);
 	free(data.lst_philos);
-	free(data.th);
-	free(data.fork);
-	
-	//
-	/* int i = 0;
-	while (i < rules.nbr_philos)
-	{
-		printf("philo[%d] = %d\n", i + 1, (data.lst_philos[i]).nbr);
-		i++;
-	} */
-	//
-	
-	/* printf("rules.nbr_philo = %d\n", rules.nbr_philos);
-	printf("rules.time_to_die = %d\n", rules.time_to_die);
-	printf("rules.time_to_eat = %d\n", rules.time_to_eat);
-	printf("rules.time_to_sleep = %d\n", rules.time_to_sleep);
-	if (argc == 5)
-		printf("rules.nbr_mut_eat = %d\n", rules.nbr_mut_eat); */
+	free(rules);
 	return(0);
 }
-
 
 int	main(int argc, char *argv[])
 {
 	if (check_error (--argc, ++argv))
 		return(1);
 	if (philo(argv))
-			return (1);
+	{
+		printf("algo ha pasao :(\n");
+		return (1);
+	}
 	return(0);
 }

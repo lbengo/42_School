@@ -6,11 +6,19 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:28:02 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/14 12:35:49 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/18 18:39:51 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_time()
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
 
 int	ft_atoi(const char *str)
 {
@@ -27,43 +35,31 @@ int	ft_atoi(const char *str)
 	return (count);
 }
 
-t_rules	add_rules(char *argv[])
+void	add_rules(t_rules **rules, char *argv[])
 {
-	t_rules	rules;
-	
-	rules.start_time = ft_time();
-	rules.nbr_philos = ft_atoi(argv[0]);
-	rules.time_to_die = ft_atoi(argv[1]);
-	rules.time_to_eat = ft_atoi(argv[2]);
-	rules.time_to_sleep = ft_atoi(argv[3]);
+	*rules = (t_rules *) malloc(sizeof(t_rules) * 1);
+	(*rules)->start_time = ft_time();
+	(*rules)->nbr_philos = ft_atoi(argv[0]);
+	(*rules)->time_to_die = ft_atoi(argv[1]);
+	(*rules)->time_to_eat = ft_atoi(argv[2]);
+	(*rules)->time_to_sleep = ft_atoi(argv[3]);
 	if (argv[4])
-		rules.nbr_mut_eat = ft_atoi(argv[4]);
-	return (rules);
+		(*rules)->nbr_mut_eat = ft_atoi(argv[4]);
 }
 
-t_philo	create_philo(int n_philos, int n_philo, pthread_mutex_t *fork, t_rules rules)
+int	add_philos(t_data *data, t_rules rules)
 {
-	t_philo	philo;
+	int	nbr;
 
-	philo.rules = rules;
-	philo.nbr = n_philo + 1;
-	philo.fork_r = &fork[n_philo];
-	philo.fork_l = &fork[(n_philo + 1) % n_philos];
-	return (philo);
-}
-
-int	add_philos(int n_philos, t_data *data, t_rules rules)
-{
-	int	n_philo;
-
-	data->lst_philos = malloc(sizeof(t_philo) * n_philos);
+	data->lst_philos = malloc(sizeof(t_philo) * rules.nbr_philos);
 	if (!data->lst_philos)
 		return (1);
-	n_philo = 0;
-	while (n_philo < n_philos)
+	nbr = 0;
+	while (nbr < rules.nbr_philos)
 	{
-		data->lst_philos[n_philo] = create_philo(n_philos, n_philo, data->fork, rules);
-		n_philo++;
+		data->lst_philos[nbr].rules = &rules;
+		data->lst_philos[nbr].nbr = nbr + 1;
+		nbr++;
 	}
 	return (0);
 }

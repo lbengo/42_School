@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/14 12:37:12 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/18 18:47:28 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,44 +24,42 @@
 /* **************************** ESTRUCTURAS ********************************* */
 
 typedef struct s_rules {
-	long int	start_time;
-	int			nbr_philos;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			nbr_mut_eat;
+	long int		start_time;
+	int				nbr_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				nbr_mut_eat;
+	pthread_mutex_t *fork;
 }	t_rules;
 
 typedef struct s_philo {
-	t_rules			rules;
+	t_rules			*rules;
 	int				nbr;
-	pthread_mutex_t	*fork_l;
-	pthread_mutex_t	*fork_r;
 }	t_philo;
 
 typedef struct s_data {
 	t_philo			*lst_philos;
 	pthread_t		*th;
-	pthread_mutex_t	*fork;
 }	t_data;
 
 /* ***************************** FUNCIONES ********************************** */
 
 /* check_error --------------------------------------------------------------- */
-int check_error(int argc, char *argv[]);
+int		check_error(int argc, char *argv[]);
 
 /* Thread ------------------------------------------------------------------- */
-int create_thread(t_rules rules, t_data *data);
-int delete_thread(t_rules rules, t_data *data);
-int init_fork(pthread_mutex_t **fork, int nbr);
-int delete_fork(pthread_mutex_t **fork, int nbr);
+int		init_fork(t_rules **rules, int nbr);
+int		delete_fork(t_rules **rules, int nbr);
+int		create_thread(t_data *data, t_rules *rules);
+int		delete_thread(t_data *data, t_rules *rules);
 
 /* Philo_utils -------------------------------------------------------------- */
-t_rules	add_rules(char *argv[]);
-int	add_philos(int n_philos, t_data *data, t_rules rules);
-int	ft_time();
+void	add_rules(t_rules **rules, char *argv[]);
+int		add_philos(t_data *data, t_rules *rules);
+int		ft_time();
 
 /* Routine -------------------------------------------------------------- */
-void *routine(void *lst_philos);
+void	*routine(void *lst_philos);
 
 #endif
