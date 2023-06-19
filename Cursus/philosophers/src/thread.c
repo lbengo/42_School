@@ -6,21 +6,21 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:59:54 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/18 18:44:22 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/19 12:33:43 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int create_thread(t_data *data, t_rules rules)
+int create_thread(t_data *data, t_rules *rules)
 {
 	int	i;
 
-	data->th = malloc(sizeof(pthread_t) * rules.nbr_philos);
+	data->th = malloc(sizeof(pthread_t) * rules->nbr_philos);
 	if (!data->th)
 		return (1);
 	i = 0;
-	while (i < rules.nbr_philos)
+	while (i < rules->nbr_philos)
 	{
 		if (pthread_create(&(data->th[i]), NULL, routine, &(data->lst_philos[i])))
 			return (1);
@@ -29,12 +29,12 @@ int create_thread(t_data *data, t_rules rules)
 	return (0);
 }
 
-int delete_thread(t_data *data, t_rules rules)
+int delete_thread(t_data *data, t_rules *rules)
 {
 	int	i;
 
 	i = 0;
-	while (i < rules.nbr_philos)
+	while (i < rules->nbr_philos)
 	{
 		if (pthread_join(data->th[i], NULL))
 			return (1);

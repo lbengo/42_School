@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:42:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/18 18:49:41 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/19 18:39:24 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int philo(char *argv[])
 	add_rules(&rules, argv);
 	if (init_fork(&rules, rules->nbr_philos))
 		return (1);
-	if (add_philos(&data, rules))
+	if (add_philos(&data, &rules))
 		return (1);
 	if (create_thread(&data, rules))
 		return (1);
@@ -30,6 +30,7 @@ int philo(char *argv[])
 		return (1);
 	if (delete_fork(&rules, rules->nbr_philos))
 		return (1);
+	printf("ejercicio termiano\n");
 	free(data.lst_philos);
 	free(rules);
 	return(0);
