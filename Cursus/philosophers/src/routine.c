@@ -6,17 +6,20 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:20:44 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/19 19:11:14 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/19 23:42:03 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_dead(t_philo *philo, long int t_current)
+int	check_dead(t_philo *philo)
 {
 	if (philo->rules->philo_dead == 1)
 		return (1);
-	if (philo->rules->t_die <= ft_time(t_current))
+		
+	//printf("Philo %d\nt_last_eat = %ld\nt_current = %ld\ncheck_dead = %ld\n\n", philo->nbr-1, philo->t_last_eat, ft_time() - philo->rules->t_start, ft_time() - philo->rules->t_start - philo->t_last_eat);
+
+	if (philo->rules->t_die < ft_time() - philo->rules->t_start - philo->t_last_eat)
 	{
 		philo->rules->philo_dead = 1;
 		printf("po ha muerto el philo %d\n", philo->nbr-1);
@@ -25,70 +28,96 @@ int	check_dead(t_philo *philo, long int t_current)
 	return (0);
 }
 
-void eating(t_philo *philo, t_rules *rules)
+long int eating(t_philo *philo, t_rules *rules)
 {
 	long int	time;
 	long int	time_start;
 	int			nbr;
 
 	nbr = philo->nbr - 1;
-
+			
 	pthread_mutex_lock(&(rules->fork[nbr]));
-		//time = ft_time() - lst->rules.t_start;
-		//printf("%ld Philo %d has taken a fork\n", time, lst->nbr);
+		if (check_dead(philo))
+		{
+			pthread_mutex_unlock(&(rules->fork[nbr]));
+			return (0);
+		}
+		time_start = ft_time() - rules->t_start;
+		printf("%ld Philo %d has taken a fork\n", time_start, nbr + 1);
+	
 	pthread_mutex_lock(&(rules->fork[(nbr + 1) % (rules->nbr_philos)]));
-		//time = ft_time() - lst->rules.t_start;
-		//printf("%ld Philo %d has taken a fork\n",time, lst->nbr);
-		
-	time_start = ft_time(rules->t_start);
-	printf("%ld Philo %d is eating\n", time_start, nbr);
+		if (check_dead(philo))
+		{
+			pthread_mutex_unlock(&(rules->fork[nbr]));
+			pthread_mutex_unlock(&(rules->fork[(nbr + 1) % (rules->nbr_philos)]));
+			return (0);
+		}
+		time_start = ft_time() - rules->t_start;
+		printf("%ld Philo %d has taken a fork\n",time_start, nbr + 1);
+	
+	if (check_dead(philo))
+	{
+		pthread_mutex_unlock(&(rules->fork[nbr]));
+		pthread_mutex_unlock(&(rules->fork[(nbr + 1) % (rules->nbr_philos)]));
+		return (0);
+	}
+	time_start = ft_time() - rules->t_start;
+	printf("%ld Philo %d is eating\n", time_start, nbr + 1);
 	
 	time = time_start;
 	while (time != rules->t_eat + time_start)
-		time = ft_time(rules->t_start);	
+		time = ft_time() - rules->t_start;	
 	pthread_mutex_unlock(&(rules->fork[nbr]));
 	pthread_mutex_unlock(&(rules->fork[(nbr + 1) % (rules->nbr_philos)]));
+	return (time);
 }
 
 // par
 int	routine_even(t_philo *philo)
 {
-	int i;
-
-	i = 0;
-	while(i < 2)
+	while(1)
 	{
-		eating(philo, philo->rules);
-		if (philo->rules->philo_dead == 1)
-			return (1);
-		printf("%d Philo %d is sleeping\n", ft_time(philo->rules->t_start), philo->nbr);
-		usleep((philo->rules->t_eat / 2) * 1000);
-		if (check_dead(philo, philo->rules->t_start))
-			return (1);
-		i++;
+		if (philo->rules->nbr_must_eat && philo->round == philo->rules->nbr_must_eat)
+		{
+			printf("round = %d", philo->round);
+			return (0);
+		}
+		philo->t_last_eat = eating(philo, philo->rules);
+			
+		if (check_dead(philo))
+			break ;	
+		printf("%ld Philo %d is sleeping\n", ft_time() - philo->rules->t_start, philo->nbr);
+		usleep((philo->rules->t_sleep) * 1000);
+		
+		if (check_dead(philo))
+			break ;
+		printf("%ld Philo %d is thinking\n", ft_time() - philo->rules->t_start, philo->nbr);
 	}
-	printf("\nterminao rutina = %d\n", philo->nbr - 1);
 	return (0);
 }
 
 // impar
 int	routine_odd(t_philo *philo)
 {
-	usleep((philo->rules->t_eat) * 1000);
-	if (check_dead(philo, philo->rules->t_start))
-		return (1);
+	usleep((philo->rules->t_eat / 2) * 1000);
+	while(1)
+	{	if (philo->rules->nbr_must_eat && philo->round == philo->rules->nbr_must_eat) //rondas
+		{
+			printf("round = %d", philo->round);
+			return (0);
+		}
 		
-	int i;
-
-	i = 0;
-	while(i < 2)
-	{
-		eating(philo, philo->rules);
-		usleep((philo->rules->t_eat / 2) * 1000);
+		philo->t_last_eat = eating(philo, philo->rules);
 		
-		i++;
+		if (check_dead(philo))
+			break ;
+		printf("%ld Philo %d is sleeping\n", ft_time() - philo->rules->t_start, philo->nbr);
+		usleep((philo->rules->t_sleep) * 1000);
+		
+		if (check_dead(philo))
+			break ;
+		printf("%ld Philo %d is thinking\n", ft_time() - philo->rules->t_start, philo->nbr);
 	}
-	printf("terminao rutina = %d\n", philo->nbr -1);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/19 19:09:01 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/06/19 23:11:20 by laurabengoe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,16 @@ typedef struct s_rules {
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
-	int				nbr_mut_eat;
+	int				nbr_must_eat;
 	int				philo_dead;
 	pthread_mutex_t *fork;
 }	t_rules;
 
 typedef struct s_philo {
 	t_rules			*rules;
-	int				t_die;
-	int				t_eat;
-	int				t_sleep;
+	long int		t_last_eat;
 	int				nbr_mut_eat;
+	int				round;
 	int				nbr;
 }	t_philo;
 
@@ -62,7 +61,7 @@ int		delete_thread(t_data *data, t_rules *rules);
 /* Philo_utils -------------------------------------------------------------- */
 void	add_rules(t_rules **rules, char *argv[]);
 int		add_philos(t_data *data, t_rules **rules);
-int		ft_time(long int t_start);
+int		ft_time();
 
 /* Routine -------------------------------------------------------------- */
 void	*routine(void *lst_philos);
