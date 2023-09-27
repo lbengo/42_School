@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:28:02 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/19 23:14:34 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/09/27 16:11:16 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_time()
+long int	ft_time()
 {
 	struct timeval	time;
 	long int		t_current;
@@ -57,13 +57,17 @@ int	add_philos(t_data *data, t_rules **rules)
 
 	data->lst_philos = malloc(sizeof(t_philo) * (*rules)->nbr_philos);
 	if (!data->lst_philos)
+	{
+		free((*rules)->fork);
+		free(*rules);
 		return (1);
+	}
 	nbr = 0;
 	while (nbr < (*rules)->nbr_philos)
 	{
 		data->lst_philos[nbr].rules = (*rules);
 		data->lst_philos[nbr].nbr = nbr + 1;
-		data->lst_philos[nbr].t_last_eat = 0;
+		data->lst_philos[nbr].t_last_eat = ft_time();
 		data->lst_philos[nbr].round = 0;
 		nbr++;
 	}

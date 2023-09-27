@@ -3,44 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:59:54 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/06/19 12:33:43 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/09/26 18:24:03 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int create_thread(t_data *data, t_rules *rules)
+int create_thread(t_data *data, t_rules *rules) // creación del hilo
 {
 	int	i;
 
-	data->th = malloc(sizeof(pthread_t) * rules->nbr_philos);
+	data->th = malloc(sizeof(pthread_t) * ((rules->nbr_philos)));
 	if (!data->th)
-		return (1);
-	i = 0;
-	while (i < rules->nbr_philos)
 	{
-		if (pthread_create(&(data->th[i]), NULL, routine, &(data->lst_philos[i])))
+		free(data->lst_philos);
+		free(rules->fork);
+		free(rules);
+		return (1);
+	}
+	i = 0;
+	while (i < (rules->nbr_philos))
+	{
+		if (pthread_create(&(data->th[i]), NULL, split_routine, &(data->lst_philos[i])))
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int delete_thread(t_data *data, t_rules *rules)
+int join_thread(t_data *data, t_rules *rules) // espera la ejecución del hilo
 {
 	int	i;
 
 	i = 0;
-	while (i < rules->nbr_philos)
+	while (i < (rules->nbr_philos))
 	{
 		if (pthread_join(data->th[i], NULL))
 			return (1);
 		i++;
 	}
-	free(data->th);
 	return (0);
 }
 
@@ -57,6 +61,7 @@ int init_fork(t_rules **rules, int nbr)
 		if (pthread_mutex_init(&((*rules)->fork[i]), NULL) != 0) // inicio del mutex
 		{
 			free((*rules)->fork);
+			free(*rules);
 			return (1);
 		}
 		i++;

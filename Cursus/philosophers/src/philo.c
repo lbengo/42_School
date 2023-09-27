@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:42:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/19 18:39:24 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/09/27 16:11:23 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 // lista con: number_of_philosophers, time_to_die , time_to_eat , time_to_sleep , number_of_times_each_philosopher_must_eat
+// return(1) debe tener un retorno bn con un printf q diga q pasa
 
 int philo(char *argv[])
 {
 	t_rules	*rules;
 	t_data	data;
-	
+
 	add_rules(&rules, argv);
 	if (init_fork(&rules, rules->nbr_philos))
 		return (1);
@@ -26,7 +27,7 @@ int philo(char *argv[])
 		return (1);
 	if (create_thread(&data, rules))
 		return (1);
-	if (delete_thread(&data, rules))
+	if (join_thread(&data, rules))
 		return (1);
 	if (delete_fork(&rules, rules->nbr_philos))
 		return (1);

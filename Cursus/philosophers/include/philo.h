@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+        */
+/*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/06/19 23:11:20 by laurabengoe      ###   ########.fr       */
+/*   Updated: 2023/09/25 18:09:59 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_rules {
 typedef struct s_philo {
 	t_rules			*rules;
 	long int		t_last_eat;
-	int				nbr_mut_eat;
 	int				round;
 	int				nbr;
 }	t_philo;
@@ -54,16 +53,17 @@ int		check_error(int argc, char *argv[]);
 
 /* Thread ------------------------------------------------------------------- */
 int		init_fork(t_rules **rules, int nbr);
-int		delete_fork(t_rules **rules, int nbr);
+int		join_thread(t_data *data, t_rules *rules);
 int		create_thread(t_data *data, t_rules *rules);
-int		delete_thread(t_data *data, t_rules *rules);
+int		delete_fork(t_rules **rules, int nbr);
 
 /* Philo_utils -------------------------------------------------------------- */
-void	add_rules(t_rules **rules, char *argv[]);
-int		add_philos(t_data *data, t_rules **rules);
-int		ft_time();
+long int		ft_time();
+void			add_rules(t_rules **rules, char *argv[]);
+int				add_philos(t_data *data, t_rules **rules);
 
 /* Routine -------------------------------------------------------------- */
-void	*routine(void *lst_philos);
+void	*split_routine(void *current_philo);
+void	*control_dead(void *general_rules);
 
 #endif
