@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: laurabengoechea <laurabengoechea@studen    +#+  +:+       +#+         #
+#    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:43:45 by lbengoec          #+#    #+#              #
-#    Updated: 2023/06/14 22:47:33 by laurabengoe      ###   ########.fr        #
+#    Updated: 2023/09/27 19:05:03 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRC               = philo.c \
 					check_error.c \
 					philo_utils.c \
 					thread.c \
+					routine_utils.c \
 					routine.c
 
 OBJ_PATH          = ./obj

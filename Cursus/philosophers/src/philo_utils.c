@@ -6,13 +6,13 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 10:28:02 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/09/27 16:11:16 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:09:39 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-long int	ft_time()
+long int	ft_time(void)
 {
 	struct timeval	time;
 	long int		t_current;
