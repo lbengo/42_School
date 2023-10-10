@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 12:20:44 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/09/27 19:11:12 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:53:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	eating(t_philo *philo, t_rules *rules)
 	ft_usleep(philo, philo->rules->t_eat);
 	pthread_mutex_unlock(&(rules->fork[nbr]));
 	pthread_mutex_unlock(&(rules->fork[(nbr + 1) % (rules->nbr_philos)]));
-	if (check_dead(philo))
+	if (check_and_print(philo, philo->rules, NULL))
 		return (1);
 	philo->t_last_eat = ft_time();
 	return (0);

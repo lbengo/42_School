@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:00:11 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/09/27 20:02:05 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:58:32 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_usleep(t_philo *philo, long int time)
 	long int	time_start;
 
 	time_start = ft_time();
-	while (check_dead(philo) == 0)
+	while (check_and_print(philo, philo->rules, NULL) == 0)
 	{
 		if (ft_time() - time_start > time)
 			return (0);
@@ -41,9 +41,15 @@ int	ft_usleep(t_philo *philo, long int time)
 
 int	check_and_print(t_philo *philo, t_rules *rules, char *str)
 {
+	pthread_mutex_lock(&(rules->check_and_print));
 	if (check_dead(philo))
+	{
+		pthread_mutex_unlock(&(rules->check_and_print));
 		return (1);
-	printf("%ld %d %s\n", ft_time() - rules->t_start, philo->nbr, str);
+	}
+	if (str)
+		printf("%ld %d %s\n", ft_time() - rules->t_start, philo->nbr, str);
+	pthread_mutex_unlock(&(rules->check_and_print));
 	return (0);
 }
 

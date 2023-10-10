@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:41:31 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/09/27 19:07:09 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:58:17 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_rules {
 	int				nbr_must_eat;
 	int				philo_dead;
 	pthread_mutex_t	*fork;
+	pthread_mutex_t	check_and_print;
 }	t_rules;
 
 typedef struct s_philo {

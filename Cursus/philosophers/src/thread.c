@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 14:59:54 by laurabengoe       #+#    #+#             */
-/*   Updated: 2023/09/27 19:15:07 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/10/10 18:48:25 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,12 @@ int	init_fork(t_rules **rules, int nbr)
 		}
 		i++;
 	}
+	if (pthread_mutex_init(&((*rules)->check_and_print), NULL) != 0)
+	{
+		free((*rules)->fork);
+		free(*rules);
+		return (1);
+	}
 	return (0);
 }
 
@@ -77,7 +83,7 @@ int	delete_fork(t_rules **rules, int nbr)
 	i = 0;
 	while (i < nbr)
 	{
-		if (pthread_mutex_destroy(&((*rules)->fork[i])) != 0)
+		if (pthread_mutex_destroy(&(*rules)->fork[i]) != 0)
 		{
 			free((*rules)->fork);
 			return (1);
@@ -85,5 +91,10 @@ int	delete_fork(t_rules **rules, int nbr)
 		i++;
 	}
 	free((*rules)->fork);
+	if (pthread_mutex_destroy(&(*rules)->check_and_print) != 0)
+	{
+		free((*rules)->fork);
+		return (1);
+	}
 	return (0);
 }

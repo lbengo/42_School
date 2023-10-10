@@ -6,7 +6,7 @@
 #    By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/31 09:43:45 by lbengoec          #+#    #+#              #
-#    Updated: 2023/09/27 19:05:03 by lbengoec         ###   ########.fr        #
+#    Updated: 2023/10/10 18:56:45 by lbengoec         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 NAME              = philo
 
 CC                = gcc
-CFLAGS            = -Wall -Werror -Wextra -pthread -g3 -fsanitize=address
+CFLAGS            = -Wall -Werror -Wextra -pthread -g3 # -fsanitize=thread
 
 INCLUDE           = ./include
 

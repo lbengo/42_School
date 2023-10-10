@@ -6,7 +6,7 @@
 /*   By: lbengoec <lbengoec@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 09:42:09 by lbengoec          #+#    #+#             */
-/*   Updated: 2023/09/27 19:44:26 by lbengoec         ###   ########.fr       */
+/*   Updated: 2023/10/10 16:15:10 by lbengoec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	philo(char *argv[])
 	if (delete_fork(&rules, rules->nbr_philos))
 		return (1);
 	free(data.lst_philos);
+	free(data.th);
 	free(rules);
 	return (0);
 }
