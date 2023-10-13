@@ -1,4 +1,4 @@
-**Race Conditions**
+# Race Conditions
 
 Una race condition ocurre cuando dos o más hilos o procesos acceden simultáneamente a un recurso compartido, como una variable, memoria o archivo, y al menos uno de ellos realiza una operación de escritura o modificación.
 
