@@ -19,7 +19,7 @@ El problema consiste en crear un algoritmo que permita comer a los filósofos.
 
 
 <p align="center">
-  <img src="Readme_utils/Illustration_dining_philosophers_problem.png" alt="Illustration dining philosophers problem"/>
+  <img src="Readme/imgs/Illustration_dining_philosophers_problem.png" alt="Illustration dining philosophers problem" width="40%"/>
 </p>
 
 ### Instruciones generales
@@ -41,124 +41,45 @@ El problema consiste en crear un algoritmo que permita comer a los filósofos.
 
 - No se puede tener más de 10ms entre la muerte de un filósofo y el momento en el que se imprime su muerte
 
-- Para más información sobre el proyecto mira el <a href=Readme_utils/Enunciado.pdf>enunciado</a>.
+- Para más información sobre el proyecto mira el <a href=Readme/imgs/Enunciado.pdf>enunciado</a>.
 
 
-
-
-
-
-
-
-
----------
-
-**Race Conditions**
-
-Una race condition ocurre cuando dos o más hilos o procesos acceden simultáneamente a un recurso compartido, como una variable, memoria o archivo, y al menos uno de ellos realiza una operación de escritura o modificación.
-
-Las race conditions pueden ocurrir en programas paralelos o concurrentes, donde múltiples hilos o procesos se ejecutan en paralelo y comparten recursos. Estas condiciones pueden ser difíciles de detectar y solucionar, ya que su resultado puede ser inconsistente y depender de la concurrencia específica y el calendario de eventos.
-
-Ejemplo:
-
-```c
-# include <stdio.h>
-# include <unistd.h>
-# include <pthread.h> // Librería que gestiona las funciones pthread
-
-void *routine(void *nbr)
-{
-	int i = 0;
-	int *x = (int *)nbr;
-	while (i < 10000){
-		(*x)++;
-		i++;
-	}
-	return NULL;
-}
-
-int main(void)
-{
-	pthread_t	p1, p2;
-	int 		x = 0;
-
-	if (pthread_create(&p1, NULL, routine, &x)) // nuevo hilo
-		return 1;
-	if (pthread_create(&p2, NULL, routine, &x))
-		return 2;
-	if (pthread_join(p1, NULL)) // espera la ejecución del hilo
-		return 3;
-	if (pthread_join(p2, NULL))
-		return 4;
-	printf("Number of x = %d", x);
-	return 0;
-}
-```
-Resultado esperado:
+## Cómo testear
+Ejecuta los siguientes comandos.
 ```shell
-Number of x = 20000
+$ git clone https://github.com/lbengo/42_School.git && cd 42_School/Cursus/philosophers
+$ make
+$ ./philo [number_of_philosophers] [time_to_die] [time_to_eat] [time_to_sleep] [number_of_times_each_philosopher_must_eat]
 ```
 
-Resultados optenidos:
-```shell
-1º
-Number of x = 19226
+> Puedes sustituir los números por los que prefieras. Los filósofos no pueden ser mas de 200 y el "time_to_die" y "time_to_sleep" no pueden ser inferior a 60 ms.
 
-2º
-Number of x = 10749
+Ejemplos:
 
-3º
-Number of x = 13002
-```
+- ./philo 5 800 200 200 : nadie debe morir.
+- ./philo 4 410 200 200 : nadie debe morir.
+- ./philo 4 310 200 100 : un filósofo debe morir.
 
-La prevención y solución de race conditions suelen implicar el uso de mecanismos de sincronización, como mutex, semáforos, variables de condición o barreras, para coordinar el acceso a los recursos compartidos y garantizar la coherencia y la consistencia en la ejecución del programa o sistema concurrente.
 
-Es importante tener en cuenta y abordar las race conditions al desarrollar software concurrente o paralelo para evitar resultados incorrectos y comportamientos no deterministas.
+## Cómo empezar
 
-Ejemplo de solución con mutex:
+### 01. Control de errores
+Errores a gestionar
+- Todos los argumentos de entrada deben ser positivos.
+- El número de argumentos debe ser 4 o 5.
 
-```c
-# include <stdio.h>
-# include <unistd.h>
-# include <pthread.h> // Librería que gestiona las funciones pthread
+### 02. Parseo
+En primer lugar se crean varias estructuras: la estructura `rules` que posea los argumentos y las variables que se van a emplear en el proyecto como el array de tenedores; Y otra estructura de `philo`, la cual posee variables necesarias de cada filósofo y la dirección de memoria de la estructura `rules`. Tras la realización de varios parseos, esta es la que se ha encontrado más adecuada ya que no genera variables innecesarias.
 
-pthread_mutex_t mutex;
+Asimismo, en el parseo se crean los threads y mutex. Sin embargo, para trabajar con ellas es necesario primeramente conocer que son las <a href=Readme/theory/Race_Conditions.md>race conditions</a>.
 
-void *routine(void *nbr)
-{
-	int i = 0;
-	int *x = (int *)nbr;
-	while (i < 10000){
-		pthread_mutex_lock(&mutex); // espera a que el hilo no se esté ejecutando para prevenir el race condition
-		(*x)++;
-		i++;
-		pthread_mutex_unlock(&mutex);
-	}
-	return NULL;
-}
+### 03. Implementación de la rutina
+Como todos los filósofos comenzarían a comer cogiendo el tenedor de su izquierda, no permitirian comer a nadie ya que necesitan el de su derecha que está ocupado por otro filósofo. Es por lo que se ha dividido en dos: los filósofos pares comen primero y los impares esperan.
 
-int main(void)
-{
-	pthread_t	p1, p2;
-	int 		x = 0;
+El siguiente paso del hilo del filósofo es comer. Para ello, primero hacen un mutex en el que cogen el tenedor de la izquierda y, a continuación, otro mutex con el de su derecha. Una vez tienen ambos tenedores, comienzan a comer. Y una vez terminan, liberan estos mutex para que los filósofos de sus costados puedan comer.
 
-	pthread_mutex_init(&mutex, NULL); // inicio del mutex
-	if (pthread_create(&p1, NULL, routine, &x))
-		return 1;
-	if (pthread_create(&p2, NULL, routine, &x))
-		return 2;
-	if (pthread_join(p1, NULL))
-		return 3;
-	if (pthread_join(p2, NULL))
-		return 4;
-	pthread_mutex_destroy(&mutex); // finalización del mutex
-	printf("Number of x = %d", x);
-	return 0;
-}
-```
-Resultado optenido:
-```shell
-Number of x = 20000
-```
+Tras terminar de comer, los filósofos duermen. Y una vez acaban esperan pensando hasta que puedan volver a comer.
+
+
 
 
